@@ -9,9 +9,7 @@
 
 
 
-    <meta name="description" content="完整版见 https://www.bilibili.com/read/cv7235446
-（这个的视频版因为定位不成熟，暂时撤下了。第二期的文字版因内容依赖插图，这里暂且不放上来）
-前言这篇文章是我之前那个视频的文字版，这次我尽可能使文章结构紧凑。视频版确实有点长了（50多分钟），而且我对这个视频的"/>
+    <meta name="description" content="2021:*文章写的有点早了，内容可能不适用于现在，请读者留意。*进军科技区的第一次尝试，可惜我暂且不打算继续下去了。当初我还是没有明确自己的定位，写了这种野鸡技术文章。其实我还是希望有对这方面更了解的人能整理一下 B 站（乃至其他视频网站）技术的发展史的。其实这也算是反映网站发展方向的一个方式。*"/>
 
 
 <!--Author-->
@@ -21,14 +19,12 @@
 
 <!--Open Graph Title-->
 
-    <meta property="og:title" content="【wzqtechtips#01】B 站对你的视频做了什么？纵观 B 站视频串流技术发展史【文字版】"/>
+    <meta property="og:title" content="【wzqtechtips#01】B 站对你的视频做了什么？纵观 B 站视频串流技术发展史"/>
 
 
 <!--Open Graph Description-->
 
-    <meta property="og:description" content="完整版见 https://www.bilibili.com/read/cv7235446
-（这个的视频版因为定位不成熟，暂时撤下了。第二期的文字版因内容依赖插图，这里暂且不放上来）
-前言这篇文章是我之前那个视频的文字版，这次我尽可能使文章结构紧凑。视频版确实有点长了（50多分钟），而且我对这个视频的"/>
+    <meta property="og:description" content="2021:*文章写的有点早了，内容可能不适用于现在，请读者留意。*进军科技区的第一次尝试，可惜我暂且不打算继续下去了。当初我还是没有明确自己的定位，写了这种野鸡技术文章。其实我还是希望有对这方面更了解的人能整理一下 B 站（乃至其他视频网站）技术的发展史的。其实这也算是反映网站发展方向的一个方式。*"/>
 
 
 <!--Open Graph Site Name-->
@@ -55,7 +51,7 @@
 
 <!-- Title -->
 
-<title>【wzqtechtips#01】B 站对你的视频做了什么？纵观 B 站视频串流技术发展史【文字版】 - TheW1zardQ&#39;s stuff</title>
+<title>【wzqtechtips#01】B 站对你的视频做了什么？纵观 B 站视频串流技术发展史 - TheW1zardQ&#39;s stuff</title>
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
@@ -122,7 +118,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 text-center">
                 <div class="post-heading text-white">
-                    <h1>【wzqtechtips#01】B 站对你的视频做了什么？纵观 B 站视频串流技术发展史【文字版】</h1>
+                    <h1>【wzqtechtips#01】B 站对你的视频做了什么？纵观 B 站视频串流技术发展史</h1>
                     
                 </div>
             </div>
@@ -154,10 +150,7 @@
     
 </span>  
                 
-                <p>完整版见 <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv7235446">https://www.bilibili.com/read/cv7235446</a></p>
-<p>（这个的视频版因为定位不成熟，暂时撤下了。第二期的文字版因内容依赖插图，这里暂且不放上来）</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是我之前那个视频的文字版，这次我尽可能使文章结构紧凑。视频版确实有点长了（50多分钟），而且我对这个视频的编排、文案也很不满意（其实为了追求“讲相声”（迫真）的感觉，整个视频我都没有念稿，全程即兴发言），所以决定写篇文字版，毕竟不是每个人都有耐心去听我瞎扯50分钟。</p>
-<p>这篇文章也会有一些之前视频里没提到的内容，可看作是视频内容的扩充。</p>
+                <p>2021:<br>*文章写的有点早了，内容可能不适用于现在，请读者留意。<br>*进军科技区的第一次尝试，可惜我暂且不打算继续下去了。当初我还是没有明确自己的定位，写了这种野鸡技术文章。其实我还是希望有对这方面更了解的人能整理一下 B 站（乃至其他视频网站）技术的发展史的。其实这也算是反映网站发展方向的一个方式。<br>*之前还出过视频版，但因为做的很粗糙所以删了。<br>*以下为正文。</p>
 <h3 id="1-为什么视频网站能把视频压缩的更小？"><a href="#1-为什么视频网站能把视频压缩的更小？" class="headerlink" title="1.为什么视频网站能把视频压缩的更小？"></a>1.为什么视频网站能把视频压缩的更小？</h3><p>不知道各位最近有没有用手机/摄像机拍摄过视频。你们或许会发现，你随手录个视频，就会占掉你手机/摄像机存储几个 GB 的空间。对于一部存储容量 32GB 的手机而言（我比较穷酸，手机存储容量不是很大），如果是录制 4K 视频，总共也只能录制一个多小时，然后你手机存储就给你用完了。</p>
 <p>这看上去可能没什么不正常的，毕竟这里的手机存储就 32GB，你能指望它录制多久？但是与网络视频相比，比如在 B 站上，一个同样是一个半小时的 4K 视频，其需要的存储空间可能 5GB 都不到，而手机拍摄的视频就大得多。</p>
 <p>这是为什么呢？我们知道，视频都是需要被压缩（编码）的，而视频网站一般也会对上传的视频进行二次压缩，这使得视频的文件体积不至于过大。</p>
@@ -237,7 +230,7 @@
     <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
         <ul class="pagination d-block text-center">
             
-                <li class="previous page-item d-inline"><a href="/2020/10/16/Previous-Projects/" class="page-link float-left">&larr;  下一页</a></li>
+                <li class="previous page-item d-inline"><a href="/2020/08/27/WTT-02/" class="page-link float-left">&larr;  下一页</a></li>
             
             
                 <li class="next page-item d-inline"><a href="/2020/07/29/Why-I-deleted-my-vids/" class="page-link float-right">上一页  &rarr;</a></li>
