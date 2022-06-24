@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <link rel="icon" type="image/png" href="images/icon.png" />
+    <link rel="shortcut icon" type="image/png" href="images/icon.png" />
+    <style>
+        body {
+            animation: appear 0.6s ease 1;
+            background: #faeacc; 
+            transition: 0.25s;
+            font-family: "Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI";
+            color: #333;
+            text-align: center;
+            user-select: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        #largetitle {
+            font-weight: bold;
+            position: relative;
+            top: 20px;
+            font-size: 384px;
+            animation: appear 0.6s ease 1;
+            color: rgba(0,0,0,0.1);
+            overflow: hidden;
+            z-index: -1;
+        }
+        @media (prefers-color-scheme: dark) {
+            body { 
+                background: #252525; 
+                color: #eeeeee;
+            }
+            a {
+                color: #8080ff;
+            }
+            #largetitle {
+                color: rgba(255,255,255,0.1);
+            }
+        }
+        @keyframes appear {
+            0% {
+                opacity: 0.0;
+            }
+            100% {
+                opacity: 1.0;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1></h1><br><br>
+5 秒后自动返回主页...
+<div id="largetitle">/404/</div>
+<script>
+    var h1 = document.getElementsByTagName("h1")[0];
+    var random1 = Math.ceil(Math.random()*4);
+    if (random1 == 1) {
+        h1.innerHTML = "呃......或许你该检查下你的地址栏？";
+    }
+    if (random1 == 2) {
+        h1.innerHTML = "兄啊，你地址栏里面是不是有错字啊";
+    }
+    if (random1 == 3) {
+        h1.innerHTML = "如果你不知道的话，这是一个 404 页面，意思是你网址输错了";
+    }
+    if (random1 == 4) {
+        h1.innerHTML = "虽然但是，你在访问一个不存在的页面，所以...";
+    }
+    setTimeout("jump()","5000");
+    function jump() {
+        window.location.href = "/index.html";
+    }
+</script>
+</body>
+</html>

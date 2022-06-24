@@ -1,0 +1,236 @@
+body { 
+    background: #ffffff; 
+    font-family: "Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI";
+    overflow-x: hidden;
+    overflow-y: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: 0.25s;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#page1 {
+    width: 100%;
+    height: 100vh;
+    /*background-color: #114514;*/
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+/*#page2 {
+    width: 100%;
+    height: 100vh;
+    background-color: #810810;
+    left: 0px;
+    top: 100vh;
+    overflow: hidden;
+}*/
+a {
+    text-decoration: none;
+    transition: 0.25s;
+}
+a:hover {
+    filter: brightness(140%);
+}
+a:active {
+    filter: brightness(60%);
+}
+textrt {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: default;
+    animation: appear 0.4s 1;
+    transition: 0.25s;
+}
+#lt {
+    font-size: 18px;
+    color: #999;
+    top: auto;
+    right: auto;
+    bottom: 68px;
+    left: 20px;
+    animation: appear 1.4s 1;
+}
+#lt:hover {
+    filter: brightness(140%);
+}
+#links {
+    position: absolute;
+    width: 360px;
+    left: 12px;
+    bottom: 12px;
+    animation: appear 2.5s cubic-bezier(0, 0.3, 0, 1) 1;
+}
+#mainlnks a div {
+    display: inline;
+    position: relative;
+    bottom: 0px;
+    border-radius: 8px;
+    padding: 6px 6px;
+    opacity: 0.6;
+    transition: 0.25s;
+}
+#mainlnks a div:hover {
+    position: relative;
+    bottom: 8px;
+    opacity: 1.0;
+}
+#mainlnks a div:active {
+    position: relative;
+    filter: invert(60%);
+    bottom: -4px;
+}
+#tip1 {
+    text-align: center;
+    position: relative;
+    color: #777;
+    top: 32px;
+    font-weight: bold;
+    font-size: 22px;
+    animation: appear 0.6s 1;
+}
+#othlnks {
+    display: none;
+    position: absolute;
+    width: 200px;
+    bottom: 70px;
+    left: 140px;
+    border-radius: 6px;
+    /*background-color: #810810;*/
+    background-color: rgba(127,127,127,0.2);
+    backdrop-filter: blur(16px);
+    box-shadow: 0px 0px 12px #111;
+    padding: 4px;
+    animation: lnkshowup 0.25s cubic-bezier(0, 0.67, 0, 1) 1;
+}
+#othlnks div {
+    display: block;
+    position: relative;
+    width: 188px;
+    height: 18px;
+    top: -4px;
+    margin-top: 4px;
+    border-radius: 4px;
+    padding: 6px;
+    color: #333;
+    background-color: rgba(255,255,255,0);
+    transition: 0.25s;
+    /*background-color: #114514;*/
+}
+#othlnks div:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+#othlnks div:active {
+    background-color: rgba(0,0,0,0.5);
+}
+#centerpic {
+    position: absolute;
+    top: calc(50% - 160px);
+    left: calc(50% - 160px);
+    animation: icoshowup 1.2s cubic-bezier(0, 0.3, 0, 1) 1;
+    transition: 0.25s;
+}
+#centerpic:hover{
+    opacity: 0.8;
+}
+#centerpic:active{
+    opacity: 0.4;
+}
+#toscr2 {
+    position: absolute;
+    top: calc(50% + 224px);
+    left: calc(50% - 32px);
+    animation: appear 2s 1;
+    opacity: 0.4;
+    transition: 0.25s;
+}
+#toscr2:hover{
+    opacity: 0.8;
+    top: calc(50% + 232px);
+}
+#toscr2:active{
+    opacity: 0.2;
+    top: calc(50% + 216px);
+}
+@media (prefers-color-scheme: dark) {
+    body { 
+        background: #252525; 
+    }
+    textrt {
+        color: #989898;
+    }
+    #lt {
+        color: #565656;
+    }
+    a {
+        color: #8080ff;
+    }
+    #links a div:not(#othlnks div) {
+        filter: invert(100%);
+    }
+    #othlnks div {
+        color: #CCC;
+    }
+    #tip1 {
+        color: #777;
+    }
+    #centerpic {
+        filter: invert(100%);
+    }
+    #toscr2 {
+        filter: invert(100%);
+    }
+}
+@keyframes appear {
+    from {
+        opacity: 0.0;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+@keyframes lnkshowup {
+    from {
+        opacity: 0.0;
+        bottom: 10px;
+    }
+    to {
+        opacity: 1.0;
+        bottom: 70px;
+    }
+}
+@keyframes lnkhide {
+    from {
+        opacity: 1.0;
+        bottom: 70px;
+    }
+    to {
+        opacity: 0.0;
+        bottom: 10px;
+    }
+}
+@keyframes icoshowup {
+    from {
+        opacity: 0.0;
+        top: calc(50% - 80px);
+    }
+    to {
+        opacity: 1.0;
+        top: calc(50% - 160px);
+    }
+}
+@keyframes icogo {
+    from {
+        opacity: 1.0;
+        top: calc(50% - 160px);
+    }
+    to {
+        opacity: 0.0;
+        top: calc(50% - 240px);
+    }
+}

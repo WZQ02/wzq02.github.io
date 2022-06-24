@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/app/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/app/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/app/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/app/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/app/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/app/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/app/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/app/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/app/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="icons/app/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/app/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/app/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/app/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/app/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="index.css" id="skin">
+    <script>
+        if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(
+        function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope); },
+        function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+        });
+        });
+        }
+    </script>
+</head>
+<body>
+    <div id="page1">
+        <textrt>
+            <a href="javascript:void(0)" onclick="chglang()"><span id="chglang">Change Language</span></a>&nbsp;&emsp;&nbsp;Powered by WZQ'02
+        </textrt>
+        <textrt id="lt">
+            Find me on these sites:
+        </textrt>
+        <centerpic>
+            <img src="images/centerpic/front_1.png" id="centerpic" height="320" width="320" href="javascript:void(0)" onclick="onclickchgcenterpic()">
+            <img src="icons/others/screen2.svg" id="toscr2" height="64" width="64" href="javascript:void(0)" onclick="morestuffiscomingsoon()">
+        </centerpic>
+        <div id="tip1"><p><!--(placeholder text)--></p></div>
+        <div id="links">
+            <div id="mainlnks">
+                <a title="Bilibili" href="https://space.bilibili.com/12367945/"><div id="link2"><img src="icons/links/bili_main.png" height="40" width="40"/></div></a>
+                <a title="YouTube Channel" href="https://www.youtube.com/channel/UC8mPjdjl363hvt1ou7PDx3g/"><div id="link3"><img src="icons/links/ytb_main.png" height="40" width="40"/></div></a>
+                <a title="GitHub" href="https://github.com/WZQ02"><div id="link6"><img src="icons/links/github.png" height="40" width="40"/></div></a>
+                <a title="Question Box (Tape)" href="https://www.tapechat.net/uu/H32CDL/NLP4MZ1X"><div id="link4"><img src="icons/links/question_box.png" height="40" width="40"/></div></a>
+                <a title="Twitter" href="https://twitter.com/02Wzq/"><div id="link5"><img src="icons/links/link_twi.png" height="40" width="40"/></div></a>
+                <a title="Other links" href="javascript:void(0)" onclick="lnklist()"><div id="link7"><img src="icons/links/link_others.png" height="40" width="40"/></div></a>
+            </div>
+            <div id="othlnks">
+                <a title="File Server #1" href="https://wzq02.cf:1145"><div class="othlnk"><span id="othlnk1">File Server #1</span></div></a>
+                <a title="File Server #2" href="https://wzq02.cf:1919"><div class="othlnk"><span id="othlnk1">File Server #2</span></div></a>
+                <a title="Blog" href="https://wzq02.github.io/blog"><div class="othlnk"><span id="othlnk1">Blog</span></div></a>
+                <a title="WZQ02.TV" href="http://207.246.84.248/player/livewithchat"><div class="othlnk"><span id="othlnk1">WZQ02.TV</span></div></a>
+                <a title="Acfun Channel" href="https://www.acfun.cn/u/4352250"><div class="othlnk"><span id="othlnk1">Acfun</span></div></a>
+                <a title="Bilibili subchannel" href="https://space.bilibili.com/568299236/"><div class="othlnk"><span id="othlnk1">Bilibili subchannel</span></div></a>
+                <a title="Discord Server" href="https://discord.gg/Bpv4qaw"><div class="othlnk"><span id="othlnk1">Join my Discord Server</span></div></a>
+                <a title="QQ Group" href="https://jq.qq.com/?_wv=1027&k=JNxRzKEU"><div class="othlnk"><span id="othlnk1">Join my QQ group</span></div></a>
+                <a title="Twitch" href="https://www.twitch.tv/wzq02/"><div class="othlnk"><span id="othlnk1">Twitch</span></div></a>
+                <a title="Site Log" href="log.html"><div class="othlnk"><span id="othlnk1">Site Log</span></div></a>
+            </div>
+        </div>
+    </div>
+    <!--<div id="page2"><textrt2></textrt2></div>-->
+</body>
+<script src="scripts/i18nextify.min.js"></script>
+<!--<script src="scripts/vue.global.js"></script>
+<script src="https://unpkg.com/vue@next"></script>-->
+<script src="index.js"></script>
+<title>WZQ'02's site</title>
+</html>
