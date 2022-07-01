@@ -1,8 +1,8 @@
 {
  "name": "WZQ'02's Site",
  "short_name": "WZQ02's Site",
- "theme_color": "#2d2d2e",
- "background_color": "#2d2d2e",
+ "theme_color": "#cb9",
+ "background_color": "#cb9",
  "display": "standalone",
  "orientation": "portrait-primary",
  "scope": "/",

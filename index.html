@@ -37,19 +37,19 @@
     </script>
 </head>
 <body>
-    <div id="page1">
+    <div id="main">
         <textrt>
             <a href="javascript:void(0)" onclick="chglang()"><span id="chglang">Change Language</span></a>&nbsp;&emsp;&nbsp;Powered by WZQ'02
         </textrt>
-        <textrt id="lt">
-            Find me on these sites:
-        </textrt>
         <centerpic>
             <img src="images/centerpic/front_1.png" id="centerpic" height="320" width="320" href="javascript:void(0)" onclick="onclickchgcenterpic()">
-            <img src="icons/others/screen2.svg" id="toscr2" height="64" width="64" href="javascript:void(0)" onclick="morestuffiscomingsoon()">
+            <img src="icons/others/screen2.svg" id="toscr2" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage2()">
         </centerpic>
         <div id="tip1"><p><!--(placeholder text)--></p></div>
         <div id="links">
+            <textrt id="lt">
+                Find me on these sites:
+            </textrt>
             <div id="mainlnks">
                 <a title="Bilibili" href="https://space.bilibili.com/12367945/"><div id="link2"><img src="icons/links/bili_main.png" height="40" width="40"/></div></a>
                 <a title="YouTube Channel" href="https://www.youtube.com/channel/UC8mPjdjl363hvt1ou7PDx3g/"><div id="link3"><img src="icons/links/ytb_main.png" height="40" width="40"/></div></a>
@@ -59,20 +59,73 @@
                 <a title="Other links" href="javascript:void(0)" onclick="lnklist()"><div id="link7"><img src="icons/links/link_others.png" height="40" width="40"/></div></a>
             </div>
             <div id="othlnks">
-                <a title="File Server #1" href="https://wzq02.cf:1145"><div class="othlnk"><span id="othlnk1">File Server #1</span></div></a>
+                <!--<a title="File Server #1" href="https://wzq02.cf:1145"><div class="othlnk"><span id="othlnk1">File Server #1</span></div></a>
                 <a title="File Server #2" href="https://wzq02.cf:1919"><div class="othlnk"><span id="othlnk1">File Server #2</span></div></a>
                 <a title="Blog" href="https://wzq02.github.io/blog"><div class="othlnk"><span id="othlnk1">Blog</span></div></a>
-                <a title="WZQ02.TV" href="http://207.246.84.248/player/livewithchat"><div class="othlnk"><span id="othlnk1">WZQ02.TV</span></div></a>
+                <a title="WZQ02.TV" href="http://207.246.84.248/player/livewithchat"><div class="othlnk"><span id="othlnk1">WZQ02.TV</span></div></a>-->
                 <a title="Acfun Channel" href="https://www.acfun.cn/u/4352250"><div class="othlnk"><span id="othlnk1">Acfun</span></div></a>
                 <a title="Bilibili subchannel" href="https://space.bilibili.com/568299236/"><div class="othlnk"><span id="othlnk1">Bilibili subchannel</span></div></a>
                 <a title="Discord Server" href="https://discord.gg/Bpv4qaw"><div class="othlnk"><span id="othlnk1">Join my Discord Server</span></div></a>
                 <a title="QQ Group" href="https://jq.qq.com/?_wv=1027&k=JNxRzKEU"><div class="othlnk"><span id="othlnk1">Join my QQ group</span></div></a>
                 <a title="Twitch" href="https://www.twitch.tv/wzq02/"><div class="othlnk"><span id="othlnk1">Twitch</span></div></a>
-                <a title="Site Log" href="log.html"><div class="othlnk"><span id="othlnk1">Site Log</span></div></a>
+                <!--<a title="Site Log" href="log.html"><div class="othlnk"><span id="othlnk1">Site Log</span></div></a>-->
+            </div>
+        </div>
+        <div id="page2">
+            <img src="icons/others/screen1.svg" id="toscr1" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage1()">
+            <div id="sectionchoice">
+                <a title="Blog" href="javascript:void(0)" onclick="displaysec(section1)"><div id="seclink1"><img src="icons/links/link_hexo.png" height="40" width="40"/></div></a>
+                <a title="File Server" href="javascript:void(0)" onclick="displaysec(section2)"><div id="seclink2"><img src="icons/links/link_filsvr.png" height="40" width="40"/></div></a>
+                <a title="WZQ02.TV" href="javascript:void(0)" onclick="displaysec(section3)"><div id="seclink3"><img src="icons/links/link_live.png" height="40" width="40"/></div></a>
+                <a title="Demo Pages" href="javascript:void(0)" onclick="displaysec(section4)"><div id="seclink4"><img src="icons/links/link_demos.png" height="40" width="40"/></div></a>
+                <a title="Site Log" href="javascript:void(0)" onclick="displaysec(section5)"><div id="seclink5"><img src="icons/links/placeholdericon1.png" height="40" width="40"/></div></a>
+            </div>
+            <div class="sections" id="section1">
+                <div class="stitle">Blog</div>
+                <div class="sinfo">WZQ'02's personal blog. Mostly are my previous articles and shitposts.</div>
+                <div class="stitle2"><!--Screenshots--></div>
+                <div class="sscreenshots"></div>
+                <a title="Head to WZQ02's Blog" href="https://wzq02.github.io/blog"><div class="stitle2" id="slink">→ Go</div></a>
+            </div>
+            <div class="sections" id="section2">
+                <div class="stitle">File Server</div>
+                <div class="sinfo">Some of my works and resources.<br>There are two servers available: #1 is hosted on the same server that hosts this site;<br>#2 is hosted on my own computer, which is slower and unstable. (Keep in mind that #1 and #2 store different files)</div>
+                <div class="stitle2"><!--Screenshots--></div>
+                <div class="sscreenshots"></div>
+                <a title="Head to File Server #1" href="https://wzq02.cf:1145"><div class="stitle2" id="slink">→ File Server #1<br></div></a>
+                <a title="Head to File Server #2" href="https://wzq02.cf:1919"><div class="stitle2" id="slink">→ File Server #2</div></a>
+            </div>
+            <div class="sections" id="section3">
+                <div class="stitle">WZQ02.TV</div>
+                <div class="sinfo">A live broadcasting room based on nginx-rtmp.<br>If you want to use this room temporarily, please contact me.<br>Due to the CORS policy, this page doesn't support HTTPS for now, which might be fixed later.</div>
+                <div class="stitle2"><!--Screenshots--></div>
+                <div class="sscreenshots"></div>
+                <a title="Head to WZQ02.TV" href="http://207.246.84.248/player/livewithchat"><div class="stitle2" id="slink">→ To WZQ02.TV</div></a>
+            </div>
+            <div class="sections" id="section4">
+                <div class="stitle">Demo Pages</div>
+                <div class="sinfo"><!--简介就先略过了orz-->Note: links with asterisk* are pages NOT written by myself.</div>
+                <div class="stitle2"><!--Screenshots--></div>
+                <div class="sscreenshots"></div>
+                <a title="*头像都是 21 年年初的了，懒得更新。NOVA 指的是 NOVA 音 MAD 社" href="https://wzq02.cf:810/"><div class="stitle2" id="slink">→ *小游戏: 合成 NOVA<br></div></a>
+                <a title="*我后来才意识到里面的猫中毒不是嘉然的，因为我真不了解嘉然，摇了我8" href="https://wzq02.cf:893/liubing.html"><div class="stitle2" id="slink">→ 你大了？</div></a>
+                <a title="*把之前用 Adobe Animate 做的动画导出成了 Canvas" href="https://wzq02.cf:893/fourthgraparrot.html"><div class="stitle2" id="slink">→ 四年级鹦鹉</div></a>
+                <a title="*字面意思" href="https://wzq02.cf:893/redzone.html"><div class="stitle2" id="slink">→ 李天香和 redzone（低技术笠</div></a>
+                <a title="*字面意思" href="https://wzq02.cf:893/sb.html"><div class="stitle2" id="slink">→ 竹节虫</div></a>
+                <a title="*实际上，这个页面我刚建站不久写的，写这个只是为了练习 CSS（" href="https://wzq02.cf:893/amess.html"><div class="stitle2" id="slink">→ 转转</div></a>
+                <a title="*练习" href="https://wzq02.cf:893/cube1209.html"><div class="stitle2" id="slink">→ 旋转的立方体</div></a>
+                <a title="*不再更新，新版见原作者个人主页 xingye.me" href="https://wzq02.cf:931/"><div class="stitle2" id="slink">→ *小游戏: 日死李大鸟！？</div></a>
+                <a title="*额！" href="https://wzq02.cf:893/ehh"><div class="stitle2" id="slink">→ 额！</div></a>
+            </div>
+            <div class="sections" id="section5">
+                <div class="stitle">Site Log</div>
+                <div class="sinfo">The log of this site. (in Chinese only)</div>
+                <div class="stitle2"><!--Screenshots--></div>
+                <div class="sscreenshots"></div>
+                <a title="Head to Site Log" href="log.html"><div class="stitle2" id="slink">→ Go</div></a>
             </div>
         </div>
     </div>
-    <!--<div id="page2"><textrt2></textrt2></div>-->
 </body>
 <script src="scripts/i18nextify.min.js"></script>
 <!--<script src="scripts/vue.global.js"></script>

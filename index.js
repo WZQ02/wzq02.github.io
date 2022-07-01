@@ -12,6 +12,12 @@ if (visited == "1") {
 } else {
     setTimeout("onclickchgcenterpic()","30000");
 }
+var section1 = document.getElementById("section1");
+var section2 = document.getElementById("section2");
+var section3 = document.getElementById("section3");
+var section4 = document.getElementById("section4");
+var section5 = document.getElementById("section5");
+section1.classList.add('secdisplay');
 function detectIEVer() {//检查是否使用IE浏览器
     var ua = navigator.userAgent;
     console.log(ua);
@@ -91,6 +97,52 @@ function autochgcenterpic() {
 }
 function morestuffiscomingsoon() {
     alert("More stuff is coming soon......");
+}
+function scrolltopage2() {//切换到下页
+    var centerpic = document.getElementById("centerpic");
+    var toscr2 = document.getElementById("toscr2");
+    var lnks = document.getElementById("links");
+    var page2 = document.getElementById("page2");
+    centerpic.style.animation = "pg1go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
+    toscr2.style.animation = "pg1go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
+    lnks.style.animation = "disappear 1s 1";
+    setTimeout(function(){
+        page2.style.animation = "pg2showup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
+        page2.style.display = "block";
+        toscr2.style.display = "none";
+        centerpic.style.display = "none";
+    },"400");
+    setTimeout(function(){lnks.style.display = "none";},"1000");
+    /*setTimeout(function(){morestuffiscomingsoon();},"800");
+    setTimeout(function(){scrolltopage1();},"800");*/
+}
+function scrolltopage1() {//返回上页
+    var centerpic = document.getElementById("centerpic");
+    var toscr2 = document.getElementById("toscr2");
+    var lnks = document.getElementById("links");
+    var page2 = document.getElementById("page2");
+    page2.style.animation = "pg2go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
+    setTimeout(function(){
+        page2.style.display = "none";
+        centerpic.style.display = "block";
+        toscr2.style.display = "block";
+        lnks.style.display = "block";
+    },"400");
+    centerpic.style.animation = "pg1showup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
+    toscr2.style.animation = "pg1showup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
+    lnks.style.animation = "appear 1s 1";
+}
+function displaysec(section) {//显示某个section
+    var secgo = document.getElementsByClassName("secdisplay")[0];
+    var secappear = section;
+    if (secgo != secappear) {
+        secgo.style.animation = "secgo 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
+        setTimeout(function(){
+            secgo.classList.remove('secdisplay');
+            secappear.classList.add('secdisplay');
+            secappear.style.animation = "secshowup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
+        },"400");
+    }
 }
 function setCookie(cname,cvalue,exdays) {//cookie设置
     var d = new Date();
