@@ -34,7 +34,7 @@ body {
     margin: auto;
     height: calc(85% - 96px);
     width: 90%;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 a {
     text-decoration: none;
@@ -87,13 +87,13 @@ textrt {
 }
 #mainlnks a div:hover {
     position: relative;
-    bottom: -8px;
+    bottom: 8px;
     opacity: 1.0;
 }
 #mainlnks a div:active {
     position: relative;
     filter: invert(60%);
-    bottom: 4px;
+    bottom: -4px;
 }
 #sectionchoice {
     position: relative;
@@ -137,7 +137,6 @@ textrt {
     bottom: 70px;
     left: 140px;
     border-radius: 6px;
-    /*background-color: #810810;*/
     background-color: rgba(127,127,127,0.2);
     backdrop-filter: blur(16px);
     box-shadow: 0px 0px 12px #111;
@@ -210,6 +209,7 @@ textrt {
 }
 .sections {
     display: none;
+    transform: translateX(0px);
 }
 .secdisplay {
     display: block;
@@ -221,8 +221,8 @@ textrt {
     position: absolute;
     left: 0px;
     right: 0px;
-    top: 144px;
     text-align: center;
+    transition: 1s;
 }
 .sinfo {
     font-size: 18px;
@@ -243,6 +243,10 @@ textrt {
 #slink {
     position: relative;
     top: calc(0px + 14vh);
+    transition: 0.25s;
+}
+#slink:hover {
+    opacity: 1.0;
 }
 .sscreenshots {
     position: relative;
@@ -290,6 +294,9 @@ textrt {
     }
     .sinfo {
         color: #FFF;
+    }
+    .stitle {
+        opacity: 0.25;
     }
     .stitle2 {
         color: #FFF;

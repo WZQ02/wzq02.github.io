@@ -37,12 +37,13 @@ function lnklist() {//更多外链列表
     if (othlnks.style.display == "block") {
         othlnks.style.animation = "lnkhide 0.2s cubic-bezier(1, 0, 1, 1) 1";
         setTimeout(function(){othlnks.style.animation = ""; othlnks.style.display = "none"},"195");
-        setTimeout(function(){lt.style.transition = "1s"; lt.style.opacity = "1.0";},"2000");
+        showlt = setTimeout(function(){lt.style.transition = "1s"; lt.style.opacity = "1.0";},"2000");
     } else {
         lt.style.animation = "none";
         othlnks.style.display = "block";
         lt.style.transition = "0.25s";
         lt.style.opacity = "0";
+	clearTimeout(showlt);
     }
 }
 function chglang() {//切换语言按钮
@@ -103,6 +104,7 @@ function scrolltopage2() {//切换到下页
     var toscr2 = document.getElementById("toscr2");
     var lnks = document.getElementById("links");
     var page2 = document.getElementById("page2");
+    page2.classList.add('pagedisplay');
     centerpic.style.animation = "pg1go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
     toscr2.style.animation = "pg1go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
     lnks.style.animation = "disappear 1s 1";
@@ -115,12 +117,20 @@ function scrolltopage2() {//切换到下页
     setTimeout(function(){lnks.style.display = "none";},"1000");
     /*setTimeout(function(){morestuffiscomingsoon();},"800");
     setTimeout(function(){scrolltopage1();},"800");*/
+    var othlnks = document.getElementById("othlnks");
+    var lt = document.getElementById("lt");
+    if (othlnks.style.display == "block") {
+        setTimeout(function(){othlnks.style.animation = "lnkhide 0.2s cubic-bezier(1, 0, 1, 1) 1";},"200");
+        setTimeout(function(){othlnks.style.animation = ""; othlnks.style.display = "none"},"395");
+        setTimeout(function(){lt.style.transition = "1s"; lt.style.opacity = "1.0";},"400");
+    }
 }
 function scrolltopage1() {//返回上页
     var centerpic = document.getElementById("centerpic");
     var toscr2 = document.getElementById("toscr2");
     var lnks = document.getElementById("links");
     var page2 = document.getElementById("page2");
+    page2.classList.remove('pagedisplay');
     page2.style.animation = "pg2go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
     setTimeout(function(){
         page2.style.display = "none";
@@ -132,15 +142,48 @@ function scrolltopage1() {//返回上页
     toscr2.style.animation = "pg1showup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
     lnks.style.animation = "appear 1s 1";
 }
+var bodyscroll = new Hammer(document.body);//上下方向触摸手势
+bodyscroll.on('panup', function(ev) {
+    scrolltopage2();
+});
+bodyscroll.on('pandown', function(ev) {
+    scrolltopage1();
+});
+var bodyscroll = new Hammer(document.body);
+bodyscroll.on('swipeleft', function(ev) {//左右方向触摸手势
+    if (document.getElementById("page2").getAttribute('class') != null) {
+        var seccurrent = document.getElementsByClassName("secdisplay")[0];
+        var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
+        if (seccurnum < 5){
+            displaysec(eval("section"+(seccurnum+1)));
+        }
+    }
+});
+bodyscroll.on('swiperight', function(ev) {
+    if (document.getElementById("page2").getAttribute('class') != null) {
+        var seccurrent = document.getElementsByClassName("secdisplay")[0];
+        var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
+        if (seccurnum > 1){
+            displaysec(eval("section"+(seccurnum-1)));
+        }
+    }
+});
 function displaysec(section) {//显示某个section
     var secgo = document.getElementsByClassName("secdisplay")[0];
     var secappear = section;
-    if (secgo != secappear) {
+    if (secgo.getAttribute("id") < secappear.getAttribute("id")) {
         secgo.style.animation = "secgo 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
-        setTimeout(function(){
+        var showsec = setTimeout(function(){
             secgo.classList.remove('secdisplay');
             secappear.classList.add('secdisplay');
             secappear.style.animation = "secshowup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
+        },"400");
+    } else if (secgo.getAttribute("id") > secappear.getAttribute("id")) {
+        secgo.style.animation = "secgo2 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
+        var showsec = setTimeout(function(){
+            secgo.classList.remove('secdisplay');
+            secappear.classList.add('secdisplay');
+            secappear.style.animation = "secshowup2 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
         },"400");
     }
 }
