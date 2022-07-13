@@ -97,7 +97,7 @@ textrt {
 }
 #sectionchoice {
     position: relative;
-    left: calc(50% - 174px);
+    left: calc(50% - 160px);
     border-radius: 8px;
     padding: 6px 6px;
 }
@@ -106,7 +106,7 @@ textrt {
 }
 #sectionchoice a div img{
     position: relative;
-    padding: 6px;
+    padding: 4px;
     transition: 0.25s;
     top: 0px;
     opacity: 0.6;
