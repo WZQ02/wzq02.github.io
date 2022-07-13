@@ -18,6 +18,7 @@ var section3 = document.getElementById("section3");
 var section4 = document.getElementById("section4");
 var section5 = document.getElementById("section5");
 section1.classList.add('secdisplay');
+autotosection();
 function detectIEVer() {//检查是否使用IE浏览器
     var ua = navigator.userAgent;
     console.log(ua);
@@ -154,7 +155,7 @@ bodyscroll.on('swipeleft', function(ev) {//左右方向触摸手势
     if (document.getElementById("page2").getAttribute('class') != null) {
         var seccurrent = document.getElementsByClassName("secdisplay")[0];
         var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
-        if (seccurnum < 5){
+        if (seccurnum < 6){
             displaysec(eval("section"+(seccurnum+1)));
         }
     }
@@ -185,6 +186,28 @@ function displaysec(section) {//显示某个section
             secappear.classList.add('secdisplay');
             secappear.style.animation = "secshowup2 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
         },"400");
+    }
+}
+function autotosection() {//检测到地址栏出现某些后缀的时候自动跳转到某个section
+    var url = window.location.href;
+    if (url.indexOf("secquery") != -1) {
+        scrolltopage2();
+        if (url.indexOf("=blog") != -1) {}
+        if (url.indexOf("=filesvr") != -1) {
+            displaysec(section2);
+        }
+        if (url.indexOf("=wzqtv") != -1) {
+            displaysec(section3);
+        }
+        if (url.indexOf("=demos") != -1) {
+            displaysec(section4);
+        }
+        if (url.indexOf("=sitelog") != -1) {
+            displaysec(section5);
+        }
+        if (url.indexOf("=freedl") != -1) {
+            displaysec(section6);
+        }
     }
 }
 function setCookie(cname,cvalue,exdays) {//cookie设置

@@ -97,7 +97,7 @@ textrt {
 }
 #sectionchoice {
     position: relative;
-    left: calc(50% - 144px);
+    left: calc(50% - 174px);
     border-radius: 8px;
     padding: 6px 6px;
 }
