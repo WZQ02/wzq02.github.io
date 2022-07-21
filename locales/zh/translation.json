@@ -28,10 +28,14 @@
 	"→ Go": "→ 前往",
 	"Head to WZQ02's Blog": "前往 WZQ'02 的个人博客",
 	"Some of my works and resources.": "存放我自己的一部分作品和资源。",
+	"Hexo theme from": "Hexo 主题来自",
+	"project.": "项目。",
 	"There are two servers available: #1 is hosted on the same server that hosts this site;": 
 	"有两个文件服务器，#1 建立在本站所在服务器，存放的文件较少，速度较快；",
 	"#2 is hosted on my own computer, which is slower and unstable. (Keep in mind that #1 and #2 store different files)": 
 	"#2 由我自己电脑上运行的文件服务器转发到本站，速度较慢且不能保证连接稳定。（#1 和 #2 存放的文件不同）",
+	"Due to some network problems I have recently, #2 file server might be inaccessible for now.": 
+	"由于我最近遇到一些网络问题，#2 可能暂时无法正常访问。",
 	"→ File Server #1": "→ 前往文件服务器 #1",
 	"→ File Server #2": "→ 前往文件服务器 #2",
 	"Head to File Server #1": "前往文件服务器 #1",
@@ -49,6 +53,6 @@
 	"The log of this site. (in Chinese only)": "本站的建站日志。",
 	"Head to Site Log": "前往本站建站日志",
 	"Free DL": "免费下载",
-	"Archive of my previous video posts. (in Chinese only)": "个人过往视频投稿的归档。",
+	"Archive of my previous video posts, and other stuff. (in Chinese only)": "个人过往视频投稿的归档等。",
 	"Head to Free DL page": "前往下载页面"
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看 IP 归属地</title>
+    <script type="text/javascript" src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <link rel="icon" type="image/png" href="images/icon.png" />
+    <link rel="shortcut icon" type="image/png" href="images/icon.png" />
+    <style>
+        body {
+            animation: appear 0.6s ease 1;
+            background: #faeacc; 
+            transition: 0.25s;
+            font-family: "Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI";
+            color: #333;
+            text-align: center;
+            user-select: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        @media (prefers-color-scheme: dark) {
+            body { 
+                background: #252525; 
+                color: #eeeeee;
+            }
+            a {
+                color: #8080ff;
+            }
+        }
+        @keyframes appear {
+            0% {
+                opacity: 0.0;
+            }
+            100% {
+                opacity: 1.0;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>查看 IP 地址和归属地 (仅限中国大陆)</h1>
+
+<p>你的公网 IP 地址是：<span id="cip">未知</span>
+<p>你的 IP 归属地是：<span id="cname">国外</span></p>
+<p>这只是一个 demo，你的个人信息不会被上传。本页使用来自搜狐的 API 接口。</p>
+<p>如果你身在中国国内但仍显示国外，请禁用你的网络代理软件并清空浏览器缓存再试。</p>
+<br><p><b><a href="javascript:void(0)" onclick="back()">返回主页</a></b></p>
+<script>
+    //var info = JSON.parse(json);
+    function back() {
+        window.location.href = "/index.html?secquery=demos";
+    }
+    var cip = returnCitySN['cip'];
+    var cname = returnCitySN['cname']
+    document.getElementById("cip").innerText = cip;
+    document.getElementById("cname").innerText = cname;
+</script>
+</body>
+</html>

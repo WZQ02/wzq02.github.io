@@ -18,7 +18,8 @@ var section3 = document.getElementById("section3");
 var section4 = document.getElementById("section4");
 var section5 = document.getElementById("section5");
 section1.classList.add('secdisplay');
-autotosection();
+suffixdetect();
+highlightseclnk();
 function detectIEVer() {//检查是否使用IE浏览器
     var ua = navigator.userAgent;
     console.log(ua);
@@ -144,6 +145,13 @@ function scrolltopage1() {//返回上页
     lnks.style.animation = "appear 1s 1";
 }
 var bodyscroll = new Hammer(document.body);//上下方向触摸手势
+bodyscroll.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });//允许上下滑动
+bodyscroll.on('swipeup', function(ev) {
+    scrolltopage2();
+});
+bodyscroll.on('swipedown', function(ev) {
+    scrolltopage1();
+});
 bodyscroll.on('panup', function(ev) {
     scrolltopage2();
 });
@@ -152,23 +160,47 @@ bodyscroll.on('pandown', function(ev) {
 });
 var bodyscroll = new Hammer(document.body);
 bodyscroll.on('swipeleft', function(ev) {//左右方向触摸手势
-    if (document.getElementById("page2").getAttribute('class') != null) {
+    secleft();
+});
+bodyscroll.on('swiperight', function(ev) {
+    secright();
+});
+function secleft() {
+    if (document.getElementById("page2").getAttribute('class') == "pagedisplay") {
         var seccurrent = document.getElementsByClassName("secdisplay")[0];
         var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
         if (seccurnum < 6){
             displaysec(eval("section"+(seccurnum+1)));
         }
     }
-});
-bodyscroll.on('swiperight', function(ev) {
-    if (document.getElementById("page2").getAttribute('class') != null) {
+}
+function secright() {
+    if (document.getElementById("page2").getAttribute('class') == "pagedisplay") {
         var seccurrent = document.getElementsByClassName("secdisplay")[0];
         var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
         if (seccurnum > 1){
             displaysec(eval("section"+(seccurnum-1)));
         }
     }
-});
+}
+function highlightseclnk() {//高亮显示当前section对应的按钮
+    if (document.getElementsByClassName("lnkhighlight")[0]) {
+        document.getElementsByClassName("lnkhighlight")[0].style.opacity = "1.0";
+    }
+}
+function addhighlgt() {
+    var seccurrent = document.getElementsByClassName("secdisplay")[0];
+    var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
+    (eval("seclink"+(seccurnum)).childNodes[0]).classList.add('lnkhighlight');
+}
+function removehighlgt() {
+    var seccurrent = document.getElementsByClassName("secdisplay")[0];
+    var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
+    if (document.getElementsByClassName("lnkhighlight")[0]) {
+        document.getElementsByClassName("lnkhighlight")[0].style.opacity = "";
+    }
+    (eval("seclink"+(seccurnum)).childNodes[0]).classList.remove('lnkhighlight');
+}
 function displaysec(section) {//显示某个section
     var secgo = document.getElementsByClassName("secdisplay")[0];
     var secappear = section;
@@ -187,8 +219,10 @@ function displaysec(section) {//显示某个section
             secappear.style.animation = "secshowup2 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
         },"400");
     }
+    removehighlgt();
+    setTimeout(function(){addhighlgt();highlightseclnk();},"410");
 }
-function autotosection() {//检测到地址栏出现某些后缀的时候自动跳转到某个section
+function suffixdetect() {//检测到地址栏参数的时候自动跳转到某个section
     var url = window.location.href;
     if (url.indexOf("secquery") != -1) {
         scrolltopage2();
@@ -208,8 +242,14 @@ function autotosection() {//检测到地址栏出现某些后缀的时候自动�
         if (url.indexOf("=freedl") != -1) {
             displaysec(section6);
         }
+        url = url.replace(/(\?|#)[^'"]*/, '');//自动去除参数
+        window.history.pushState({},0,url);
+    }
+    if (url.indexOf("forcesysfont") != -1) {//强制使用系统字体
+        document.body.style.fontFamily = "'Microsoft YaHei',微软雅黑";
     }
 }
+
 function setCookie(cname,cvalue,exdays) {//cookie设置
     var d = new Date();
     d.setTime(d.getTime()+(exdays*24*60*60*1000));
@@ -225,3 +265,36 @@ function getCookie(cname) {
     }
     return "";
 }
+var scrollFunc = function(e) {//检测鼠标滚轮
+    e=e || window.event;
+    var seccurrent = document.getElementsByClassName("secdisplay")[0];
+    if (e.wheelDelta < 0) {//IE/Opera/Chrome
+        if (window.innerHeight > 922) {//窗口高度大于922时，启用section区滚轮切换
+            secleft();
+        }
+        setTimeout(function(){scrolltopage2();},"16");
+    } else if (e.wheelDelta > 0) {
+        if (seccurrent.getAttribute("id") == "section1") {
+            scrolltopage1();
+        }
+        if (window.innerHeight > 922) {
+            secright();
+        }
+    } else if (e.detail < 0) {//Firefox
+        if (window.innerHeight > 922) {
+            secleft();
+        }
+        setTimeout(function(){scrolltopage2();},"16");
+    } else if (e.detail > 0) {
+        if (seccurrent.getAttribute("id") == "section1") {
+            scrolltopage1();
+        }
+        if (window.innerHeight > 922) {
+            secright();
+        }
+    }
+}
+if (document.addEventListener) {//注册事件
+    document.addEventListener('DOMMouseScroll',scrollFunc,false);
+}//W3C
+window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome
