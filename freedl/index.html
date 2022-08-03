@@ -223,6 +223,7 @@
     sec1.classList.add('display');
     addhighlgt();
     highlightseclnk();
+    suffixdetect();
     function back() {
         if (detectIEVer() <= 8.0) {
             window.location.href = "/old.html";
@@ -277,6 +278,23 @@
            document.getElementsByClassName("lnkhighlight")[0].style.opacity = "";
         }
         eval("o"+(curnum)).classList.remove('lnkhighlight');
+    }
+    function suffixdetect() {
+        var url = window.location.href;
+        if (url.indexOf("vids") != -1) {}
+        if (url.indexOf("pics") != -1) {
+            display(sec2);
+            console.log("cnm");
+        }
+        if (url.indexOf("audio") != -1) {
+            display(sec3);
+        }
+        if (url.indexOf("scripts") != -1) {
+            display(sec4);
+        }
+        if (url.indexOf("forcesysfont") != -1) {
+            document.body.style.fontFamily = "'Microsoft YaHei',微软雅黑";
+        }
     }
 </script>
 </body>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatroom / 聊天室</title>
+    <link rel="icon" type="image/png" href="/images/icon.png" />
+    <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
+    <link rel="stylesheet" href="./chatroom.css" id="skin">
+</head>
+<body>
+    <div class="container">
+        <div id="chatcontent"></div>
+        <div id="panel1">
+            <select id="quoteselector" onchange="quotechange(this);">
+                <option value="(=・ω・=)">(=・ω・=)</option>
+                <option value="(ﾟДﾟ≡ﾟдﾟ)!?">(ﾟДﾟ≡ﾟдﾟ)!?</option>
+                <option value="(￣3￣)✧">(￣3￣)✧</option>
+                <option value="(≖ ◡ ≖✿)">(≖ ◡ ≖✿)</option>
+                <option value="_(≧∇≦」∠)_">_(≧∇≦」∠)_</option>
+                <option value="━━━∑(ﾟ□ﾟ*川━">━━━∑(ﾟ□ﾟ*川━</option>
+                <option value="(╯°口°)╯(┴—┴">(╯°口°)╯(┴—┴</option>
+                <option value="(-_-#)">(-_-#)</option>
+                <option value="(๑>؂<๑）">(๑>؂<๑）</option>
+                <option value="草">草</option>
+                <option value="呵呵">呵呵</option>
+                <option value="什么意思？">什么意思？</option>
+            </select>
+            <img src="/icons/links/link_info.png" onclick="displayinfo();" height="24" width="24"/>
+        </div>
+        <input type="text" placeholder="说点什么..." id="usrmsg">
+        <button id="sendmsg" onclick="sendusrmsg();">发送</button>
+        <div id="prompb"></div>
+        <div id="askforusername" class="prompt">
+            <input type="text" placeholder="敢问在下贵姓？" id="usrName">
+            <button id="promptbtn" onclick="chgusrname();">确定</button>
+        </div>
+        <div id="notice" class="prompt">
+            <span>
+                以下为本聊天室的一些注意事项：<p>你的昵称已存储于浏览器的 cookie 中，可随时更改。</p><p>
+                由于启用了掉线重连机制，你可能会看到有人连续多次进出聊天室。</p><p>如果遇到无法发送信息的情况，可能是你和聊天服务器断开连接了，请刷新页面再试。</p><p>
+                本聊天室对发言内容不做限制，但请尽量别在本页面魔怔瞎骂或发表敏感言论，
+                谢谢！</p>
+            </span>
+            <button id="promptbtn" onclick="closeprompt();">好，知道了</button>
+        </div>
+        <div id="info" class="prompt">
+            你的昵称：<span id="currentusername"></span>&nbsp;&nbsp;<button id="promptbtn" onclick="alterusrname();">更改</button><br><br>
+            当前聊天室在线人数：<span id="roominfo"></span><br><br>
+            <button id="promptbtn" onclick="closeprompt();">了解</button>
+        </div>
+    </div>
+<script src="./detectie.js"></script>
+<script src="/scripts/reconnecting-websocket.min.js"></script>
+<script src="./crdynstr.js"></script>
+<script src="./client.js"></script>
+</body>
+</html>

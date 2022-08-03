@@ -26,11 +26,11 @@ body {
     height: 90vh;
     border-radius: 32px;
     background-color: rgba(0, 0, 0, 0.05);
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
     overflow-x: hidden;
     overflow-y: hidden;
 }
 #page2 .sections{
-    /*background-color: rgba(0, 0, 0, 0.1);*/
     margin: auto;
     height: calc(85% - 96px);
     width: 90%;
@@ -269,7 +269,7 @@ textrt {
         color: #8080ff;
     }
     #page2 {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-image: linear-gradient(rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
     }
     #links a div:not(#othlnks div) {
         filter: invert(100%);

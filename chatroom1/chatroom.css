@@ -1,0 +1,222 @@
+body {
+	overflow: scroll;
+	overflow-x: hidden;
+	/*overflow-y: hidden;*/
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#chatcontent {
+	width: 300px;
+	height: 532px;
+	padding: 16px;
+	box-sizing: border-box;
+	margin-bottom: 8px;
+	border: 1px solid #eee;
+	background-color: #fdfdfd;
+	overflow: auto;
+	border-radius: 12px;
+}
+#chatcontent p {
+	font-size: 12px;
+	text-align: center;
+	color: #aaa;
+}
+#chatcontent p .timer {
+	display: inline-block;
+	border-radius: 10px;
+	margin: 5px 0;
+	color: #fff;
+	background: #ddd;
+	padding: 3px 5px 3px;
+}
+#chatcontent p.speak {
+	font-size: 14px;
+	color: #333;
+}
+#chatcontent p.speak .timer {
+	text-align: center;
+	font-size: 12px;
+}
+#chatcontent p.speak .msg {
+	display: block;
+	text-align: left;
+}
+input {
+	font-size: 12px;
+	width: 218px;
+	line-height: 20px;
+	padding: 6px 10px;
+	outline: none;
+	border: 1px solid #ddd;
+	transition: all .25s;
+	border-radius: 4px;
+}
+input:focus {
+	border: 1px solid #666;
+}
+#panel1 {
+	width: 300px;
+	height: 30px;
+	user-select: none;
+}
+#panel1 img {
+	position: relative;
+	left: 108px;
+	opacity: 0.6;
+}
+#sendmsg {
+	font-size: 14px;
+	color: #fff;
+	padding: 6px 12px;
+	background: #48d;
+	border: 1px solid #46d;
+	transition: all .25s;
+	border-radius: 6px;
+	position: relative;
+	top: 1px;
+}
+#sendmsg:hover {
+	background: #6ae;
+}
+#prompb {
+    display: none;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+    opacity: 0.5;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    background: rgb(0, 0, 0);
+    animation: appear 0.5s cubic-bezier(0, 0.67, 0, 1) 1;
+}
+.prompt {
+	display: none;
+	margin: 0 50% 0;
+	top: calc(50vh - 614px - 160px);
+	left: -150px;
+	position: relative;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 14px;
+	color: #222;
+	font-weight: bold;
+    width: 300px;
+    background-color: rgba(233,233,233,0.6);
+    background-image: linear-gradient(rgba(200,200,200,0.6),rgba(255,255,255,0.6));
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 2px solid #666;
+    box-shadow: 0 0 24px #555;
+    animation: zoomin 0.4s cubic-bezier(0, 0.67, 0, 1) 1;
+    user-select: none;
+}
+#askforusername {
+	top: calc(50vh - 614px - 60px);
+    height: 60px;
+}
+#askforusername input {
+	font-size: 14px;
+	width: 194px;
+}
+#info {
+	top: calc(50vh - 614px - 100px);
+}
+#promptbtn {
+	font-size: 14px;
+	color: #fff;
+	padding: 6px 12px;
+	background: #777;
+	border: 1px solid #555;
+	transition: all .25s;
+	border-radius: 6px;
+	position: relative;
+	top: 1px;
+}
+#promptbtn:hover {
+	background: #555;
+}
+#quoteselector {
+	-webkit-appearance: none;
+   	-moz-appearance: none;
+   	appearance: none;
+   	text-align: left;
+   	position: relative;
+   	top: -8px;
+	width: 160px;
+	height: 24px;
+	padding: 0px 4px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	outline: none;
+	transition: 0.4s;
+}
+#quoteselector:focus {
+	border: 1px solid #233;
+}
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+@keyframes zoomin {
+    from {
+        opacity: 0;
+        transform: scale(0.25);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@media (prefers-color-scheme: dark) {
+	input {
+    	background: #111111;
+    	color: #ddd;
+    	border: 1px solid #999;
+  	}
+  	input:focus {
+  		border: 1px solid #333;
+  	}
+  	#sendmsg {
+    	background: #222;
+    	border: 1px solid #777;
+  	}
+  	#sendmsg:hover{
+    	background: #555;
+  	}
+  	.prompt {
+  		color: #eee;
+  	}
+  	body { 
+    	background: #252525; 
+  	}
+  	#chatcontent {
+    	background-color: #191919;
+    	border: 1px solid #555;
+  	}
+  	#chatcontent p .timer {
+		color: #000;
+		background: #555;
+	}
+  	#chatcontent p.speak {
+		color: #eee;
+	}
+	.prompt {
+		background-color: rgba(72,72,72,0.6);
+    	background-image: linear-gradient(rgba(64,64,64,0.6),rgba(96,96,96,0.6));
+	}
+	#panel1 img {
+		filter: invert(1);
+	}
+	#quoteselector {
+		color: #fff;
+		background-color: #111;
+		border: 1px solid #555;
+	}
+}
