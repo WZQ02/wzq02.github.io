@@ -153,18 +153,10 @@
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     var anynum = Math.floor(Math.random()*1024);
-    xmlhttp.open("GET",'https://wzq02.cf/liveison.txt?'+anynum,false);
-    xmlhttp.send();
-    if (xmlhttp.readyState == 4) {
-        if (xmlhttp.status == 200) {
-        } else if (xmlhttp.status == 404) {
-            setTimeout("promptthereisnolive()","300");
-        }
-    }
     if (Hls.isSupported()) {
         var video = document.getElementById('video');
         var hls = new Hls();
-        hls.loadSource('https://wzq02.cf/hls/.m3u8');
+        hls.loadSource('https://wzq02.cf/hls/index.m3u8');
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED,function() {
         video.play();
@@ -180,6 +172,14 @@
         var url = window.location.href;
         if (url.indexOf("forcesysfont") != -1) {
         document.body.style.fontFamily = "'Microsoft YaHei',微软雅黑";
+        }
+    }
+    xmlhttp.open("GET",'https://wzq02.cf/liveison.txt?'+anynum,false);
+    xmlhttp.send();
+    if (xmlhttp.readyState == 4) {
+        if (xmlhttp.status == 200) {
+        } else if (xmlhttp.status == 404) {
+            setTimeout("promptthereisnolive()","300");
         }
     }
 </script>

@@ -21,12 +21,18 @@
         a {
             text-decoration: none;
             transition: 0.25s;
+            color: #ddd !important;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 6px 8px;
+            border-radius: 8px;
         }
         a:hover {
-            filter: brightness(140%);
+            color: #fff !important;
+            background-color: #555;
         }
         a:active {
             filter: brightness(60%);
+            background-color: #555;
         }
         h4 {
             color: #555;
@@ -69,10 +75,12 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="" id="color_scheme">
 </head>
 <body>
 <div id="largetitle">/site log/</div>
 fun fact: 本站所在服务器原本不是用来建站的，这个站点是我顺便建的。目前本站作为我的个人站点，页面大多为自己所写，姑且算是自己初次接触前端的拙劣练手。<br>
+btw，如果遇到网站内容显示不正常的问题，请您手动清除浏览器缓存后刷新页面或稍后再访问本站。<br>
 <h4><br>以下为本站建站日志：<br><br>
 2021.5.1 出于学习等方面的需要，本人购置了网站所在的服务器。<br>
 五月中旬 本站点建成，<s>主页直接用宝塔面板默认页面改的。</s>同时上线了文件服务器。<br>
@@ -119,7 +127,7 @@ fun fact: 本站所在服务器原本不是用来建站的，这个站点是我�
 6.9 开始编写第三版主页（/index.html），添加 PWA 支持。<br>
 6.10 更新 404 页面和 日志页面的样式。<br>
 6.14 原域名过期，现将域名更换为 wzq02.cf。<br>
-6.23 第三版主页正式启用。之前的第一、二版主页暂时保留，之后会被移除。<br>
+6.23 第三版主页正式启用。<s>之前的第一、二版主页暂时保留，之后会被移除。</s><br>
 7.1 进一步完善第三版主页内容。<br>
 7.4 修正部分动画逻辑。<br>
 7.12 修正 section 部分动画逻辑。主页增加上下、左右滑动的触摸手势支持。（借助 hammer.js 实现，体验可能不是很好）<br>
@@ -128,6 +136,10 @@ fun fact: 本站所在服务器原本不是用来建站的，这个站点是我�
 7.21 扩充免费下载内容。<br>
 8.2 重构了“聊天室”页面，新增自定义用户名功能。直播页和“聊天室”页面启用 https 支持。<br>
 8.3 “聊天室”页面增加颜文字选择器和修改用户名功能。<br>
+8.8 完善主页的按钮样式。主页新增配色方案选择器。<br>
+9.28 移除第二版主页的代码。重新添加浏览器版本检测，IE8 及以下版本浏览器访问本站会跳转到第一版主页。<br>
+10.6 主页部分图片提供 WebP 版本以加快网页加载速度。<br>
+10.8 添加绿色和切换回默认灰色的配色方案选项。<br>
 <br><a href="javascript:void(0)" onclick="back()">返回主页</a></h4>
 <script>
     function back() {
@@ -152,6 +164,23 @@ fun fact: 本站所在服务器原本不是用来建站的，这个站点是我�
             return 9999;
         }
         return parseFloat (ua.substring (v + 5,ua.indexOf (";", v)));
+    }
+
+    autochgthemecolor();
+    function getCookie(cname) {//cookie设置
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i=0; i<ca.length; i++) {
+            var c = ca[i].trim();
+           if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+       return "";
+    }
+    function autochgthemecolor() {//自动更改配色方案
+        var color = getCookie('themecolor');
+        if (color != "") {
+            document.getElementById("color_scheme").href = `/css/docu_${color}.css`;
+        }
     }
 </script>
 </body>

@@ -1,0 +1,17 @@
+#currentcs {
+    background-color: #e9d;
+}
+c {
+    color: #e9d;
+}
+c:hover {
+    background-color: #e9d;
+}
+c:active {
+    filter: none;
+    background-color: #c4a;
+}
+#slink {
+    background-color: #e9d;
+    background-image: linear-gradient(#ead, #e9d);
+}

@@ -19,6 +19,19 @@
         }
         a {
             text-decoration: none;
+            transition: 0.25s;
+            color: #ddd !important;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 6px 8px;
+            border-radius: 8px;
+        }
+        a:hover {
+            color: #fff !important;
+            background-color: #555;
+        }
+        a:active {
+            filter: brightness(60%);
+            background-color: #555;
         }
         @media (prefers-color-scheme: dark) {
             body { 
@@ -38,6 +51,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="" id="color_scheme">
 </head>
 <body>
 <h1>查看 IP 地址和归属地 (仅限中国大陆)</h1>
@@ -48,6 +62,23 @@
 <p>如果你身在中国国内但仍显示国外，请禁用你的网络代理软件并清空浏览器缓存再试。</p>
 <br><p><b><a href="javascript:void(0)" onclick="back()">返回主页</a></b></p>
 <script>
+    autochgthemecolor();
+    function getCookie(cname) {//cookie设置
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i=0; i<ca.length; i++) {
+            var c = ca[i].trim();
+           if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+       return "";
+    }
+    function autochgthemecolor() {//自动更改配色方案
+        var color = getCookie('themecolor');
+        if (color != "") {
+            document.getElementById("color_scheme").href = `/css/docu_${color}.css`;
+        }
+    }
+    
     //var info = JSON.parse(json);
     function back() {
         window.location.href = "/index.html?secquery=demos";

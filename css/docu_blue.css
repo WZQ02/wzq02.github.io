@@ -1,0 +1,9 @@
+a {
+    color: #7ae !important;
+}
+a:hover {
+    background-color: #46e;
+}
+a:active {
+    background-color: #46e;
+}

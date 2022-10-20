@@ -24,27 +24,65 @@ body {
     margin: auto;
     width: 90%;
     height: 90vh;
-    border-radius: 32px;
+    border-radius: 64px;
     background-color: rgba(0, 0, 0, 0.05);
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+    /*backdrop-filter: blur(64px);*/
+    transition: 0.25s;
     overflow-x: hidden;
     overflow-y: hidden;
 }
 #page2 .sections{
+    position: relative;
+    top: 0px;
     margin: auto;
     height: calc(85% - 96px);
     width: 90%;
     overflow-x: hidden;
+    transition: 0.25s;
 }
 a {
     text-decoration: none;
     transition: 0.25s;
 }
-a:hover {
-    filter: brightness(140%);
-}
 a:active {
     filter: brightness(60%);
+}
+c {
+    color: #ddd;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 6px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+c:hover {
+    color: #fff;
+    background-color: #555;
+}
+c:active {
+    filter: brightness(60%);
+    color: #fff;
+    background-color: #555;
+}
+#currentcs {
+    display: inline-block;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    top: 2px;
+    border-radius: 7px 7px;
+    border: 1px solid #aaa;
+    background-color: #777;
+    opacity: 0.8;
+    transition: 0.25s;
+}
+#currentcs:hover {
+    opacity: 1.0;
+}
+#currentcs:active {
+    opacity: 1.0;
+    filter: brightness(0.6);
 }
 textrt {
     font-weight: bold;
@@ -97,9 +135,11 @@ textrt {
 }
 #sectionchoice {
     position: relative;
+    top: 0px;
     left: calc(50% - 160px);
     border-radius: 8px;
     padding: 6px 6px;
+    transition: 0.25s;
 }
 #sectionchoice a div{
     display: inline;
@@ -136,10 +176,10 @@ textrt {
     width: 200px;
     bottom: 70px;
     left: 140px;
-    border-radius: 6px;
+    border-radius: 8px;
     background-color: rgba(127,127,127,0.2);
     backdrop-filter: blur(16px);
-    box-shadow: 0px 0px 12px #111;
+    box-shadow: 0px 0px 24px #111;
     padding: 4px;
     animation: lnkshowup 0.25s cubic-bezier(0, 0.67, 0, 1) 1;
 }
@@ -150,17 +190,68 @@ textrt {
     height: 18px;
     top: -4px;
     margin-top: 4px;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 6px;
     color: #333;
     background-color: rgba(255,255,255,0);
     transition: 0.25s;
 }
 #othlnks div:hover {
-    background-color: rgba(255,255,255,0.4);
+    color: black;
+    background-color: rgba(255,255,255,0.25);
 }
 #othlnks div:active {
     background-color: rgba(0,0,0,0.5);
+}
+#cschooser {
+    display: none;
+    position: absolute;
+    width: 132px;
+    height: 36px;
+    top: 54px;
+    right: 228px;
+    border-radius: 12px;
+    background-color: rgba(127,127,127,0.2);
+    backdrop-filter: blur(16px);
+    box-shadow: 0px 0px 24px #111;
+    padding: 4px;
+    animation: lnkshowup2 0.5s cubic-bezier(0, 0.67, 0, 1) 1;
+}
+#cschooser span {
+    display: inline;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 14px;
+    border-radius: 7px 7px;
+    border: 1px solid #aaa;
+    transition: 0.25s;
+}
+#cschooser span:hover {
+    filter: brightness(1.4);
+}
+#cschooser span:active {
+    filter: brightness(0.6);
+}
+#cschooser #cs1 {
+    background-color: #d63;
+    left: 10px;
+}
+#cschooser #cs2 {
+    background-color: #e9d;
+    left: 36px;
+}
+#cschooser #cs3 {
+    background-color: #46e;
+    left: 62px;
+}
+#cschooser #cs4 {
+    background-color: #3a3;
+    left: 88px;
+}
+#cschooser #cs5 {
+    background-color: #777;
+    left: 114px;
 }
 #centerpic {
     position: absolute;
@@ -177,7 +268,8 @@ textrt {
 }
 #toscr2 {
     position: absolute;
-    top: calc(50% + 224px);
+    /*top: calc(50% + 224px);*/
+    top: 75%;
     left: calc(50% - 32px);
     animation: appear 2s 1;
     opacity: 0.4;
@@ -185,11 +277,11 @@ textrt {
 }
 #toscr2:hover{
     opacity: 0.8;
-    top: calc(50% + 232px);
+    top: calc(75% + 8px);
 }
 #toscr2:active{
     opacity: 0.2;
-    top: calc(50% + 216px);
+    top: calc(75% - 8px);
 }
 #toscr1 {
     position: relative;
@@ -215,7 +307,7 @@ textrt {
     display: block;
 }
 .stitle {
-    font-size: 120px;
+    font-size: 180px;
     font-weight: bold;
     opacity: 0.1;
     position: absolute;
@@ -229,6 +321,8 @@ textrt {
     position: relative;
     top: calc(-48px + 8vh);
     text-align: center;
+    line-height: 32px;
+    transition: 0.25s;
 }
 .stitle2 {
     font-size: 24px;
@@ -242,8 +336,16 @@ textrt {
 }
 #slink {
     position: relative;
+    display: table;
     top: calc(0px + 14vh);
     transition: 0.25s;
+    color: #fff;
+    background-color: #555;
+    background-image: linear-gradient(#616161, #555);
+    font-size: 20px;
+    padding: 6px 14px;
+    margin: 6px auto;
+    border-radius: 12px;
 }
 #slink:hover {
     opacity: 1.0;
@@ -268,6 +370,9 @@ textrt {
     a {
         color: #8080ff;
     }
+    c {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
     #page2 {
         background-image: linear-gradient(rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
     }
@@ -276,6 +381,9 @@ textrt {
     }
     #othlnks div {
         color: #CCC;
+    }
+    #othlnks div:hover {
+        color: #fff;
     }
     #sectionchoice {
         filter: invert(100%);
@@ -302,6 +410,35 @@ textrt {
         color: #FFF;
     }
 }
+@media screen and (max-width: 640px) {
+    #sectionchoice {
+        top: -8px;
+    }
+    .stitle {
+        font-size: 90px;
+    }
+    .sinfo {
+        top: calc(-48px + 8vh);
+        line-height: 28px;
+    }
+    #page2 {
+        width: 95%;
+        border-radius: 32px;
+    }
+    #page2 .sections{
+        top: -16px;
+        height: calc(90% - 96px);
+    }
+}
+@media screen and (min-width: 1280px) {
+    #page2 {
+        width: 1152px;
+        border-radius: 96px;
+    }
+    .stitle {
+        font-size: 216px;
+    }
+}
 @keyframes appear {
     from {
         opacity: 0.0;
@@ -321,21 +458,41 @@ textrt {
 @keyframes lnkshowup {
     from {
         opacity: 0.0;
-        bottom: 10px;
+        transform: translateY(60px);
     }
     to {
         opacity: 1.0;
-        bottom: 70px;
+        transform: translateY(0px);
     }
 }
 @keyframes lnkhide {
     from {
         opacity: 1.0;
-        bottom: 70px;
+        transform: translateY(0px);
     }
     to {
         opacity: 0.0;
-        bottom: 10px;
+        transform: translateY(60px);
+    }
+}
+@keyframes lnkshowup2 {
+    from {
+        opacity: 0.0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1.0;
+        transform: translateY(0px);
+    }
+}
+@keyframes lnkhide2 {
+    from {
+        opacity: 1.0;
+        transform: translateY(0px);
+    }
+    to {
+        opacity: 0.0;
+        transform: translateY(-30px);
     }
 }
 @keyframes icoshowup {

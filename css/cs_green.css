@@ -1,0 +1,16 @@
+#currentcs {
+    background-color: #3a3;
+}
+c {
+    color: #7e9;
+}
+c:hover {
+    background-color: #3a3;
+}
+c:active {
+    background-color: #3a3;
+}
+#slink {
+    background-color: #3a3;
+    background-image: linear-gradient(#3c5, #3a3);
+}

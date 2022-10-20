@@ -64,6 +64,13 @@ input:focus {
 	position: relative;
 	left: 108px;
 	opacity: 0.6;
+	transition: 0.25s;
+}
+#panel1 img:hover {
+	opacity: 1.0;
+}
+#panel1 img:active {
+	opacity: 0.4;
 }
 #sendmsg {
 	font-size: 14px;

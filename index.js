@@ -1,6 +1,6 @@
 var visited = getCookie('visited');//是否第一次访问本站
 if (visited == "") {
-    setCookie('visited',"1",365)
+    setCookie('visited',"1",365);
 }
 if (navigator.language = "zh-CN") {//检测语言以判断切换语言按钮的行为
     var curlang = "zh";
@@ -20,19 +20,7 @@ var section5 = document.getElementById("section5");
 section1.classList.add('secdisplay');
 suffixdetect();
 highlightseclnk();
-function detectIEVer() {//检查是否使用IE浏览器
-    var ua = navigator.userAgent;
-    console.log(ua);
-    var v = ua.indexOf("MSIE");
-    var b = ua.indexOf("Trident");
-    if (v < 0) {
-        if (b < 0) {
-            return 9999;
-        }
-        return 11;
-    }
-    return parseFloat (ua.substring (v + 5,ua.indexOf (";", v)));
-}
+
 function lnklist() {//更多外链列表
     var othlnks = document.getElementById("othlnks");
     var lt = document.getElementById("lt");
@@ -87,16 +75,18 @@ function chgcenterpic() {//更改中央图片
     setTimeout(function(){centerpic.style.animation = "icoshowup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";},"400");
 }
 function autochgcenterpic() {
-    var centerpic = document.getElementById("centerpic");
+    var centerpics = document.getElementsByClassName("centerpik");
     while (true) {
-        var rand1 = Math.ceil(Math.random()*8);
+        var rand1 = Math.ceil(Math.random()*9);
         if (window.randprev != rand1) {//确保下一次展示的图片不与上一次的重复
             break;
         }
     }
     var randprev = rand1;
     window.randprev = randprev;
-    centerpic.setAttribute('src',"images/centerpic/front_"+rand1+".png");
+    centerpics[0].setAttribute('srcset',"images/centerpic/front_"+rand1+".webp");
+    centerpics[1].setAttribute('srcset',"images/centerpic/front_"+rand1+".png");
+    centerpics[2].setAttribute('src',"images/centerpic/front_"+rand1+".png");
 }
 function morestuffiscomingsoon() {
     alert("More stuff is coming soon......");
@@ -110,6 +100,7 @@ function scrolltopage2() {//切换到下页
     centerpic.style.animation = "pg1go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
     toscr2.style.animation = "pg1go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
     lnks.style.animation = "disappear 1s 1";
+    hidecschooser();
     setTimeout(function(){
         page2.style.animation = "pg2showup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
         page2.style.display = "block";
@@ -250,26 +241,17 @@ function suffixdetect() {//检测到地址栏参数的时候自动跳转到某�
     }
 }
 
-function setCookie(cname,cvalue,exdays) {//cookie设置
-    var d = new Date();
-    d.setTime(d.getTime()+(exdays*24*60*60*1000));
-    var expires = "expires="+d.toGMTString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
+function hidecschooser() {
+    var cschooser = document.getElementById("cschooser");
+    cschooser.style.animation = "lnkhide2 0.25s cubic-bezier(0, 0, 0.67, 0) 1";
+    setTimeout(function(){cschooser.style.display = "none";cschooser.style.animation = ""},"245");
 }
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i=0; i<ca.length; i++) {
-        var c = ca[i].trim();
-        if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-    }
-    return "";
-}
+
 var scrollFunc = function(e) {//检测鼠标滚轮
     e=e || window.event;
     var seccurrent = document.getElementsByClassName("secdisplay")[0];
     if (e.wheelDelta < 0) {//IE/Opera/Chrome
-        if (window.innerHeight > 922) {//窗口高度大于922时，启用section区滚轮切换
+        if (window.innerHeight > 944) {//窗口高度大于944时，启用section区滚轮切换
             secleft();
         }
         setTimeout(function(){scrolltopage2();},"16");
