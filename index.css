@@ -20,7 +20,7 @@ body {
 #page2 {
     display: none;
     position: relative;
-    top: 2vh;
+    top: 4vh;
     margin: auto;
     width: 90%;
     height: 90vh;
@@ -162,13 +162,26 @@ textrt {
     top: -4px;
 }
 #tip1 {
+    display: none;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(127,127,127,0.6);
+    backdrop-filter: blur(16px);
     text-align: center;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    animation: tipshow cubic-bezier(0, 0.8, 0.2, 1) 1s 1;
+}
+#tip1 span {
+    color: #fff;
     position: relative;
-    color: #777;
-    top: 32px;
-    font-weight: bold;
-    font-size: 22px;
-    animation: appear 0.6s 1;
+    top: 14px;
+    font-size: 16px;
+}
+#tip1 c {
+    position: relative;
+    top: 14px;
 }
 #othlnks {
     display: none;
@@ -410,7 +423,10 @@ textrt {
         color: #FFF;
     }
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 680px) {
+    #tip1 {
+        height: 74px;
+    }
     #sectionchoice {
         top: -8px;
     }
@@ -593,5 +609,25 @@ textrt {
     to {
         opacity: 0.0;
         transform: translateX(240px);
+    }
+}
+@keyframes tipshow {
+    from {
+        opacity: 0;
+        top: -74px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
+@keyframes tipunshow {
+    from {
+        opacity: 1;
+        top: 0px;
+    }
+    to {
+        opacity: 0;
+        top: -74px;
     }
 }

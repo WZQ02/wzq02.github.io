@@ -63,6 +63,8 @@ usrmsg.addEventListener('keydown',(e) => {
 //第一次访问时向用户询问用户名
 function askforusername() {
 	var prompt = document.getElementById('askforusername');
+	//更改用户名并刷新本页后，再次修改用户名时把原先用户名自动填写在usrname区
+	document.getElementById('usrName').value = getCookie('chatUserName');
 	prompb.style.display = "block";
 	prompt.style.display = "block";
 	usrName.addEventListener('keydown',(e) => {
@@ -92,12 +94,15 @@ function closeprompt() {//关闭注意事项
 	var prompt1 = document.getElementById('notice');
 	var prompt2 = document.getElementById('info');
 	if (prompt1.style.display == "block") {
-		prompt1.style.display = "none";
+		prompt1.style.animation = "zoomout 0.2s cubic-bezier(0.4, 0, 1, 0.4) 1";
+		setTimeout(function(){prompt1.style.display = "none";prompt1.style.animation = ""},192);
 	}
 	if (prompt2.style.display == "block") {
-		prompt2.style.display = "none";
+		prompt2.style.animation = "zoomout 0.2s cubic-bezier(0.4, 0, 1, 0.4) 1";
+		setTimeout(function(){prompt2.style.display = "none";prompt2.style.animation = ""},192);
 	}
-	prompb.style.display = "";
+	prompb.style.animation = "disappear 0.2s ease 1";
+	setTimeout(function(){prompb.style.display = "";prompb.style.animation = ""},192);
 }
 function displayinfo() {//显示信息
 	var prompt = document.getElementById('info');

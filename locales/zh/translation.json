@@ -15,7 +15,8 @@
 	"Join my QQ group": "加入我的 QQ 群",
 	"Twitch": "Twitch 主页",
 	"Site Log": "建站日志",
-	"Change Language": "English",
+	"target_language": "English",
+	"change language": "switch to English",
 	"(placeholder text)": "(占位字符)",
 	"Find me on these sites:": "在这些地方找到我：",
 	"File Server": "文件服务器",
@@ -62,5 +63,7 @@
 	"green": "薄荷绿",
 	"gray": "默认灰色",
 	"→ To WZQ02's chatroom": "→ 前往在线聊天室",
-	"Head to WZQ02's chatroom": "前往聊天室页面"
+	"Head to WZQ02's chatroom": "前往聊天室页面",
+	"Welcome to WZQ02's site! If pages aren't displayed correctly, please clear your browser cache and refresh.": "欢迎来到 WZQ'02 的小站！如果页面没有正常显示，请清空浏览器缓存再刷新页面。",
+	"Don't show again": "不再显示"
 }

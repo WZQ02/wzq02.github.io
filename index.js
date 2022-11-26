@@ -1,4 +1,5 @@
 var visited = getCookie('visited');//是否第一次访问本站
+var tip1status = getCookie('tip1status');//用户是否已禁用顶部提示栏
 if (visited == "") {
     setCookie('visited',"1",365);
 }
@@ -54,14 +55,25 @@ function chglang() {//切换语言按钮
 }
 function tip1() {//页面顶部提示语
     var tip1 = document.getElementById("tip1");
+    if (tip1status == "") {
+        tip1.style.display = "block";
+        tip1.innerHTML = "<span>Welcome to WZQ02's site! If pages aren't displayed correctly, please clear your browser cache and refresh. &nbsp;</span><a href='javascript:void(0)' onclick='disabletip1()'><c><b>Don't show again</b></c></a>";
+    }
     if (detectIEVer() <= 12) {
         document.body.style.backgroundColor = "#EEE";
+        tip1.style.display = "block";
         if (navigator.language = "zh-CN") {
-            tip1.innerText = "*检测到你正在使用 Internet Explorer，页面内容将不会按照预期显示，请更换浏览器。";
+            tip1.innerHTML = "<span>*检测到你正在使用 Internet Explorer，页面内容将不会按照预期显示，请更换浏览器。</span>";
         } else {
-            tip1.innerText = "*You are using Internet Explorer. Content on this page would not display as intended.";
+            tip1.innerHTML = "<span>*You are using Internet Explorer. Content on this page would not display as intended.</span>";
         }
     }
+}
+function disabletip1() {//禁用顶部提示栏
+    setCookie('tip1status',"1",365);
+    var tip1 = document.getElementById("tip1");
+    tip1.style.animation = "tipunshow cubic-bezier(0.4, 0, 1, 0.6) 0.4s 1";
+    setTimeout(function(){tip1.style.display = "";},"395");
 }
 function onclickchgcenterpic() {
     chgcenterpic();

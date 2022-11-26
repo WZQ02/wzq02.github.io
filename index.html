@@ -40,18 +40,17 @@
 <body>
     <div id="main">
         <textrt>
-            <div id="currentcs" title="color scheme" href="javascript:void(0)" onclick="showcschooser();"></div>&nbsp;&emsp;&nbsp;<c href="javascript:void(0)" onclick="chglang()"><span id="chglang">Change Language</span></c>&nbsp;&emsp;&nbsp;Powered by WZQ'02
+            <div id="currentcs" title="color scheme" href="javascript:void(0)" onclick="showcschooser();"></div>&nbsp;&emsp;&nbsp;<c title="change language" href="javascript:void(0)" onclick="chglang()"><span id="chglang">target_language</span></c>&nbsp;&emsp;&nbsp;Powered by WZQ'02
         </textrt>
         <centerpic>
-            <!--<img src="images/centerpic/front_1.png" id="centerpic" height="320" width="320" href="javascript:void(0)" onclick="onclickchgcenterpic()">-->
             <picture id="centerpic">
                 <source srcset="images/centerpic/front_1.webp" class="centerpik" type="image/webp">
                 <source srcset="images/centerpic/front_1.png" class="centerpik" type="image/png">
                 <img src="images/centerpic/front_1.png" class="centerpik" height="320" width="320" href="javascript:void(0)" onclick="onclickchgcenterpic()">
             </picture>
-            <img src="icons/others/screen2.svg" id="toscr2" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage2()">
+            <img src="icons/others/screen2_new.svg" id="toscr2" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage2()">
         </centerpic>
-        <div id="tip1"><p><!--(placeholder text)--></p></div>
+        <div id="tip1"></div>
         <div id="links">
             <textrt id="lt">
                 Find me on these sites:
@@ -73,7 +72,7 @@
             </div>
         </div>
         <div id="page2">
-            <img src="icons/others/screen1.svg" id="toscr1" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage1()">
+            <img src="icons/others/screen1_new.svg" id="toscr1" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage1()">
             <div id="sectionchoice">
                 <a title="Blog" href="javascript:void(0)" onclick="displaysec(section1)"><div id="seclink1"><img src="icons/links/link_hexo.png" height="40" width="40"/></div></a>
                 <a title="File Server" href="javascript:void(0)" onclick="displaysec(section2)"><div id="seclink2"><img src="icons/links/link_filsvr.png" height="40" width="40"/></div></a>
@@ -120,7 +119,7 @@
                         <img src="images/screenshots/wzq02tv_1.png" width="100%" height="100%"/>
                     </picture>
                 </div>
-                <a title="Head to WZQ02.TV" href="http://wzq02.cf/player/livewithchat"><div class="stitle2" id="slink">→ To WZQ02.TV</div></a>
+                <a title="Head to WZQ02.TV" href="https://wzq02.cf/player/livewithchat"><div class="stitle2" id="slink">→ To WZQ02.TV</div></a>
                 <a title="Head to WZQ02's chatroom" href="http://wzq02.cf/chatroom1"><div class="stitle2" id="slink">→ To WZQ02's chatroom</div></a>
             </div>
             <div class="sections" id="section4">
@@ -141,7 +140,7 @@
                 <a title="*练习" href="https://wzq02.cf:893/cube1209.html"><div class="stitle2" id="slink">→ 旋转的立方体</div></a>
                 <a title="*呃" href="https://wzq02.cf:893/ehh"><div class="stitle2" id="slink">→ 呃</div></a>
                 <a title="*测试当前浏览器对 Flash 的支持（不考虑使用 ruffle 的情况）" href="/flashtest"><div class="stitle2" id="slink">→ 浏览器 Flash 支持测试</div></a>
-                <a title="*查看你的 IP 归属地 (仅限国内)" href="/seeip"><div class="stitle2" id="slink">→ 查看你的 IP 归属地</div></a>
+                <a title="*查看你的 IP 归属地" href="/seeip"><div class="stitle2" id="slink">→ 查看你的 IP 归属地</div></a>
             </div>
             <div class="sections" id="section5">
                 <div class="stitle">Site Log</div>
@@ -167,6 +166,7 @@
         </div>
     </div>
 </body>
+<script src="scripts/autoredirect.js"></script>
 <script src="scripts/iedetect.js"></script>
 <script src="scripts/cookie.js"></script>
 <script src="scripts/i18nextify.min.js"></script>
