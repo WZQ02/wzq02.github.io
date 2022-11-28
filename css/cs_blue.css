@@ -3,6 +3,7 @@
 }
 c {
     color: #7ae;
+    background-color: rgba(235, 235, 255, 0.75);
 }
 c:hover {
     background-color: #46e;
@@ -13,4 +14,15 @@ c:active {
 #slink {
     background-color: #46e;
     background-image: linear-gradient(#69e, #57e);
+}
+.stitle2 {
+    color: #46e;
+}
+@media (prefers-color-scheme: dark) {
+    c {
+        background-color: rgba(15, 15, 215, 0.3);
+    }
+    .stitle2 {
+        color: #7ae;
+    }
 }

@@ -5,76 +5,7 @@
     <title>建站日志</title>
     <link rel="icon" type="image/png" href="/images/icon.png" />
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
-    <style>
-        body {
-            animation: gra 0.6s ease 1;
-            background: #faeacc; 
-            transition: 0.25s;
-            font-family: "Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI";
-            color: #333;
-            text-align: center;
-            user-select: none;
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        a {
-            text-decoration: none;
-            transition: 0.25s;
-            color: #ddd !important;
-            background-color: rgba(0, 0, 0, 0.1);
-            padding: 6px 8px;
-            border-radius: 8px;
-        }
-        a:hover {
-            color: #fff !important;
-            background-color: #555;
-        }
-        a:active {
-            filter: brightness(60%);
-            background-color: #555;
-        }
-        h4 {
-            color: #555;
-        }
-        #largetitle {
-            font-weight: bold;
-            position: fixed;
-            top: 60px;
-            left: calc(50% - 800px);
-            font-size: 384px;
-            animation: appear 0.6s ease 1;
-            color: rgba(0,0,0,0.1);
-            overflow: hidden;
-            z-index: -1;
-        }
-        s {
-            opacity: 0.4;
-        }
-        @media (prefers-color-scheme: dark) {
-            body { 
-                background: #252525; 
-                color: #eeeeee;
-            }
-            a {
-                color: #8080ff;
-            }
-            h4 {
-                color: #aaa;
-            }
-            #largetitle {
-                color: rgba(255,255,255,0.1);
-            }
-        }
-        @keyframes gra {
-            0% {
-                opacity: 0.0;
-            }
-            100% {
-                opacity: 1.0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/css/pages.css" id="skin">
     <link rel="stylesheet" href="" id="color_scheme">
 </head>
 <body>
@@ -139,6 +70,7 @@
 10.8 添加绿色和切换回默认灰色的配色方案选项。<br>
 11.2 更改顶部提示栏的视觉样式和上下部分切换的图标。<br>
 11.5 聊天室页面动画效果微调。IP 归属地查看页更换 API，支持查看国外 IP。<br>
+11.28 新增<s>华为手机专用的</s>鸿蒙系统字体 HarmonyOS Sans SC。（要求本机已安装该字体才能看到）主页样式微调，优化亮色模式下视觉元素的可见性。<br>
 <br><a href="javascript:void(0)" onclick="back()">返回主页</a></h4>
 <script>
     function back() {

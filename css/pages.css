@@ -1,0 +1,69 @@
+body {
+    animation: gra 0.6s ease 1;
+    background: #faeacc; 
+    transition: 0.25s;
+    font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI";
+    color: #333;
+    text-align: center;
+    user-select: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+a {
+    text-decoration: none;
+    transition: 0.25s;
+    color: #ddd !important;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 6px 8px;
+    border-radius: 8px;
+}
+a:hover {
+    color: #fff !important;
+    background-color: #555;
+}
+a:active {
+    filter: brightness(60%);
+    background-color: #555;
+}
+h4 {
+    color: #555;
+    line-height: 150%;
+}
+#largetitle {
+    font-weight: bold;
+    position: fixed;
+    top: 60px;
+    left: calc(50% - 800px);
+    font-size: 384px;
+    animation: appear 0.6s ease 1;
+    color: rgba(0,0,0,0.1);
+    overflow: hidden;
+    z-index: -1;
+}
+s {
+    opacity: 0.4;
+}
+@media (prefers-color-scheme: dark) {
+    body { 
+        background: #252525; 
+        color: #eeeeee;
+    }
+    a {
+        color: #8080ff;
+    }
+    h4 {
+        color: #aaa;
+    }
+    #largetitle {
+        color: rgba(255,255,255,0.1);
+    }
+}
+@keyframes gra {
+    0% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
