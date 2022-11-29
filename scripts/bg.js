@@ -1,16 +1,17 @@
 var animbgurl = "https://www.dmoe.cc/random.php";
-if (getCookie('animebgurl') != "") {
-    var animbgurl = getCookie('animebgurl');
+//var animbgurl = "https://api.dujin.org/bing/1920.php";
+if (getCookie('bgurl') != "") {
+    var animbgurl = getCookie('bgurl');
 }
 var url = window.location.href;
-if (url.indexOf("disableanimebackground") != -1) {
-    setCookie('animebackgroundenabled',"",0);
+if (url.indexOf("disablebackground") != -1 || url.indexOf("nobackground") != -1) {
+    setCookie('backgroundenabled',"",0);
     url = url.replace(/(\?|#)[^'"]*/, '');
     window.history.pushState({},0,url);
-} else if (url.indexOf("animebackground") != -1) {
-    setCookie('animebackgroundenabled',"yes",365);
+} else if (url.indexOf("background") != -1) {
+    setCookie('backgroundenabled',"yes",365);
     animbg();
-} else if (getCookie("animebackgroundenabled") != "") {
+} else if (getCookie("backgroundenabled") != "") {
     animbg();
 }
 function animbg() {
@@ -22,13 +23,14 @@ function animbg() {
     as.left = "0px";
     as.top = "0px";
     as.backgroundImage = ("url("+animbgurl+")");
-    as.backgroundSize = ("220vh");
+    as.backgroundSize = ("cover");
     as.backgroundPosition = ("50%, 50%")
     as.width = "100vw";
     as.height = "100vh";
     as.animation = "appear 2.5s 1";
     as.transition = "1.5s";
     as.filter = "opacity(25%)";
+    setTimeout(function(){as.scale = (1.12, 1.12);},16);
     animbg.onmouseover = function() {
         as.filter = "opacity(100%)";
         document.addEventListener("mousemove",function(e) {
@@ -45,6 +47,6 @@ function animbg() {
     document.getElementsByTagName("textrt")[0].appendChild(abspan);
 }
 function custombgurl(a) {
-    setCookie('animebgurl',a,365);
+    setCookie('bgurl',a,365);
     location.reload();
 }
