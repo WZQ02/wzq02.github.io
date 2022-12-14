@@ -7,6 +7,7 @@
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
     <link rel="stylesheet" href="/css/pages.css" id="skin">
     <link rel="stylesheet" href="" id="color_scheme">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
 <div id="largetitle">/site log/</div>
@@ -70,7 +71,11 @@
 10.8 添加绿色和切换回默认灰色的配色方案选项。<br>
 11.2 更改顶部提示栏的视觉样式和上下部分切换的图标。<br>
 11.5 聊天室页面动画效果微调。IP 归属地查看页更换 API，支持查看国外 IP。<br>
-11.28 新增<s>华为手机专用的</s>鸿蒙系统字体 HarmonyOS Sans SC。（要求本机已安装该字体才能看到）主页样式微调，优化亮色模式下视觉元素的可见性。<br>
+11.28 新增鸿蒙系统字体 HarmonyOS Sans SC（要求本机已安装该字体才能看到）。主页样式微调，优化亮色模式下视觉元素的可见性。<br>
+11.30 修复了一些已经存在很久的 UI 动画 bug。（如 section 部分动画被频繁触发导致同屏出现多个 section）<br>
+12.2 修改页面滚动条样式（只适用于 webkit 系浏览器）。section 部分启用根据滚动条位置判断鼠标滑轮是否触发翻页。<br>
+<!--11.28 (隐藏功能) 主页新增背景图功能，调用的图片接口可自行修改。(需在地址栏后面添加 ?background 以启用)-->
+<!--11.29 (隐藏功能) 主页新增溜冰功能，当在主页中央刷出栗子头画像时用鼠标长按栗子头，网站会随机播放音 MAD，再次长按可停止播放。-->
 <br><a href="javascript:void(0)" onclick="back()">返回主页</a></h4>
 <script>
     function back() {

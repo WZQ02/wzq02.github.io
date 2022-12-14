@@ -1,12 +1,14 @@
 {
- "name": "WZQ'02's Site",
- "short_name": "WZQ02's Site",
- "theme_color": "#cb9",
- "background_color": "#cb9",
+ "name": "WZQ'02 的小站",
+ "short_name": "WZQ02's site",
+ "theme_color": "#ccc",
+ "background_color": "#222",
  "display": "standalone",
  "orientation": "portrait-primary",
  "scope": "/",
- "start_url": "/",
+ "start_url": "https://wzq02.cf/",
+ "id": "https://wzq02.cf/",
+ "description": "WZQ'02 的个人站点",
  "icons": [
   {
    "src": "\/icons\/app\/android-icon-36x36.png",

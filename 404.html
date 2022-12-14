@@ -7,14 +7,15 @@
     <link rel="icon" type="image/png" href="/images/icon.png" />
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
     <link rel="stylesheet" href="/css/pages.css" id="skin">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
 <h1></h1><br><br>
-<span id="text1">Back to the main page in 5 seconds...</span>
+<span id="text1">Redirecting to homepage in 5 seconds...</span>
 <div id="largetitle">/404/</div>
 <script>
     var h1 = document.getElementsByTagName("h1")[0];
-    var random1 = Math.ceil(Math.random()*4);
+    var random1 = Math.ceil(Math.random()*5);
     var lang = navigator.language;
     if (lang == "zh-CN") {
         document.getElementById("text1").innerHTML = "5 秒后自动返回主页...";
@@ -22,7 +23,7 @@
             h1.innerHTML = "呃......或许你该检查下你的地址栏？";
         }
         if (random1 == 2) {
-            h1.innerHTML = "兄啊，你地址栏里面是不是有错字啊";
+            h1.innerHTML = "兄啊，你地址栏里面是不是打错字了啊";
         }
         if (random1 == 3) {
             h1.innerHTML = "如果你不知道的话，这是一个 404 页面，意思是你网址输错了";
@@ -30,8 +31,11 @@
         if (random1 == 4) {
             h1.innerHTML = "虽然但是，你在访问一个不存在的页面，所以...";
         }
+        if (random1 == 5) {
+            h1.innerHTML = "我知道你很急，但是你别急。不妨检查下你的地址栏？";
+        }
     } else {
-        h1.innerHTML = "Page not available, dude.";
+        h1.innerHTML = "Sorry, but your webpage ain't there. Please check your address bar.";
     }
     setTimeout("jump()","5000");
     function jump() {

@@ -41,12 +41,11 @@
     <div id="main">
         <div id="yabg"></div>
         <textrt>
-            <div id="currentcs" title="color scheme" href="javascript:void(0)" onclick="showcschooser();"></div>&nbsp;&emsp;&nbsp;<c title="change language" href="javascript:void(0)" onclick="chglang()"><span id="chglang">target_language</span></c>&nbsp;&emsp;&nbsp;Powered by WZQ'02
+            <div id="currentcs" title="color scheme" href="javascript:void(0)" onclick="showcschooser();"></div>&nbsp;&emsp;&nbsp;<c title="change language" href="javascript:void(0)" onclick="chglang()"><span id="chglang">target_language</span></c><span id="host_id">&nbsp;&emsp;&nbsp;Powered by WZQ'02</span>
         </textrt>
         <centerpic>
             <picture id="centerpic">
                 <source srcset="images/centerpic/front_1.webp" class="centerpik" type="image/webp">
-                <source srcset="images/centerpic/front_1.png" class="centerpik" type="image/png">
                 <img src="images/centerpic/front_1.png" class="centerpik" height="320" width="320" href="javascript:void(0)" onclick="onclickchgcenterpic()">
             </picture>
             <img src="icons/others/screen2_new.svg" id="toscr2" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage2()">
@@ -57,12 +56,42 @@
                 Find me on these sites:
             </textrt>
             <div id="mainlnks">
-                <a title="Bilibili" href="https://space.bilibili.com/12367945/"><div id="link2"><img src="icons/links/bili_main.png" height="40" width="40"/></div></a>
-                <a title="YouTube Channel" href="https://www.youtube.com/channel/UC8mPjdjl363hvt1ou7PDx3g/" class="outcn"><div id="link3"><img src="icons/links/ytb_main.png" height="40" width="40"/></div></a>
-                <a title="GitHub" href="https://github.com/WZQ02"><div id="link6"><img src="icons/links/github.png" height="40" width="40"/></div></a>
-                <a title="Question Box (Tape)" href="https://www.tapechat.net/uu/H32CDL/NLP4MZ1X"><div id="link4"><img src="icons/links/question_box.png" height="40" width="40"/></div></a>
-                <a title="Twitter" href="https://twitter.com/02Wzq/" class="outcn"><div id="link5"><img src="icons/links/link_twi.png" height="40" width="40"/></div></a>
-                <a title="Other links" href="javascript:void(0)" onclick="lnklist()"><div id="link7"><img src="icons/links/link_others.png" height="40" width="40"/></div></a>
+                <a title="Bilibili" href="https://space.bilibili.com/12367945/"><div id="link2">
+                    <picture>
+                        <source srcset="icons/links/bili_main.webp" type="image/webp"/>
+                        <img src="icons/links/bili_main.png" height="40" width="40"/>
+                    </picture>
+                </div></a>
+                <a title="YouTube Channel" href="https://www.youtube.com/channel/UC8mPjdjl363hvt1ou7PDx3g/" class="outcn"><div id="link3">
+                    <picture>
+                        <source srcset="icons/links/ytb_main.webp" type="image/webp"/>
+                        <img src="icons/links/ytb_main.png" height="40" width="40"/>
+                    </picture>
+                </div></a>
+                <a title="GitHub" href="https://github.com/WZQ02"><div id="link6">
+                    <picture>
+                        <source srcset="icons/links/github.webp" type="image/webp"/>
+                        <img src="icons/links/github.png" height="40" width="40"/>
+                    </picture>
+                </div></a>
+                <a title="Question Box (Tape)" href="https://www.tapechat.net/uu/H32CDL/NLP4MZ1X"><div id="link4">
+                    <picture>
+                        <source srcset="icons/links/question_box.webp" type="image/webp"/>
+                        <img src="icons/links/question_box.png" height="40" width="40"/>
+                    </picture>
+                </div></a>
+                <a title="Twitter" href="https://twitter.com/02Wzq/" class="outcn"><div id="link5">
+                    <picture>
+                        <source srcset="icons/links/link_twi.webp" type="image/webp"/>
+                        <img src="icons/links/link_twi.png" height="40" width="40"/>
+                    </picture>
+                </div></a>
+                <a title="Other links" href="javascript:void(0)" onclick="lnklist()"><div id="link7">
+                    <picture>
+                        <source srcset="icons/links/link_others.webp" type="image/webp"/>
+                        <img src="icons/links/link_others.png" height="40" width="40"/>
+                    </picture>
+                </div></a>
             </div>
             <div id="othlnks">
                 <a title="Acfun Channel" href="https://www.acfun.cn/u/4352250"><div class="othlnk"><span id="othlnk1">Acfun</span></div></a>
@@ -89,7 +118,6 @@
                 <div class="sscreenshots">
                     <picture>
                         <source srcset="images/screenshots/blog_2.webp" type="image/webp">
-                        <source srcset="images/screenshots/blog_2.png" type="image/png">
                         <img src="images/screenshots/blog_2.png" width="100%" height="100%"/>
                     </picture>
                 </div>
@@ -102,7 +130,6 @@
                 <div class="sscreenshots">
                     <picture>
                         <source srcset="images/screenshots/filsvr_1.webp" type="image/webp">
-                        <source srcset="images/screenshots/filsvr_1.png" type="image/png">
                         <img src="images/screenshots/filsvr_1.png" width="100%" height="100%"/>
                     </picture>
                 </div>
@@ -116,7 +143,6 @@
                 <div class="sscreenshots">
                     <picture>
                         <source srcset="images/screenshots/wzq02tv_1.webp" type="image/webp">
-                        <source srcset="images/screenshots/wzq02tv_1.png" type="image/png">
                         <img src="images/screenshots/wzq02tv_1.png" width="100%" height="100%"/>
                     </picture>
                 </div>
@@ -177,6 +203,7 @@
 <script src="scripts/colorscheme.js"></script>
 <script src="index.js"></script>
 <script src="scripts/hidegfsite.js"></script>
+<script src="scripts/centerpic.js"></script>
 <script src="scripts/bg.js"></script>
 <title>WZQ'02's site</title>
 </html>
