@@ -23,7 +23,7 @@ function chgcenterpic() {//更改中央图片
 function autochgcenterpic() {
     var centerpics = document.getElementsByClassName("centerpik");
     while (true) {
-        var rand1 = Math.ceil(Math.random()*9);
+        var rand1 = Math.ceil(Math.random()*10);
         if (window.randprev != rand1) {//确保下一次展示的图片不与上一次的重复
             break;
         }
@@ -64,8 +64,8 @@ function liubing() {
         liubingad.autoplay = "autoplay";
         liubingad.loop = "loop";
         while (true) {
-            var rand2 = Math.ceil(Math.random()*4);
-            if (window.randprev != rand2) {
+            var rand2 = Math.ceil(Math.random()*7);
+            if (window.randprev2 != rand2) {
                 break;
             }
         }
@@ -77,8 +77,14 @@ function liubing() {
             liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/o108rocket.ogg";
         } else if (rand2 == 3) {
             liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/otto_control.ogg";
-        } else {
+        } else if (rand2 == 4) {
             liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/gun_it_up_unfinished.ogg";
+        } else if (rand2 == 5) {
+            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/luv_the_giaoatic.ogg";
+        } else if (rand2 == 6) {
+            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/invitation_from_mr_aniki.ogg";
+        } else {
+            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/nigga.ogg";
         }
         document.body.appendChild(liubingad);
     }

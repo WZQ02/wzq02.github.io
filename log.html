@@ -13,7 +13,7 @@
 <div id="largetitle">/site log/</div>
 <h2>以下为本站建站日志：<br><br></h2>
 <h4>2021.5.14 本站点建成，<s>主页直接用宝塔面板默认页面改的。</s>同时上线了文件服务器。<br>
-五月下旬 主页新增夜间模式（win10 v1809 以上可根据系统主题变换），可以推 rtmp 直播流到本站了。<br>
+五月下旬 主页新增暗色模式（可根据浏览器主题或系统主题变换），可以推 rtmp 直播流到本站了。<br>
 6.14 <s>在 freenom 搞到了域名 wzq02.tk（现已过期）</s>，自此不需要再用 IP 地址访问。<br>
 六月中旬 <s>重写了网站主页面（包括样式），下方放外部链接，并增加英文版主页。旧版主页保留。</s>新增了直播间页面，<s>但是直播间在桌面端不可用（Chrome 不支持直接播放 rtmp 视频流）。</s><br>
 六月下旬 <s>微调主页的动画效果。</s>改用 hls 直播推流，用 Chrome 浏览器进入直播间可以正常播放推上去的视频流。增加带聊天板块的直播间页面。（聊天页面不是我写的，我只改了样式）<br>
@@ -74,8 +74,11 @@
 11.28 新增鸿蒙系统字体 HarmonyOS Sans SC（要求本机已安装该字体才能看到）。主页样式微调，优化亮色模式下视觉元素的可见性。<br>
 11.30 修复了一些已经存在很久的 UI 动画 bug。（如 section 部分动画被频繁触发导致同屏出现多个 section）<br>
 12.2 修改页面滚动条样式（只适用于 webkit 系浏览器）。section 部分启用根据滚动条位置判断鼠标滑轮是否触发翻页。<br>
-<!--11.28 (隐藏功能) 主页新增背景图功能，调用的图片接口可自行修改。(需在地址栏后面添加 ?background 以启用)-->
-<!--11.29 (隐藏功能) 主页新增溜冰功能，当在主页中央刷出栗子头画像时用鼠标长按栗子头，网站会随机播放音 MAD，再次长按可停止播放。-->
+12.12 修复了英文环境下无法一次性正确更改显示语言的问题。<br>
+12.16 修复了部分与触摸手势相关的问题。<br>
+12.17 进一步完善主题配色。<br>
+<!--11.28 (隐藏功能) 主页新增额次元背景图功能，调用的图片接口可自行修改。(需在地址栏后面添加 ?background 以启用)-->
+<!--11.29 (隐藏功能) 主页新增溜冰功能，当在主页中央刷出栗子头画像时用鼠标长按栗子头（手机端无法触发），网站会随机播放音 MAD，再次长按可停止播放。-->
 <br><a href="javascript:void(0)" onclick="back()">返回主页</a></h4>
 <script>
     function back() {
@@ -84,12 +87,6 @@
             window.location.href = "/old.html";
         }
         else {
-            /*if (lang == "zh-CN") {
-                window.location.href = "/new_zhcn.html";
-            }
-            else {
-                window.location.href = "/new_eng.html";
-            }*/
             window.location.href = "/index.html?secquery=sitelog";
         }
     }
@@ -115,7 +112,7 @@
     function autochgthemecolor() {//自动更改配色方案
         var color = getCookie('themecolor');
         if (color != "") {
-            document.getElementById("color_scheme").href = `/css/docu_${color}.css`;
+            document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
         }
     }
 </script>

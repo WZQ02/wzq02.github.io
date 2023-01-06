@@ -1,3 +1,6 @@
+body {
+    background: #fff4ef;
+}
 #currentcs {
     background-color: #d63;
 }
@@ -15,12 +18,21 @@ c:active {
     background-color: #d63;
     background-image: linear-gradient(#e74, #d63);
 }
+.stitle {
+    color: #d65;
+}
 .stitle2 {
     color: #d63;
 }
 @media (prefers-color-scheme: dark) {
+    body {
+        background: #251f14;
+    }
     c {
         background-color: rgba(215, 112, 15, 0.15);
+    }
+    .stitle {
+        color: #942;
     }
     .stitle2 {
         color: #e85;

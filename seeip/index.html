@@ -32,7 +32,7 @@
     function autochgthemecolor() {//自动更改配色方案
         var color = getCookie('themecolor');
         if (color != "") {
-            document.getElementById("color_scheme").href = `/css/docu_${color}.css`;
+            document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
         }
     }
     

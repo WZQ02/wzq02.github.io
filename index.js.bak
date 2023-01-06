@@ -1,4 +1,3 @@
-'use strict';
 var visited = getCookie('visited');//是否第一次访问本站
 var tip1status = getCookie('tip1status');//用户是否已禁用顶部提示栏
 if (visited == "") {

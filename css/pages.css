@@ -2,7 +2,7 @@ body {
     animation: gra 0.6s ease 1;
     background: #faeacc; 
     transition: 0.25s;
-    font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI";
+    font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial",黑体;
     color: #333;
     text-align: center;
     user-select: none;

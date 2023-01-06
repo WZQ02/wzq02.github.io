@@ -1,3 +1,6 @@
+body {
+    background: #fff4ef;
+}
 a {
     color: #e85 !important;
 }
@@ -6,4 +9,9 @@ a:hover {
 }
 a:active {
     background-color: #d63;
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #251f14;
+    }
 }

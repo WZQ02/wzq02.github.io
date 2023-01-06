@@ -2,7 +2,6 @@ var animbgurl = "https://www.dmoe.cc/random.php";//默认的图片api
 var xmlHttp = new XMLHttpRequest();
 //var animbgurl = "https://api.dujin.org/bing/1920.php";
 var lock_animbg = 0;
-var lock2_animbg = 1;
 var bgtimer1 = null;
 setTimeout(function() {
     lock_animbg = 1;
@@ -40,7 +39,7 @@ function animbg() {
     as.animation = "appear 2.5s 1";
     as.transition = "1.5s";
     as.filter = "brightness(100%) opacity(25%)";
-    setTimeout(function(){as.transform = "scale(1.12)";},16);
+    setTimeout(function(){as.scale = (1.12, 1.12);},16);
     links.style.transition = "0.4s";
     cschooser.style.transition = "0.25s";
     animbg.onmouseover = function() {
@@ -65,14 +64,13 @@ function animbg() {
     animbg.onclick = function() {
         if (lock_animbg) {
             lock_animbg = 0;
-            lock2_animbg = 0;
-            as.transform = "scale(1.4)";
+            as.scale = (1.4, 1.4);
             as.animation = "disappear 0.5s 1";
             //abspan.animation = "disappear 0.5s 1";
             setTimeout(function() {
                 document.getElementById("yabg").removeChild(animbg);
                 //document.getElementsByTagName("textrt")[0].removeChild(abspan);
-                as.transform = "";
+                as.scale = "";
                 //xmlHttp.open("get", animbgurl);
                 //xmlHttp.send(null);
                 animbgurl = animbgurl+"?"+1;
@@ -85,8 +83,7 @@ function animbg() {
                 document.getElementById("yabg").appendChild(animbg);
                 //document.getElementsByTagName("textrt")[0].appendChild(abspan);
                 as.transition = "1.5s";
-                setTimeout(function(){as.transform = "scale(1.12)";},16);
-                lock2_animbg = 1;
+                setTimeout(function(){as.scale = (1.12, 1.12);},16);
             },440);
             setTimeout(function() {
                 lock_animbg = 1;
@@ -125,9 +122,7 @@ function animbg() {
             as.transform = "translate("+ ((window.innerWidth * 0.5 - e.clientX) * 0.1) +"px, "+ ((window.innerHeight * 0.5 - e.clientY) * 0.1) +"px)";
             bgtimer1 = null;
         },500)*/
-        if (lock2_animbg) {
-            as.transform = "translate("+ ((window.innerWidth * 0.5 - e.clientX) * 0.1) +"px, "+ ((window.innerHeight * 0.5 - e.clientY) * 0.1) +"px) scale(1.12)";
-        }
+        as.transform = "translate("+ ((window.innerWidth * 0.5 - e.clientX) * 0.1) +"px, "+ ((window.innerHeight * 0.5 - e.clientY) * 0.1) +"px)";
     })
     document.getElementById("page2").style.backdropFilter = "blur(24px)";
     document.getElementsByTagName("centerpic")[0].style.display = "none";
