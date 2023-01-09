@@ -1,6 +1,6 @@
-var animbgurl = "https://www.dmoe.cc/random.php";//默认的图片api
+var animbgurl = "https://bing.img.run/rand.php";//默认的图片api(之前那个二次元图片api疑似炸了，换三次元风景图了)
 var xmlHttp = new XMLHttpRequest();
-//var animbgurl = "https://api.dujin.org/bing/1920.php";
+//var animbgurl = "https://www.dmoe.cc/random.php";
 var lock_animbg = 0;
 var lock2_animbg = 1;
 var bgtimer1 = null;

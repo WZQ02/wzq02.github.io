@@ -60,6 +60,8 @@ function tip1() {//页面顶部提示语
     if (tip1status == "") {
         tip1.style.display = "block";
         tip1.innerHTML = "<span>Welcome to WZQ02's site! If pages aren't displayed correctly, please clear your browser cache and refresh. &nbsp;</span><a href='javascript:void(0)' onclick='disabletip1()'><c><b>Don't show again</b></c></a>";
+    } else {
+        tip1.style.display = "none";
     }
     if (detectIEVer() <= 12) {
         document.body.style.backgroundColor = "#EEE";
@@ -75,7 +77,7 @@ function disabletip1() {//禁用顶部提示栏
     setCookie('tip1status',"1",365);
     var tip1 = document.getElementById("tip1");
     tip1.style.animation = "tipunshow cubic-bezier(0.4, 0, 1, 0.6) 0.4s 1";
-    setTimeout(function(){tip1.style.display = "";},"395");
+    setTimeout(function(){tip1.style.display = "none";},"395");
 }
 /*function morestuffiscomingsoon() {
     alert("More stuff is coming soon......");
