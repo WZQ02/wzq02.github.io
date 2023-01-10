@@ -131,7 +131,7 @@ function animbg() {
     })
     document.getElementById("page2").style.backdropFilter = "blur(24px)";
     document.getElementsByTagName("centerpic")[0].style.display = "none";
-    abspan.innerHTML = "<p>使用的图片 API: <br>" + animbgurl + "</p><p>站长不对从第三方调用图片的内容负责。</p>";
+    abspan.innerHTML = "<p>使用的图片 API: <br>" + animbgurl + "</p><p>站长不对从第三方调用图片的内容负责。<br>本地化占位文本1</p>";
     abspan.style.textAlign = "right";
     document.getElementById("yabg").appendChild(animbg);
     document.getElementsByTagName("textrt")[0].appendChild(abspan);
