@@ -2,6 +2,7 @@ body {
 	overflow: scroll;
 	overflow-x: hidden;
 	/*overflow-y: hidden;*/
+	font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial",黑体;
 }
 ::-webkit-scrollbar {
     display: none;

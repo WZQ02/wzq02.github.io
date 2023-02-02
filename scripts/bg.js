@@ -112,7 +112,7 @@ function animbg() {
         }
     }
     abspan.onmouseup = function() {
-        alert("额，这个主页背景功能我本来不打算加的，因为我觉得这么做会让我主页显得花里胡哨。\nAnyway，我还是写了这坨功能，只不过我设置成默认禁用了。\n\nHere are the tips:\n鼠标在本页上滑动时，图片会朝相反方向移动。\n单击本页空白处可更换背景（有 5 秒的冷却时间）。\n如果要更换背景功能使用的 api，在配色方案菜单中点击“更换背景图 API”，在弹出的窗口中填入你要使用的 api。\n（要换回默认 api 的话，在弹窗中填入空格即可）\n\n如果你也不喜欢这个功能，可以在地址栏后面输入\n?nobackground，回车即可禁用背景图。\n\n\n哦对，默认使用的 api 是我随便找的，图库里面有铭感内容的话不关我事啊。");
+        alert("Here are the tips:\n鼠标在本页上滑动时，图片会朝相反方向移动。\n单击本页空白处可更换背景（有 5 秒的冷却时间）。\n如果要更换背景功能使用的 api，在配色方案菜单中点击“更换背景图 API”，在弹出的窗口中填入你要使用的 API。\n（要换回默认 API 的话，在弹窗中填入空格即可）");
     }
     document.addEventListener("mousemove",function(e) {
         //背景跟随鼠标的动画，这里弃用backgroundPosition而是改成transform，因为前者性能太烂，在我旧电脑上面能卡出翔
@@ -136,6 +136,7 @@ function animbg() {
     document.getElementById("yabg").appendChild(animbg);
     document.getElementsByTagName("textrt")[0].appendChild(abspan);
     cschooseraddbgoptions();
+    document.getElementById("bgcon").setAttribute('src',"icons/others/no_bg.svg");
 }
 function cschooseraddbgoptions() {
     var bgoptions = document.createElement("div");
@@ -157,4 +158,15 @@ function promptcustombgurl() {
 function custombgurl(a) {
     setCookie('bgurl',a,365);
     location.reload();
+}
+function chgbgstate() {
+    if (getCookie("backgroundenabled") != "") {
+        setCookie('backgroundenabled',"",0);
+        url = url.replace(/(\?|#)[^'"]*/, '');
+        window.history.pushState({},0,url);
+        location.reload();
+    } else {
+        setCookie('backgroundenabled',"yes",365);
+        animbg();
+    }
 }

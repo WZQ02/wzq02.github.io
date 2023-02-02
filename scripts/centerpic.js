@@ -72,19 +72,19 @@ function liubing() {
         var randprev = rand2;
         window.randprev2 = randprev;
         if (rand2 == 1) {
-            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/dabig_dance.ogg";
+            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/dabig_dance.ogg";
         } else if (rand2 == 2) {
-            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/o108rocket.ogg";
+            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/o108rocket.ogg";
         } else if (rand2 == 3) {
-            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/otto_control.ogg";
+            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/otto_control.ogg";
         } else if (rand2 == 4) {
-            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/gun_it_up_unfinished.ogg";
+            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/gun_it_up_unfinished.ogg";
         } else if (rand2 == 5) {
-            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/luv_the_giaoatic.ogg";
+            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/luv_the_giaoatic.ogg";
         } else if (rand2 == 6) {
-            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/invitation_from_mr_aniki.ogg";
+            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/invitation_from_mr_aniki.ogg";
         } else {
-            liubingad.src = "https://wzq02.cf:893/otm_demos_ogg/nigga.ogg";
+            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/nigga.ogg";
         }
         document.body.appendChild(liubingad);
     }

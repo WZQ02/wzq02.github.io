@@ -17,7 +17,7 @@ section1.classList.add('secdisplay');
 suffixdetect();
 highlightseclnk();
 
-var lock_lnk = 1;//引入锁，避免动画结束前重复otherlinks淡入或淡出动作&&为兼容旧版Chromium浏览器，不使用let而是使用var定义变量
+var lock_lnk = 1;//引入锁，避免动画结束前重复otherlinks淡入或淡出动作
 var showlt = "";
 function lnklist() {//更多外链列表
     var othlnks = document.getElementById("othlnks");

@@ -12,14 +12,14 @@
 <body>
     <div class="player">
         <script src="https://wzq02.cf/scripts/hls.min.js"></script>
-        <video id="video" width="1120" height="720" controls="controls" autoplay muted></video>
+        <video id="video" width="1120" height="640" controls="controls" autoplay muted></video>
     </div>
     <div class="chatroom">
-        <iframe src="https://wzq02.cf/otherpurposes/chatroom1" width="320" height="716" frameborder="1" name="chatpage"></iframe>
+        <iframe src="https://wzq02.cf/chatroom1" width="320" height="636" frameborder="1" name="chatpage"></iframe>
     </div>
     <div id="prompb"></div>
     <div id="prompt">
-        <te>对面关播了<br>我现在还没有开播，你可以离开这里了。</te><br><ste><a href="/otherpurposes/chatroom1">→前往聊天室 </a><a href="https://wzq02.cf/?secquery=wzqtv">→返回主页 </a><a href="https://live.bilibili.com/956821">→前往B站直播间 </a></ste>
+        <te>对面关播了<br>我现在还没有开播，你可以离开这里了。</te><br><ste><a href="/chatroom1">→前往聊天室 </a><a href="https://wzq02.cf/?secquery=wzqtv">→返回主页 </a><a href="https://live.bilibili.com/956821">→前往B站直播间 </a></ste>
     </div>
 <script>
     suffixdetect();
@@ -51,12 +51,23 @@
         document.body.style.fontFamily = "'Microsoft YaHei',微软雅黑";
         }
     }
-    xmlhttp.open("GET",'https://wzq02.cf/liveison.txt?'+anynum,false);
+    /*xmlhttp.open("GET",'https://wzq02.cf/liveison.txt?'+anynum,false);
     xmlhttp.send();
     if (xmlhttp.readyState == 4) {
         if (xmlhttp.status == 200) {
         } else if (xmlhttp.status == 404) {
             setTimeout("promptthereisnolive()","300");
+        }
+    }*/
+    var request = new XMLHttpRequest();
+    request.open("get", "https://wzq02.cf/ver.json");
+    request.send(null);
+    request.onload = function () {
+        if (request.status == 200) {
+            var info = JSON.parse(request.responseText);
+            if (info["livestatus"] == "") {
+                setTimeout("promptthereisnolive()","300");
+            }
         }
     }
 </script>

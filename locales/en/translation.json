@@ -17,5 +17,10 @@
 	"使用的图片 API:": "Current background image API:",
 	"站长不对从第三方调用图片的内容负责。": "I'm not responsible for the content of",
 	"本地化占位文本1": "pictures from third-party sites.",
-	"更换背景图 API": "Change BG API"
+	"更换背景图 API": "Change BG API",
+	"→ 查看你的 IP 归属地": "→ Check your IP address and location",
+	"→ 浏览器 Flash 支持测试": "→ Does your browser still support Adobe Flash?",
+	"*测试当前浏览器对 Flash 的支持（不考虑使用 ruffle 的情况）": "*Check whether your browser still supports Adobe Flash content",
+	"*查看你的 IP 归属地": "*Check your IP address and geographical location",
+	"enable/disable background picture": "Enable/Disable Background Picture"
 }
