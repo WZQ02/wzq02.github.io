@@ -24,27 +24,36 @@ const server = ws.createServer((connect) => {
           	    msg: `${connect.userName} ${dystr(str1c)}`
             });
             console.log(`${connect.userName} ${dystr(str1c)}`);
-		} else if (msgg.indexOf('*') != -1) {
+		} else if (msgg.indexOf('*reset') != -1) {//接收手动重置chatgpt的请求，并执行
+		    chatgpt_msg = [];
+            chatgpt_msg_count = 0;
+            broadcast({
+			    type: 0,
+			    msg: `${connect.userName} 手动重置了 ChatGPT。`
+		    })
+		    console.log(`${connect.userName} 手动重置了 ChatGPT。`);
+		} else if (msgg.indexOf('*') != -1) {//接收与chatgpt对话的请求
 			msgg = msgg.slice(1);
 			broadcast({
 				type: 2,
 				msg: `${connect.userName}: *${msgg}`
 		  	});
 			console.log(`${connect.userName}: *${msgg}`);
-			if (chatgpt_msg_count <= 9) {
+			if (chatgpt_msg_count <= 9) {//未达到对话上限
 			    chatgpt_msg[chatgpt_msg_count] = {role: "user", content: msgg};
 			    chatgpt_msg_count++;
-			} else {
+			} else {//达到对话次数上限后，通知用户并重置计数
 			    chatgpt_msg = [];
                 chatgpt_msg_count = 0;
                 broadcast({
 			        type: 0,
 			        msg: `10 次连续对话上限已用完。ChatGPT 已被重置。`
 		        })
+		        console.log(`10 次连续对话上限已用完。ChatGPT 已被重置。`);
                 chatgpt_msg[chatgpt_msg_count] = {role: "user", content: msgg};
 			    chatgpt_msg_count++;
 			}
-			async function start_chat() {
+			async function start_chat() {//异步发出对话请求的函数
 				var completion = await openai.createChatCompletion({
                 	model: "gpt-3.5-turbo",
                 	messages: chatgpt_msg,
@@ -59,8 +68,8 @@ const server = ws.createServer((connect) => {
 					console.log(`ChatGPT: [${chatgpt_msg_count}/10]${res_content}`)
             	}
 			}
-			start_chat()
-		} else {//接收并处理用户发送的信息
+			start_chat()//发出对话请求
+		} else {//接收并处理用户发送的一般信息
 			broadcast({
           	    type: 2,
           	    msg: `${connect.userName}: ${msgg}`
