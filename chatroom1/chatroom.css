@@ -103,7 +103,7 @@ input:focus {
 .prompt {
 	display: none;
 	margin: 0 50% 0;
-	top: calc(50vh - 614px - 160px);
+	top: calc(50vh - 614px - 210px);
 	left: -150px;
 	position: relative;
 	padding: 10px;
