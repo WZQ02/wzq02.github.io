@@ -23,7 +23,7 @@ function chgcenterpic() {//更改中央图片
 function autochgcenterpic() {
     var centerpics = document.getElementsByClassName("centerpik");
     while (true) {
-        var rand1 = Math.ceil(Math.random()*10);
+        var rand1 = Math.ceil(Math.random()*12);
         if (window.randprev != rand1) {//确保下一次展示的图片不与上一次的重复
             break;
         }

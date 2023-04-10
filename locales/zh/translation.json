@@ -41,14 +41,13 @@
 	"→ File Server #2": "→ 前往文件服务器 #2",
 	"Head to File Server #1": "前往文件服务器 #1",
 	"Head to File Server #2": "前往文件服务器 #2",
-	"WZQ02.TV": "WZQ 的迫真电视台",
 	"A live broadcasting room based on nginx-rtmp.": "基于 nginx-rtmp 的自建直播间，我可能会在这里做视频直播。",
 	"If you want to use this room temporarily, please contact me.": 
 	"如果你打算租用这个直播间，请联系我。",
 	"Due to the CORS policy, this page doesn't support HTTPS for now, which might be fixed later.": 
 	"由于 Chrome 浏览器 特有 CORS 跨域限制问题，该页面暂时不支持 HTTPS，未来会考虑迁移。",
-	"→ To WZQ02.TV": "→ 前往 WZQ 的迫真电视台",
-	"Head to WZQ02.TV": "前往 WZQ 的迫真电视台",
+	"→ To WZQ02.TV": "→ 前往 WZQ02.TV",
+	"Head to WZQ02.TV": "前往 WZQ02.TV",
 	"Demo Pages": "演示页面",
 	"Note: links with asterisk* are pages NOT written by myself.": "注：带 * 标识的表明页面不是我编写的。",
 	"The log of this site.": "本站的建站日志。",

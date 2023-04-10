@@ -180,7 +180,6 @@ textrt {
     top: -4px;
 }
 #tip1 {
-    
     width: 100%;
     height: 50px;
     background-color: rgba(127,127,127,0.6);
@@ -241,7 +240,7 @@ textrt {
     width: 132px;
     height: 36px;
     top: 54px;
-    right: 228px;
+    right: 154px;
     border-radius: 12px;
     background-color: rgba(127,127,127,0.2);
     backdrop-filter: blur(16px);

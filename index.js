@@ -57,12 +57,13 @@ function chglang() {//切换语言按钮
 }
 function tip1() {//页面顶部提示语
     var tip1 = document.getElementById("tip1");
-    if (tip1status == "") {
+    /*if (tip1status == "") {
         tip1.style.display = "block";
         tip1.innerHTML = "<span>Welcome to WZQ02's site! If pages aren't displayed correctly, please clear your browser cache and refresh. &nbsp;</span><a href='javascript:void(0)' onclick='disabletip1()'><c><b>Don't show again</b></c></a>";
     } else {
         tip1.style.display = "none";
-    }
+    }*/
+    tip1.style.display = "none";
     if (detectIEVer() <= 12) {
         document.body.style.backgroundColor = "#EEE";
         tip1.style.display = "block";
