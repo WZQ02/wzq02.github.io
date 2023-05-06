@@ -83,8 +83,10 @@ function liubing() {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/luv_the_giaoatic.ogg";
         } else if (rand2 == 6) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/invitation_from_mr_aniki.ogg";
-        } else {
+        } else if (rand2 == 7) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/nigga.ogg";
+        } else {
+            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/glitch_otto.ogg";
         }
         document.body.appendChild(liubingad);
     }
