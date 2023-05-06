@@ -64,7 +64,7 @@ function liubing() {
         liubingad.autoplay = "autoplay";
         liubingad.loop = "loop";
         while (true) {
-            var rand2 = Math.ceil(Math.random()*7);
+            var rand2 = Math.ceil(Math.random()*8);
             if (window.randprev2 != rand2) {
                 break;
             }
