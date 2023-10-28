@@ -1,0 +1,12 @@
+{
+    "stitle": "DLC",
+    "content": {
+        "sinfo": "个人过往视频投稿的归档等。",
+        "slink": {
+            "title": "前往下载页面",
+            "display_title": "→ 前往",
+            "href": "javascript:void(0)",
+            "onclick": "createiframepmpt(\"/freedl/index.html?do_not_show_btm\",\"freedl\")"
+        }
+    }    
+}

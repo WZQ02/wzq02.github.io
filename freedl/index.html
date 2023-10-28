@@ -22,7 +22,7 @@
         @keyframes secshowup {
             from {
                 opacity: 0.0;
-                transform: translateX(240px);
+                transform: translateX(60px);
             }
             to {
                 opacity: 1.0;
@@ -36,13 +36,13 @@
             }
             to {
                 opacity: 0.0;
-                transform: translateX(-240px);
+                transform: translateX(-60px);
             }
         }
         @keyframes secshowup2 {
             from {
                 opacity: 0.0;
-                transform: translateX(-240px);
+                transform: translateX(-60px);
             }
             to {
                 opacity: 1.0;
@@ -56,7 +56,7 @@
             }
             to {
                 opacity: 0.0;
-                transform: translateX(240px);
+                transform: translateX(60px);
             }
         }
     </style>
@@ -64,6 +64,7 @@
 </head>
 <body>
 <div id="largetitle">/Free DL/</div>
+<div id="container">
 <h1>免费下载</h1>
 <p>这里只列出部分可下载资源，其他内容可在我的 <a href="/index.html?secquery=filesvr">文件服务器</a> 或者 <a href="/redirect/onedrive_msft">OneDrive 网盘</a> 获取。</p>
 <h3><b><span id="o1" href="javascript:void(0)" onclick="display(sec1)">视频稿件</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="o2" href="javascript:void(0)" onclick="display(sec2)">图片</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="o3" href="javascript:void(0)" onclick="display(sec3)">音频</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="o4" href="javascript:void(0)" onclick="display(sec4)">实用脚本</span><br><br></b></h3>
@@ -149,7 +150,7 @@
 <p>Vandows 系统主题包 <a href="https://github.com/WZQ02/vandows-theme">GitHub 仓库</a> <a href="https://wzq02.cf:1145/stuff/prev/%5B2021.5%5D%20Vandows%20%E4%B8%BB%E9%A2%98%E5%8C%85%20%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85.zip">直链下载 (主文件服务器)</a></p>
 <p>一些 Windows 实用脚本 <a href="https://wzq02.cf:1145/res/tools/%E4%B8%80%E4%BA%9Bwindows%E5%AE%9E%E7%94%A8%E8%84%9A%E6%9C%AC.zip">直链下载 (主文件服务器)</a></p>
 </div>
-<br><p><b><a href="javascript:void(0)" onclick="back()">返回主页</a></b></p>
+<br><p><b><a id="btm" href="javascript:void(0)" onclick="back()">返回主页</a></b></p></div>
 <script>
     var sec1 = document.getElementById("sec1");
     var sec2 = document.getElementById("sec2");
@@ -160,6 +161,7 @@
     highlightseclnk();
     suffixdetect();
     autochgthemecolor();
+    disable_btm();
     function back() {
         if (detectIEVer() <= 8.0) {
             window.location.href = "/old.html";
@@ -232,7 +234,6 @@
             document.body.style.fontFamily = "'Microsoft YaHei',微软雅黑";
         }
     }
-
     function getCookie(cname) {//cookie设置
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -246,6 +247,12 @@
         var color = getCookie('themecolor');
         if (color != "") {
             document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
+        }
+    }
+    function disable_btm() {
+        var url = window.location.href;
+        if (url.indexOf("do_not_show_btm") != -1) {
+            document.getElementById("btm").style.display = "none";
         }
     }
 </script>

@@ -1,0 +1,30 @@
+{
+    "stitle": "一些杂七杂八的",
+    "content": {
+        "sinfo1": "在线生成电棍鬼叫。项目原 GitHub 仓库地址 <a href=\"https://github.com/sakaneko117/HUOZI\"><c><b>https://github.com/sakaneko117/HUOZI</b></c></a>，UI 较原项目稍作修改。",
+        "slink1": {
+            "title": "在线生成电棍鬼叫",
+            "display_title": "→ *在线生成电棍鬼叫 / 活字印刷术在线版",
+            "href": "https://wzq02.cf/ottohzys"
+        },
+        "sinfo2": "日死李大鸟（魔改“吃掉小鹿乃”）<br>不再更新。新版见原作者个人主页 xingye.me。",
+        "slink2": {
+            "title": "日死李大鸟",
+            "display_title": "→ *小游戏: 吃掉李大鸟",
+            "href": "/demos/eatltx"
+        },
+        "sinfo3": "Flash 功能测试页。可用于检查浏览器是否支持 Flash。",
+        "slink3": {
+            "title": "测试 Flash",
+            "display_title": "→ 浏览器 Flash 支持测试",
+            "href": "/flashtest"
+        },
+        "sinfo4": "IP 归属地检测。",
+        "slink4": {
+            "title": "查看你的 IP 归属地",
+            "display_title": "→ 查看你的 IP 归属地",
+            "href": "javascript:void(0)",
+            "onclick": "createiframepmpt(\"/seeip/index.html?do_not_show_btm\",\"seeip\")"
+        }
+    }    
+}

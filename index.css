@@ -32,31 +32,34 @@ body {
 #page2 {
     display: none;
     position: relative;
-    top: 5vh;
+    top: 1vh;
     margin: auto;
-    width: 90%;
-    height: 88vh;
-    border-radius: 64px;
-    background-color: rgba(0, 0, 0, 0.05);
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-    /*backdrop-filter: blur(64px);*/
-    box-shadow: 0px 0px 16px rgba(0,0,0,0.25);
+    width: 100%;
+    height: 96vh;
     transition: 0.25s;
     overflow-x: hidden;
     overflow-y: hidden;
 }
 #page2 .sections{
     position: relative;
-    top: 0px;
     margin: auto;
-    height: calc(85% - 96px);
-    width: 90%;
+    height: calc(96% - 144px);
+    width: 576px;
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0px 0px 32px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 24px;
     overflow-x: hidden;
     transition: 0.25s;
 }
 a {
+    color: #aaaaff;
     text-decoration: none;
     transition: 0.25s;
+    font-weight: bold;
+}
+a:hover {
+    filter: brightness(120%);
 }
 a:active {
     filter: brightness(60%);
@@ -84,8 +87,9 @@ c:active {
     width: 14px;
     height: 14px;
     top: 2px;
-    border-radius: 7px 7px;
-    border: 1px solid #aaa;
+    border-radius: 9px 9px;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
     background-color: #777;
     opacity: 0.8;
     transition: 0.25s;
@@ -100,13 +104,13 @@ c:active {
 textrt {
     font-weight: bold;
     font-size: 16px;
+    text-align: right;
     color: #999;
     position: absolute;
     top: 16px;
     right: 16px;
     cursor: default;
-    animation: appear 0.4s 1;
-    transition: 0.25s;
+    animation: appear 1s cubic-bezier(0, 0.2, 0, 1) 1;
 }
 #lt {
     font-size: 18px;
@@ -127,19 +131,20 @@ textrt {
 }
 #links {
     position: absolute;
-    width: 360px;
-    left: 12px;
-    bottom: 12px;
-    animation: appear 2.5s cubic-bezier(0, 0.3, 0, 1) 1;
+    text-align: center;
+    width: 96vw;
+    left: 2vw;
+    bottom: 20px;
+    animation: appear 1.5s cubic-bezier(0, 0.4, 0, 1) 1;
 }
 #mainlnks a div {
     display: inline;
     position: relative;
     bottom: 0px;
-    border-radius: 8px;
-    padding: 6px 6px;
+    padding: 6px;
     opacity: 0.6;
     transition: 0.25s;
+    animation: lnksappear 0.4s cubic-bezier(0, 0.6, 0, 1) 1;
 }
 #mainlnks a div:hover {
     position: relative;
@@ -153,10 +158,9 @@ textrt {
 }
 #sectionchoice {
     position: relative;
-    top: 0px;
-    left: calc(50% - 160px);
-    border-radius: 8px;
-    padding: 6px 6px;
+    top: 12px;
+    text-align: center;
+    padding: 6px;
     transition: 0.25s;
 }
 #sectionchoice a div{
@@ -181,11 +185,10 @@ textrt {
 }
 #tip1 {
     width: 100%;
-    height: 50px;
-    background-color: rgba(127,127,127,0.6);
+    height: 40px;
+    background-color: rgba(95,95,95,0.8);
     backdrop-filter: blur(16px);
     text-align: center;
-    line-height: 150%;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -194,8 +197,8 @@ textrt {
 #tip1 span {
     color: #fff;
     position: relative;
-    top: 14px;
-    font-size: 16px;
+    top: 9px;
+    font-size: 14px;
 }
 #tip1 c {
     position: relative;
@@ -203,33 +206,35 @@ textrt {
 }
 #othlnks {
     display: none;
+    text-align: left;
     position: absolute;
-    width: 200px;
-    bottom: 70px;
-    left: 140px;
-    border-radius: 8px;
-    background-color: rgba(127,127,127,0.2);
+    width: 180px;
+    bottom: 64px;
+    left: calc(50vw - 4px);
+    border-radius: 12px;
+    background-color: rgba(255,255,255,0.7);
     backdrop-filter: blur(16px);
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 32px rgba(0,0,0,0.2);
     padding: 4px;
     animation: lnkshowup 0.25s cubic-bezier(0, 0.67, 0, 1) 1;
 }
 #othlnks div {
     display: block;
     position: relative;
-    width: 188px;
-    height: 18px;
-    top: -4px;
-    margin-top: 4px;
+    font-weight: normal;
+    width: 164px;
+    height: 20px;
+    top: -2px;
+    margin-top: 2px;
     border-radius: 6px;
-    padding: 6px;
+    padding: 8px;
     color: #333;
     background-color: rgba(255,255,255,0);
     transition: 0.25s;
 }
 #othlnks div:hover {
     color: black;
-    background-color: rgba(255,255,255,0.75);
+    background-color: rgba(127,127,127,0.35);
 }
 #othlnks div:active {
     background-color: rgba(0,0,0,0.5);
@@ -237,14 +242,14 @@ textrt {
 #cschooser {
     display: none;
     position: absolute;
-    width: 132px;
-    height: 36px;
+    width: 134px;
+    height: 38px;
     top: 54px;
-    right: 154px;
+    right: 64px;
     border-radius: 12px;
-    background-color: rgba(127,127,127,0.2);
+    background-color: rgba(255,255,255,0.7);
     backdrop-filter: blur(16px);
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 32px rgba(0,0,0,0.2);
     padding: 4px;
     animation: lnkshowup2 0.5s cubic-bezier(0, 0.67, 0, 1) 1;
 }
@@ -254,8 +259,9 @@ textrt {
     width: 14px;
     height: 14px;
     top: 14px;
-    border-radius: 7px 7px;
-    border: 1px solid #aaa;
+    border-radius: 9px 9px;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
     transition: 0.25s;
 }
 #cschooser span:hover {
@@ -286,8 +292,8 @@ textrt {
 }
 #centerpic {
     position: absolute;
-    top: calc(50% - 160px);
-    left: calc(50% - 160px);
+    top: calc(50vh - 160px);
+    left: calc(50vw - 160px);
     animation: icoshowup 1.2s cubic-bezier(0, 0.3, 0, 1) 1;
     transition: 0.25s;
 }
@@ -299,25 +305,24 @@ textrt {
 }
 #toscr2 {
     position: absolute;
-    /*top: calc(50% + 224px);*/
-    top: 75%;
-    left: calc(50% - 32px);
+    top: calc(77vh - 32px);
+    left: calc(50vw - 24px);
     animation: appear 2s 1;
     opacity: 0.4;
     transition: 0.25s;
 }
 #toscr2:hover{
     opacity: 0.8;
-    top: calc(75% + 8px);
+    top: calc(77vh - 24px);
 }
 #toscr2:active{
     opacity: 0.2;
-    top: calc(75% - 8px);
+    top: calc(77vh - 40px);
 }
 #toscr1 {
     position: relative;
     top: 0px;
-    left: calc(50% - 32px);
+    left: calc(50% - 24px);
     animation: appear 2s 1;
     opacity: 0.4;
     transition: 0.25s;
@@ -338,46 +343,44 @@ textrt {
     display: block;
 }
 .stitle {
-    font-size: 180px;
+    font-size: 36px;
     font-weight: bold;
-    opacity: 0.1;
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    text-align: center;
+    opacity: 0.8;
     transition: 1s;
 }
 .sinfo {
     font-size: 18px;
     position: relative;
-    top: calc(-48px + 8vh);
-    text-align: center;
+    top: 16px;
     line-height: 32px;
     transition: 0.25s;
 }
 .stitle2 {
     font-size: 24px;
-    font-weight: bold;
+    top: 16px;
     opacity: 0.6;
     position: relative;
-    text-align: center;
 }
 .stitle2:not(#slink) {
-    top: calc(-64px + 14vh);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 96px;
+}
+#slink_container {
+    padding: 12px;
 }
 #slink {
     position: relative;
     display: table;
-    top: calc(0px + 14vh);
+    top: 16px;
     transition: 0.25s;
     color: #fff;
     background-color: #555;
     background-image: linear-gradient(#616161, #555);
-    font-size: 20px;
-    line-height: 150%;
-    padding: 6px 14px;
+    font-size: 18px;
+    padding: 6px 12px;
     margin: 6px auto;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 #slink:hover {
     opacity: 1.0;
@@ -386,7 +389,7 @@ textrt {
     position: relative;
     width: 400px;
     margin: auto;
-    top: calc(-32px + 14vh);
+    top: 16px;
     box-shadow: 0px 8px 16px 16px rgba(0,0,0,0.15);
     border-radius: 8px;
 }
@@ -395,8 +398,8 @@ textrt {
 }
 #bgcon {
     position: absolute;
-    left: -50px;
-    top: -2.5px;
+    top: -3px;
+    right: 144px;
     opacity: 0.25;
     transition: 0.25s;
 }
@@ -405,6 +408,43 @@ textrt {
 }
 #bgcon:active {
     opacity: 1.0;
+}
+s {
+    opacity: 0.6;
+}
+.prompt {
+    position: absolute;
+    background-color: rgba(216,216,216,0.8);
+    border-radius: 16px;
+    box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.2);
+}
+.pmpt_closebtn {
+    position: relative;
+    background-color: #111;
+    opacity: 0.25;
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    float: right;
+    top: 16px;
+    right: -78px;
+    transition: 0.2s;
+    z-index: 1;
+}
+.pmpt_closebtn:hover {
+    opacity: 0.8;
+}
+.pmpt_closebtn:active {
+    filter: brightness(20%);
+}
+.pmpt_closebtn img {
+    filter: invert(100%);
+    scale: 0.7;
+}
+.prompt_text {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 24px;
 }
 @media (prefers-color-scheme: dark) {
     body { 
@@ -422,11 +462,11 @@ textrt {
     c {
         background-color: rgba(255, 255, 255, 0.1);
     }
-    #page2 {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-    }
     #links a div:not(#othlnks div) {
         filter: invert(100%);
+    }
+    #othlnks {
+        background-color: rgba(16,16,16,0.4);
     }
     #othlnks div {
         color: #CCC;
@@ -435,8 +475,17 @@ textrt {
         color: #fff;
         background-color: rgba(255,255,255,0.15);
     }
+    #cschooser {
+        background-color: rgba(16,16,16,0.4);
+    }
+    #cschooser span {
+        border: 2px solid #333;
+    }
     #sectionchoice {
         filter: invert(100%);
+    }
+    #page2 .sections {
+        background-color: rgba(16,16,16,0.4);
     }
     #tip1 {
         color: #777;
@@ -454,7 +503,7 @@ textrt {
         color: #FFF;
     }
     .stitle {
-        opacity: 0.25;
+        color: #FFF;
     }
     .stitle2 {
         color: #FFF;
@@ -471,37 +520,66 @@ textrt {
     #bgcon {
         filter: invert(100%);
     }
+    .prompt {
+        background-color: rgba(16,16,16,0.8);
+    }
+    .prompt_text {
+        filter: invert(100%);
+    }
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 524px) {
+    .pmpt_closebtn {
+        right: 16px;
+    }
+}
+@media screen and (max-width: 720px) {
     #tip1 {
         height: 74px;
     }
-    #sectionchoice {
-        top: -8px;
-    }
-    .stitle {
-        font-size: 90px;
-    }
     .sinfo {
-        top: calc(-48px + 8vh);
+        font-size: 16px;
         line-height: 28px;
     }
-    #page2 {
-        width: 95%;
-        border-radius: 32px;
-    }
     #page2 .sections{
-        top: -16px;
+        width: 80vw;
         height: calc(90% - 96px);
     }
 }
-@media screen and (min-width: 1280px) {
-    #page2 {
-        width: 1152px;
-        border-radius: 96px;
+@media screen and (max-width: 1024px) {
+    .largeprompt {
+        left: 3vw !important;
+        width: 94vw !important;
     }
-    .stitle {
-        font-size: 216px;
+}
+@media screen and (max-width: 1152px) {
+    .largeprompt .pmpt_closebtn {
+        right: 16px;
+    }
+}
+@media screen and (min-height: 864px) {
+    #page2 {
+        top: calc(26vh - 220px);
+        height: calc(48vh + 404px);
+    }
+    #page2 .sections{
+        top: calc(3vh - 26px);
+        height: calc(88% - 72px);
+    }
+    #toscr2 {
+        top: calc(50vh + 200px);
+    }
+    #toscr2:hover{
+        top: calc(50vh + 208px);
+    }
+    #toscr2:active{
+        top: calc(50vh + 192px);
+    }
+    #sectionchoice {
+        top: calc(6vh - 40px);
+    }
+    .largeprompt {
+        top: calc(50vh - 380px) !important;
+        height: 720px !important;
     }
 }
 @keyframes appear {
@@ -523,7 +601,7 @@ textrt {
 @keyframes lnkshowup {
     from {
         opacity: 0.0;
-        transform: translateY(60px);
+        transform: translateY(32px);
     }
     to {
         opacity: 1.0;
@@ -537,13 +615,13 @@ textrt {
     }
     to {
         opacity: 0.0;
-        transform: translateY(60px);
+        transform: translateY(32px);
     }
 }
 @keyframes lnkshowup2 {
     from {
         opacity: 0.0;
-        transform: translateY(-30px);
+        transform: translateY(-16px);
     }
     to {
         opacity: 1.0;
@@ -557,7 +635,7 @@ textrt {
     }
     to {
         opacity: 0.0;
-        transform: translateY(-30px);
+        transform: translateY(-16px);
     }
 }
 @keyframes icoshowup {
@@ -587,13 +665,13 @@ textrt {
     }
     to {
         opacity: 0.0;
-        transform: translateY(-240px);
+        transform: translateY(-90px);
     }
 }
 @keyframes pg2showup {
     from {
         opacity: 0.0;
-        transform: translateY(240px);
+        transform: translateY(90px);
     }
     to {
         opacity: 1.0;
@@ -607,13 +685,13 @@ textrt {
     }
     to {
         opacity: 0.0;
-        transform: translateY(240px);
+        transform: translateY(90px);
     }
 }
 @keyframes pg1showup {
     from {
         opacity: 0.0;
-        transform: translateY(-240px);
+        transform: translateY(-90px);
     }
     to {
         opacity: 1.0;
@@ -623,7 +701,7 @@ textrt {
 @keyframes secshowup {
     from {
         opacity: 0.0;
-        transform: translateX(240px);
+        transform: translateX(120px);
     }
     to {
         opacity: 1.0;
@@ -633,21 +711,21 @@ textrt {
 @keyframes secgo {
     from {
         opacity: 1.0;
-        transform: translateX(0px);
+        transform: scale(1);
     }
     to {
         opacity: 0.0;
-        transform: translateX(-240px);
+        transform: scale(0.8);
     }
 }
 @keyframes secshowup2 {
     from {
         opacity: 0.0;
-        transform: translateX(-240px);
+        transform: scale(0.8);
     }
     to {
         opacity: 1.0;
-        transform: translateX(0px);
+        transform: scale(1);
     }
 }
 @keyframes secgo2 {
@@ -657,7 +735,7 @@ textrt {
     }
     to {
         opacity: 0.0;
-        transform: translateX(240px);
+        transform: translateX(120px);
     }
 }
 @keyframes tipshow {
@@ -686,5 +764,21 @@ textrt {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+@keyframes lnksappear {
+    from {
+        bottom: -96px;
+    }
+    to {
+        bottom: 0px;
+    }
+}
+@keyframes textrtappear {
+    from {
+        top: -16px;
+    }
+    to {
+        top: 16px;
     }
 }

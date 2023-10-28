@@ -10,15 +10,16 @@
     <link rel="stylesheet" href="" id="color_scheme">
 </head>
 <body>
-<h1>查看 IP 地址和归属地</h1>
+<div id="container"><h1>查看 IP 地址和归属地</h1>
 
 <p>你的公网 IP 地址是：<span id="cip">未知</span>
 <p>你的 IP 归属地是：<span id="cname">未知</span></p>
 <p>这只是一个 demo，你的个人信息不会被上传。本页使用来自 ip-api.com 提供的 API 接口。</p>
 <p>如果你身在中国国内但仍显示国外，请禁用你的网络代理软件并刷新当前页面再试。</p>
-<br><p><b><a href="javascript:void(0)" onclick="back()">返回主页</a></b></p>
+<br><p><b><a id="btm" href="javascript:void(0)" onclick="back()">返回主页</a></b></p></div>
 <script>
     autochgthemecolor();
+    disable_btm();
     function getCookie(cname) {//cookie设置
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -34,11 +35,9 @@
             document.getElementById("color_scheme").href = `/css/docu_${color}.css`;
         }
     }
-    
     function back() {
         window.location.href = "/index.html?secquery=demos";
     }
-
     var url = "http://ip-api.com/json/?lang=zh-CN"
     var request = new XMLHttpRequest();
     request.open("get", url);
@@ -50,6 +49,12 @@
             var cname = info["country"]+" "+info["regionName"]+" "+info["city"];
             document.getElementById("cip").innerText = cip;
             document.getElementById("cname").innerText = cname;
+        }
+    }
+    function disable_btm() {
+        var url = window.location.href;
+        if (url.indexOf("do_not_show_btm") != -1) {
+            document.getElementById("btm").style.display = "none";
         }
     }
 </script>

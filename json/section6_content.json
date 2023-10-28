@@ -1,0 +1,12 @@
+{
+    "stitle": "关于本站",
+    "content": {
+        "sinfo": "本站的建站日志。",
+        "slink": {
+            "title": "前往本站建站日志",
+            "display_title": "→ 前往",
+            "href": "javascript:void(0)",
+            "onclick": "createiframepmpt(\"/log.html?do_not_show_btm\",\"log\")"
+        }
+    }    
+}

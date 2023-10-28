@@ -112,26 +112,18 @@ function animbg() {
         }
     }
     abspan.onmouseup = function() {
-        alert("Here are the tips:\n鼠标在本页上滑动时，图片会朝相反方向移动。\n单击本页空白处可更换背景（有 5 秒的冷却时间）。\n如果要更换背景功能使用的 api，在配色方案菜单中点击“更换背景图 API”，在弹出的窗口中填入你要使用的 API。\n（要换回默认 API 的话，在弹窗中填入空格即可）");
+        createalert("<h3>Here are the tips:</h3>鼠标在本页上滑动时，图片会朝相反方向移动。<br>单击本页空白处可更换背景（有 5 秒的冷却时间）。<br>如果要更换背景功能使用的 api，在配色方案菜单中点击“更换背景图 API”，在弹出的窗口中填入你要使用的 API。<br>（要换回默认 API 的话，在弹窗中填入空格即可）")
     }
     document.addEventListener("mousemove",function(e) {
-        //背景跟随鼠标的动画，这里弃用backgroundPosition而是改成transform，因为前者性能太烂，在我旧电脑上面能卡出翔
-        /*if (bgtimer1) {
-            return;
-        }
-        timer = setTimeout(function() {
-            //as.backgroundPositionX = "calc(50% - "+ ((e.clientX - window.innerWidth * 0.5) * 0.1) +"px)";
-            //as.backgroundPositionY = "calc(50% - "+ ((e.clientY - window.innerHeight * 0.5) * 0.1) +"px)";
-            as.transform = "translate("+ ((window.innerWidth * 0.5 - e.clientX) * 0.1) +"px, "+ ((window.innerHeight * 0.5 - e.clientY) * 0.1) +"px)";
-            bgtimer1 = null;
-        },500)*/
         if (lock2_animbg) {
             as.transform = "translate("+ ((window.innerWidth * 0.5 - e.clientX) * 0.1) +"px, "+ ((window.innerHeight * 0.5 - e.clientY) * 0.1) +"px) scale(1.12)";
         }
     })
-    document.getElementById("page2").style.backdropFilter = "blur(24px)";
+    for (var i=0; i<6; i++) {
+        document.getElementsByClassName("sections")[i].style.backdropFilter = "blur(24px)";
+    }
     document.getElementsByTagName("centerpic")[0].style.display = "none";
-    abspan.innerHTML = "<p>使用的图片 API: <br>" + animbgurl + "</p><p>站长不对从第三方调用图片的内容负责。<br>本地化占位文本1</p>";
+    abspan.innerHTML = "<p>使用的图片 API: <br>" + animbgurl + "</p><p>站长不对从第三方调用图片的内容负责。";
     abspan.style.textAlign = "right";
     document.getElementById("yabg").appendChild(animbg);
     document.getElementsByTagName("textrt")[0].appendChild(abspan);
@@ -140,9 +132,9 @@ function animbg() {
 }
 function cschooseraddbgoptions() {
     var bgoptions = document.createElement("div");
-    bgoptions.innerHTML = "<c onclick='promptcustombgurl()' style='position: relative; top:46px; left:4px;'>更换背景图 API</c>";
+    bgoptions.innerHTML = "<c onclick='promptcustombgurl()' style='position: relative; top:46px; left:4.5px;'>更换背景图 API</c>";
     document.getElementById("cschooser").appendChild(bgoptions);
-    document.getElementById("cschooser").style.height = "76px";
+    document.getElementById("cschooser").style.height = "78px";
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         bgoptions.style.color = "#aaa";
     } else {

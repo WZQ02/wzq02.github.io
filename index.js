@@ -80,15 +80,12 @@ function disabletip1() {//禁用顶部提示栏
     tip1.style.animation = "tipunshow cubic-bezier(0.4, 0, 1, 0.6) 0.4s 1";
     setTimeout(function(){tip1.style.display = "none";},"395");
 }
-/*function morestuffiscomingsoon() {
-    alert("More stuff is coming soon......");
-}*/
 var lock1 = 1;//引入锁，避免动画结束前重复上下页切换动作
 function scrolltopage2() {
     if (lock1) {
         lock1 = 0;
         scrolltopage2a();
-        setTimeout(function(){lock1 = 1}, "410");
+        setTimeout(function(){lock1 = 1}, "500");
     }
 }
 function scrolltopage2a() {//切换到下页
@@ -97,32 +94,30 @@ function scrolltopage2a() {//切换到下页
     var lnks = document.getElementById("links");
     var page2 = document.getElementById("page2");
     page2.classList.add('pagedisplay');
-    centerpic.style.animation = "pg1go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
-    toscr2.style.animation = "pg1go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
-    lnks.style.animation = "disappear 1s 1";
+    centerpic.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
+    toscr2.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
+    lnks.style.animation = "disappear 0.5s 1";
     hidecschooser();
     setTimeout(function(){
-        page2.style.animation = "pg2showup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
+        page2.style.animation = "pg2showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
         page2.style.display = "block";
         toscr2.style.display = "none";
         centerpic.style.display = "none";
-    },"400");
-    setTimeout(function(){lnks.style.display = "none";},"1000");
-    /*setTimeout(function(){morestuffiscomingsoon();},"800");
-    setTimeout(function(){scrolltopage1();},"800");*/
+    },"250");
+    setTimeout(function(){lnks.style.display = "none";},"500");
     var othlnks = document.getElementById("othlnks");
     var lt = document.getElementById("lt");
     if (othlnks.style.display == "block") {
-        setTimeout(function(){othlnks.style.animation = "lnkhide 0.2s cubic-bezier(1, 0, 1, 1) 1";},"200");
-        setTimeout(function(){othlnks.style.animation = ""; othlnks.style.display = "none"},"395");
-        setTimeout(function(){lt.style.transition = "1s"; lt.style.opacity = "1.0";},"400");
+        setTimeout(function(){othlnks.style.animation = "lnkhide 0.15s cubic-bezier(1, 0, 1, 1) 1";},"150");
+        setTimeout(function(){othlnks.style.animation = ""; othlnks.style.display = "none"},"245");
+        setTimeout(function(){lt.style.transition = "1s"; lt.style.opacity = "1.0";},"250");
     }
 }
 function scrolltopage1() {
     if (lock1) {
         lock1 = 0;
         scrolltopage1a();
-        setTimeout(function(){lock1 = 1}, "410");
+        setTimeout(function(){lock1 = 1}, "500");
     }
 }
 function scrolltopage1a() {//返回上页
@@ -131,16 +126,16 @@ function scrolltopage1a() {//返回上页
     var lnks = document.getElementById("links");
     var page2 = document.getElementById("page2");
     page2.classList.remove('pagedisplay');
-    page2.style.animation = "pg2go 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
+    page2.style.animation = "pg2go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
     setTimeout(function(){
         page2.style.display = "none";
         centerpic.style.display = "block";
         toscr2.style.display = "block";
         lnks.style.display = "block";
-    },"400");
-    centerpic.style.animation = "pg1showup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
-    toscr2.style.animation = "pg1showup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
-    lnks.style.animation = "appear 1s 1";
+    },"250");
+    centerpic.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
+    toscr2.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
+    lnks.style.animation = "appear 0.5s 1";
 }
 function secleft() {
     if (document.getElementById("page2").getAttribute('class') == "pagedisplay") {
@@ -253,10 +248,10 @@ function suffixdetecta() {//检测到地址栏参数的时候自动跳转到某�
         if (url.indexOf("=demos") != -1) {
             displaysec(section4);
         }
-        if (url.indexOf("=sitelog") != -1) {
+        if (url.indexOf("=freedl") != -1) {
             displaysec(section5);
         }
-        if (url.indexOf("=freedl") != -1) {
+        if (url.indexOf("=sitelog") != -1) {
             displaysec(section6);
         }
         url = url.replace(/(\?|#)[^'"]*/, '');//自动去除参数

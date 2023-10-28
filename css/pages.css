@@ -1,11 +1,21 @@
 body {
     animation: gra 0.6s ease 1;
-    background: #faeacc; 
+    background: #eee; 
     transition: 0.25s;
     font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial",黑体;
     color: #333;
-    text-align: center;
+    text-align: left;
     user-select: none;
+}
+#container {
+    background-color: #fff;
+    box-shadow: 0px 0px 32px rgba(0,0,0,0.4);
+    position: relative;
+    left: calc(50vw - 400px);
+    border-radius: 20px;
+    width: 720px;
+    padding: 32px;
+    transition: 0.25s;
 }
 ::-webkit-scrollbar {
     width: 6px;
@@ -25,7 +35,7 @@ body {
 a {
     text-decoration: none;
     transition: 0.25s;
-    color: #ddd !important;
+    color: #555;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 6px 8px;
     border-radius: 8px;
@@ -61,8 +71,11 @@ s {
         background: #252525; 
         color: #eeeeee;
     }
+    #container {
+        background-color: #202020;
+    }
     a {
-        color: #8080ff;
+        color: #ddd;
     }
     h4 {
         color: #aaa;
@@ -72,6 +85,14 @@ s {
     }
     ::-webkit-scrollbar-thumb:active {
         background-color: rgba(191,191,191,1);
+    }
+}
+@media screen and (max-width: 900px) {
+    #container {
+        left: calc(7.5vw - 32px);
+        border-radius: 20px;
+        width: 85vw;
+        padding: 24px;
     }
 }
 @keyframes gra {

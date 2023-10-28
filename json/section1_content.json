@@ -1,0 +1,19 @@
+{
+    "stitle": "个人博客",
+    "content": {
+        "sinfo": "WZQ'02 的个人博客。主要是一些个人的过往杂文。<br>Hexo 主题来自 <a href=\"https://github.com/fluid-dev/hexo-theme-fluid\"><c><b>hexo-theme-fluid</b></c></a> 项目。",
+        "screenshots": {
+            "pic1_png": {
+                "url": "images/screenshots/blog_2.png"
+            },
+            "pic1_webp": {
+                "url": "images/screenshots/blog_2.webp"
+            }
+        },
+        "slink": {
+            "title": "前往 WZQ'02 的个人博客",
+            "display_title": "→ 前往",
+            "href": "https://wzq02.github.io/blog"
+        }
+    }    
+}

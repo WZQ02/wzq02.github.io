@@ -41,148 +41,79 @@
     <div id="main">
         <div id="yabg"></div>
         <textrt>
-            <img src="icons/others/show_bg.svg" id="bgcon" height="28" width="28" title="enable/disable background picture" onclick="chgbgstate()"><div id="currentcs" title="color scheme" href="javascript:void(0)" onclick="showcschooser();"></div>&nbsp;&emsp;&nbsp;<c title="change language" href="javascript:void(0)" onclick="chglang()"><span id="chglang">target_language</span></c><span id="host_id">&nbsp;&emsp;by WZQ'02</span>
+            <img src="icons/others/show_bg.svg" id="bgcon" height="28" width="28" title="启用或禁用背景图片" onclick="chgbgstate()"><div id="currentcs" title="配色方案" href="javascript:void(0)" onclick="showcschooser();"></div>&nbsp;&emsp;&nbsp;<c title="更改语言" href="javascript:void(0)" onclick="chglang()"><span id="chglang">目标语言</span></c><span id="host_id"></span>
         </textrt>
         <centerpic>
             <picture id="centerpic">
                 <source srcset="images/centerpic/front_1.webp" class="centerpik" type="image/webp">
                 <img src="images/centerpic/front_1.png" class="centerpik" height="320" width="320" href="javascript:void(0)" onclick="onclickchgcenterpic()">
             </picture>
-            <img src="icons/others/screen2_new.svg" id="toscr2" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage2()">
+            <img src="icons/others/screen2_new.svg" id="toscr2" height="48" width="48" href="javascript:void(0)" onclick="scrolltopage2()">
         </centerpic>
-        <div id="tip1"><span><noscript>WZQ'02's site requires Javascript to work properly. Please <a href="https://www.enable-javascript.com/">enable Javascript</a>!</noscript></span></div>
+        <div id="tip1"><span><noscript>注意：你禁用了 Javascript，这会影响到本站的功能。前往此处查看如何启用 <a href="https://www.enable-javascript.com/">Javascript</a>。</noscript></span></div>
         <div id="links">
-            <textrt id="lt">
-                Find me on these sites:
-            </textrt>
+            <textrt id="lt"></textrt>
             <div id="mainlnks">
-                <a title="Bilibili" href="https://space.bilibili.com/12367945/"><div id="link2">
+                <a title="哔哩哔哩" href="https://space.bilibili.com/12367945/"><div id="link2">
                     <picture>
                         <source srcset="icons/links/bili_main.webp" type="image/webp"/>
-                        <img src="icons/links/bili_main.png" height="40" width="40"/>
+                        <img src="icons/links/bili_main.png" height="32" width="32"/>
                     </picture>
                 </div></a>
-                <a title="YouTube Channel" href="https://www.youtube.com/@wzq02/" class="outcn"><div id="link3">
+                <a title="YouTube 频道" href="https://www.youtube.com/@wzq02/" class="outcn"><div id="link3">
                     <picture>
                         <source srcset="icons/links/ytb_main.webp" type="image/webp"/>
-                        <img src="icons/links/ytb_main.png" height="40" width="40"/>
+                        <img src="icons/links/ytb_main.png" height="32" width="32"/>
                     </picture>
                 </div></a>
                 <a title="GitHub" href="https://github.com/WZQ02"><div id="link6">
                     <picture>
                         <source srcset="icons/links/github.webp" type="image/webp"/>
-                        <img src="icons/links/github.png" height="40" width="40"/>
+                        <img src="icons/links/github.png" height="32" width="32"/>
                     </picture>
                 </div></a>
-                <a title="AskBox" href="https://www.askbox.ink/h5/uu/89PDSQZV"><div id="link4">
+                <a title="提问箱" href="https://www.askbox.ink/h5/uu/89PDSQZV"><div id="link4">
                     <picture>
                         <source srcset="icons/links/question_box.webp" type="image/webp"/>
-                        <img src="icons/links/question_box.png" height="40" width="40"/>
+                        <img src="icons/links/question_box.png" height="32" width="32"/>
                     </picture>
                 </div></a>
-                <a title="Twitter" href="https://twitter.com/02Wzq/" class="outcn"><div id="link5">
+                <a title="推特（X）" href="https://twitter.com/02Wzq/" class="outcn"><div id="link5">
                     <picture>
                         <source srcset="icons/links/link_twi.webp" type="image/webp"/>
-                        <img src="icons/links/link_twi.png" height="40" width="40"/>
+                        <img src="icons/links/link_twi.png" height="32" width="32"/>
                     </picture>
                 </div></a>
-                <a title="Other sites" href="javascript:void(0)" onclick="lnklist()"><div id="link7">
+                <a title="其他站点" href="javascript:void(0)" onclick="lnklist()"><div id="link7">
                     <picture>
                         <source srcset="icons/links/link_others.webp" type="image/webp"/>
-                        <img src="icons/links/link_others.png" height="40" width="40"/>
+                        <img src="icons/links/link_others.png" height="32" width="32"/>
                     </picture>
                 </div></a>
             </div>
             <div id="othlnks">
-                <a title="Acfun Channel" href="https://www.acfun.cn/u/4352250"><div class="othlnk"><span id="othlnk1">Acfun</span></div></a>
-                <a title="Bilibili subchannel" href="https://space.bilibili.com/568299236/"><div class="othlnk"><span id="othlnk1">Bilibili subchannel</span></div></a>
-                <a title="Discord Server" href="https://discord.gg/Bpv4qaw" class="outcn"><div class="othlnk"><span id="othlnk1">Join my Discord Server</span></div></a>
-                <a title="QQ Group" href="https://jq.qq.com/?_wv=1027&k=JNxRzKEU"><div class="othlnk"><span id="othlnk1">Join my QQ group</span></div></a>
-                <a title="Twitch" href="https://www.twitch.tv/wzq02/" class="outcn"><div class="othlnk"><span id="othlnk1">Twitch</span></div></a>
+                <a title="Acfun 频道" href="https://www.acfun.cn/u/4352250"><div class="othlnk"><span id="othlnk1">Acfun 频道</span></div></a>
+                <a title="哔哩哔哩（sometroublemaker）" href="https://space.bilibili.com/568299236/"><div class="othlnk"><span id="othlnk1">哔哩哔哩（杂项频道）</span></div></a>
+                <a title="Discord 服务器" href="https://discord.gg/Bpv4qaw" class="outcn"><div class="othlnk"><span id="othlnk1">个人群（Discord）</span></div></a>
+                <a title="QQ 群" href="javascript:void(0)" onclick="createiframepmpt('https\:/\/jq.qq.com/?_wv=1027&k=JNxRzKEU','qq')"><div class="othlnk"><span id="othlnk1">个人群（QQ）</span></div></a>
+                <a title="Twitch 主页" href="https://www.twitch.tv/wzq02/" class="outcn"><div class="othlnk"><span id="othlnk1">Twitch 主页</span></div></a>
             </div>
         </div>
         <div id="page2">
-            <img src="icons/others/screen1_new.svg" id="toscr1" height="64" width="64" href="javascript:void(0)" onclick="scrolltopage1()">
+            <img src="icons/others/screen1_new.svg" id="toscr1" height="48" width="48" href="javascript:void(0)" onclick="scrolltopage1()">
+            <div class="sections" id="section1"></div>
+            <div class="sections" id="section2"></div>
+            <div class="sections" id="section3"></div>
+            <div class="sections" id="section4"></div>
+            <div class="sections" id="section5"></div>
+            <div class="sections" id="section6"></div>
             <div id="sectionchoice">
-                <a title="Blog" href="javascript:void(0)" onclick="displaysec(section1)"><div id="seclink1"><img src="icons/links/link_hexo.png" height="40" width="40"/></div></a>
-                <a title="File Server" href="javascript:void(0)" onclick="displaysec(section2)"><div id="seclink2"><img src="icons/links/link_filsvr.png" height="40" width="40"/></div></a>
-                <a title="WZQ02.TV" href="javascript:void(0)" onclick="displaysec(section3)"><div id="seclink3"><img src="icons/links/link_live.png" height="40" width="40"/></div></a>
-                <a title="Demo Pages" href="javascript:void(0)" onclick="displaysec(section4)"><div id="seclink4"><img src="icons/links/link_demos.png" height="40" width="40"/></div></a>
-                <a title="Site Log" href="javascript:void(0)" onclick="displaysec(section5)"><div id="seclink5"><img src="icons/links/link_logs.png" height="40" width="40"/></div></a>
-                <a title="Free DL" href="javascript:void(0)" onclick="displaysec(section6)"><div id="seclink6"><img src="icons/links/link_freedl.png" height="40" width="40"/></div></a>
-            </div>
-            <div class="sections" id="section1">
-                <div class="stitle">Blog</div>
-                <div class="sinfo">WZQ'02's personal blog. Mostly my previous articles.<br>Hexo theme from <a href="https://github.com/fluid-dev/hexo-theme-fluid"><c><b>hexo-theme-fluid</b></c></a> project.</div>
-                <div class="stitle2">Screenshots</div>
-                <div class="sscreenshots">
-                    <picture>
-                        <source srcset="images/screenshots/blog_2.webp" type="image/webp">
-                        <img src="images/screenshots/blog_2.png" width="100%" height="100%"/>
-                    </picture>
-                </div>
-                <a title="Head to WZQ02's Blog" href="https://wzq02.github.io/blog"><div class="stitle2" id="slink">→ Go</div></a>
-            </div>
-            <div class="sections" id="section2">
-                <div class="stitle">File Server</div>
-                <div class="sinfo">These file servers store some of my works and resources.<!--<br>There are two servers available: #1 is hosted on the same server that hosts this site;<br>#2 is hosted on my own computer, which is slower and unstable. (Keep in mind that #1 and #2 store different files)<br>--></div>
-                <div class="stitle2">Screenshots</div>
-                <div class="sscreenshots">
-                    <picture>
-                        <source srcset="images/screenshots/onedrive.webp" type="image/webp">
-                        <img src="images/screenshots/onedrive.png" width="100%" height="100%"/>
-                    </picture>
-                </div>
-                <a title="OneDrive" href="redirect/onedrive_msft"><div class="stitle2" id="slink">→ OneDrive</div></a>
-                <a title="Alternate File Server" href="https://wzq02.cf:1145"><div class="stitle2" id="slink">→ Alternate File Server<br></div></a>
-                <!--<a title="Head to File Server #2" href="https://wzq02.cf:1919"><div class="stitle2" id="slink">→ File Server #2</div></a>-->
-            </div>
-            <div class="sections" id="section3">
-                <div class="stitle">WZQ02.TV</div>
-                <div class="sinfo">A live broadcasting room based on nginx-rtmp.<br>If you want to use this room temporarily, please contact me.</div>
-                <div class="stitle2">Screenshots</div>
-                <div class="sscreenshots">
-                    <picture>
-                        <source srcset="images/screenshots/wzq02tv_1.webp" type="image/webp">
-                        <img src="images/screenshots/wzq02tv_1.png" width="100%" height="100%"/>
-                    </picture>
-                </div>
-                <a title="Head to WZQ02.TV" href="https://wzq02.cf/player/livewithchat"><div class="stitle2" id="slink">→ To WZQ02.TV</div></a>
-                <a title="Head to WZQ02's chatroom" href="http://wzq02.cf/chatroom1"><div class="stitle2" id="slink">→ To WZQ02's chatroom</div></a>
-            </div>
-            <div class="sections" id="section4">
-                <div class="stitle">Demo Pages</div>
-                <div class="sinfo"><!--简介就先略过了orz-->Note: links with asterisk* are pages NOT written by myself.</div>
-                <!--<div class="stitle2">Screenshots</div>
-                <div class="sscreenshots"></div>-->
-                <!--<a title="*基于 stable-diffusion-webui 和泄露的 novel.ai 模型。不保证一直上线。使用方法请参考B站、知乎上面的相关教程" href="https://wzq02.cf:1089/"><div class="stitle2" id="slink">→ *(不保证服务一直上线) novel.AI 插图生成免费版</div></a>-->
-                <a title="*项目原 GitHub 仓库地址 https://github.com/sakaneko117/HUOZI，UI 较原项目稍作修改。" href="https://wzq02.cf:831/"><div class="stitle2" id="slink">→ *在线生成电棍鬼叫 / 活字印刷术在线版</div></a>
-                <a title="*不再更新。新版见原作者个人主页 xingye.me" href="/demos/eatltx"><div class="stitle2" id="slink">→ *小游戏: 日死李大鸟！？（吃掉李大鸟）</div></a>
-                <!--<a title="*不再更新。头像都是 21 年年初的了。NOVA 指的是 NOVA 音 MAD 社。" href="https://wzq02.cf:810/"><div class="stitle2" id="slink">→ *小游戏: 合成 NOVA（合成大西瓜）<br></div></a>
-                <a title="*我后来才意识到里面的猫中毒不是嘉然的，因为我真不了解嘉然，摇了我8" href="https://wzq02.cf:893/liubing.html"><div class="stitle2" id="slink">→ 你大了？</div></a>
-                <a title="*多语言支持的脚本不知为啥出问题了，额" href="https://wzq02.cf:906/"><div class="stitle2" id="slink">→ *量子虫洞在线版</div></a>
-                <a title="*把之前用 Adobe Animate 做的动画导出成了 Canvas" href="https://wzq02.cf:893/fourthgraparrot.html"><div class="stitle2" id="slink">→ 四年级鹦鹉</div></a>
-                <a title="*字面意思" href="https://wzq02.cf:893/redzone.html"><div class="stitle2" id="slink">→ 李天香和 redzone（低技术笠</div></a>
-                <a title="*字面意思" href="https://wzq02.cf:893/sb.html"><div class="stitle2" id="slink">→ CSS 竹节虫</div></a>
-                <a title="*实际上，这个页面我刚建站不久写的，写这个只是为了练习 CSS（" href="https://wzq02.cf:893/amess.html"><div class="stitle2" id="slink">→ 转转</div></a>
-                <a title="*练习" href="https://wzq02.cf:893/cube1209.html"><div class="stitle2" id="slink">→ 旋转的立方体</div></a>
-                <a title="*呃" href="https://wzq02.cf:893/ehh"><div class="stitle2" id="slink">→ 额</div></a>-->
-                <a title="*测试当前浏览器对 Flash 的支持（不考虑使用 ruffle 的情况）" href="/flashtest"><div class="stitle2" id="slink">→ 浏览器 Flash 支持测试</div></a>
-                <a title="*查看你的 IP 归属地" href="/seeip"><div class="stitle2" id="slink">→ 查看你的 IP 归属地</div></a>
-            </div>
-            <div class="sections" id="section5">
-                <div class="stitle">Site Log</div>
-                <div class="sinfo">The log of this site.</div>
-                <!--<div class="stitle2">Screenshots</div>
-                <div class="sscreenshots"></div>-->
-                <a title="Head to site log" href="log.html"><div class="stitle2" id="slink">→ Go</div></a>
-            </div>
-            <div class="sections" id="section6">
-                <div class="stitle">Free DL</div>
-                <div class="sinfo">Archive of my previous video posts, and other stuff.</div>
-                <!--<div class="stitle2">Screenshots</div>
-                <div class="sscreenshots"></div>-->
-                <a title="Head to Free DL page" href="/freedl"><div class="stitle2" id="slink">→ Go</div></a>
+                <a title="博客" href="javascript:void(0)" onclick="displaysec(section1)"><div id="seclink1"><img src="icons/links/link_hexo.png" height="32" width="32"/></div></a>
+                <a title="文件服务器" href="javascript:void(0)" onclick="displaysec(section2)"><div id="seclink2"><img src="icons/links/link_filsvr.png" height="32" width="32"/></div></a>
+                <a title="WZQ02.TV" href="javascript:void(0)" onclick="displaysec(section3)"><div id="seclink3"><img src="icons/links/link_live.png" height="32" width="32"/></div></a>
+                <a title="杂项" href="javascript:void(0)" onclick="displaysec(section4)"><div id="seclink4"><img src="icons/links/link_demos.png" height="32" width="32"/></div></a>
+                <a title="DLC" href="javascript:void(0)" onclick="displaysec(section5)"><div id="seclink5"><img src="icons/links/link_freedl.png" height="32" width="32"/></div></a>
+                <a title="关于本站" href="javascript:void(0)" onclick="displaysec(section6)"><div id="seclink6"><img src="icons/links/link_logs.png" height="32" width="32"/></div></a>
             </div>
         </div>
         <div id="cschooser">
@@ -198,14 +129,14 @@
 <script src="scripts/iedetect.js"></script>
 <script src="scripts/cookie.js"></script>
 <script src="scripts/i18nextify.min.js"></script>
-<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-<!--<script src="https://unpkg.com/vue@next"></script>-->
 <script src="scripts/hammer.min.js"></script>
 <script src="scripts/colorscheme.js"></script>
 <script src="index.js"></script>
-<script src="scripts/hidegfsite.js"></script>
+<script src="scripts/section_generate.js"></script>
+<!--<script src="scripts/hidegfsite.js"></script>-->
 <script src="scripts/hmr_mp.js"></script>
 <script src="scripts/centerpic.js"></script>
+<script src="scripts/prompt.js"></script>
 <script src="scripts/bg.js"></script>
 <script src="scripts/ver.js"></script>
 <title>WZQ'02's site</title>

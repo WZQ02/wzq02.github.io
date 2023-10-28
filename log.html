@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="largetitle">/site log/</div>
-<h2>以下为本站建站日志：<br><br></h2>
+<div id="container"><h2>以下为本站建站日志：<br><br></h2>
 <h4>2021.5.14 本站点建成，<s>主页直接用宝塔面板默认页面改的。</s>同时上线了文件服务器。<br>
 五月下旬 主页新增暗色模式（可根据浏览器主题或系统主题变换），可以推 rtmp 直播流到本站了。<br>
 6.14 <s>在 freenom 搞到了域名 wzq02.tk（现已过期）</s>，自此不需要再用 IP 地址访问。<br>
@@ -83,8 +83,9 @@
 2.2 主页增加启用背景图片的按钮。（不藏着了）<br><!--看来我高估了大伙闲的程度，这两个月以来好像一直没人发现这个功能的存在-->
 2.12 “文件服务器”页新增了我个人 OneDrive 网盘的选项。（以后会考虑弃用原来的文件服务器）<br>
 <s>3.20 聊天室集成了 ChatGPT。（API 试用 5 月份到期，在此之后就用不了了）</s><br>
+10.28 更新网站界面样式。<br>
 <!--11.29 (隐藏功能) 主页新增溜冰功能，当在主页中央刷出栗子头画像时用鼠标长按栗子头（手机端无法触发），网站会随机播放音 MAD，再次长按可停止播放。-->
-<br><a href="javascript:void(0)" onclick="back()">返回主页</a></h4>
+<br><a id="btm" href="javascript:void(0)" onclick="back()">返回主页</a></h4></div>
 <script>
     function back() {
         //var lang = navigator.language;
@@ -103,7 +104,7 @@
         }
         return parseFloat (ua.substring (v + 5,ua.indexOf (";", v)));
     }
-
+    disable_btm();
     autochgthemecolor();
     function getCookie(cname) {//cookie设置
         var name = cname + "=";
@@ -118,6 +119,12 @@
         var color = getCookie('themecolor');
         if (color != "") {
             document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
+        }
+    }
+    function disable_btm() {
+        var url = window.location.href;
+        if (url.indexOf("do_not_show_btm") != -1) {
+            document.getElementById("btm").style.display = "none";
         }
     }
 </script>
