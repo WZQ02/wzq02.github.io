@@ -4,7 +4,7 @@
 	"YouTube Channel": "YouTube 频道",
 	"GitHub": "GitHub",
 	"AskBox": "提问箱",
-	"Twitter": "推特",
+	"Twitter": "推特 (X)",
 	"Other sites": "其他站点",
 	"Acfun": "Acfun 频道",
 	"Acfun Channel": "Acfun 频道",
@@ -66,5 +66,7 @@
 	"Welcome to WZQ02's site! If pages aren't displayed correctly, please clear your browser cache and refresh.": "欢迎来到 WZQ'02 的小站！如果网页没有正常显示，请清空浏览器缓存再刷新页面。",
 	"Don't show again": "不再显示",
 	"本地化占位文本1": "",
-	"enable/disable background picture": "启用或禁用背景图片"
+	"enable/disable background picture": "启用或禁用背景图片",
+	"Alternate File Server": "备用文件服务器",
+	"→ Alternate File Server": "→ 备用文件服务器"
 }
