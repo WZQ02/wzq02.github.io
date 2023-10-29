@@ -10,6 +10,9 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <style>
+    #mdcontent {
+        user-select: text !important;
+    }
     #mdcontent p {
         line-height: 160%;
     }
@@ -53,12 +56,27 @@
         if (url.indexOf("mdname=") != -1) {
             var mdname = (url.slice(url.indexOf("mdname=")+7));
             getmdfile(mdname)
+        } else if (url.indexOf("mdname2=") != -1) {
+            var mdname = (url.slice(url.indexOf("mdname2=")+8));
+            getmdfile2(mdname)
         }
     }
     function getmdfile(mdname) {
         var request = new XMLHttpRequest();
         var mdc;
         request.open("get", "/md/"+mdname+".md");
+        request.send(null);
+        request.onload = function () {
+            if (request.status == 200) {
+                mdc = request.responseText;
+                rendermd(mdc);
+            }
+        }
+    }
+    function getmdfile2(mdname) {//外部md文件
+        var request = new XMLHttpRequest();
+        var mdc;
+        request.open("get", mdname);
         request.send(null);
         request.onload = function () {
             if (request.status == 200) {
