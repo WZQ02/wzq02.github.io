@@ -128,11 +128,12 @@ function animbg() {
     document.getElementById("yabg").appendChild(animbg);
     document.getElementsByTagName("textrt")[0].appendChild(abspan);
     cschooseraddbgoptions();
-    document.getElementById("bgcon").setAttribute('src',"icons/others/no_bg.svg");
+    document.getElementById("bgcon").style.opacity = "0.6";
+    document.getElementById("bgcon").title = "禁用背景图片";
 }
 function cschooseraddbgoptions() {
     var bgoptions = document.createElement("div");
-    bgoptions.innerHTML = "<c onclick='promptcustombgurl()' style='position: relative; top:46px; left:4.5px;'>更换背景图 API</c>";
+    bgoptions.innerHTML = "<c onclick='promptcustombgurl2()' style='position: relative; top:46px; left:4.5px;'>更换背景图 API</c>";
     document.getElementById("cschooser").appendChild(bgoptions);
     document.getElementById("cschooser").style.height = "78px";
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -141,11 +142,20 @@ function cschooseraddbgoptions() {
         bgoptions.style.color = "#444";
     }
 }
-function promptcustombgurl() {
+function promptcustombgurl() {//弃用
     var str=prompt("请填入你要使用的图片 API: (如需改回默认请填入空格)");
     if (str) {
         custombgurl(str)
     }
+}
+function promptcustombgurl2() {
+    createalert("<h3>更换背景图 API</h3><input type='text' id='custom_bg_url' placeholder='请填入你要使用的图片 API：' style='font-size: 16px; width: 264px; line-height: 32px; border: 1px #aaa; border-radius: 6px'></input><c style='position: relative; top: 24px;' href='javascript:void(0)' onclick='promptcustombgurl3();'>更换</c><c style='position: relative; top: 24px; left:8px;' href='javascript:void(0)' onclick=\"custombgurl('')\";>还原为默认</c>",180)
+}
+function promptcustombgurl3() {
+    var str = document.getElementById('custom_bg_url');
+	if (str.value) {
+		custombgurl(str.value);
+	}
 }
 function custombgurl(a) {
     setCookie('bgurl',a,365);

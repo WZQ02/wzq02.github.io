@@ -1,7 +1,24 @@
 {
-    "stitle": "个人博客",
+    "stitle": "杂谈 / 博客 / 瞎扯淡",
     "content": {
-        "sinfo": "WZQ'02 的个人博客。主要是一些个人的过往杂文。<br>Hexo 主题来自 <a href=\"https://github.com/fluid-dev/hexo-theme-fluid\"><c><b>hexo-theme-fluid</b></c></a> 项目。",
+        "sinfo1": "以下是我之前写的一些短文：（嗯对，我打算直接把这个个人主页当成博客站了）<br>",
+        "sinfo2": "<p><a href='javascript:void(0)' onclick='showmdcontent()'><c><b id='md_expand'>展开</b></c></a></p>",
+        "article_shortcut1": {
+            "title": "如何使用 youtube-dl 下载油管上的视频",
+            "date": "2022/8/16",
+            "mdname": "220816"
+        },
+        "article_shortcut2": {
+            "title": "上一篇文章的后续想法",
+            "date": "2022/6/1",
+            "mdname": "220601"
+        },
+        "article_shortcut3": {
+            "title": "我对于“蘑菇大战”事件的真实看法",
+            "date": "2021/9/17",
+            "mdname": "210917"
+        },
+        "sinfo3": "<br>下面这个是我原来在 GitHub Pages 上搭建的个人博客，基于 Hexo。这里面有我更早时期瞎写的一些东西。<br>Hexo 主题来自 <a href=\"https://github.com/fluid-dev/hexo-theme-fluid\"><c><b>hexo-theme-fluid</b></c></a> 项目。",
         "screenshots": {
             "pic1_png": {
                 "url": "images/screenshots/blog_2.png"
@@ -10,7 +27,7 @@
                 "url": "images/screenshots/blog_2.webp"
             }
         },
-        "slink": {
+        "slink1": {
             "title": "前往 WZQ'02 的个人博客",
             "display_title": "→ 前往",
             "href": "https://wzq02.github.io/blog"

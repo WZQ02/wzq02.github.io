@@ -48,7 +48,7 @@ function section_addstuff(sec_num,sc_keys,sc_values) {//section中添加内容
                 slink.href = Object.values(sc_values[i])[2];
                 if (Object.values(sc_values[i])[3]) {
                     var slk_command = Object.values(sc_values[i])[3];
-                    slink.onclick = function(){eval(slk_command);console.log(slk_command)};
+                    slink.onclick = function(){eval(slk_command);};
                 }
                 slink.className = "stitle2";
                 slink.id = "slink";
@@ -76,6 +76,18 @@ function section_addstuff(sec_num,sc_keys,sc_values) {//section中添加内容
                 ss_pic_png.style.height = "100%";
                 current_sec.getElementsByClassName("ss_pic")[0].appendChild(ss_pic_webp);
                 current_sec.getElementsByClassName("ss_pic")[0].appendChild(ss_pic_png)
+            }
+            if (sc_keys[i].indexOf("article_shortcut") != -1) {
+                var a_sc = document.createElement("div");
+                var a_sc_text = document.createElement("div");
+                a_sc.className = "article_shortcut";
+                a_sc_text.className = "article_shortcut_text";
+                var mdtitle = Object.values(sc_values[i])[0];
+                var mddate = Object.values(sc_values[i])[1];
+                var mdname = Object.values(sc_values[i])[2];
+                a_sc_text.innerHTML = "<div href='javascript:void(0)' onclick='createmdprompt("+mdname+")'><mdtitle>"+mdtitle+"</mdtitle><br><mddate>"+mddate+"</mddate></div>";
+                current_sec.appendChild(a_sc);
+                a_sc.appendChild(a_sc_text);
             }
         } else {
             break;

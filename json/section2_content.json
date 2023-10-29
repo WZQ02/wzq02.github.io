@@ -1,7 +1,7 @@
 {
     "stitle": "个人网盘",
     "content": {
-        "sinfo": "目前我主要把自己的一些要共享出来的东西存在 OneDrive 网盘。你可以前往下载里面的文件。",
+        "sinfo1": "目前我主要把自己的一些要共享出来的东西存在 OneDrive 网盘。你可以前往下载里面的文件。",
         "screenshots": {
             "pic1_png": {
                 "url": "images/screenshots/onedrive.png"
@@ -15,6 +15,7 @@
             "display_title": "→ OneDrive",
             "href": "redirect/onedrive_msft"
         },
+        "sinfo2": "之前在本站服务器上也搭建过一个网盘，不过因为本站服务器存储空间太小，我就没怎么去用了：",
         "slink2": {
             "title": "旧文件服务器",
             "display_title": "→ 旧文件服务器",
