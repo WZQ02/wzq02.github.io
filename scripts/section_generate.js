@@ -35,62 +35,79 @@ function section_addstuff(sec_num,sc_keys,sc_values) {//section中添加内容
     for (var i=0; i<16; i++) {
         if (sc_keys[i]) {
             if (sc_keys[i].indexOf("sinfo") != -1) {
-                var sinfo = document.createElement("div");
-                sinfo.className = "sinfo";
-                sinfo.innerHTML = sc_values[i];
-                current_sec.appendChild(sinfo);
+                createsinfo(i,current_sec)
             }
             if (sc_keys[i].indexOf("slink") != -1) {
-                var slink_container = document.createElement("div");
-                var slink = document.createElement("a");
-                slink.title = Object.values(sc_values[i])[0];
-                slink.innerText = Object.values(sc_values[i])[1];
-                slink.href = Object.values(sc_values[i])[2];
-                if (Object.values(sc_values[i])[3]) {
-                    var slk_command = Object.values(sc_values[i])[3];
-                    slink.onclick = function(){eval(slk_command);};
-                }
-                slink.className = "stitle2";
-                slink.id = "slink";
-                slink_container.id = "slink_container";
-                current_sec.appendChild(slink_container);
-                slink_container.appendChild(slink);
+                createslink(i,current_sec)
             }
             if (sc_keys[i].indexOf("screenshots") != -1) {
-                var stitle2 = document.createElement("div");
-                var sscreenshots = document.createElement("div");
-                stitle2.className = "stitle2";
-                stitle2.innerText = "屏幕截图";
-                sscreenshots.className = "sscreenshots";
-                current_sec.appendChild(stitle2);
-                current_sec.appendChild(sscreenshots);
-                var ss_pic = document.createElement("picture");
-                ss_pic.className = "ss_pic";
-                current_sec.getElementsByClassName("sscreenshots")[0].appendChild(ss_pic);
-                var ss_pic_webp = document.createElement("source");
-                var ss_pic_png = document.createElement("img");
-                ss_pic_webp.srcset = Object.values(Object.values(sc_values[i])[1])[0];
-                ss_pic_webp.type = "image/webp";
-                ss_pic_png.src = Object.values(Object.values(sc_values[i])[0])[0];
-                ss_pic_png.style.width = "100%";
-                ss_pic_png.style.height = "100%";
-                current_sec.getElementsByClassName("ss_pic")[0].appendChild(ss_pic_webp);
-                current_sec.getElementsByClassName("ss_pic")[0].appendChild(ss_pic_png)
+                createsscreenshots(i,current_sec)
             }
             if (sc_keys[i].indexOf("article_shortcut") != -1) {
-                var a_sc = document.createElement("div");
-                var a_sc_text = document.createElement("div");
-                a_sc.className = "article_shortcut";
-                a_sc_text.className = "article_shortcut_text";
-                var mdtitle = Object.values(sc_values[i])[0];
-                var mddate = Object.values(sc_values[i])[1];
-                var mdname = Object.values(sc_values[i])[2];
-                a_sc_text.innerHTML = "<div href='javascript:void(0)' onclick='createmdprompt("+mdname+")'><mdtitle>"+mdtitle+"</mdtitle><br><mddate>"+mddate+"</mddate></div>";
-                current_sec.appendChild(a_sc);
-                a_sc.appendChild(a_sc_text);
+                createarticleshort(i,current_sec)
             }
         } else {
             break;
         }
     }
+}
+
+function createsinfo(i,current_sec) {
+    var sinfo = document.createElement("div");
+    sinfo.className = "sinfo";
+    sinfo.innerHTML = sc_values[i];
+    current_sec.appendChild(sinfo);
+}
+
+function createslink(i,current_sec) {
+    var slink_container = document.createElement("div");
+    var slink = document.createElement("a");
+    slink.title = Object.values(sc_values[i])[0];
+    slink.innerText = Object.values(sc_values[i])[1];
+    slink.href = Object.values(sc_values[i])[2];
+    slink.className = "stitle2";
+    slink.id = "slink";
+    slink_container.id = "slink_container";
+    current_sec.appendChild(slink_container);
+    slink_container.appendChild(slink);
+    if (Object.values(sc_values[i])[3]) {
+        var slk_command = Object.values(sc_values[i])[3];
+        slink.onclick = function(){eval(slk_command);};
+        console.log(slink);
+    }
+}
+
+function createsscreenshots(i,current_sec) {
+    var stitle2 = document.createElement("div");
+    var sscreenshots = document.createElement("div");
+    stitle2.className = "stitle2";
+    stitle2.innerText = "屏幕截图";
+    sscreenshots.className = "sscreenshots";
+    current_sec.appendChild(stitle2);
+    current_sec.appendChild(sscreenshots);
+    var ss_pic = document.createElement("picture");
+    ss_pic.className = "ss_pic";
+    current_sec.getElementsByClassName("sscreenshots")[0].appendChild(ss_pic);
+    var ss_pic_webp = document.createElement("source");
+    var ss_pic_png = document.createElement("img");
+    ss_pic_webp.srcset = Object.values(Object.values(sc_values[i])[1])[0];
+    ss_pic_webp.type = "image/webp";
+    ss_pic_png.src = Object.values(Object.values(sc_values[i])[0])[0];
+    ss_pic_png.style.width = "100%";
+    ss_pic_png.style.height = "100%";
+    current_sec.getElementsByClassName("ss_pic")[0].appendChild(ss_pic_webp);
+    current_sec.getElementsByClassName("ss_pic")[0].appendChild(ss_pic_png)
+}
+
+function createarticleshort(i,current_sec) {
+    var a_sc = document.createElement("div");
+    var a_sc_text = document.createElement("div");
+    a_sc.className = "article_shortcut";
+    a_sc_text.className = "article_shortcut_text";
+    var mdtitle = Object.values(sc_values[i])[0];
+    var mddate = Object.values(sc_values[i])[1];
+    var mdname = Object.values(sc_values[i])[2];
+    a_sc_text.innerHTML = "<div href='javascript:void(0)' onclick='createmdprompt("+mdname+")'><mdtitle>"+mdtitle+"</mdtitle><br><mddate>"+mddate+"</mddate></div>";
+    current_sec.appendChild(a_sc);
+    a_sc.appendChild(a_sc_text);
 }

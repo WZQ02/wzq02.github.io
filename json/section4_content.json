@@ -14,17 +14,19 @@
             "href": "https://wzq02.cf/demos/eatltx"
         },
         "sinfo3": "Flash 功能测试页。可用于检查浏览器是否支持 Flash。",
+        
         "slink3": {
             "title": "测试 Flash",
             "display_title": "→ 浏览器 Flash 支持测试",
-            "href": "https://wzq02.cf/flashtest"
+            "href": "javascript:void(0)",
+            "onclick": "createobjpmpt(\"https://wzq02.cf/flashtest?do_not_show_btm\",\"seeip\")"
         },
         "sinfo4": "IP 归属地检测。",
         "slink4": {
             "title": "查看你的 IP 归属地",
             "display_title": "→ 查看你的 IP 归属地",
             "href": "javascript:void(0)",
-            "onclick": "createiframepmpt(\"/seeip/index.html?do_not_show_btm\",\"seeip\")"
+            "onclick": "createobjpmpt(\"/seeip/index.html?do_not_show_btm\",\"seeip\")"
         }
     }    
 }

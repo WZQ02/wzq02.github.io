@@ -2,14 +2,14 @@
     "stitle": "关于本站",
     "content": {
         "sinfo1": "个人主页，同时也是我瞎几把写的练手网站。主要用来展示我在各个社交平台的账号啥的。",
-        "sinfo2": "网站代码部署在 <a href='https://wzq02.cf'><c style='padding: 4px 8px;'><b>wzq02.cf</b></c></a> 和 <a href='https://wzq02.github.io'><c style='padding: 4px 8px;'><b>wzq02.github.io</b></c></a>。GitHub 仓库见 <a href='https://github.com/WZQ02/wzq02.github.io'><c style='padding: 4px 8px; position: relative; top: 4px;'><b>WZQ02/wzq02.github.io</b></c></a>。<br>",
-        "sinfo3": "<br>网站最后更新日期：<span id='site_last_updated'></span>",
+        "sinfo2": "网站代码部署在 <a href='https://wzq02.cf'><c style='padding: 4px 8px;'><b>wzq02.cf</b></c></a> 和 <a href='https://wzq02.github.io'><c style='padding: 4px 8px;'><b>wzq02.github.io</b></c></a>。GitHub 仓库见 <a href='https://github.com/WZQ02/wzq02.github.io'><c style='padding: 4px 8px; position: relative; top: 4px;'><b>WZQ02/wzq02.github.io</b></c></a>。<br><br>",
+        "sinfo3": "<p style='font-size: 16px; font-weight:bold; opacity:0.6; line-height:28px;' href='javascript:void(0)' onclick='showstitle13()'>网站最后更新日期：<span id='site_last_updated'></span></p>",
         "sinfo4": "<p style='font-size: 16px; font-weight:bold; opacity:0.6; line-height:28px;'>当前浏览器 User Agent：<span id='user_agent_info'></span></p>",
         "slink": {
             "title": "查看本站建站日志",
             "display_title": "查看本站建站日志",
             "href": "javascript:void(0)",
-            "onclick": "createiframepmpt(\"/log.html?do_not_show_btm\",\"log\")"
+            "onclick": "createobjpmpt(\"/log.html?do_not_show_btm\",\"log\")"
         }
     }    
 }

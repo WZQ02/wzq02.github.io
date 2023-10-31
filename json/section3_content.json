@@ -20,7 +20,7 @@
             "title": "前往 WZQ'02 的聊天室",
             "display_title": "→ 前往在线聊天室",
             "href": "javascript:void(0)",
-            "onclick": "createiframepmpt(\"https://wzq02.cf/chatroom1\",\"chatroom\")"
+            "onclick": "createobjpmpt(\"https://wzq02.cf/chatroom1\",\"chatroom\")"
         }
     }    
 }
