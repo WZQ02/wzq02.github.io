@@ -73,7 +73,6 @@ function createslink(i,current_sec) {
     if (Object.values(sc_values[i])[3]) {
         var slk_command = Object.values(sc_values[i])[3];
         slink.onclick = function(){eval(slk_command);};
-        console.log(slink);
     }
 }
 

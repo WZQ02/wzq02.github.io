@@ -1,5 +1,5 @@
 function createmdprompt(mdname) {
-    createprompt("md_pmpt",1,"large",1,0);
+    createprompt("md_pmpt",1,"large",1,0,1);
     getmdfile(mdname);
 }
 

@@ -1,4 +1,4 @@
-function createprompt(id,isclosebutton,size,isblur,isdragable) {//创建弹窗
+function createprompt(id,isclosebutton,size,isblur,isdragable,allowfullscreen) {//创建弹窗
     if (document.getElementsByClassName("prompt")[0]) {//若存在弹窗，立即销毁
         destroyprompt(1);
     }
@@ -10,11 +10,10 @@ function createprompt(id,isclosebutton,size,isblur,isdragable) {//创建弹窗
     prompt.className = "prompt";
     prompt.id = id;
     if (size == "small") {
-        prompt.style = "top: calc(50vh - 180px); left: calc(50vw - 160px); width: 320px; height: 320px";
+        prompt.className = "prompt smallprompt";
     }
     if (size == "large") {
         prompt.className = "prompt largeprompt";
-        prompt.style = "top: calc(50vh - 380px); left: calc(50vw - 480px); width: 960px; height: 83vh";
     }
     if (isblur) {//背景是否启用模糊
         prompt.style.backdropFilter = "blur(32px)";
@@ -45,6 +44,17 @@ function createprompt(id,isclosebutton,size,isblur,isdragable) {//创建弹窗
             })
         })
     }
+    if (allowfullscreen) {
+        var fullscrnbtn = document.createElement("div");
+        var fullscrnbtn_pic = document.createElement("img");
+        fullscrnbtn.className = "pmpt_closebtn fullscrnbtn";
+        fullscrnbtn.onclick = function(){prompt_fullscreen();};
+        fullscrnbtn_pic.src = "icons/others/fullscreen.svg";
+        fullscrnbtn_pic.id = "pmpt_fullscrnbtn";
+        document.getElementById("main");
+        document.getElementsByClassName("prompt")[0].appendChild(fullscrnbtn);
+        document.getElementsByClassName("fullscrnbtn")[0].appendChild(fullscrnbtn_pic)
+    }
 };
 
 function destroyprompt(instant) {//销毁弹窗
@@ -61,7 +71,7 @@ function destroyprompt(instant) {//销毁弹窗
 }
 
 function createiframepmpt(url,name) {//创建iframe弹窗
-    createprompt("iframe_pmpt",1,"large",0,0);
+    createprompt("iframe_pmpt",1,"large",0,0,1);
     var iframe = document.createElement("iframe");
     iframe.src = url;
     iframe.style = "position: relative; top: -56px; width: 100%; height: 100%; border-radius: 16px";
@@ -71,7 +81,7 @@ function createiframepmpt(url,name) {//创建iframe弹窗
 }
 
 function createalert(content,height) {//创建提示弹窗
-    createprompt("alert",1,"small",1,1);
+    createprompt("alert",1,"small",1,1,0);
     var current = document.getElementsByClassName("prompt")[0];
     if (height) {
         current.style.top = "calc(50vh - "+ height/2 +"px)";
@@ -83,11 +93,23 @@ function createalert(content,height) {//创建提示弹窗
     current.appendChild(innercon);
 }
 function createobjpmpt(url,name) {//创建object嵌入网页弹窗
-    createprompt("object_pmpt",1,"large",0,0);
+    createprompt("object_pmpt",1,"large",0,0,1);
     var obj_1 = document.createElement("object");
     obj_1.data = url;
     obj_1.style = "position: relative; top: -56px; width: 100%; height: 100%; border-radius: 16px";
     obj_1.name = name;
     obj_1.type = "text/html";
     document.getElementsByClassName("prompt")[0].appendChild(obj_1);
+}
+
+function prompt_fullscreen() {
+    var current = document.getElementsByClassName("prompt")[0];
+    var btn = document.getElementById("pmpt_fullscrnbtn");
+    if (current.className == "prompt fullscreenprompt") {
+        btn.src = "icons/others/fullscreen.svg";
+        current.className = "prompt largeprompt"
+    } else {
+        btn.src = "icons/others/fullscreen-exit.svg";
+        current.className = "prompt fullscreenprompt"
+    }
 }
