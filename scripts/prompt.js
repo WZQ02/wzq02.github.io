@@ -32,6 +32,7 @@ function createprompt(id,isclosebutton,size,isblur,isdragable,allowfullscreen) {
     }
     if (isdragable) {//是否可拖拽
         prompt.addEventListener("mousedown",function(e) {
+            prompt.style.transitionDuration = "0s";
             var x = e.clientX - prompt.offsetLeft;
             var y = e.clientY - prompt.offsetTop;
             document.addEventListener("mousemove",movepmpt)
@@ -41,6 +42,23 @@ function createprompt(id,isclosebutton,size,isblur,isdragable,allowfullscreen) {
             }
             document.addEventListener("mouseup",function () {
                 document.removeEventListener("mousemove",movepmpt)
+                prompt.style.transition = "";
+            })
+        });
+        prompt.addEventListener("touchstart",function(e) {
+            prompt.style.transitionDuration = "0s";
+            var touch = e.targetTouches[0];
+            var x = touch.clientX - prompt.offsetLeft;
+            var y = touch.clientY - prompt.offsetTop;
+            document.addEventListener("touchmove",movepmpt)
+            function movepmpt(f) {
+                var touch = f.targetTouches[0];
+                prompt.style.top = (touch.clientY - y) +"px";
+                prompt.style.left = (touch.clientX - x) +"px";
+            }
+            document.addEventListener("touchend",function () {
+                document.removeEventListener("touchmove",movepmpt)
+                prompt.style.transition = "";
             })
         })
     }

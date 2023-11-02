@@ -10,3 +10,15 @@ function showstitle13() {
         document.getElementsByClassName("stitle2")[13].style.display = ""
     }
 }
+
+lite();
+
+function lite() {
+    var url = window.location.href;
+    if (url.indexOf("lite_mode") != -1) {
+        setCookie("lite_mode",1,365);
+        window.location.href = "/test.html"
+    } else if (getCookie("lite_mode") == 1) {
+        window.location.href = "/test.html"
+    }
+}

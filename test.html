@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>WZQ'02 的小站</title>
+    <!--感觉我现在这个个人主页太花里胡哨了，所以随手做了个“省流版”。不保证所有东西能用。-->
+</head>
+<style>
+    body {
+        font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial","黑体";
+    }
+    #container {
+        position: relative;
+        width: 820px;
+        top: 16px;
+        left: calc(50vw - 410px);
+        line-height: 175%;
+    }
+    img {
+        max-width: 480px;
+    }
+    .article_shortcut {
+        display: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .stitle {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 225%;
+    }
+    .stitle2 {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 200%;
+    }
+    .article_shortcut_text mdtitle {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: #222; 
+            color: #fff;
+        }
+        a {
+            color: #aaf;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        #container {
+            width: 80vw;
+            left: 10vw;
+        }
+    }
+    @media screen and (max-width: 540px) {
+        #container {
+            width: 100vw;
+            top: 0px;
+            left: 0vw;
+        }
+    }
+</style>
+<html>
+    <div id="container">
+        <div id="title"><h1>WZQ'02 的小站</h1></div>
+        <p id="links">
+            <a href="https://space.bilibili.com/12367945/">哔哩哔哩&nbsp;</a>
+            <a href="https://www.youtube.com/@wzq02/">YouTube 频道&nbsp;</a>
+            <a href="https://github.com/WZQ02">GitHub&nbsp;</a>
+            <a href="https://www.askbox.ink/h5/uu/89PDSQZV">提问箱&nbsp;</a>
+            <a href="https://twitter.com/02Wzq/">推特 / X&nbsp;</a>
+            <a href="https://jq.qq.com/?_wv=1027&k=JNxRzKEU">QQ 群&nbsp;</a>
+        </p>
+        <div id="sections_container">
+            <div class="sections" id="section1"></div>
+            <div class="sections" id="section2"></div>
+            <div class="sections" id="section3"></div>
+            <div class="sections" id="section4"></div>
+            <div class="sections" id="section5"></div>
+            <div class="sections" id="section6"></div>
+        </div>
+        <p class="stitle2">
+            <a href="javascript:void(0)" onclick="exit_lite()">退出极简模式</a>
+        </p>
+    </div>
+</html>
+<script src="scripts/section_generate.js"></script>
+<script src="scripts/ver.js"></script>
+<script>
+    var url = window.location.href
+    url = url.replace('/test.html', '');
+    window.history.pushState({},0,url);
+    function showmdcontent() {
+        var a_sc_group = document.getElementsByClassName("article_shortcut");
+        if (a_sc_group[0].attributeStyleMap.get('display') == "block") {
+            for (i=0; i<64; i++) {
+                if (a_sc_group[i]) {
+                    a_sc_group[i].attributeStyleMap.set('display','none');
+                }
+            }
+            document.getElementById("md_expand").innerText = "展开";
+        } else {
+            for (i=0; i<64; i++) {
+                if (a_sc_group[i]) {
+                    a_sc_group[i].attributeStyleMap.set('display','block');
+                    a_sc_group[i].attributeStyleMap.set('animation','appear 0.4s ease 1');
+                }
+            }
+            document.getElementById("md_expand").innerText = "收起";
+        }
+    }
+    function createmdprompt(mdname) {
+        window.location.href = "/read/?mdname="+mdname
+    }
+    function createobjpmpt(url,name) {
+        if (url.indexOf("?do_not_show_btm") != -1) {
+            url = url.slice(0,-16)
+            console.log(url)
+        }
+        window.location.href = url
+    }
+    function exit_lite() {
+        document.cookie = "lite_mode=''"
+        location.reload()
+    }
+</script>

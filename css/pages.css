@@ -15,7 +15,6 @@ body {
     border-radius: 20px;
     width: 720px;
     padding: 32px;
-    transition: 0.25s;
 }
 ::-webkit-scrollbar {
     width: 6px;
