@@ -9,11 +9,10 @@ function createprompt(id,isclosebutton,size,isblur,isdragable,allowfullscreen) {
     var prompt = document.createElement("div");
     prompt.className = "prompt";
     prompt.id = id;
-    if (size == "small") {
-        prompt.className = "prompt smallprompt";
-    }
     if (size == "large") {
         prompt.className = "prompt largeprompt";
+    } else {
+        prompt.className = "prompt smallprompt";
     }
     if (isblur) {//背景是否启用模糊
         prompt.style.backdropFilter = "blur(32px)";

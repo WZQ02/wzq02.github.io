@@ -1,6 +1,8 @@
+* {
+    font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial","黑体";
+}
 body { 
     background: #ffffff; 
-    font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial","黑体";
     overflow-x: hidden;
     overflow-y: hidden;
     user-select: none;
@@ -53,33 +55,32 @@ body {
     transition: 0.25s;
 }
 a {
-    color: #333399;
+    color: #339;
     text-decoration: none;
     transition: 0.25s;
     font-weight: bold;
 }
 a:hover {
-    filter: brightness(120%);
+    color: #77e;
 }
 a:active {
-    filter: brightness(60%);
+    color: #115;
 }
 c {
-    color: #ddd;
-    background-color: rgba(0, 0, 0, 0.3);
+    color: #555;
+    background-color: rgba(0, 0, 0, 0);
     padding: 6px 8px;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.25s;
+    transition-property: background-color,color;
+    transition-duration: 0.25s;
 }
 c:hover {
-    color: #fff;
-    background-color: #555;
+    background-color: rgba(0, 0, 0, 0.15);
 }
 c:active {
-    filter: brightness(60%);
     color: #fff;
-    background-color: #555;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 #currentcs {
     display: inline-block;
@@ -215,7 +216,7 @@ textrt {
     background-color: rgba(255,255,255,0.7);
     backdrop-filter: blur(16px);
     box-shadow: 0px 0px 32px rgba(0,0,0,0.2);
-    padding: 4px;
+    padding: 3px 4px;
     animation: lnkshowup 0.25s cubic-bezier(0, 0.67, 0, 1) 1;
 }
 #othlnks div {
@@ -224,7 +225,7 @@ textrt {
     font-weight: normal;
     width: 164px;
     height: 20px;
-    top: -2px;
+    top: -1px;
     margin-top: 2px;
     border-radius: 6px;
     padding: 8px;
@@ -346,23 +347,20 @@ textrt {
     font-size: 36px;
     font-weight: bold;
     opacity: 0.8;
-    transition: 1s;
 }
 .sinfo {
     font-size: 18px;
     position: relative;
     top: 16px;
     line-height: 32px;
-    transition: 0.25s;
 }
 .stitle2 {
-    font-size: 24px;
     top: 16px;
     opacity: 0.6;
     position: relative;
 }
 .stitle2:not(#slink) {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     line-height: 96px;
 }
@@ -370,6 +368,7 @@ textrt {
     padding: 12px;
 }
 #slink {
+    
     position: relative;
     display: table;
     top: 16px;
@@ -378,23 +377,28 @@ textrt {
     background-color: #555;
     background-image: linear-gradient(#616161, #555);
     box-shadow: 0px 0px 4px #000;
-    font-size: 18px;
-    padding: 6px 12px;
+    font-size: 17px;
+    padding: 8px 14px;
     margin: 6px auto;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 #slink:hover {
     opacity: 1.0;
 }
+#slink:active {
+    scale: 0.95;
+    filter: brightness(45%)
+}
 .sscreenshots {
     position: relative;
-    width: 400px;
+    max-width: 400px;
     margin: auto;
     top: 16px;
     box-shadow: 0px 8px 16px 16px rgba(0,0,0,0.15);
     border-radius: 8px;
 }
 .sscreenshots picture img {
+    max-width: 100%;
     border-radius: 8px;
 }
 #bgcon {
@@ -445,7 +449,7 @@ s {
 }
 .pmpt_closebtn img {
     filter: invert(100%);
-    scale: 0.7;
+    scale: 0.5;
 }
 .prompt_text {
     font-size: 16px;
@@ -465,21 +469,22 @@ s {
 }
 .mdpmpt p img {
     max-width: 100%;
+    margin: 0 auto;
 }
 .article_shortcut {
-    display: none;
     position: relative;
     width: 100%;
     height: 88px;
+    animation: appear 0.4s ease 1;
 }
 .article_shortcut_text {
     position: relative;
     top: 20px;
-    background-color: #eee;
-    background-image: linear-gradient(#eee,#e8e8e8);
+    background-color: rgba(255,255,255,0.4);
     border-radius: 8px;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     padding: 8px 16px;
+    white-space: nowrap;
     overflow: hidden;
     transition: 0.25s;
 }
@@ -493,10 +498,10 @@ s {
     opacity: 0.5;
 }
 .article_shortcut_text:hover {
-    filter: brightness(110%);
+    background-color: rgba(0,0,0,0.07);
 }
 .article_shortcut_text:active {
-    filter: brightness(40%);
+    background-color: rgba(0,0,0,0.25);
 }
 .smallprompt {
     position: absolute;
@@ -526,6 +531,48 @@ s {
 .fullscreenprompt .fullscrnbtn {
     right: -40px !important;
 }
+pre {
+    background-color: #222;
+    border: 2px solid #777;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: scroll;
+    line-height: normal;
+}
+code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 14px;
+}
+pre code {
+    color: #fff;
+}
+table {
+    background-color: rgba(127,127,127,0.6);
+}
+table th {
+    background-color: rgba(255,255,255,0.6);
+    padding: 4px 8px;
+}
+table td {
+    background-color: rgba(255,255,255,0.8);
+    padding: 4px 8px;
+}
+input {
+    background-color: rgba(255,255,255,0.2);
+    border: 1px #aaa;
+    outline: none;
+    border-radius: 6px;
+    padding: 0px 12px;
+    transition: 0.25s
+}
+input:focus {
+    background-color: rgba(255,255,255,0.65);
+}
+.prompt_text input {
+    font-size: 15px;
+    width: 248px;
+    line-height: 40px;
+}
 @media (prefers-color-scheme: dark) {
     body { 
         background: #252525; 
@@ -537,10 +584,24 @@ s {
         color: #565656;
     }
     a {
-        color: #aaaaff;
+        color: #aaf;
+    }
+    a:hover {
+        color: #eef;
+    }
+    a:active {
+        color: #559;
     }
     c {
-        background-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255,255,255,0.7);
+    }
+    c:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    c:active {
+        color: #000;
+        background-color: rgba(255, 255, 255, 0.75);
     }
     #links a div:not(#othlnks div) {
         filter: invert(100%);
@@ -607,12 +668,40 @@ s {
         color: #fff;
     }
     .article_shortcut_text {
-        background-color: #222;
-        background-image: linear-gradient(#1a1a1a,#222);
-        color: #eee;
+        background-color: rgba(0,0,0,0.4);
+        color: #fff
+    }
+    .article_shortcut_text:hover {
+        background-color: rgba(255,255,255,0.04);
+    }
+    .article_shortcut_text:active {
+        background-color: rgba(255,255,255,0.25);
+    }
+    table th {
+        background-color: rgba(0,0,0,0.6);
+        padding: 4px 8px;
+    }
+    table td {
+        background-color: rgba(0,0,0,0.8);
+        padding: 4px 8px;
+    }
+    input {
+        background-color: rgba(255,255,255,0.07);
+    }
+    input:focus {
+        background-color: rgba(255,255,255,0.2);
+    }
+    input::placeholder {
+        color: rgba(255,255,255,0.75)
     }
 }
 @media screen and (max-width: 524px) {
+    .stitle {
+        font-size: 32px;
+    }
+    textrt span:not(#chglang) {
+        font-size: 15px;
+    }
     .pmpt_closebtn {
         right: 16px;
     }

@@ -10,18 +10,54 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <style>
-    #mdcontent {
-        user-select: text !important;
+#mdcontent {
+    user-select: text !important;
+}
+#mdcontent p {
+    line-height: 160%;
+}
+#mdcontent p img {
+    max-width: 100%;
+}
+#mdcontent ol li {
+line-height: 160%;
+}
+pre {
+    background-color: #222;
+    border: 2px solid #777;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: scroll;
+    line-height: normal;
+}
+code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 14px;
+}
+pre code {
+    color: #fff;
+}
+table {
+    background-color: rgba(127,127,127,0.6);
+}
+table th {
+    background-color: rgba(255,255,255,0.6);
+    padding: 4px 8px;
+}
+table td {
+    background-color: rgba(255,255,255,0.8);
+    padding: 4px 8px;
+}
+@media (prefers-color-scheme: dark) {
+    table th {
+        background-color: rgba(0,0,0,0.6);
+        padding: 4px 8px;
     }
-    #mdcontent p {
-        line-height: 160%;
+    table td {
+        background-color: rgba(0,0,0,0.8);
+        padding: 4px 8px;
     }
-    #mdcontent p img {
-        max-width: 100%;
-    }
-    #mdcontent ol li {
-        line-height: 160%;
-    }
+}
 </style>
 <body>
 <div id="largetitle"></div>
@@ -29,7 +65,7 @@
     <div id="mdcontent"></div>
     <a id="btm" href="javascript:void(0)" onclick="back()">返回主页</a></h4>
 </div>
-<script src="/scripts/showdown.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
     function back() {
         window.location.href = "/index.html";
@@ -87,10 +123,26 @@
     }
     function rendermd(mdc) {
         var mdc_show = document.getElementById("mdcontent");
-        var converter = new showdown.Converter(),
         text = mdc,
-        html = converter.makeHtml(text);
+        html = marked.parse(text);
         mdc_show.innerHTML = html;
+        if (document.getElementsByTagName("h1")[0]) {
+            document.title = document.getElementsByTagName("h1")[0].innerText;
+        }
+        for (i=0; i<127; i++) {
+        if (mdc_show.childNodes[i]) {
+            if (typeof(mdc_show.childNodes[i].childNodes[0]) == "object") {
+                if (mdc_show.childNodes[i].childNodes[0].alt) {
+                    var alt_text = document.createElement("p");
+                    alt_text.innerText = mdc_show.childNodes[i].childNodes[0].alt;
+                    alt_text.style = "opacity: 0.75; text-align: center";
+                    mdc_show.childNodes[i].appendChild(alt_text);
+                }
+            }
+        } else {
+            break;
+        }
+        }
     }
 </script>
 </body>

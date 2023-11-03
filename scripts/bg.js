@@ -20,12 +20,12 @@ function show_background(url) {
     var as = animbg.style;
     animbg.id = "animbg";
     as.position = "absolute";
-    as.left = "0px";
-    as.top = "0px";
+    as.left = "-16px";
+    as.top = "-16px";
     as.backgroundSize = ("cover");
     as.backgroundPosition = ("50%, 50%")
-    as.width = "100vw";
-    as.height = "100vh";
+    as.width = "calc(100vw + 32px)";
+    as.height = "calc(100vh + 32px)";
     as.animation = "appear 2.5s 1";
     as.transition = "1.5s";
     as.filter = "brightness(100%) opacity(25%)";
@@ -42,7 +42,10 @@ function show_background(url) {
         textrt.style.opacity = "";
         links.style.opacity = "";
         cschooser.style.opacity = "";
-        as.transition = "1.5s";
+    };
+    window.onresize = function() {
+        as.transition = "";
+        setTimeout(function(){as.transition = "1.5s"},5)
     };
     abspan.style.transition = "0.25s";
     abspan.onmouseover = function() {
@@ -157,7 +160,7 @@ function cschooseraddbgoptions() {
     }
 }
 function promptcustombgurl2() {
-    createalert("<h3>更换背景图 API</h3><input type='text' id='custom_bg_url' placeholder='请填入你要使用的图片 API：' style='font-size: 16px; width: 264px; line-height: 32px; border: 1px #aaa; border-radius: 6px'></input><c style='position: relative; top: 24px;' href='javascript:void(0)' onclick='promptcustombgurl3();'>更换</c><c style='position: relative; top: 24px; left:8px;' href='javascript:void(0)' onclick=\"custombgurl('')\";>还原为默认</c>",180)
+    createalert("<h3 style='opacity: 0.75'>更换背景图 API</h3><input type='text' id='custom_bg_url' placeholder='请填入你要使用的图片 API：'></input><c style='position: relative; float: left; top: 16px;' href='javascript:void(0)' onclick='promptcustombgurl3();'>更换</c><c style='position: relative; top: 16px; float: right' href='javascript:void(0)' onclick=\"custombgurl('')\";>还原为默认</c>",180)
 }
 function promptcustombgurl3() {
     var str = document.getElementById('custom_bg_url');
