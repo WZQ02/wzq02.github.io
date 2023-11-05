@@ -43,8 +43,8 @@
 	"→ 旧文件服务器": "→ Alternate File Server",
 	"基于 nginx-rtmp 的自建直播间，我可能会在这里做视频直播。": "A live broadcasting room based on nginx-rtmp.",
 	"（虽然好像根本用不上就是了）": "",
-	"如果你打算租用这个直播间，请联系我。": "If you want to use this room temporarily, please contact me.",
-	"下面这个是一个基于 websocket 的聊天室，跟直播间页里的是同一个：": "Down there is a chatroom based on websocket:",
+	"如果你打算往这个直播间推流，请私信我以获取推流码。": "If you want to stream to this server, please contact me.",
+	"下面这个是一个基于 websocket 的聊天室。": "Down there is a chatroom based on websocket.",
 	"（之前还在这里面搞了个 ChatGPT 进去，不过我的 OpenAI API 试用到期了，所以用不了了）": "",
 	"前往 WZQ02.TV": "To WZQ02.TV",
 	"→ 前往 WZQ02.TV": "→ To WZQ02.TV",
@@ -72,5 +72,8 @@
 	"。": ". ",
 	"。GitHub 仓库见": ". Github repository at",
 	"查看本站建站日志": "Site Log (Chinese)",
-	"当前浏览器 User Agent：": "Browser User Agent: "
+	"当前浏览器 User Agent：": "Browser User Agent: ",
+	"是的，除了迁移业务代码，我还把聊天室的 UI 又重做了，因为我感觉原来那个 UI 太": "Also, if you wondered, I've done a user interface overhaul for this thing.",
+	"寄吧": "",
+	"丑了。": ""
 }

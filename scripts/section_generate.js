@@ -32,6 +32,7 @@ function createsection(sec_num,stitle_cont) {//创建section
 
 function section_addstuff(sec_num,sc_keys,sc_values) {//section中添加内容
     var current_sec = document.getElementById("section"+sec_num);
+    var j=0;
     for (var i=0; i<16; i++) {
         if (sc_keys[i]) {
             if (sc_keys[i].indexOf("sinfo") != -1) {
@@ -41,7 +42,8 @@ function section_addstuff(sec_num,sc_keys,sc_values) {//section中添加内容
                 createslink(i,current_sec)
             }
             if (sc_keys[i].indexOf("screenshots") != -1) {
-                createsscreenshots(i,current_sec)
+                createsscreenshots(i,current_sec,j);
+                j++
             }
             if (sc_keys[i].indexOf("article_shortcut") != -1) {
                 createarticleshort(i,current_sec)
@@ -76,7 +78,7 @@ function createslink(i,current_sec) {
     }
 }
 
-function createsscreenshots(i,current_sec) {
+function createsscreenshots(i,current_sec,j) {
     var stitle2 = document.createElement("div");
     var sscreenshots = document.createElement("div");
     stitle2.className = "stitle2";
@@ -84,18 +86,21 @@ function createsscreenshots(i,current_sec) {
     sscreenshots.className = "sscreenshots";
     current_sec.appendChild(stitle2);
     current_sec.appendChild(sscreenshots);
-    var ss_pic = document.createElement("picture");
-    ss_pic.className = "ss_pic";
-    current_sec.getElementsByClassName("sscreenshots")[0].appendChild(ss_pic);
-    var ss_pic_webp = document.createElement("source");
-    var ss_pic_png = document.createElement("img");
-    ss_pic_webp.srcset = Object.values(Object.values(sc_values[i])[1])[0];
-    ss_pic_webp.type = "image/webp";
-    ss_pic_png.src = Object.values(Object.values(sc_values[i])[0])[0];
-    ss_pic_png.style.width = "100%";
-    ss_pic_png.style.height = "100%";
-    current_sec.getElementsByClassName("ss_pic")[0].appendChild(ss_pic_webp);
-    current_sec.getElementsByClassName("ss_pic")[0].appendChild(ss_pic_png)
+    if (current_sec.getElementsByClassName("sscreenshots")[j]) {
+        var ss_pic = document.createElement("picture");
+        ss_pic.className = "ss_pic";
+        current_sec.getElementsByClassName("sscreenshots")[j].appendChild(ss_pic);
+        var ss_pic_webp = document.createElement("source");
+        var ss_pic_png = document.createElement("img");
+        ss_pic_webp.srcset = Object.values(Object.values(sc_values[i])[1])[0];
+        console.log(Object.values(Object.values(sc_values[i+j])[1])[0])
+        ss_pic_webp.type = "image/webp";
+        ss_pic_png.src = Object.values(Object.values(sc_values[i])[0])[0];
+        ss_pic_png.style.width = "100%";
+        ss_pic_png.style.height = "100%";
+        current_sec.getElementsByClassName("ss_pic")[j].appendChild(ss_pic_webp);
+        current_sec.getElementsByClassName("ss_pic")[j].appendChild(ss_pic_png)
+    }
 }
 
 function createarticleshort(i,current_sec) {

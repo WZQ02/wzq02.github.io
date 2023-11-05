@@ -1,26 +1,34 @@
 {
-    "stitle": "WZQ02.TV",
+    "stitle": "WZQ02.TV<span style='font-size: 20px'> @sometroublemaker's playground</span>",
     "content": {
-        "sinfo1": "基于 nginx-rtmp 的自建直播间，我可能会在这里做视频直播。<s>（虽然好像根本用不上就是了）</s><br>如果你打算租用这个直播间，请联系我。",
-        "screenshots": {
+        "sinfo1": "基于 nginx-rtmp 的自建直播间，我可能会在这里做视频直播。<s>（虽然好像根本用不上就是了）</s><br>如果你打算往这个直播间推流，请私信我以获取推流码。",
+        "screenshots1": {
             "pic1_png": {
-                "url": "images/screenshots/wzq02tv_1.png"
+                "url": "images/screenshots/wzq02tv_2.png"
             },
             "pic1_webp": {
-                "url": "images/screenshots/wzq02tv_1.webp"
+                "url": "images/screenshots/wzq02tv_2.webp"
             }
         },
         "slink1": {
             "title": "前往 WZQ02.TV",
             "display_title": "→ 前往 WZQ02.TV",
-            "href": "https://wzq02.cf/player/livewithchat"
+            "href": "https://wzq02.cf/playgrnd/#/player"
         },
-        "sinfo2": "下面这个是一个基于 websocket 的聊天室，跟直播间页里的是同一个：<s>（之前还在这里面搞了个 ChatGPT 进去，不过我的 OpenAI API 试用到期了，所以用不了了）</s>",
+        "sinfo2": "下面这个是一个基于 websocket 的聊天室。",
+        "screenshots2": {
+            "pic1_png": {
+                "url": "images/screenshots/chatroom_1.png"
+            },
+            "pic1_webp": {
+                "url": "images/screenshots/chatroom_1.webp"
+            }
+        },
         "slink2": {
             "title": "前往 WZQ'02 的聊天室",
             "display_title": "→ 前往在线聊天室",
-            "href": "javascript:void(0)",
-            "onclick": "createobjpmpt(\"https://wzq02.cf/chatroom1\",\"chatroom\")"
-        }
+            "href": "https://wzq02.cf/playgrnd/#/chat"
+        },
+        "sinfo3": "<p>是的，除了迁移业务代码，我还把聊天室的 UI 又重做了，因为我感觉原来那个 UI 太<s>寄吧</s>丑了。</p>"
     }    
 }

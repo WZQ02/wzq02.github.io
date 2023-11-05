@@ -686,6 +686,7 @@ input:focus {
         padding: 4px 8px;
     }
     input {
+        color: #eee;
         background-color: rgba(255,255,255,0.07);
     }
     input:focus {
