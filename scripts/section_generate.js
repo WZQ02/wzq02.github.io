@@ -93,7 +93,6 @@ function createsscreenshots(i,current_sec,j) {
         var ss_pic_webp = document.createElement("source");
         var ss_pic_png = document.createElement("img");
         ss_pic_webp.srcset = Object.values(Object.values(sc_values[i])[1])[0];
-        console.log(Object.values(Object.values(sc_values[i+j])[1])[0])
         ss_pic_webp.type = "image/webp";
         ss_pic_png.src = Object.values(Object.values(sc_values[i])[0])[0];
         ss_pic_png.style.width = "100%";
@@ -111,7 +110,15 @@ function createarticleshort(i,current_sec) {
     var mdtitle = Object.values(sc_values[i])[0];
     var mddate = Object.values(sc_values[i])[1];
     var mdname = Object.values(sc_values[i])[2];
-    a_sc_text.innerHTML = "<div href='javascript:void(0)' onclick='createmdprompt("+mdname+")'><mdtitle>"+mdtitle+"</mdtitle><br><mddate>"+mddate+"</mddate></div>";
+    if (Object.values(sc_values[i])[3]) {
+        var tags = Object.values(sc_values[i])[3];
+        var tags_html = "&nbsp;&nbsp;&nbsp;&nbsp;<img src='icons/others/tag.svg'>&nbsp;"+tags
+        extra = ',\"'+mddate+'\",\"'+tags+'\"'
+    } else {
+        tags_html = ""
+        extra = ',\"'+mddate+'\"'
+    }
+    a_sc_text.innerHTML = "<div href='javascript:void(0)' onclick='createmdprompt("+mdname+",0"+extra+")'><mdtitle>"+mdtitle+"</mdtitle><br><mdtitle2><img src='icons/others/time.svg'>&nbsp;"+mddate+tags_html+"</mdtitle2></div>";
     current_sec.appendChild(a_sc);
     a_sc.appendChild(a_sc_text);
 }

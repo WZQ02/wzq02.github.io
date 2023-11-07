@@ -488,13 +488,20 @@ s {
     overflow: hidden;
     transition: 0.25s;
 }
+.article_shortcut_text img {
+    width: 16px;
+    position: relative;
+    top: 2px;
+    left: -2px;
+}
 .article_shortcut_text mdtitle{
     font-size: 24px;
     font-weight: bold;
     opacity: 0.8;
     line-height: 36px;
 }
-.article_shortcut_text mddate{
+.article_shortcut_text mdtitle2{
+    font-size: 15px;
     opacity: 0.5;
 }
 .article_shortcut_text:hover {
@@ -502,6 +509,16 @@ s {
 }
 .article_shortcut_text:active {
     background-color: rgba(0,0,0,0.25);
+}
+.article_top_text {
+    font-size: 15px;
+    opacity: 0.75;
+}
+.article_top_text img {
+    width: 16px;
+    position: relative;
+    top: 2px;
+    left: -2px;
 }
 .smallprompt {
     position: absolute;
@@ -694,6 +711,12 @@ input:focus {
     }
     input::placeholder {
         color: rgba(255,255,255,0.75)
+    }
+    .article_shortcut_text img {
+        filter: invert(100%);
+    }
+    .article_top_text img {
+        filter: invert(100%);
     }
 }
 @media screen and (max-width: 524px) {

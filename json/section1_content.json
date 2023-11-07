@@ -6,12 +6,14 @@
         "article_shortcut1": {
             "title": "如何使用 youtube-dl 下载油管上的视频",
             "date": "2022/8/16",
-            "mdname": "220816"
+            "mdname": "220816",
+            "tags": "教程"
         },
         "article_shortcut2": {
             "title": "上一篇文章的后续想法",
             "date": "2022/6/1",
-            "mdname": "220601"
+            "mdname": "220601",
+            "tags": "随想"
         },
         "article_shortcut3": {
             "title": "我对于“蘑菇大战”事件的真实看法",

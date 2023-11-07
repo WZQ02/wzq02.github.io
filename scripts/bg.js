@@ -1,4 +1,5 @@
-var background_url = "https://bing.img.run/rand.php";//默认api
+//var background_url = "https://bing.img.run/rand.php";
+var background_url = "api/pic1";//默认api
 var lock_animbg = 0;
 var lock2_animbg = 1;
 var bgtimer1 = null;
@@ -161,6 +162,11 @@ function cschooseraddbgoptions() {
 }
 function promptcustombgurl2() {
     createalert("<h3 style='opacity: 0.75'>更换背景图 API</h3><input type='text' id='custom_bg_url' placeholder='请填入你要使用的图片 API：'></input><c style='position: relative; float: left; top: 16px;' href='javascript:void(0)' onclick='promptcustombgurl3();'>更换</c><c style='position: relative; top: 16px; float: right' href='javascript:void(0)' onclick=\"custombgurl('')\";>还原为默认</c>",180)
+    document.getElementById("custom_bg_url").addEventListener('keydown',function(e){
+        if (e.keyCode == 13) {
+            promptcustombgurl3();
+        }
+    });
 }
 function promptcustombgurl3() {
     var str = document.getElementById('custom_bg_url');
