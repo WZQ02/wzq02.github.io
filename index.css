@@ -368,33 +368,34 @@ textrt {
     padding: 12px;
 }
 #slink {
-    
     position: relative;
     display: table;
     top: 16px;
     transition: 0.25s;
-    color: #fff;
-    background-color: #555;
-    background-image: linear-gradient(#616161, #555);
-    box-shadow: 0px 0px 4px #000;
+    color: rgba(0,0,0,0.6);
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.25);
     font-size: 17px;
     padding: 8px 14px;
     margin: 6px auto;
     border-radius: 6px;
+    opacity: 1.0;
 }
 #slink:hover {
-    opacity: 1.0;
+    color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.07);
 }
 #slink:active {
     scale: 0.95;
-    filter: brightness(45%)
+    color: rgba(255,255,255,0.8);
+    background-color: rgba(0,0,0,0.6);
 }
 .sscreenshots {
     position: relative;
     max-width: 400px;
     margin: auto;
     top: 16px;
-    box-shadow: 0px 8px 16px 16px rgba(0,0,0,0.15);
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.2);
     border-radius: 8px;
 }
 .sscreenshots picture img {
@@ -665,6 +666,19 @@ input:focus {
     }
     .stitle2 {
         color: #FFF;
+    }
+    #slink {
+        color: rgba(255,255,255,0.7);
+        background-color: rgba(0,0,0,0.2);
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+    #slink:hover {
+        color: #fff;
+        background-color: rgba(255,255,255,0.1);
+    }
+    #slink:active {
+        color: #000;
+        background-color: rgba(255,255,255,0.8);
     }
     #lt:hover {
         filter: brightness(140%);

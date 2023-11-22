@@ -5,7 +5,7 @@ if (visited == "1") {
 } else {
     setTimeout("onclickchgcenterpic()","30000");
 }
-lock_ctp = 1;
+var lock_ctp = 1;
 function onclickchgcenterpic() {
     if (lock_ctp) {
         chgcenterpic();
