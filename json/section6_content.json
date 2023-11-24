@@ -5,23 +5,23 @@
         "sinfo2": "网站代码部署在 <a href='https://wzq02.cf'><c style='padding: 4px 8px;'><b>wzq02.cf</b></c></a> 和 <a href='https://wzq02.github.io'><c style='padding: 4px 8px;'><b>wzq02.github.io</b></c></a>。GitHub 仓库见 <a href='https://github.com/WZQ02/wzq02.github.io'><c style='padding: 4px 8px; position: relative; top: 4px;'><b>WZQ02/wzq02.github.io</b></c></a>。",
         "sinfo3": "<span class='stitle2'>友情链接</span>",
         "sinfo4": "<span>以下是我之前在音 MAD 社群认识的一些内容创作者：</span><br><br>",
-        "slink1": {
+        "sl1_unused": {
             "title": "心水湛清",
             "display_title": "心水湛清 的个人主页",
             "href": "https://xszq.xyz/"
         },
         "slink2": {
-            "title": "艾了个拉",
+            "title": "AIRA CAFE",
             "display_title": "艾了个拉 的个人主页",
             "href": "https://aira.cafe/"
         },
         "slink3": {
             "title": "Megakite",
-            "display_title": "Megakite 的个人主页",
+            "display_title": "Megakite 的个人博客",
             "href": "https://megakite.icu/"
         },
         "slink4": {
-            "title": "恶橘遥",
+            "title": "立花遥的点心铺",
             "display_title": "恶橘遥 的个人主页",
             "href": "https://akutazehy.github.io/"
         },

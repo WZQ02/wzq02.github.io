@@ -28,7 +28,6 @@
             "title": "前往 WZQ'02 的聊天室",
             "display_title": "→ 前往在线聊天室",
             "href": "https://wzq02.cf/playgrnd/#/chat"
-        },
-        "sinfo3": "<p>是的，除了迁移业务代码，我还把聊天室的 UI 又重做了，因为我感觉原来那个 UI 太<s>寄吧</s>丑了。</p>"
+        }
     }    
 }

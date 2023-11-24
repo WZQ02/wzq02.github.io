@@ -24,6 +24,13 @@
     a {
         text-decoration: none;
     }
+    a:hover {
+        color: #77a;
+        text-decoration: underline;
+    }
+    a:active {
+        color: #000;
+    }
     .stitle {
         font-size: 24px;
         font-weight: bold;
@@ -38,6 +45,12 @@
         font-size: 18px;
         font-weight: bold;
     }
+    .article_shortcut_text img {
+        width: 16px;
+        position: relative;
+        top: 2px;
+        left: -2px;
+    }
     @media (prefers-color-scheme: dark) {
         body {
             background: #222; 
@@ -45,6 +58,15 @@
         }
         a {
             color: #aaf;
+        }
+        a:hover {
+            color: #eef;
+        }
+        a:active {
+            color: #55a;
+        }
+        .article_shortcut_text img {
+            filter: invert(1);
         }
     }
     @media screen and (max-width: 1024px) {
