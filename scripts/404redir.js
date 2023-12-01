@@ -22,6 +22,14 @@ if (url.indexOf("https://s.wzq02") != -1) {
         window.location.href = "http://wzq02.cf/playgrnd/#/player"
     } else if (url.indexOf("airasoft") != -1) {
         window.location.href = "http://wzq02.cf/redirect/airasoft"
+    } else if (url.indexOf("bili") != -1) {
+        window.location.href = "https://space.bilibili.com/12367945/"
+    } else if (url.indexOf("github") != -1) {
+        window.location.href = "https://github.com/WZQ02"
+    } else if (url.indexOf("ask") != -1) {
+        window.location.href = "https://www.askbox.ink/h5/uu/89PDSQZV"
+    } else if (url.indexOf("qqgroup") != -1) {
+        window.location.href = "https://jq.qq.com/?_wv=1027&k=JNxRzKEU"
     }
     redirtext()
 }
