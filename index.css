@@ -453,20 +453,20 @@ s {
     scale: 0.5;
 }
 .prompt_text {
+    position: relative;
     font-size: 16px;
     line-height: 155%;
     margin: 24px;
+    top: -48px;
+    width: calc(100% - 40px);
+    height: calc(100% - 26px);
+    overflow-y: auto;
 }
 .prompt_text h1{
     line-height: 125%;
 }
 .mdpmpt {
-    position: relative;
     user-select: text !important;
-    top: -36px;
-    width: calc(100% - 40px);
-    height: calc(100% - 38px);
-    overflow-y: auto;
 }
 .mdpmpt p img {
     max-width: 100%;

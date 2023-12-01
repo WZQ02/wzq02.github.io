@@ -43,3 +43,7 @@ function mdcontent_setatt(a,block_or_none) {
         }
     }
 }
+
+if (window.location.href.indexOf("s.wzq02") != -1) {
+    createalert("<h3>短链接</h3><p>本站现已提供短链跳转功能。</p><p>支持的前缀跳转：<br>s.wzq02.cf/BV（哔哩哔哩视频）<br>s.wzq02.cf/av（哔哩哔哩视频）<br>s.wzq02.cf/ac（Acfun 视频）<br>s.wzq02.cf/sm（Niconico 视频）</p><p>支持的特定跳转：<br>s.wzq02.cf/1drive（个人网盘）<br>s.wzq02.cf/tv（私人直播间）<br>s.wzq02.cf/airasoft（艾拉软件库）</p><a href='http://s.otm.ink'><c>你没猜错，我抄的这个</c><a>")
+}

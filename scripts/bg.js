@@ -1,5 +1,8 @@
-//var background_url = "https://bing.img.run/rand.php";
-var background_url = "https://wzq02.cf/api/pic1";//默认api
+if (window.location.href.indexOf("wzq02.cf") != -1) {
+    var background_url = "api/pic1";//默认api
+} else {
+    var background_url = "https://bing.img.run/rand.php"
+}
 var lock_animbg = 0;
 var lock2_animbg = 1;
 var bgtimer1 = null;
