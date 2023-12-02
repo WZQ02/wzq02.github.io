@@ -96,7 +96,6 @@ function createiframepmpt(url,name) {//创建iframe弹窗
     iframe.name = name;
     document.getElementsByClassName("prompt")[0].appendChild(iframe);
 }
-
 function createalert(content,height) {//创建提示弹窗
     createprompt("alert",1,"small",1,1,0);
     var current = document.getElementsByClassName("prompt")[0];
@@ -117,6 +116,18 @@ function createobjpmpt(url,name) {//创建object嵌入网页弹窗
     obj_1.name = name;
     obj_1.type = "text/html";
     document.getElementsByClassName("prompt")[0].appendChild(obj_1);
+}
+function createvideopmpt(url,id,auto) {
+    createprompt("video_pmpt",1,"large",0,0,1);
+    var pmpt_video = document.createElement("video");
+    pmpt_video.src = url;
+    pmpt_video.style = "position: relative; top: -56px; width: 100%; height: 100%; border-radius: 16px";
+    pmpt_video.controls = 1;
+    pmpt_video.id = id;
+    if (auto) {
+        pmpt_video.autoplay = 1;
+    }
+    document.getElementsByClassName("prompt")[0].appendChild(pmpt_video);
 }
 
 function prompt_fullscreen() {

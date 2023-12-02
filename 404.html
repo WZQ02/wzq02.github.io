@@ -35,11 +35,11 @@
             h1.innerHTML = "我知道你很急，但是你别急。不妨检查下你的地址栏？";
         }
     } else {
-        h1.innerHTML = "Sorry, but your webpage ain't there. Please check your address bar.";
+        h1.innerHTML = "Sorry, but the webpage you requested ain't there. Please check your address bar.";
     }
-    setTimeout("jump()","5000");
+    var jmp1 = setTimeout("jump()","5000");
     function jump() {
-        window.location.href = "/index.html";
+        window.location.href = "/";
     }
 </script>
 <script src="/scripts/404redir.js"></script>
