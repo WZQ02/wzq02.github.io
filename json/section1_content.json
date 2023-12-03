@@ -20,6 +20,23 @@
             "date": "2021/9/17",
             "mdname": "210917"
         },
+        "article_shortcut4": {
+            "title": "一些说明",
+            "date": "2021/7/15",
+            "mdname": "210715"
+        },
+        "article_shortcut5": {
+            "title": "圆角还是方角？",
+            "date": "2021/6/18",
+            "mdname": "210618",
+            "tags": "Windows, UI"
+        },
+        "article_shortcut6": {
+            "title": "对于 cookie☆ 亚文化的一些想法",
+            "date": "2021/2/25",
+            "mdname": "210225",
+            "tags": "cookie☆, 音 MAD, 例区文化, 网络亚文化"
+        },
         "sinfo3": "<br>下面这个是我原来在 GitHub Pages 上搭建的个人博客，基于 Hexo。这里面有我更早时期瞎写的一些东西。<br>Hexo 主题来自 <a href=\"https://github.com/fluid-dev/hexo-theme-fluid\"><c><b>hexo-theme-fluid</b></c></a> 项目。",
         "screenshots": {
             "pic1_png": {
