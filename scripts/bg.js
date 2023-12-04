@@ -71,7 +71,7 @@ function show_background(url) {
         }
     }
     abspan.onmouseup = function() {
-        createalert("<h3>Here are the tips:</h3>鼠标在本页上滑动时，图片会朝相反方向移动。<br>单击本页空白处可更换背景（有 5 秒的冷却时间）。<br>如果要更换背景功能使用的 api，在配色方案菜单中点击“更换背景图 API”，在弹出的窗口中填入你要使用的 API。<br>（要换回默认 API 的话，在弹窗中填入空格即可）")
+        createalert("<h3>Here are the tips:</h3>鼠标在本页上滑动时，图片会朝相反方向移动。<br>单击本页空白处可更换背景（有 5 秒的冷却时间）。<br>如果要更换背景功能使用的 api，在配色方案菜单中点击“更换背景图 API”，在弹出的窗口中填入你要使用的 API。<br>（点击“还原为默认”则可换回默认的图片 API）")
     }
     for (var i=0; i<6; i++) {//为所有section背景启用模糊效果
         document.getElementsByClassName("sections")[i].style.backdropFilter = "blur(24px)";
@@ -153,6 +153,9 @@ function show_background(url) {
     cschooseraddbgoptions();
     document.getElementById("bgcon").style.opacity = "0.6";
     document.getElementById("bgcon").title = "禁用背景图片";
+    if (i18nextify.i18next.isInitialized) {
+        document.getElementById("bgcon").title = i18nextify.i18next.t('禁用背景图片');
+    }
 }
 function cschooseraddbgoptions() {
     var bgoptions = document.createElement("div");
@@ -216,6 +219,11 @@ function removebg() {
     document.getElementById("cschooser").removeChild(document.querySelector("#bgoptions"));
     document.getElementById("cschooser").style.height = "";
     document.getElementsByTagName("centerpic")[0].style = "display: block; animation: appear 0.7s";
+    document.getElementById("bgcon").style.opacity = "";
+    document.getElementById("bgcon").title = "启用背景图片";
+    if (i18nextify.i18next.isInitialized) {
+        document.getElementById("bgcon").title = i18nextify.i18next.t('启用背景图片');
+    }
     for (var i=0; i<6; i++) {//去除所有section背景模糊效果
         document.getElementsByClassName("sections")[i].style.backdropFilter = "";
     }

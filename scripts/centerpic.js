@@ -32,8 +32,10 @@ function autochgcenterpic() {
     window.randprev = randprev;
     centerpics[0].setAttribute('srcset',"images/centerpic/front_"+rand1+".webp");
     centerpics[1].setAttribute('src',"images/centerpic/front_"+rand1+".png");
-    centerpics[1].style="opacity:0;transition:none";
-    centerpics[1].setAttribute('onload',"document.getElementsByClassName('centerpik')[1].style='opacity:1;transition:0.25s'");
+    //centerpics[1].style="opacity:0;transition:none";
+    centerpics[1].style.opacity = "0";
+    centerpics[1].style.transition = "none";
+    centerpics[1].setAttribute('onload',"document.getElementsByClassName('centerpik')[1].style.opacity='1';document.getElementsByClassName('centerpik')[1].style.transition='0.25s';");
     if (rand1 == 9) {
         centerpics[1].setAttribute('onmousedown',"liubing1()");
         centerpics[1].setAttribute('onmouseup',"liubing2()");
@@ -102,6 +104,7 @@ function liubing() {
         document.body.appendChild(liubingad);
     }
 }
+var aliubing,autoremove;
 function liubing1() {
     aliubing = setTimeout("liubing(); lock_ctp = 0; liubing3()",1000);
 }
@@ -125,7 +128,13 @@ function createliubingspan(title) {
     abspan2.style.animation = "appear .25s 1";
     abspan2.id = "liubingspan";
     document.getElementsByTagName("textrt")[0].appendChild(abspan2);
+    autoremove = setTimeout(function(){removeliubingspan()},5000)
 }
 function removeliubingspan() {
-    document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#liubingspan"));
+    clearTimeout(autoremove);
+    if (document.querySelector("#liubingspan")) {
+        document.querySelector("#liubingspan").style.animation = 'disappear 0.25s';
+        setTimeout(function(){document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#liubingspan"))},245)
+    }
+    //document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#liubingspan"));
 }

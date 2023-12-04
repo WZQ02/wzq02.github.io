@@ -15,5 +15,3 @@ for %%i in (  scripts\autoredirect.js^
    scripts\misc.js^
    scripts\ver.js) do (type %%i >> index.js
 echo //%%i >> index.js)
-
-pause

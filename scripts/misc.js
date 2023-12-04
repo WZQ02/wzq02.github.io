@@ -31,10 +31,18 @@ function lite() {
 function showmdcontent() {
     if (a_sc_group[0].attributeStyleMap.get('display') == "block") {
         mdcontent_setatt(a_sc_group,"none");
-        document.getElementById("md_expand").innerText = "展开";
+        if (i18nextify.i18next.isInitialized) {
+            document.getElementById("md_expand").innerText = i18nextify.i18next.t('展开');
+        } else {
+            document.getElementById("md_expand").innerText = "展开";
+        }
     } else {
         mdcontent_setatt(a_sc_group,"block");
-        document.getElementById("md_expand").innerText = "收起";
+        if (i18nextify.i18next.isInitialized) {
+            document.getElementById("md_expand").innerText = i18nextify.i18next.t('收起');
+        } else {
+            document.getElementById("md_expand").innerText = "收起";
+        }
     }
 }
 function mdcontent_setatt(a,block_or_none) {

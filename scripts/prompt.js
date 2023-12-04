@@ -107,6 +107,9 @@ function createalert(content,height) {//创建提示弹窗
     innercon.className = "prompt_text";
     innercon.innerHTML = content;
     current.appendChild(innercon);
+    if (i18nextify.i18next.isInitialized) {
+        window.i18nextify.forceRerender();
+    }
 }
 function createobjpmpt(url,name) {//创建object嵌入网页弹窗
     createprompt("object_pmpt",1,"large",0,0,1);
