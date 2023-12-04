@@ -31,8 +31,9 @@ function autochgcenterpic() {
     var randprev = rand1;
     window.randprev = randprev;
     centerpics[0].setAttribute('srcset',"images/centerpic/front_"+rand1+".webp");
-    //centerpics[1].setAttribute('srcset',"images/centerpic/front_"+rand1+".png");
     centerpics[1].setAttribute('src',"images/centerpic/front_"+rand1+".png");
+    centerpics[1].style="opacity:0;transition:none";
+    centerpics[1].setAttribute('onload',"document.getElementsByClassName('centerpik')[1].style='opacity:1;transition:0.25s'");
     if (rand1 == 9) {
         centerpics[1].setAttribute('onmousedown',"liubing1()");
         centerpics[1].setAttribute('onmouseup',"liubing2()");
@@ -52,9 +53,11 @@ function liubing() {
     //var liubingad = new Audio("https://wzq02.cf:893/bones.ogg");
     if ('centerpik liuing' == lizi.getAttribute("class")) {
         lizi.classList.remove('liuing');
-        lizi.style.animation = "";
+        lizi.style.animation = "spinstop 0.15s ease-out";
+        setTimeout(function(){lizi.style.animation = ""},145)
         var audio = document.querySelector("audio")
         audio.parentNode.removeChild(audio);
+        removeliubingspan();
     } else {
         var liubingad = document.createElement("audio");
         lizi.classList.add('liuing');
@@ -73,20 +76,28 @@ function liubing() {
         window.randprev2 = randprev;
         if (rand2 == 1) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/dabig_dance.ogg";
+            createliubingspan("♫&nbsp;&nbsp;Dabig Dance.mp4");
         } else if (rand2 == 2) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/o108rocket.ogg";
+            createliubingspan("♫&nbsp;&nbsp;电棍：all in ♿你爸↑♿火箭少女♿♿♿丶");
         } else if (rand2 == 3) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/otto_control.ogg";
+            createliubingspan("♫&nbsp;&nbsp;电棍：思喂！♿控制♿♿（Mind Control）");
         } else if (rand2 == 4) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/gun_it_up_unfinished.ogg";
+            createliubingspan("♫&nbsp;&nbsp;电棍：Give It Up♿（未完成）");
         } else if (rand2 == 5) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/luv_the_giaoatic.ogg";
+            createliubingspan("♫&nbsp;&nbsp;Luv the GIAOatic???");
         } else if (rand2 == 6) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/invitation_from_mr_aniki.ogg";
+            createliubingspan("♫&nbsp;&nbsp;Invitation From Mr.Aniki♂");
         } else if (rand2 == 7) {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/nigga.ogg";
+            createliubingspan("♫&nbsp;&nbsp;ruma");
         } else {
             liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/glitch_otto.ogg";
+            createliubingspan("♫&nbsp;&nbsp;【ottomania:2023】Glitch♿OTTO♿");
         }
         document.body.appendChild(liubingad);
     }
@@ -106,4 +117,15 @@ function liubing3() {
         clearInterval(timeoutchgcenterpic);
         timeoutchgcenterpic = setInterval("chgcenterpic()","15000");
     }
+}
+function createliubingspan(title) {
+    var abspan2 = document.createElement("span");
+    abspan2.innerHTML = "<p>"+title+"</p>";
+    abspan2.style.textAlign = "right";
+    abspan2.style.animation = "appear .25s 1";
+    abspan2.id = "liubingspan";
+    document.getElementsByTagName("textrt")[0].appendChild(abspan2);
+}
+function removeliubingspan() {
+    document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#liubingspan"));
 }

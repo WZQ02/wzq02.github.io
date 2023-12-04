@@ -1,4 +1,6 @@
-ver();
+window.onload = function() {
+    setTimeout(function(){misc();ver();},50)
+}
 
 function ver() {
     var request = new XMLHttpRequest();

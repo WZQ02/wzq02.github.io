@@ -1,8 +1,9 @@
 if (window.location.href.indexOf("wzq02.cf") != -1) {
-    var background_url = "api/pic1";//默认api
+    var default_bgurl = "api/pic1";//默认api
 } else {
-    var background_url = "https://bing.img.run/rand.php"
+    var default_bgurl = "https://bing.img.run/rand.php"
 }
+var background_url = default_bgurl;
 var lock_animbg = 0;
 var lock2_animbg = 1;
 var bgtimer1 = null;
@@ -142,6 +143,7 @@ function show_background(url) {
     document.getElementsByTagName("centerpic")[0].style.display = "none";
     abspan.innerHTML = "<p>使用的图片 API: <br>" + url + "</p><p>站长不对从第三方调用图片的内容负责。";
     abspan.style.textAlign = "right";
+    abspan.id = "abspan";
     document.getElementById("yabg").appendChild(animbg);
     document.getElementsByTagName("textrt")[0].appendChild(abspan);
     if (isvideo) {
@@ -155,6 +157,7 @@ function show_background(url) {
 function cschooseraddbgoptions() {
     var bgoptions = document.createElement("div");
     bgoptions.innerHTML = "<c onclick='promptcustombgurl2()' style='position: relative; top:46px; left:4.5px;'>更换背景图 API</c>";
+    bgoptions.id = "bgoptions";
     document.getElementById("cschooser").appendChild(bgoptions);
     document.getElementById("cschooser").style.height = "78px";
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -178,20 +181,42 @@ function promptcustombgurl3() {
     var str = document.getElementById('custom_bg_url');
 	if (str.value) {
 		custombgurl(str.value);
-	}
+	} else {
+        str.style="background-color:#f205;transition:none";
+        setTimeout(function(){str.style="";},30)
+    }
 }
 function custombgurl(a) {//应用自定义api
     setCookie('bgurl',a,365);
-    location.reload();
+    //location.reload();
+    removebg();
+    if (a) {
+        background_url = a;
+    } else {
+        background_url = default_bgurl;
+    }
+    show_background(background_url);
+    destroyprompt();
 }
 function chgbgstate() {//启用或禁用背景图
     if (getCookie("backgroundenabled") != "") {
         setCookie('backgroundenabled',"",0);
-        window.location.href = window.location.href.replace(/(\?|#)[^'"]*/, '');
-        window.history.pushState({},0,url);
-        location.reload();
+        //window.location.href = window.location.href.replace(/(\?|#)[^'"]*/, '');
+        //window.history.pushState({},0,url);
+        //location.reload();
+        removebg();
     } else {
         setCookie('backgroundenabled',"yes",365);
         show_background(background_url);
+    }
+}
+function removebg() {
+    document.getElementById("yabg").removeChild(document.querySelector("#animbg"));
+    document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#abspan"));
+    document.getElementById("cschooser").removeChild(document.querySelector("#bgoptions"));
+    document.getElementById("cschooser").style.height = "";
+    document.getElementsByTagName("centerpic")[0].style = "display: block; animation: appear 0.7s";
+    for (var i=0; i<6; i++) {//去除所有section背景模糊效果
+        document.getElementsByClassName("sections")[i].style.backdropFilter = "";
     }
 }

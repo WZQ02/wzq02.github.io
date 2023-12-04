@@ -1,6 +1,6 @@
 var a_sc_group;
 
-window.onload = function() {
+function misc() {
     document.getElementsByClassName("stitle2")[19].style.display = "none";
     a_sc_group = document.getElementsByClassName("article_shortcut");
     mdcontent_setatt(a_sc_group,"none")

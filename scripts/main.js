@@ -4,9 +4,9 @@ var tip1status = getCookie('tip1status');//用户是否已禁用顶部提示栏
 if (visited == "") {
     setCookie('visited',"1",365);
 }
-if (navigator.language == "zh-CN") {//检测语言以判断切换语言按钮的行为
+/*if (window.i18nextify.i18next.language == "zh-CN") {//检测语言以判断切换语言按钮的行为
     var curlang = "zh";
-}
+}*/
 tip1();
 var section1 = document.getElementById("section1");
 var section2 = document.getElementById("section2");
@@ -41,7 +41,7 @@ function lnklist() {//更多外链列表
     }
 }
 function chglang() {//切换语言按钮
-    if (curlang == "zh") {
+    /*if (curlang == "zh") {
         if (window.location.href.indexOf("?lng=en") != -1) {
             window.location.href = "?lng=zh";
         } else {
@@ -53,7 +53,26 @@ function chglang() {//切换语言按钮
         } else {
             window.location.href = "?lng=zh";
         }
+    }*/
+    var curlang = window.i18nextify.i18next.language;
+    var url = window.location.href;
+    if (curlang.indexOf("zh") != -1) {
+        //curlang = 'en';
+        url = url.replace(/(\?|#)[^'"]*/, '')+"?lng=en"
+        window.history.pushState({},0,url);
+    } else {
+        //curlang = 'zh';
+        url = url.replace(/(\?|#)[^'"]*/, '')+"?lng=zh"
+        window.history.pushState({},0,url);
     }
+    //console.log(window.i18nextify.i18next.language);
+    window.i18nextify.init();
+    var getlangfil = new XMLHttpRequest();
+    getlangfil.open("get", "locales/"+curlang+"/translation.json")
+    getlangfil.send(null);
+    getlangfil.onload = function(){setTimeout(function(){window.i18nextify.forceRerender()},50)}
+    //window.i18nextify.forceRerender();
+    //setTimeout(function(){window.i18nextify.forceRerender()},500);//网络条件较差时，500毫秒后再重新渲染一遍
 }
 function tip1() {//页面顶部提示语
     var tip1 = document.getElementById("tip1");
