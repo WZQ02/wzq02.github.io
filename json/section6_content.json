@@ -3,36 +3,42 @@
     "content": {
         "sinfo1": "个人主页，同时也是我瞎几把写的练手网站。主要用来展示我在各个社交平台的账号啥的。",
         "sinfo2": "网站代码部署在 <a href='https://wzq02.cf'><c style='padding: 4px 8px;'><b>wzq02.cf</b></c></a> 和 <a href='https://wzq02.github.io'><c style='padding: 4px 8px;'><b>wzq02.github.io</b></c></a>。GitHub 仓库见 <a href='https://github.com/WZQ02/wzq02.github.io'><c style='padding: 4px 8px; position: relative; top: 4px;'><b>WZQ02/wzq02.github.io</b></c></a>。",
-        "sinfo3": "<span class='stitle2'>友情链接</span>",
-        "sinfo4": "<span>以下是我之前在音 MAD 社群认识的一些内容创作者：</span><br><br>",
+        "sinfo3": "<span class='stitle2 title'>友情链接</span>",
+        "sinfo4": "<span>以下是我之前在音 MAD 社群认识的一些内容创作者：</span>",
         "sl1_unused": {
+            "id": "xszq",
             "title": "心水湛清",
             "display_title": "心水湛清 的个人主页",
             "href": "https://xszq.xyz/"
         },
         "slink2": {
+            "id": "aira",
             "title": "AIRA CAFE",
             "display_title": "艾了个拉 的个人主页",
             "href": "https://aira.cafe/"
         },
         "slink3": {
+            "id": "kite",
             "title": "Megakite",
             "display_title": "Megakite 的个人博客",
             "href": "https://megakite.icu/"
         },
         "slink4": {
+            "id": "akutazehy",
             "title": "立花遥的点心铺",
             "display_title": "恶橘遥 的个人主页",
             "href": "https://akutazehy.github.io/"
         },
         "slink5": {
+            "id": "ft",
             "title": "lachrymaL",
             "display_title": "lachrymaL 的个人主页",
             "href": "https://lachrymal.net/"
         },
         "sinfo5": "<p style='font-size: 16px; font-weight:bold; opacity:0.6; line-height:28px;' href='javascript:void(0)' onclick='showstitle13()'>网站最后更新日期：<span id='site_last_updated'></span></p>",
         "sinfo6": "<p style='font-size: 16px; font-weight:bold; opacity:0.6; line-height:28px;'>当前浏览器 User Agent：<span id='user_agent_info'></span></p>",
-        "slink9": {
+        "slink6": {
+            "id": "show_site_log",
             "title": "查看本站建站日志",
             "display_title": "查看本站建站日志",
             "href": "javascript:void(0)",

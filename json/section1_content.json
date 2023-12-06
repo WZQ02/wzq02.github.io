@@ -47,6 +47,7 @@
             }
         },
         "slink1": {
+            "id": "",
             "title": "前往 WZQ'02 的个人博客",
             "display_title": "→ 前往",
             "href": "https://wzq02.github.io/blog"

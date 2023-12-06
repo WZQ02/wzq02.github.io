@@ -11,12 +11,14 @@
             }
         },
         "slink1": {
+            "id": "1drive",
             "title": "OneDrive",
             "display_title": "→ OneDrive",
             "href": "redirect/onedrive_msft"
         },
         "sinfo2": "之前在本站服务器上也搭建过一个网盘，不过因为本站服务器存储空间太小，我就没怎么去用了：",
         "slink2": {
+            "id": "",
             "title": "旧文件服务器",
             "display_title": "→ 旧文件服务器",
             "href": "https://wzq02.cf:1145"

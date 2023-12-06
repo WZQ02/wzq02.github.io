@@ -1,5 +1,5 @@
 window.onload = function() {
-    setTimeout(function(){misc();ver();},50)
+    setTimeout(function(){ver();misc();},50)
 }
 
 function ver() {

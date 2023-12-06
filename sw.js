@@ -1,3 +1,7 @@
 'use strict';
 
-importScripts('sw-toolbox.js'); toolbox.precache(["index.html","index.css","index.js"]); toolbox.router.get('/images/*','/icons/links/*','/scripts/*', toolbox.cacheFirst); toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5});
+importScripts('/scripts/thirdparty/workbox-sw.js');
+workbox.setConfig({
+    modulePathPrefix: '/scripts/thirdparty/',
+});
+self.addEventListener('fetch',()=>{});

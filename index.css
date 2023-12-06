@@ -366,15 +366,12 @@ textrt {
     opacity: 0.6;
     position: relative;
 }
-.stitle2:not(#slink) {
+.stitle2.title {
     font-size: 20px;
     font-weight: bold;
     line-height: 96px;
 }
-#slink_container {
-    padding: 12px;
-}
-#slink {
+.slink {
     position: relative;
     display: table;
     top: 16px;
@@ -384,15 +381,15 @@ textrt {
     box-shadow: 0px 2px 8px rgba(0,0,0,0.25);
     font-size: 17px;
     padding: 8px 14px;
-    margin: 6px auto;
+    margin: 28px auto;
     border-radius: 6px;
     opacity: 1.0;
 }
-#slink:hover {
+.slink:hover {
     color: rgba(0,0,0,0.9);
     background-color: rgba(0,0,0,0.07);
 }
-#slink:active {
+.slink:active {
     scale: 0.95;
     color: rgba(255,255,255,0.8);
     background-color: rgba(0,0,0,0.6);
@@ -681,16 +678,16 @@ input:focus {
     .stitle2 {
         color: #FFF;
     }
-    #slink {
+    .slink {
         color: rgba(255,255,255,0.7);
         background-color: rgba(0,0,0,0.2);
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
     }
-    #slink:hover {
+    .slink:hover {
         color: #fff;
         background-color: rgba(255,255,255,0.1);
     }
-    #slink:active {
+    .slink:active {
         color: #000;
         background-color: rgba(255,255,255,0.8);
     }
@@ -759,6 +756,16 @@ input:focus {
     }
     .fullscrnbtn {
         right: -40px;
+    }
+    .article_shortcut_text img {
+        width: 14px;
+    }
+    .article_shortcut_text mdtitle{
+        font-size: 22px;
+        line-height: 28px;
+    }
+    .article_shortcut_text mdtitle2{
+        font-size: 14px;
     }
 }
 @media screen and (max-width: 720px) {
