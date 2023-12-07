@@ -20,12 +20,16 @@ function chgcenterpic() {//更改中央图片
     setTimeout("autochgcenterpic()","400");
     setTimeout(function(){centerpic.style.animation = "icoshowup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";},"400");
 }
-function autochgcenterpic() {
+function autochgcenterpic(num) {
     var centerpics = document.getElementsByClassName("centerpik");
-    while (true) {
-        var rand1 = Math.ceil(Math.random()*12);
-        if (window.randprev != rand1) {//确保下一次展示的图片不与上一次的重复
-            break;
+    if (num && num <= 12 && num > 0) {//给定数字，则直接应用
+        rand1 = Math.ceil(num)
+    } else {
+        while (true) {
+            var rand1 = Math.ceil(Math.random()*12);
+            if (window.randprev != rand1) {//确保下一次展示的图片不与上一次的重复
+                break;
+            }
         }
     }
     var randprev = rand1;
@@ -50,7 +54,7 @@ function autochgcenterpic() {
         centerpics[1].style.animation = "";
     }
 }
-function liubing() {
+function liubing(custom_music_url) {
     var lizi = document.getElementsByClassName("centerpik")[1];
     //var liubingad = new Audio("https://wzq02.cf:893/bones.ogg");
     if ('centerpik liuing' == lizi.getAttribute("class")) {
@@ -76,30 +80,44 @@ function liubing() {
         }
         var randprev = rand2;
         window.randprev2 = randprev;
-        if (rand2 == 1) {
-            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/dabig_dance.ogg";
-            createliubingspan("♫&nbsp;&nbsp;Dabig Dance.mp4");
-        } else if (rand2 == 2) {
-            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/o108rocket.ogg";
-            createliubingspan("♫&nbsp;&nbsp;电棍：all in ♿你爸↑♿火箭少女♿♿♿丶");
-        } else if (rand2 == 3) {
-            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/otto_control.ogg";
-            createliubingspan("♫&nbsp;&nbsp;电棍：思喂！♿控制♿♿（Mind Control）");
-        } else if (rand2 == 4) {
-            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/gun_it_up_unfinished.ogg";
-            createliubingspan("♫&nbsp;&nbsp;电棍：Give It Up♿（未完成）");
-        } else if (rand2 == 5) {
-            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/luv_the_giaoatic.ogg";
-            createliubingspan("♫&nbsp;&nbsp;Luv the GIAOatic???");
-        } else if (rand2 == 6) {
-            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/invitation_from_mr_aniki.ogg";
-            createliubingspan("♫&nbsp;&nbsp;Invitation From Mr.Aniki♂");
-        } else if (rand2 == 7) {
-            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/nigga.ogg";
-            createliubingspan("♫&nbsp;&nbsp;ruma");
+        if (custom_music_url) {
+            liubingad.src = custom_music_url;
+            createliubingspan("♫&nbsp;&nbsp;"+custom_music_url);
         } else {
-            liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/glitch_otto.ogg";
-            createliubingspan("♫&nbsp;&nbsp;【ottomania:2023】Glitch♿OTTO♿");
+            switch (rand2) {
+                case 1:
+                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/dabig_dance.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;Dabig Dance.mp4");
+                    break;
+                case 2:
+                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/o108rocket.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;电棍：all in ♿你爸↑♿火箭少女♿♿♿丶");
+                    break;
+                case 3:
+                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/otto_control.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;电棍：思喂！♿控制♿♿（Mind Control）");
+                    break;
+                case 4:
+                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/gun_it_up_unfinished.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;电棍：Give It Up♿（未完成）");
+                    break;
+                case 5:
+                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/luv_the_giaoatic.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;Luv the GIAOatic???");
+                    break;
+                case 6:
+                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/invitation_from_mr_aniki.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;Invitation From Mr.Aniki♂");
+                    break;
+                case 7:
+                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/nigga.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;ruma");
+                    break;
+                case 8:
+                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/glitch_otto.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;【ottomania:2023】Glitch♿OTTO♿");
+                    break;
+            }
         }
         document.body.appendChild(liubingad);
     }

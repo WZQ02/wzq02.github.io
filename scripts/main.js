@@ -137,6 +137,9 @@ function scrolltopage1() {
         lock1 = 0;
         scrolltopage1a();
         setTimeout(function(){lock1 = 1}, "500");
+        if (window.location.href.indexOf("#/") != -1) {
+            window.location.href = '#/'
+        }
     }
 }
 function scrolltopage1a() {//返回上页
@@ -255,7 +258,7 @@ function suffixdetect() {//防止lock未加载就执行导致所有的lock全失
 }
 function suffixdetecta() {//检测到地址栏参数的时候自动跳转到某个section
     var url = window.location.href;
-    if (url.indexOf("secquery") != -1) {
+    /*if (url.indexOf("secquery") != -1) {
         scrolltopage2();
         if (url.indexOf("=blog") != -1) {}
         if (url.indexOf("=filesvr") != -1) {
@@ -272,10 +275,10 @@ function suffixdetecta() {//检测到地址栏参数的时候自动跳转到某�
         }
         if (url.indexOf("=sitelog") != -1) {
             displaysec(section6);
-        }
-        url = url.replace(/(\?|#)[^'"]*/, '');//自动去除参数
-        window.history.pushState({},0,url);
-    }
+        }*/
+        //url = url.replace(/(\?|#)[^'"]*/, '');//自动去除参数
+        //window.history.pushState({},0,url);
+    //}（改用hash代替了）
     if (url.indexOf("forcesysfont") != -1) {//强制使用系统字体
         document.body.style.fontFamily = "'Microsoft YaHei',微软雅黑";
     }

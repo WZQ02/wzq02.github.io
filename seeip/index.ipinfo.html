@@ -16,7 +16,7 @@
 <p>你的 IP 归属地是：<span id="cname">未知</span></p>
 <p>这只是一个 demo，你的个人信息不会被上传。本页使用来自 ip-api.com 提供的 API 接口。</p>
 <p>如果你身在中国国内但仍显示国外，请禁用你的网络代理软件并刷新当前页面再试。</p>
-<br><p><b><a id="btm" href="javascript:void(0)" onclick="back()">返回主页</a></b></p></div>
+<br><p><b><a id="btm" href="../#/demos">返回主页</a></b></p></div>
 <script>
     autochgthemecolor();
     disable_btm();
@@ -34,9 +34,6 @@
         if (color != "") {
             document.getElementById("color_scheme").href = `/css/docu_${color}.css`;
         }
-    }
-    function back() {
-        window.location.href = "/index.html?secquery=demos";
     }
     var url = "http://ip-api.com/json/?lang=zh-CN"
     var request = new XMLHttpRequest();

@@ -89,25 +89,8 @@
 11.5 开设基于 Vue 3 的 <a href="https://wzq02.cf/playgrnd/" target="_blank">sometroublemaker's playground</a> 项目，直播页和聊天室转移到此项目。<br>
 11.22 主页添加 niconico 频道的链接。“关于本站”部分添加“友情链接”板块。<br>
 <!--2022.11.29 (隐藏功能) 主页新增溜冰功能，当在主页中央刷出栗子头画像时用鼠标长按栗子头（手机端无法触发），网站会随机播放音 MAD，再次长按可停止播放。-->
-<br><a id="btm" href="javascript:void(0)" onclick="back()">返回主页</a></h4></div>
+<br><a id="btm" href="index.html#/about">返回主页</a></h4></div>
 <script>
-    function back() {
-        //var lang = navigator.language;
-        if (detectIEVer() <= 8.0) {
-            window.location.href = "/old.html";
-        }
-        else {
-            window.location.href = "/index.html?secquery=sitelog";
-        }
-    }
-    function detectIEVer() {
-        var ua = navigator.userAgent;
-        var v = ua.indexOf("MSIE");
-        if (v < 0) {
-            return 9999;
-        }
-        return parseFloat (ua.substring (v + 5,ua.indexOf (";", v)));
-    }
     disable_btm();
     autochgthemecolor();
     function getCookie(cname) {//cookie设置

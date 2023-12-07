@@ -150,7 +150,7 @@
 <p>Vandows 系统主题包 <a href="https://github.com/WZQ02/vandows-theme">GitHub 仓库</a> <a href="https://wzq02.cf:1145/stuff/prev/%5B2021.5%5D%20Vandows%20%E4%B8%BB%E9%A2%98%E5%8C%85%20%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85.zip">直链下载 (主文件服务器)</a></p>
 <p>一些 Windows 实用脚本 <a href="https://wzq02.cf:1145/res/tools/%E4%B8%80%E4%BA%9Bwindows%E5%AE%9E%E7%94%A8%E8%84%9A%E6%9C%AC.zip">直链下载 (主文件服务器)</a></p>
 </div>
-<br><p><b><a id="btm" href="javascript:void(0)" onclick="back()">返回主页</a></b></p></div>
+<br><p><b><a id="btm" href="../#/dl">返回主页</a></b></p></div>
 <script>
     var sec1 = document.getElementById("sec1");
     var sec2 = document.getElementById("sec2");
@@ -162,14 +162,6 @@
     suffixdetect();
     autochgthemecolor();
     disable_btm();
-    function back() {
-        if (detectIEVer() <= 8.0) {
-            window.location.href = "/old.html";
-        }
-        else {
-            window.location.href = "/index.html?secquery=freedl";
-        }
-    }
     function detectIEVer() {
         var ua = navigator.userAgent;
         var v = ua.indexOf("MSIE");
