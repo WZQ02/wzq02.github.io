@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WZQ'02 的小站</title>
     <!--感觉我现在这个个人主页太花里胡哨了，所以随手做了个“省流版”。不保证所有东西能用。-->
 </head>
@@ -17,9 +18,6 @@
     }
     img {
         max-width: 480px;
-    }
-    .article_shortcut {
-        display: none;
     }
     a {
         text-decoration: none;
@@ -44,6 +42,9 @@
     .article_shortcut_text mdtitle {
         font-size: 18px;
         font-weight: bold;
+    }
+    .article_shortcut_text mdtitle2 {
+        opacity: 0.65;
     }
     .article_shortcut_text img {
         width: 16px;
@@ -113,25 +114,6 @@
     var url = window.location.href
     url = url.replace('/test.html', '');
     window.history.pushState({},0,url);
-    function showmdcontent() {
-        var a_sc_group = document.getElementsByClassName("article_shortcut");
-        if (a_sc_group[0].attributeStyleMap.get('display') == "block") {
-            for (i=0; i<64; i++) {
-                if (a_sc_group[i]) {
-                    a_sc_group[i].attributeStyleMap.set('display','none');
-                }
-            }
-            document.getElementById("md_expand").innerText = "展开";
-        } else {
-            for (i=0; i<64; i++) {
-                if (a_sc_group[i]) {
-                    a_sc_group[i].attributeStyleMap.set('display','block');
-                    a_sc_group[i].attributeStyleMap.set('animation','appear 0.4s ease 1');
-                }
-            }
-            document.getElementById("md_expand").innerText = "收起";
-        }
-    }
     function createmdprompt(mdname) {
         window.location.href = "/read/?mdname="+mdname
     }

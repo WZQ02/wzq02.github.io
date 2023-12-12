@@ -57,12 +57,14 @@ function chglang() {//切换语言按钮
     var url = window.location.href;
     if (curlang.indexOf("zh") != -1) {
         //curlang = 'en';
-        url = url.replace(/(\?|#)[^'"]*/, '')+"?lng=en"
-        window.history.pushState({},0,url);
+        //url = url.replace(/(\?|#)[^'"]*/, '')+"?lng=en"
+        //window.history.pushState({},0,url);
+        localStorage.setItem('i18nextLng','en')
     } else {
         //curlang = 'zh';
-        url = url.replace(/(\?|#)[^'"]*/, '')+"?lng=zh"
-        window.history.pushState({},0,url);
+        //url = url.replace(/(\?|#)[^'"]*/, '')+"?lng=zh"
+        //window.history.pushState({},0,url);
+        localStorage.setItem('i18nextLng','zh')
     }
     //console.log(window.i18nextify.i18next.language);
     window.i18nextify.init();

@@ -1,9 +1,9 @@
-var a_sc_group;
+//var a_sc_group;
 
 function misc() {
     document.getElementById("show_site_log").style.display = "none";
-    a_sc_group = document.getElementsByClassName("article_shortcut");
-    mdcontent_setatt(a_sc_group,"none")
+    //a_sc_group = document.getElementsByClassName("article_shortcut");
+    //mdcontent_setatt(a_sc_group,"none")
 }
 
 var showstitle13_counter = 0
@@ -28,7 +28,7 @@ function lite() {
     }
 }
 
-function showmdcontent() {
+/*function showmdcontent() {
     if (a_sc_group[0].attributeStyleMap.get('display') == "block") {
         mdcontent_setatt(a_sc_group,"none");
         if (i18nextify.i18next.isInitialized) {
@@ -51,7 +51,7 @@ function mdcontent_setatt(a,block_or_none) {
             a[i].attributeStyleMap.set("display",block_or_none);
         }
     }
-}
+}*/
 function s_detect() {
     var url = window.location.href
     if (url.indexOf("s.wzq02") != -1) {
