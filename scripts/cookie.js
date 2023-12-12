@@ -13,3 +13,10 @@ function getCookie(cname) {
     }
     return "";
 }
+function C2Stransfer(cname) {
+    let olddata = getCookie(cname);
+    if (olddata != "") {
+        localStorage.setItem(cname,olddata)
+        setCookie(cname,"",-1)
+    }
+}

@@ -10,10 +10,10 @@ var bgtimer1 = null;
 setTimeout(function() {
     lock_animbg = 1;
 },5000);//更换图片的间隔
-if (getCookie('bgurl') != "") {//如果cookie中存在自定义api信息，则应用
-    var background_url = getCookie('bgurl');
+if (localStorage.getItem('bgurl') != null) {//如果cookie中存在自定义api信息，则应用
+    var background_url = localStorage.getItem('bgurl');
 }
-if (getCookie("backgroundenabled") != "") {//如果已设置为启用背景，则自动启用
+if (localStorage.getItem("backgroundenabled") != null) {//如果已设置为启用背景，则自动启用
     show_background(background_url);
 }
 function show_background(url) {
@@ -171,8 +171,8 @@ function cschooseraddbgoptions() {
 }
 function promptcustombgurl2() {
     createalert("<h3 style='opacity: 0.75'>更换背景图 API</h3><input type='text' id='custom_bg_url' placeholder='请填入你要使用的图片 API：'></input><c style='position: relative; float: left; top: 16px;' href='javascript:void(0)' onclick='promptcustombgurl3();'>更换</c><c style='position: relative; top: 16px; right: 8px; float: right' href='javascript:void(0)' onclick=\"custombgurl('')\";>还原为默认</c>",180)
-    if (getCookie('bgurl')) {
-        document.getElementById("custom_bg_url").value = getCookie('bgurl')
+    if (localStorage.getItem('bgurl')) {
+        document.getElementById("custom_bg_url").value = localStorage.getItem('bgurl')
     }
     document.getElementById("custom_bg_url").addEventListener('keydown',function(e){
         if (e.keyCode == 13) {
@@ -190,26 +190,27 @@ function promptcustombgurl3() {
     }
 }
 function custombgurl(a) {//应用自定义api
-    setCookie('bgurl',a,365);
     //location.reload();
     removebg();
     if (a) {
         background_url = a;
+        localStorage.setItem('bgurl',a);
     } else {
         background_url = default_bgurl;
+        localStorage.removeItem('bgurl');
     }
     show_background(background_url);
     destroyprompt();
 }
 function chgbgstate() {//启用或禁用背景图
-    if (getCookie("backgroundenabled") != "") {
-        setCookie('backgroundenabled',"",0);
+    if (localStorage.getItem("backgroundenabled") != null) {
+        localStorage.removeItem('backgroundenabled');
         //window.location.href = window.location.href.replace(/(\?|#)[^'"]*/, '');
         //window.history.pushState({},0,url);
         //location.reload();
         removebg();
     } else {
-        setCookie('backgroundenabled',"yes",365);
+        localStorage.setItem('backgroundenabled',"yes");
         show_background(background_url);
     }
 }

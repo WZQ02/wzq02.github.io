@@ -1,8 +1,7 @@
-'use strict';
-var visited = getCookie('visited');//是否第一次访问本站
-var tip1status = getCookie('tip1status');//用户是否已禁用顶部提示栏
-if (visited == "") {
-    setCookie('visited',"1",365);
+var visited = localStorage.getItem('visited');//是否第一次访问本站
+//var tip1status = localStorage.getItem('tip1status');//用户是否已禁用顶部提示栏
+if (visited == null) {
+    localStorage.setItem('visited',"1");
 }
 /*if (window.i18nextify.i18next.language == "zh-CN") {//检测语言以判断切换语言按钮的行为
     var curlang = "zh";
@@ -83,7 +82,7 @@ function tip1() {//页面顶部提示语
         tip1.style.display = "none";
     }*/
     tip1.style.display = "none";
-    if (detectIEVer() <= 12) {
+    if (DetectIEVer() <= 12) {
         document.body.style.backgroundColor = "#EEE";
         tip1.style.display = "block";
         if (navigator.language == "zh-CN") {
@@ -93,12 +92,12 @@ function tip1() {//页面顶部提示语
         }
     }
 }
-function disabletip1() {//禁用顶部提示栏
+/*function disabletip1() {//禁用顶部提示栏
     setCookie('tip1status',"1",365);
     var tip1 = document.getElementById("tip1");
     tip1.style.animation = "tipunshow cubic-bezier(0.4, 0, 1, 0.6) 0.4s 1";
     setTimeout(function(){tip1.style.display = "none";},"395");
-}
+}*/
 var lock1 = 1;//引入锁，避免动画结束前重复上下页切换动作
 function scrolltopage2() {
     if (lock1) {

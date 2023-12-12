@@ -1,8 +1,8 @@
 autochgthemecolor();
 
 function autochgthemecolor() {//自动更改配色方案
-    var color = getCookie('themecolor');
-    if (color != "") {
+    var color = localStorage.getItem('themecolor');
+    if (color != null) {
         document.getElementById("color_scheme").href = "css/cs_"+color+".css";
     }
 }
@@ -20,9 +20,14 @@ function showcschooser() {//显示配色方案选择框
     }
 }
 function themecolor(color) {//更改配色方案
-    document.getElementById("color_scheme").href = "css/cs_"+color+".css";
     hidecschooser();
-    setCookie('themecolor',color,365);
+    if (color) {
+        localStorage.setItem('themecolor',color);
+        document.getElementById("color_scheme").href = "css/cs_"+color+".css";
+    } else {
+        localStorage.removeItem('themecolor');
+        document.getElementById("color_scheme").href = "";
+    }
 }
 function hidecschooser() {
     var cschooser = document.getElementById("cschooser");

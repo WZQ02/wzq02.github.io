@@ -22,18 +22,9 @@
 <script>
     autochgthemecolor();
     disable_btm();
-    function getCookie(cname) {//cookie设置
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for (var i=0; i<ca.length; i++) {
-            var c = ca[i].trim();
-           if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-        }
-       return "";
-    }
-    function autochgthemecolor() {//自动更改配色方案
-        var color = getCookie('themecolor');
-        if (color != "") {
+    function autochgthemecolor() {
+        var color = localStorage.getItem('themecolor');
+        if (color != null) {
             document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
         }
     }
