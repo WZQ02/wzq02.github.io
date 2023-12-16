@@ -294,12 +294,17 @@ textrt {
     background-color: #777;
     left: 114px;
 }
-#centerpic {
+#centerpic_container {
     position: absolute;
-    top: calc(50vh - 160px);
+    /*top: calc(50vh - 160px);
     top: calc(50dvh - 160px);
-    left: calc(50vw - 160px);
-    animation: icoshowup 1.2s cubic-bezier(0, 0.3, 0, 1) 1;
+    left: calc(50vw - 160px);*/
+    top: 0px;
+    left: 0px;
+    animation: appear 1.2s cubic-bezier(0, 0.3, 0, 1) 1;
+}
+#centerpic {
+    position: relative;
     transition: 0.25s;
 }
 #centerpic:hover{
@@ -309,23 +314,20 @@ textrt {
     opacity: 0.4;
 }
 #toscr2 {
-    position: absolute;
-    top: calc(77vh - 32px);
-    top: calc(77dvh - 32px);
-    left: calc(50vw - 24px);
+    position: relative;
+    top: 48px;
+    left: -184px;
     animation: appear 2s 1;
     opacity: 0.4;
     transition: 0.25s;
 }
 #toscr2:hover{
     opacity: 0.8;
-    top: calc(77vh - 24px);
-    top: calc(77dvh - 24px);
+    top: 40px;
 }
 #toscr2:active{
     opacity: 0.2;
-    top: calc(77vh - 40px);
-    top: calc(77dvh - 40px);
+    top: 56px;
 }
 #toscr1 {
     position: relative;
@@ -484,6 +486,7 @@ s {
     width: 100%;
     height: 88px;
     animation: appear 0.4s ease 1;
+    padding: 4px 0;
 }
 .article_shortcut_text {
     position: relative;
@@ -710,7 +713,7 @@ input:focus {
         color: #fff;
     }
     .article_shortcut_text {
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgba(0,0,0,0.2);
         color: #fff
     }
     .article_shortcut_text:hover {
@@ -743,6 +746,9 @@ input:focus {
     .article_top_text img {
         filter: invert(100%);
     }
+    .centerpic_picelement {
+        filter: invert(1);
+    }
 }
 @media screen and (max-width: 524px) {
     .stitle {
@@ -766,6 +772,9 @@ input:focus {
     }
     .article_shortcut_text mdtitle2{
         font-size: 14px;
+    }
+    .article_shortcut {
+        padding: 0;
     }
 }
 @media screen and (max-width: 720px) {
@@ -806,18 +815,6 @@ input:focus {
         top: calc(3vh - 26px);
         top: calc(3dvh - 26px);
         height: calc(88% - 72px);
-    }
-    #toscr2 {
-        top: calc(50vh + 200px);
-        top: calc(50dvh + 200px);
-    }
-    #toscr2:hover{
-        top: calc(50vh + 208px);
-        top: calc(50dvh + 208px);
-    }
-    #toscr2:active{
-        top: calc(50vh + 192px);
-        top: calc(50dvh + 192px);
     }
     #sectionchoice {
         top: calc(6vh - 40px);
@@ -892,21 +889,21 @@ input:focus {
 @keyframes icoshowup {
     from {
         opacity: 0.0;
-        top: calc(50% - 80px);
+        top: 80px;
     }
     to {
         opacity: 1.0;
-        top: calc(50% - 160px);
+        top: 0px;
     }
 }
 @keyframes icogo {
     from {
         opacity: 1.0;
-        top: calc(50% - 160px);
+        top: 0px;
     }
     to {
         opacity: 0.0;
-        top: calc(50% - 240px);
+        top: -80px;
     }
 }
 @keyframes pg1go {
@@ -1041,3 +1038,15 @@ input:focus {
         transform: rotate(0deg);
     }
 }
+/*@keyframes icoshowup2 {
+    from {
+        opacity: 0.0;
+        top: calc(50vh - 80px);
+        top: calc(50dvh - 80px);
+    }
+    to {
+        opacity: 1.0;
+        top: calc(50vh - 160px);
+        top: calc(50dvh - 160px);
+    }
+}*/

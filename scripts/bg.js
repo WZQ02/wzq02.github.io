@@ -140,7 +140,8 @@ function show_background(url) {
             }
         })
     }
-    document.getElementsByTagName("centerpic")[0].style.display = "none";
+    //document.getElementsByTagName("centerpic")[0].style.display = "none";
+    document.getElementById("centerpic_container").style.display = "none";
     abspan.innerHTML = "<p>使用的图片 API: <br>" + url + "</p><p>站长不对从第三方调用图片的内容负责。";
     abspan.style.textAlign = "right";
     abspan.id = "abspan";
@@ -219,7 +220,8 @@ function removebg() {
     document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#abspan"));
     document.getElementById("cschooser").removeChild(document.querySelector("#bgoptions"));
     document.getElementById("cschooser").style.height = "";
-    document.getElementsByTagName("centerpic")[0].style = "display: block; animation: appear 0.7s";
+    //document.getElementsByTagName("centerpic")[0].style = "display: block; animation: appear 0.7s";
+    document.getElementById("centerpic_container").style = "display: block; animation: appear 0.7s";
     document.getElementById("bgcon").style.opacity = "";
     document.getElementById("bgcon").title = "启用背景图片";
     if (i18nextify.i18next.isInitialized) {
@@ -227,5 +229,8 @@ function removebg() {
     }
     for (var i=0; i<6; i++) {//去除所有section背景模糊效果
         document.getElementsByClassName("sections")[i].style.backdropFilter = "";
+    }
+    if (cp_rewoke) {
+        cp_rewoke();
     }
 }

@@ -1,77 +1,155 @@
-var timeoutchgcenterpic = "";
-if (visited == "1") {
-    autochgcenterpic();
-    timeoutchgcenterpic = setInterval("chgcenterpic()","15000");//自动切换中央图片
-} else {
-    setTimeout("onclickchgcenterpic()","30000");
+const pic_list = ["front_1","front_2","front_3","front_4","front_5","front_6","front_7","front_8","front_9","front_10","front_11","front_12"];
+var pic_size = 96;
+function centerpic_initialize() {
+    var centerpic_bg = document.createElement("div");
+    centerpic_bg.style = "width: 100vw; height: 100vh;";
+    centerpic_bg.onmousedown = function() {
+        cp_pos_changeall();
+        click_record();
+    }
+    document.getElementById("centerpic_container").appendChild(centerpic_bg);
+    for (var i=0; i<pic_list.length; i++) {
+        var pic = document.createElement("picture");
+        pic.className = "centerpic_picelement";
+        pic.id = pic_list[i];
+        pic.style.position = "absolute";
+        pic.style.left = "calc(50vw - "+pic_size/2+"px)";
+        pic.style.top = "calc(50vh - "+pic_size/2+"px)";
+        /*pic.style.display = "flex";
+        pic.style.justifyContent = "center";
+        pic.style.alignItems = "center";*/
+        var initial_pos = cp_pos_initialize();
+        pic.style.transform = "translate("+initial_pos[0]+"px,"+initial_pos[1]+"px) rotate("+Math.random()*360+"deg)";
+        pic.style.opacity = 0.6;
+        /*pic.onmouseover = function() {
+            pic.style.opacity = 1;
+        }
+        pic.onmouseout = function() {
+            pic.style.opacity = 0.35;
+        }*/
+        pic.style.transition = "transform 1s cubic-bezier(0, 0.4, 0, 1), opacity 0.25s";
+        var source = document.createElement("source");
+        source.srcset = "images/centerpic/"+pic_list[i]+".webp";
+        source.type = "image/webp";
+        var img = document.createElement("img");
+        img.src = "images/centerpic/"+pic_list[i]+".png";
+        img.height = pic_size;
+        img.width = pic_size;
+        img.style.opacity = 0;
+        img.setAttribute('onload',"var a=document.querySelector('#"+pic_list[i]+"').childNodes[1];a.style.opacity=1;a.style.transition='0.25s';");
+        pic.appendChild(source);
+        pic.appendChild(img);
+        document.getElementById("centerpic_container").appendChild(pic);
+    }
+    pic_size_adj();
+    setTimeout(function(){cp_pos_changeall()},5)
 }
-var lock_ctp = 1;
-function onclickchgcenterpic() {
-    if (lock_ctp) {
-        chgcenterpic();
-        clearInterval(timeoutchgcenterpic);//重置计时器
-        timeoutchgcenterpic = setInterval("chgcenterpic()","15000");
-        setTimeout("lock_ctp = 1",1000);//重置锁
+function cp_pos_initialize() {
+    var edge_type = Math.ceil(Math.random()*4);
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    switch (edge_type) {
+        case 1:
+            return [(width*-0.5),(height*(Math.random()-0.5))]
+        case 2:
+            return [(width*(Math.random()-0.5)),(height*-0.5)]
+        case 3:
+            return [(width*0.5),(height*(Math.random()-0.5))]
+        case 4:
+            return [(width*(Math.random()-0.5)),(height*0.5)]
     }
 }
-function chgcenterpic() {//更改中央图片
-    var centerpic = document.getElementById("centerpic");
-    centerpic.style.animation = "icogo 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
-    setTimeout("autochgcenterpic()","400");
-    setTimeout(function(){centerpic.style.animation = "icoshowup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";},"400");
-}
-function autochgcenterpic(num) {
-    var centerpics = document.getElementsByClassName("centerpik");
-    if (num && num <= 12 && num > 0) {//给定数字，则直接应用
-        rand1 = Math.ceil(num)
+function pic_size_adj() {
+    if (window.innerWidth <= 864 || window.innerHeight <= 640) {
+        pic_size = 96;
     } else {
-        while (true) {
-            var rand1 = Math.ceil(Math.random()*12);
-            if (window.randprev != rand1) {//确保下一次展示的图片不与上一次的重复
-                break;
+        pic_size = 144;
+    }
+    for (var i=0; i<pic_list.length; i++) {
+        var pic = document.querySelector("#"+pic_list[i]);
+        pic.childNodes[1].height = pic_size;
+        pic.childNodes[1].width = pic_size;
+    }
+}
+centerpic_initialize();
+
+var timeoutcpposchg;
+function cp_resize_control() {
+    if (timeoutcpposchg) {
+        clearTimeout(timeoutcpposchg);
+        timeoutcpposchg == 0;
+    }
+    timeoutcpposchg = setTimeout(function(){cp_pos_changeall();pic_size_adj()},250)
+};
+window.onresize = function(){cp_resize_control()};
+function cp_pos_change(name) {
+    var change = document.querySelector("#"+name);
+    change.style.transform = "translate("+window.innerWidth*(Math.random()-0.5)*0.8+"px,"+window.innerHeight*(Math.random()-0.5)*0.8+"px) rotate("+Math.random()*360+"deg)";
+}
+function cp_pos_changeall() {
+    for (var i=0; i<pic_list.length; i++) {
+        cp_pos_change(pic_list[i]);
+    }
+}
+function cp_rewoke() {
+    window.onresize = function(){cp_resize_control()};
+    for (var i=0; i<pic_list.length; i++) {
+        let initial_pos = cp_pos_initialize();
+        document.querySelector("#"+pic_list[i]).style.transform = "translate("+initial_pos[0]+"px,"+initial_pos[1]+"px) rotate("+Math.random()*360+"deg)";
+    }
+    setTimeout(function(){cp_pos_changeall()},5);
+}
+
+function cp_addprop() {
+    for (var i=0; i<pic_list.length; i++) {
+        let pic = document.querySelector("#"+pic_list[i]);
+        pic.onmouseover = function() {
+            pic.style.opacity = 1;
+        }
+        pic.onmousedown = function() {
+            pic.style.opacity = 0.35;
+        }
+        if (pic.id == "front_9") {
+            pic.onmouseup = function() {
+                pic.style.opacity = 1;
+                liubing_trigger();
+            }
+        } else {
+            pic.onmouseup = function() {
+                pic.style.opacity = 1;
+                cp_pos_change(pic.id);
+                click_record();
             }
         }
+        pic.onmouseout = function() {
+            pic.style.opacity = 0.6;
+        }
     }
-    var randprev = rand1;
-    window.randprev = randprev;
-    centerpics[0].setAttribute('srcset',"images/centerpic/front_"+rand1+".webp");
-    centerpics[1].setAttribute('src',"images/centerpic/front_"+rand1+".png");
-    //centerpics[1].style="opacity:0;transition:none";
-    centerpics[1].style.opacity = "0";
-    centerpics[1].style.transition = "none";
-    centerpics[1].setAttribute('onload',"document.getElementsByClassName('centerpik')[1].style.opacity='1';document.getElementsByClassName('centerpik')[1].style.transition='0.25s';");
-    if (rand1 == 9) {
-        centerpics[1].setAttribute('onmousedown',"liubing1()");
-        centerpics[1].setAttribute('onmouseup',"liubing2()");
-        centerpics[1].setAttribute('islizi',"1");
-        if ('centerpik liuing' == centerpics[1].getAttribute("class")) {
-            centerpics[1].style.animation = "spin 7s linear infinite";
+}
+cp_addprop();
+
+var liubing_status=0,lbsb_autoremove,lbaudio,lbtrigger=0;
+function liubing_trigger() {
+    if (liubing_status==0) {
+        if (lbtrigger!=1) {
+            lbtrigger=1;
+            setTimeout(function(){lbtrigger=0},200)
+        } else {
+            lbtrigger=0;
+            liubing();
         }
     } else {
-        centerpics[1].setAttribute('onmousedown',"");
-        centerpics[1].setAttribute('onmouseup',"");
-        centerpics[1].setAttribute('islizi',"");
-        centerpics[1].style.animation = "";
+        liubing();
     }
 }
 function liubing(custom_music_url) {
-    var lizi = document.getElementsByClassName("centerpik")[1];
-    //var liubingad = new Audio("https://wzq02.cf:893/bones.ogg");
-    if ('centerpik liuing' == lizi.getAttribute("class")) {
-        lizi.classList.remove('liuing');
-        lizi.style.animation = "spinstop 0.15s ease-out";
-        setTimeout(function(){lizi.style.animation = ""},145)
-        var audio = document.querySelector("audio")
-        audio.parentNode.removeChild(audio);
-        removeliubingspan();
-    } else {
-        var liubingad = document.createElement("audio");
-        lizi.classList.add('liuing');
-        if (lizi.getAttribute("islizi") == "1") {
-            lizi.style.animation = "spin 7s linear infinite";
-        }
-        liubingad.autoplay = "autoplay";
-        liubingad.loop = "loop";
+    var dj = document.querySelector("#front_9").childNodes[1];
+    if (liubing_status == 0) {
+        liubing_status = 1;
+        dj.style.animation = "spin 4s linear infinite";
+        lbaudio = document.createElement("audio");
+        lbaudio.autoplay = 1;
+        lbaudio.loop = 1;
         while (true) {
             var rand2 = Math.ceil(Math.random()*8);
             if (window.randprev2 != rand2) {
@@ -81,62 +159,53 @@ function liubing(custom_music_url) {
         var randprev = rand2;
         window.randprev2 = randprev;
         if (custom_music_url) {
-            liubingad.src = custom_music_url;
+            lbaudio.src = custom_music_url;
             createliubingspan("♫&nbsp;&nbsp;"+custom_music_url);
         } else {
+            var aud_src_prefix = "https://wzq02.cf/demos/otm_demos_ogg/";
             switch (rand2) {
                 case 1:
-                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/dabig_dance.ogg";
+                    lbaudio.src = aud_src_prefix+"dabig_dance.ogg";
                     createliubingspan("♫&nbsp;&nbsp;Dabig Dance.mp4");
                     break;
                 case 2:
-                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/o108rocket.ogg";
+                    lbaudio.src = aud_src_prefix+"o108rocket.ogg";
                     createliubingspan("♫&nbsp;&nbsp;电棍：all in ♿你爸↑♿火箭少女♿♿♿丶");
                     break;
                 case 3:
-                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/otto_control.ogg";
+                    lbaudio.src = aud_src_prefix+"otto_control.ogg";
                     createliubingspan("♫&nbsp;&nbsp;电棍：思喂！♿控制♿♿（Mind Control）");
                     break;
                 case 4:
-                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/gun_it_up_unfinished.ogg";
+                    lbaudio.src = aud_src_prefix+"gun_it_up_unfinished.ogg";
                     createliubingspan("♫&nbsp;&nbsp;电棍：Give It Up♿（未完成）");
                     break;
                 case 5:
-                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/luv_the_giaoatic.ogg";
+                    lbaudio.src = aud_src_prefix+"luv_the_giaoatic.ogg";
                     createliubingspan("♫&nbsp;&nbsp;Luv the GIAOatic???");
                     break;
                 case 6:
-                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/invitation_from_mr_aniki.ogg";
+                    lbaudio.src = aud_src_prefix+"invitation_from_mr_aniki.ogg";
                     createliubingspan("♫&nbsp;&nbsp;Invitation From Mr.Aniki♂");
                     break;
                 case 7:
-                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/nigga.ogg";
+                    lbaudio.src = aud_src_prefix+"nigga.ogg";
                     createliubingspan("♫&nbsp;&nbsp;ruma");
                     break;
                 case 8:
-                    liubingad.src = "https://wzq02.cf/demos/otm_demos_ogg/glitch_otto.ogg";
+                    lbaudio.src = aud_src_prefix+"glitch_otto.ogg";
                     createliubingspan("♫&nbsp;&nbsp;【ottomania:2023】Glitch♿OTTO♿");
                     break;
             }
         }
-        document.body.appendChild(liubingad);
-    }
-}
-var aliubing,autoremove;
-function liubing1() {
-    aliubing = setTimeout("liubing(); lock_ctp = 0; liubing3()",1000);
-}
-function liubing2() {
-    clearTimeout(aliubing);
-    setTimeout("lock_ctp = 1",0);
-}
-function liubing3() {
-    var lizi = document.getElementsByClassName("centerpik")[1];
-    if ('centerpik liuing' == lizi.getAttribute("class")) {
-        clearInterval(timeoutchgcenterpic);
+        document.body.appendChild(lbaudio);
     } else {
-        clearInterval(timeoutchgcenterpic);
-        timeoutchgcenterpic = setInterval("chgcenterpic()","15000");
+        liubing_status = 0;
+        var audio = document.querySelector("audio")
+        audio.parentNode.removeChild(audio);
+        removeliubingspan();
+        dj.style.animation = "spinstop 0.15s ease-out";
+        setTimeout(function(){dj.style.animation = ""},145)
     }
 }
 function createliubingspan(title) {
@@ -146,13 +215,100 @@ function createliubingspan(title) {
     abspan2.style.animation = "appear .25s 1";
     abspan2.id = "liubingspan";
     document.getElementsByTagName("textrt")[0].appendChild(abspan2);
-    autoremove = setTimeout(function(){removeliubingspan()},5000)
+    lbsb_autoremove = setTimeout(function(){removeliubingspan()},5000)
 }
 function removeliubingspan() {
-    clearTimeout(autoremove);
+    clearTimeout(lbsb_autoremove);
     if (document.querySelector("#liubingspan")) {
         document.querySelector("#liubingspan").style.animation = 'disappear 0.25s';
         setTimeout(function(){document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#liubingspan"))},245)
     }
-    //document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#liubingspan"));
+}
+
+var cp_click_statistics = [0,0,0,0,0,0]
+var cp_click_last5 = []
+var statistic_entry_created = 0
+function click_record() {
+    var last_click_time = cp_click_statistics[0],
+        last_click_duration = cp_click_statistics[1],
+        shortest_click_duration = cp_click_statistics[2],
+        cheated = cp_click_statistics[3],
+        last5_speed = cp_click_statistics[4],
+        last5_fastest = cp_click_statistics[5]
+    if (cheated<3) {
+        if (last_click_time!=0){
+            var new_record=Date.now()-last_click_time
+            if (new_record>=13){
+                last_click_duration=new_record
+                cp_click_last5[cp_click_last5.length]=last_click_duration
+                if (cp_click_last5.length>=6) {
+                    cp_click_last5.splice(0,1)
+                    var last5_sum_time=0
+                    for (i=0;i<5;i++) {
+                        last5_sum_time = last5_sum_time+cp_click_last5[i]
+                    }
+                    last5_speed = Number(parseFloat(5000/last5_sum_time).toFixed(1))
+                    if (statistic_entry_created==0 && last5_speed>=5) {
+                        create_statistic_entry()
+                        statistic_entry_created=1
+                    }
+                    if (last5_speed>=10) {
+                        var last5_sum_diff=0
+                        for (i=1;i<5;i++) {
+                            last5_sum_diff = last5_sum_diff+Math.abs(cp_click_last5[i]-cp_click_last5[i-1])
+                        }
+                        if (last5_sum_diff<10) {
+                            cheated=3
+                            console.log("检测到疑似连点器行为，已暂停统计点击速度。")
+                            createalert("<h1 style='font-size: 56px'>连点器！？</h1><p>没想到吧，我连连点检测都做出来了，哼哼...</p>",200)
+                            last_click_duration = shortest_click_duration = last5_speed = last5_fastest = 0
+                        }
+                    }
+                }
+            } else {
+                cheated++
+                if (cheated >=3) {
+                    console.log("两次点击间隔太短，已暂停统计点击速度。")
+                    createalert("<h1 style='font-size: 56px'>脚本狗！？</h1><p>不是吧，这你都要开挂啊...</p>",174)
+                    last_click_duration = shortest_click_duration = last5_speed = last5_fastest = 0
+                }
+            }
+        }
+        if (shortest_click_duration==0 || shortest_click_duration>last_click_duration){
+            shortest_click_duration=last_click_duration
+        }
+        if (last5_fastest<last5_speed) {
+            last5_fastest=last5_speed
+        }
+        last_click_time = Date.now()
+        cp_click_statistics = [last_click_time,last_click_duration,shortest_click_duration,cheated,last5_speed,last5_fastest]
+    }
+}
+function display_cp_click_statistics() {
+    var msg1,msg2,msg3,msg4
+    if (cp_click_statistics[1]) {
+        msg1 = cp_click_statistics[1]/1000+" 秒"
+        msg2 = cp_click_statistics[2]/1000+" 秒"
+    } else {
+        msg1 = msg2 = "未统计"
+    }
+    if (cp_click_statistics[4]) {
+        msg3 = cp_click_statistics[4]+" 次 / 秒"
+        msg4 = cp_click_statistics[5]+" 次 / 秒"
+    } else {
+        msg3 = msg4 = "未统计"
+    }
+    createalert("<h3>统计信息：</h3><p>上一次点击的时间间隔："+msg1+"</p><p>最短的点击时间："+msg2+"</p><p>最近 5 次的平均点击速度："+msg3+"</p><p>5 次点击平均速度最快："+msg4+"</p><p>统计数据将不会保存。<br>刷新或关闭本页后，数据将被重置。</p>",314)
+}
+function create_statistic_entry() {
+    var a = document.createElement("a");
+    a.title = "查看统计信息";
+    a.onmousedown = function(){display_cp_click_statistics()};
+    var a2 = document.createElement("div");
+    a2.class = "othlnk";
+    var a3 = document.createElement("span");
+    a3.innerText = "查看统计信息";
+    a2.appendChild(a3);
+    a.appendChild(a2);
+    document.querySelector("#othlnks").appendChild(a)
 }

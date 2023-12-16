@@ -109,19 +109,20 @@ function scrolltopage2() {
     }
 }
 function scrolltopage2a() {//切换到下页
-    var centerpic = document.getElementById("centerpic");
-    var toscr2 = document.getElementById("toscr2");
+    //var centerpic = document.getElementById("centerpic");
+    var centerpic = document.getElementById("centerpic_container");
+    //var toscr2 = document.getElementById("toscr2");
     var lnks = document.getElementById("links");
     var page2 = document.getElementById("page2");
     page2.classList.add('pagedisplay');
     centerpic.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
-    toscr2.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
+    //toscr2.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
     lnks.style.animation = "disappear 0.5s 1";
     hidecschooser();
     setTimeout(function(){
         page2.style.animation = "pg2showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
         page2.style.display = "block";
-        toscr2.style.display = "none";
+        //toscr2.style.display = "none";
         centerpic.style.display = "none";
     },"250");
     setTimeout(function(){lnks.style.display = "none";},"500");
@@ -144,20 +145,24 @@ function scrolltopage1() {
     }
 }
 function scrolltopage1a() {//返回上页
-    var centerpic = document.getElementById("centerpic");
-    var toscr2 = document.getElementById("toscr2");
+    //var centerpic = document.getElementById("centerpic");
+    var centerpic = document.getElementById("centerpic_container");
+    //var toscr2 = document.getElementById("toscr2");
     var lnks = document.getElementById("links");
     var page2 = document.getElementById("page2");
     page2.classList.remove('pagedisplay');
     page2.style.animation = "pg2go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
     setTimeout(function(){
         page2.style.display = "none";
-        centerpic.style.display = "block";
-        toscr2.style.display = "block";
+        //centerpic.style.display = "block";
+        //toscr2.style.display = "block";
         lnks.style.display = "block";
-    },"250");
-    centerpic.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
-    toscr2.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
+    },250);
+    if (document.querySelector("#animbg")==null) {
+        setTimeout(function(){centerpic.style.display = "block"},250);
+        centerpic.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
+    }
+    //toscr2.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
     lnks.style.animation = "appear 0.5s 1";
 }
 function secleft() {
