@@ -65,42 +65,26 @@ table td {
     <div id="mdcontent"></div>
     <a id="btm" href="/">返回主页</a></h4>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="/scripts/thirdparty/showdown.min.js"></script>
+<script src="/scripts/thirdparty/marked.min.js"></script>
 <script>
-    suffixdetect();
-    autochgthemecolor();
-    function autochgthemecolor() {
-        var color = localStorage.getItem('themecolor');
-        if (color != null) {
-            document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
+    window.addEventListener('DOMContentLoaded',hashdetect)
+    window.addEventListener('hashchange',hashdetect)
+    function hashdetect() {
+        if (window.location.href.indexOf("#/http") != -1) {
+            getmd(location.hash.slice(2),1)
+        } else {
+            getmd(location.hash.slice(2))
         }
     }
-    function suffixdetect() {
-        var url = window.location.href;
-        if (url.indexOf("mdname=") != -1) {
-            var mdname = (url.slice(url.indexOf("mdname=")+7));
-            getmdfile(mdname)
-        } else if (url.indexOf("mdname2=") != -1) {
-            var mdname = (url.slice(url.indexOf("mdname2=")+8));
-            getmdfile2(mdname)
-        }
-    }
-    function getmdfile(mdname) {
+    function getmd(mdn,ext) {
         var request = new XMLHttpRequest();
         var mdc;
-        request.open("get", "/md/"+mdname+".md");
-        request.send(null);
-        request.onload = function () {
-            if (request.status == 200) {
-                mdc = request.responseText;
-                rendermd(mdc);
-            }
+        if (ext) {
+            request.open("get", mdn);
+        } else {
+            request.open("get", "/md/"+mdn+".md");
         }
-    }
-    function getmdfile2(mdname) {//外部md文件
-        var request = new XMLHttpRequest();
-        var mdc;
-        request.open("get", mdname);
         request.send(null);
         request.onload = function () {
             if (request.status == 200) {
@@ -111,8 +95,14 @@ table td {
     }
     function rendermd(mdc) {
         var mdc_show = document.getElementById("mdcontent");
-        text = mdc,
-        html = marked.parse(text);
+        if (window.marked) {
+            text = mdc,
+            html = marked.parse(text);
+        } else {
+            var converter = new showdown.Converter(),
+            text = mdc,
+            html = converter.makeHtml(text);
+        }
         mdc_show.innerHTML = html;
         if (document.getElementsByTagName("h1")[0]) {
             document.title = document.getElementsByTagName("h1")[0].innerText;
@@ -130,6 +120,13 @@ table td {
         } else {
             break;
         }
+        }
+    }
+    autochgthemecolor();
+    function autochgthemecolor() {
+        var color = localStorage.getItem('themecolor');
+        if (color != null) {
+            document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
         }
     }
 </script>

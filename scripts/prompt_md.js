@@ -20,6 +20,7 @@ function rendermdprompt(mdc,e,d,t) {
     var current = document.getElementsByClassName("prompt")[0];
     var innercon = document.createElement("div");
     innercon.className = "prompt_text mdpmpt";
+    if (window.marked===undefined) {e=1};
     if (e) {
         var converter = new showdown.Converter(),
         text = mdc,

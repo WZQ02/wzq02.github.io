@@ -1,5 +1,16 @@
 req_sec_json();
 
+function okeys(obj) {
+    return Object.keys(obj)
+}
+function ovalues(obj) {
+    if (Object.values) {
+        return Object.values(obj)
+    } else {//不兼容object.values的浏览器
+        return Object.keys(obj).map(function(key){return obj[key]});
+    }
+}
+
 function req_sec_json() {//循环请求存放section的json
     for (var i=1; i<7; i++) {
         req_specified_json(i);
@@ -8,15 +19,15 @@ function req_sec_json() {//循环请求存放section的json
 
 function req_specified_json(i) {//请求指定的json
     var request = new XMLHttpRequest();
-    request.open("get", "json/section"+i+"_content.json");
+    request.open("get", "/json/section"+i+"_content.json");
     request.send(null);
     request.onload = function () {
         if (request.status == 200) {
             var info = JSON.parse(request.responseText);
             var stitle_cont = info["stitle"]//标题
             var sec_cont = info["content"]//内容
-            var sc_keys = Object.keys(sec_cont);
-            var sc_values = Object.values(sec_cont);
+            var sc_keys = okeys(sec_cont);
+            var sc_values = ovalues(sec_cont);
             createsection(i,stitle_cont);
             section_addstuff(i,sc_keys,sc_values);
         }
@@ -72,16 +83,16 @@ function createsinfo(i,current_sec,sc_values) {
 function createslink(i,current_sec,sc_values) {
     var slink_container = document.createElement("div");
     var slink = document.createElement("a");
-    slink.id = Object.values(sc_values[i])[0];
-    slink.title = Object.values(sc_values[i])[1];
-    slink.innerText = Object.values(sc_values[i])[2];
-    slink.href = Object.values(sc_values[i])[3];
+    slink.id = ovalues(sc_values[i])[0];
+    slink.title = ovalues(sc_values[i])[1];
+    slink.innerText = ovalues(sc_values[i])[2];
+    slink.href = ovalues(sc_values[i])[3];
     slink.className = "stitle2 slink";
     slink_container.id = "slink_container";
     current_sec.appendChild(slink_container);
     slink_container.appendChild(slink);
-    if (Object.values(sc_values[i])[4]) {
-        var slk_command = Object.values(sc_values[i])[4];
+    if (ovalues(sc_values[i])[4]) {
+        var slk_command = ovalues(sc_values[i])[4];
         slink.onclick = function(){eval(slk_command);};
     }
 }
@@ -99,9 +110,9 @@ function createsscreenshots(i,current_sec,sc_values,j) {
         current_sec.getElementsByClassName("sscreenshots")[j].appendChild(ss_pic);
         var ss_pic_webp = document.createElement("source");
         var ss_pic_png = document.createElement("img");
-        ss_pic_webp.srcset = Object.values(Object.values(sc_values[i])[1])[0];
+        ss_pic_webp.srcset = ovalues(ovalues(sc_values[i])[1])[0];
         ss_pic_webp.type = "image/webp";
-        ss_pic_png.src = Object.values(Object.values(sc_values[i])[0])[0];
+        ss_pic_png.src = ovalues(ovalues(sc_values[i])[0])[0];
         ss_pic_png.style.width = "100%";
         ss_pic_png.style.height = "100%";
         current_sec.getElementsByClassName("ss_pic")[j].appendChild(ss_pic_webp);
@@ -113,11 +124,11 @@ function createarticleshort(i,current_sec,sc_values) {
     var a_sc_text = document.createElement("div");
     a_sc.className = "article_shortcut";
     a_sc_text.className = "article_shortcut_text";
-    var mdtitle = Object.values(sc_values[i])[0];
-    var mddate = Object.values(sc_values[i])[1];
-    var mdname = Object.values(sc_values[i])[2];
-    if (Object.values(sc_values[i])[3]) {
-        var tags = Object.values(sc_values[i])[3];
+    var mdtitle = ovalues(sc_values[i])[0];
+    var mddate = ovalues(sc_values[i])[1];
+    var mdname = ovalues(sc_values[i])[2];
+    if (ovalues(sc_values[i])[3]) {
+        var tags = ovalues(sc_values[i])[3];
         var tags_html = "&nbsp;&nbsp;&nbsp;&nbsp;<img src='icons/others/tag.svg'>&nbsp;"+tags
         var extra = ',\"'+mddate+'\",\"'+tags+'\"'
     } else {

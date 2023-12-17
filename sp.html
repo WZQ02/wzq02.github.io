@@ -3,7 +3,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WZQ'02 的小站</title>
-    <!--感觉我现在这个个人主页太花里胡哨了，所以随手做了个“省流版”。不保证所有东西能用。-->
 </head>
 <style>
     body {
@@ -87,6 +86,7 @@
 <html>
     <div id="container">
         <div id="title"><h1>WZQ'02 的小站</h1></div>
+        <p hidden>虽然你应该知道，但是这个网站不是要你用那种上古版本的 IE 访问的，这不是怀旧向的网站。</p>
         <p id="links">
             <a href="https://space.bilibili.com/12367945/">哔哩哔哩&nbsp;</a>
             <a href="https://www.youtube.com/@wzq02/">YouTube 频道&nbsp;</a>
@@ -103,29 +103,21 @@
             <div class="sections" id="section5"></div>
             <div class="sections" id="section6"></div>
         </div>
-        <p class="stitle2">
-            <a href="javascript:void(0)" onclick="exit_lite()">退出极简模式</a>
-        </p>
     </div>
 </html>
 <script src="scripts/section_generate.js"></script>
 <script src="scripts/ver.js"></script>
 <script>
-    var url = window.location.href
-    url = url.replace('/test.html', '');
-    window.history.pushState({},0,url);
-    function createmdprompt(mdname) {
-        window.location.href = "/read/?mdname="+mdname
-    }
     function createobjpmpt(url,name) {
         if (url.indexOf("?do_not_show_btm") != -1) {
             url = url.slice(0,-16)
-            console.log(url)
         }
         window.location.href = url
     }
-    function exit_lite() {
-        localStorage.removeItem("lite_mode")
-        location.reload()
+    var url = window.location.href
+    url = url.replace('sp.html', '');
+    window.history.pushState({},0,url);
+    function createmdprompt(mdname) {
+        window.location.href = "/read/#/"+mdname
     }
 </script>

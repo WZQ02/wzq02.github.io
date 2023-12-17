@@ -3,7 +3,7 @@ var pic_size = 96;
 function centerpic_initialize() {
     var centerpic_bg = document.createElement("div");
     centerpic_bg.style = "width: 100vw; height: 100vh;";
-    centerpic_bg.onmousedown = function() {
+    centerpic_bg.onmouseup = function() {
         cp_pos_changeall();
         click_record();
     }
@@ -27,7 +27,7 @@ function centerpic_initialize() {
         pic.onmouseout = function() {
             pic.style.opacity = 0.35;
         }*/
-        pic.style.transition = "transform 1s cubic-bezier(0, 0.4, 0, 1), opacity 0.25s";
+        pic.style.transition = "transform 1s cubic-bezier(0.05, 0.2, 0, 1), opacity 0.25s";
         var source = document.createElement("source");
         source.srcset = "images/centerpic/"+pic_list[i]+".webp";
         source.type = "image/webp";
@@ -238,8 +238,11 @@ function click_record() {
     if (cheated<3) {
         if (last_click_time!=0){
             var new_record=Date.now()-last_click_time
-            if (new_record>=13){
+            if (new_record>=15){
                 last_click_duration=new_record
+                if (cheated) {
+                    cheated--
+                }
                 cp_click_last5[cp_click_last5.length]=last_click_duration
                 if (cp_click_last5.length>=6) {
                     cp_click_last5.splice(0,1)
@@ -260,7 +263,7 @@ function click_record() {
                         if (last5_sum_diff<10) {
                             cheated=3
                             console.log("检测到疑似连点器行为，已暂停统计点击速度。")
-                            createalert("<h1 style='font-size: 56px'>连点器！？</h1><p>没想到吧，我连连点检测都做出来了，哼哼...</p>",200)
+                            createalert("<h1 style='font-size: 56px'>连点器？</h1><p>没想到吧，我连连点检测都做出来了，哼哼...</p>",200)
                             last_click_duration = shortest_click_duration = last5_speed = last5_fastest = 0
                         }
                     }
@@ -269,7 +272,7 @@ function click_record() {
                 cheated++
                 if (cheated >=3) {
                     console.log("两次点击间隔太短，已暂停统计点击速度。")
-                    createalert("<h1 style='font-size: 56px'>脚本狗！？</h1><p>不是吧，这你都要开挂啊...</p>",174)
+                    createalert("<h1 style='font-size: 56px'>脚本挂！？</h1><p>不是吧，这你都要开挂啊...</p>",174)
                     last_click_duration = shortest_click_duration = last5_speed = last5_fastest = 0
                 }
             }
