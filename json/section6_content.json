@@ -35,7 +35,7 @@
             "display_title": "lachrymaL 的个人主页",
             "href": "https://lachrymal.net/"
         },
-        "sinfo5": "<p style='font-size: 16px; font-weight:bold; opacity:0.6; line-height:28px;' href='javascript:void(0)' onclick='showstitle13()'>网站最后更新日期：<span id='site_last_updated'></span></p>",
+        "sinfo5": "<p style='font-size: 16px; font-weight:bold; opacity:0.6; line-height:28px;'>网站最后更新日期：<span id='site_last_updated'></span></p>",
         "sinfo6": "<p style='font-size: 16px; font-weight:bold; opacity:0.6; line-height:28px;'>当前浏览器 User Agent：<span id='user_agent_info'></span></p>",
         "slink6": {
             "id": "show_site_log",

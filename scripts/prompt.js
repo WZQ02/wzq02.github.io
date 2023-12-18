@@ -5,7 +5,7 @@ function createprompt(id,isclosebutton,size,isblur,isdragable,allowfullscreen) {
     var pmpt_bg = document.createElement("div");
     pmpt_bg.className = "pmpt_bg";//弹窗背景
     pmpt_bg.style = "width: 100vw; height: 100vh; position: absolute; left: 0px; bottom: 0px; animation: appear 0.4s ease; background-color: rgba(0, 0, 0, 0.4)";
-    document.getElementById("main").appendChild(pmpt_bg);
+    document.body.appendChild(pmpt_bg);
     var prompt = document.createElement("div");
     prompt.className = "prompt";
     prompt.id = id;
@@ -18,7 +18,7 @@ function createprompt(id,isclosebutton,size,isblur,isdragable,allowfullscreen) {
         prompt.style.backdropFilter = "blur(32px)";
     }
     prompt.style.animation = "secshowup2 0.4s cubic-bezier(0, 0.6, 0, 1) 1";
-    document.getElementById("main").appendChild(prompt);
+    document.body.appendChild(prompt);
     if (isclosebutton) {//是否显示关闭按钮
         var closebtn = document.createElement("div");
         var closebtn_pic = document.createElement("img");
@@ -78,13 +78,13 @@ function destroyprompt(instant) {//销毁弹窗
     var pmpt_bg = document.getElementsByClassName("pmpt_bg")[0];
     var prompt = document.getElementsByClassName("prompt")[0];
     if (instant) {
-        document.getElementById("main").removeChild(prompt);
-        document.getElementById("main").removeChild(pmpt_bg);
+        document.body.removeChild(prompt);
+        document.body.removeChild(pmpt_bg);
         return;
     }
     prompt.style.animation = "secgo 0.2s cubic-bezier(0.6, 0, 1, 0.6) 1";
     pmpt_bg.style.animation = "disappear 0.2s cubic-bezier(0.6, 0, 1, 0.6) 1";
-    setTimeout(function(){document.getElementById("main").removeChild(prompt);document.getElementById("main").removeChild(pmpt_bg);},"195");
+    setTimeout(function(){document.body.removeChild(prompt);document.body.removeChild(pmpt_bg);},"195");
 }
 
 function createiframepmpt(url,name) {//创建iframe弹窗

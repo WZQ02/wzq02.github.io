@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded',onhashchange)
 window.addEventListener('hashchange',onhashchange)
 
+var rp = ['main','blog','filsvr','tv','demos','dl','about']
+
 function tosec(sect) {
     if (sect) {
         if (document.getElementById("page2").getAttribute('class') == "pagedisplay") {
@@ -20,25 +22,25 @@ function onhashchange() {
     switch (location.hash) {
         case '#/':
         case '':
-        case '#/main':
+        case '#/'+rp[0]:
             tosec();
             break;
-        case '#/blog':
+        case '#/'+rp[1]:
             tosec(section1);
             break;
-        case '#/filsvr':
+        case '#/'+rp[2]:
             tosec(section2);
             break;
-        case '#/tv':
+        case '#/'+rp[3]:
             tosec(section3);
             break;
-        case '#/demos':
+        case '#/'+rp[4]:
             tosec(section4);
             break;
-        case '#/dl':
+        case '#/'+rp[5]:
             tosec(section5);
             break;
-        case '#/about':
+        case '#/'+rp[6]:
             tosec(section6);
             break;
         default:

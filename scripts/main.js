@@ -170,7 +170,8 @@ function secleft() {
         var seccurrent = document.getElementsByClassName("secdisplay")[0];
         var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
         if (seccurnum < 6){
-            displaysec(eval("section"+(seccurnum+1)));
+            //displaysec(eval("section"+(seccurnum+1)));
+            location.hash = '#/'+rp[seccurnum+1]
         }
     }
 }
@@ -179,7 +180,8 @@ function secright() {
         var seccurrent = document.getElementsByClassName("secdisplay")[0];
         var seccurnum = parseInt(seccurrent.getAttribute("id").substring(7));
         if (seccurnum > 1){
-            displaysec(eval("section"+(seccurnum-1)));
+            //displaysec(eval("section"+(seccurnum-1)));
+            location.hash = '#/'+rp[seccurnum-1]
         }
     }
 }
@@ -306,7 +308,7 @@ var scrollFunc = function(e) {//检测鼠标滚轮
         if (sec_scroll_l) {//检查是否允许滑轮触发切换
             secleft();
         }
-        setTimeout(function(){scrolltopage2();},"0");
+        setTimeout(function(){scrolltopage2();},0);
     } else if (e.wheelDelta > 0) {//鼠标向上滑动
         if (sec_scroll_r) {
             if (seccurrent.getAttribute("id") == "section1") {
@@ -318,7 +320,7 @@ var scrollFunc = function(e) {//检测鼠标滚轮
         if (sec_scroll_l) {
             secleft();
         }
-        setTimeout(function(){scrolltopage2();},"0");
+        setTimeout(function(){scrolltopage2();},0);
     } else if (e.detail < 0) {//鼠标向上滑动
         if (sec_scroll_r) {
             if (seccurrent.getAttribute("id") == "section1") {
@@ -328,7 +330,5 @@ var scrollFunc = function(e) {//检测鼠标滚轮
         }
     }
 }
-if (document.addEventListener) {//注册事件(Firefox)
-    document.addEventListener('DOMMouseScroll',scrollFunc,false);
-}//W3C
-window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome
+document.querySelector('#main').addEventListener('DOMMouseScroll',scrollFunc,false);//注册事件(Firefox)
+document.querySelector('#main').onmousewheel = scrollFunc;//IE/Opera/Chrome
