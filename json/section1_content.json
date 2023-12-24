@@ -2,39 +2,45 @@
     "stitle": "杂谈 / 博客 / 瞎扯淡",
     "content": {
         "sinfo1": "过往的散文、随想、杂谈等。<br><br>",
-        "article_shortcut1": {
+        "article_shortcut7": {
+            "title": "我的 2023 年音 MAD 十选",
+            "date": "2023/12/23",
+            "mdname": "231223",
+            "tags": "音 MAD"
+        },
+        "article_shortcut6": {
             "title": "如何使用 youtube-dl 下载油管上的视频",
             "date": "2022/8/16",
             "mdname": "220816",
             "tags": "教程"
         },
-        "article_shortcut2": {
+        "article_shortcut5": {
             "title": "上一篇文章的后续想法",
             "date": "2022/6/1",
             "mdname": "220601",
             "tags": "随想"
         },
-        "article_shortcut3": {
+        "article_shortcut4": {
             "title": "我对于“蘑菇大战”事件的真实看法",
             "date": "2021/9/17",
             "mdname": "210917"
         },
-        "article_shortcut4": {
+        "article_shortcut3": {
             "title": "一些说明",
             "date": "2021/7/15",
             "mdname": "210715"
         },
-        "article_shortcut5": {
+        "article_shortcut2": {
             "title": "圆角还是方角？",
             "date": "2021/6/18",
             "mdname": "210618",
             "tags": "Windows, UI"
         },
-        "article_shortcut6": {
+        "article_shortcut1": {
             "title": "对于 cookie☆ 亚文化的一些想法",
             "date": "2021/2/25",
             "mdname": "210225",
             "tags": "cookie☆, 音 MAD, 例区文化, 网络亚文化"
         }
-    }    
+    }
 }

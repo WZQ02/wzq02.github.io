@@ -128,22 +128,24 @@ function cp_addprop() {
 }
 cp_addprop();
 
-var liubing_status=0,lbsb_autoremove,lbaudio,lbtrigger=0;
+var liubing_status=0,lbsb_autoremove,lbaudio,lbtrigger=0,lbm,lbn,dj=document.querySelector("#front_9").childNodes[1];
 function liubing_trigger() {
-    if (liubing_status==0) {
-        if (lbtrigger!=1) {
-            lbtrigger=1;
-            setTimeout(function(){lbtrigger=0},200)
-        } else {
-            lbtrigger=0;
-            liubing();
-        }
+    var wait = 400
+    if (lbtrigger!=1) {
+        lbtrigger=1;
+        dj.style.opacity = 0.2
+        lbn = setTimeout(function(){lbtrigger=0},wait)
+        lbm = setTimeout(function(){cp_pos_change('front_9');dj.style.opacity = ""},wait)
     } else {
-        liubing();
+        dj.style.opacity = ""
+        clearTimeout(lbm)
+        clearTimeout(lbn)
+        lbtrigger=0
+        liubing()
     }
 }
 function liubing(custom_music_url) {
-    var dj = document.querySelector("#front_9").childNodes[1];
+    //var dj = document.querySelector("#front_9").childNodes[1];
     if (liubing_status == 0) {
         liubing_status = 1;
         dj.style.animation = "spin 4s linear infinite";
