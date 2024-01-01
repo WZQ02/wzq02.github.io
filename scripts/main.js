@@ -13,7 +13,6 @@ var section3 = document.getElementById("section3");
 var section4 = document.getElementById("section4");
 var section5 = document.getElementById("section5");
 section1.classList.add('secdisplay');
-suffixdetect();
 highlightseclnk();
 
 var lock_lnk = 1;//引入锁，避免动画结束前重复otherlinks淡入或淡出动作
@@ -261,36 +260,6 @@ function checkscrollonscroll() {//每次section滚动时都再次进行检查
 function checkscrollonresize() {//每次更改视图大小时进行检查
     setTimeout(function(){checkscrollonsecalter(document.getElementsByClassName("secdisplay")[0])},"250");
 }
-function suffixdetect() {//防止lock未加载就执行导致所有的lock全失效(setTimeout是异步执行的)
-    setTimeout("suffixdetecta()","0")
-}
-function suffixdetecta() {//检测到地址栏参数的时候自动跳转到某个section
-    var url = window.location.href;
-    /*if (url.indexOf("secquery") != -1) {
-        scrolltopage2();
-        if (url.indexOf("=blog") != -1) {}
-        if (url.indexOf("=filesvr") != -1) {
-            displaysec(section2);
-        }
-        if (url.indexOf("=wzqtv") != -1) {
-            displaysec(section3);
-        }
-        if (url.indexOf("=demos") != -1) {
-            displaysec(section4);
-        }
-        if (url.indexOf("=freedl") != -1) {
-            displaysec(section5);
-        }
-        if (url.indexOf("=sitelog") != -1) {
-            displaysec(section6);
-        }*/
-        //url = url.replace(/(\?|#)[^'"]*/, '');//自动去除参数
-        //window.history.pushState({},0,url);
-    //}（改用hash代替了）
-    if (url.indexOf("forcesysfont") != -1) {//强制使用系统字体
-        document.body.style.fontFamily = "'Microsoft YaHei',微软雅黑";
-    }
-}
 var sec_scroll_l = 1;//是否允许滑轮触发section之间的切换
 var sec_scroll_r = 1;
 var scrollFunc = function(e) {//检测鼠标滚轮
@@ -332,3 +301,5 @@ var scrollFunc = function(e) {//检测鼠标滚轮
 }
 document.querySelector('#main').addEventListener('DOMMouseScroll',scrollFunc,false);//注册事件(Firefox)
 document.querySelector('#main').onmousewheel = scrollFunc;//IE/Opera/Chrome
+
+if (window.location.href.indexOf('.github.io')!=-1) {window.addEventListener('load',function(){document.title = document.title + " (Mirror)"})}
