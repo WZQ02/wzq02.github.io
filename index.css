@@ -608,6 +608,32 @@ input:focus {
     width: 248px;
     line-height: 40px;
 }
+#pagestatus {
+    position: absolute;
+    right: -4px;
+    top: calc(50vh - 14px);
+    top: calc(50dvh - 14px);
+    z-index: 1;
+}
+.dot {
+    display: grid;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    margin: 12px 0;
+    background-color: #000;
+    opacity: 0.15;
+    transition: 0.25s;
+}
+.dot:hover {
+    opacity: 0.9;
+}
+.dot:active {
+    opacity: 0.1;
+}
+.dot.highlighted_dot {
+    opacity: 0.7;
+}
 @media (prefers-color-scheme: dark) {
     body { 
         background: #252525; 
@@ -751,6 +777,9 @@ input:focus {
     }
     .centerpic_picelement {
         filter: invert(1);
+    }
+    .dot {
+        background-color: #fff;
     }
 }
 @media screen and (max-width: 524px) {

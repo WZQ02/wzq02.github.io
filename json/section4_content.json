@@ -23,14 +23,6 @@
             "display_title": "→ 浏览器 Flash 支持测试",
             "href": "javascript:void(0)",
             "onclick": "createobjpmpt(\"https://wzq02.cf/flashtest?do_not_show_btm\",\"seeip\")"
-        },
-        "sinfo4": "IP 归属地检测。",
-        "slink4": {
-            "id": "",
-            "title": "查看你的 IP 归属地",
-            "display_title": "→ 查看你的 IP 归属地",
-            "href": "javascript:void(0)",
-            "onclick": "createobjpmpt(\"/seeip/index.html?do_not_show_btm\",\"seeip\")"
         }
     }    
 }

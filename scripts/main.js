@@ -132,6 +132,8 @@ function scrolltopage2a() {//切换到下页
         setTimeout(function(){othlnks.style.animation = ""; othlnks.style.display = "none"},"245");
         setTimeout(function(){lt.style.transition = "1s"; lt.style.opacity = "1.0";},"250");
     }
+    document.querySelector('#dot_1').classList.remove('highlighted_dot');
+    document.querySelector('#dot_2').classList.add('highlighted_dot')
 }
 function scrolltopage1() {
     if (lock1) {
@@ -163,6 +165,8 @@ function scrolltopage1a() {//返回上页
     }
     //toscr2.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
     lnks.style.animation = "appear 0.5s 1";
+    document.querySelector('#dot_1').classList.add('highlighted_dot');
+    document.querySelector('#dot_2').classList.remove('highlighted_dot')
 }
 function secleft() {
     if (document.getElementById("page2").getAttribute('class') == "pagedisplay") {
