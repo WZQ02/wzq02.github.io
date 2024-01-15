@@ -70,7 +70,7 @@ function chglang() {//切换语言按钮
     var getlangfil = new XMLHttpRequest();
     getlangfil.open("get", "locales/"+curlang+"/translation.json")
     getlangfil.send(null);
-    getlangfil.onload = function(){setTimeout(function(){window.i18nextify.forceRerender()},50)}
+    getlangfil.onload = function(){setTimeout(function(){window.i18nextify.forceRerender()},250)}
     //window.i18nextify.forceRerender();
     //setTimeout(function(){window.i18nextify.forceRerender()},500);//网络条件较差时，500毫秒后再重新渲染一遍
 }

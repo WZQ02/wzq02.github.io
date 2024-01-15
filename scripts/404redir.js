@@ -36,6 +36,23 @@ if (url.indexOf("https://s.wzq02") != -1) {
         s_redir();
     }
     redirtext()
+} else {
+    if (url.indexOf("cf/read/") != -1) {
+        window.location.href = "https://wzq02.cf/read/#/" + url.slice(url.indexOf("cf/read/")+8);
+        redirtext();
+    } else if (url.indexOf("cf/playgrnd/") != -1) {
+        window.location.href = "https://wzq02.cf/playgrnd/#/" + url.slice(url.indexOf("cf/playgrnd/")+12);
+        redirtext();
+    } else {
+        var rp = ["blog", "filsvr", "tv", "demos", "dl", "about"]
+        for (i=0;i<rp.length;i++) {
+            if (url.indexOf("cf/"+rp[i]) != -1) {
+                    window.location.href = "https://wzq02.cf/#/" + rp[i];
+                    redirtext();
+                break;
+            }
+        }
+    }
 }
 function redirtext() {
     document.getElementsByTagName("h1")[0].innerHTML = "正在尝试重定向..."

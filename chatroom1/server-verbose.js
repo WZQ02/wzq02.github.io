@@ -1,3 +1,4 @@
+const serveredition = 1;
 const ws = require('nodejs-websocket');
 const POST = 8081;//服务所在端口号
 let onlinecount = 0;//在线人数统计
@@ -7,19 +8,51 @@ const server = ws.createServer((connect) => {
 
 	//用户加入
 	connect.on('text',(msgg) => {
-		if (msgg.indexOf('setUsrName=') != -1) {//接收并处理用户发送的用户名
-            connect.userName = msgg.slice(11);
-            broadcast({
-          	    type: 1,
-          	    msg: `${connect.userName} ${dystr(str1c)}`
-            });
-            console.log(`${connect.userName} ${dystr(str1c)}`);
-		} else {//接收并处理用户发送的信息
-			broadcast({
-          	    type: 2,
-          	    msg: `${connect.userName}: ${msgg}`
-            });
-            console.log(`${connect.userName}: ${msgg}`);
+		//改用json解析方式，同时考虑到客户端不发送json时的错误处理
+		let user_msg_type, msg_content;
+		try {
+			msg_json_parsed = JSON.parse(msgg)
+			switch (msg_json_parsed.type) {
+				case 1://正常消息
+					msg_content = msg_json_parsed.msg;
+					user_msg_type = 1;
+					break
+				case 2://更改用户名
+					connect.userName = msg_json_parsed.username;
+					user_msg_type = 2;
+					break
+				case 5:
+					broadcast({
+						type: 5
+					});
+			}
+		}
+		catch {//使用原先的处理逻辑
+			if (msgg.indexOf('setUsrName=') != -1) {//接收并处理用户发送的用户名
+				connect.userName = msgg.slice(11);
+				user_msg_type = 2;
+			} else {//接收并处理用户发送的信息
+				msg_content = msgg;
+				user_msg_type = 1;
+			}
+		}
+		finally {
+			switch (user_msg_type) {
+				case 1://正常消息
+					broadcast({
+						type: 2,
+						msg: `${connect.userName}: ${msg_content}`
+					});
+					console.log(`${connect.userName}: ${msg_content}`);
+					break;
+				case 2://更改用户名
+					broadcast({
+						type: 1,
+						msg: `${connect.userName} ${dystr(str1c)}`
+					});
+					console.log(`${connect.userName} ${dystr(str1c)}`);
+					break;
+			}
 		}
 	});
 	//用户退出
@@ -29,7 +62,10 @@ const server = ws.createServer((connect) => {
 			type: 0,
 			msg: `${connect.userName} ${dystr(str2c)}`
 		})
-        console.log(`${connect.userName} ${dystr(str2c)}`);
+		console.log(`${connect.userName} ${dystr(str2c)}`);
+	})
+	connect.on('error', (err) => {
+		console.log("有人关掉了聊天窗口。");
 	})
 });
 
@@ -39,7 +75,8 @@ function broadcast(content) {
 		type: content.type,
 		msg: content.msg,
 		time: new Date().toLocaleTimeString(),
-		online: onlinecount
+		online: onlinecount,
+		svrver: serveredition
 	};
 	server.connections.forEach((element)=>{
       element.send(JSON.stringify(sendcontent));//send参数必须是字符串
