@@ -4,9 +4,7 @@ if (window.location.href.indexOf("wzq02.cf") != -1) {
     var default_bgurl = "https://bing.img.run/rand.php"
 }
 var background_url = default_bgurl;
-var lock_animbg = 0;
-var lock2_animbg = 1;
-var bgtimer1 = null;
+var lock_animbg,lock2_animbg,lock3_animbg;
 setTimeout(function() {
     lock_animbg = 1;
 },5000);//更换图片的间隔
@@ -17,6 +15,9 @@ if (localStorage.getItem("backgroundenabled") != null) {//如果已设置为启�
     show_background(background_url);
 }
 function show_background(url) {
+    lock_animbg = 0;
+    lock2_animbg = 1;
+    lock3_animbg = 1;
     var animbg = document.createElement("div");
     var abspan = document.createElement("span");
     var textrt = document.getElementsByTagName("textrt")[0];
@@ -131,12 +132,23 @@ function show_background(url) {
         animbg.onmousedown = function() {//鼠标按下，即将切换背景图
             as.transition = "0.5s";
             if (lock_animbg) {
-                as.filter = "brightness(115%) opacity(100%)";
+                as.filter = "brightness(125%) opacity(100%)";
             }
         };
         document.addEventListener("mousemove",function(e) {//监听鼠标位置，并改动背景图位置
-            if (lock2_animbg) {
-                as.transform = "translate("+ ((window.innerWidth * 0.5 - e.clientX) * 0.1) +"px, "+ ((window.innerHeight * 0.5 - e.clientY) * 0.1) +"px) scale(1.12)";
+            if (lock2_animbg && lock3_animbg) {
+                as.transition = "1.5s";
+                as.transform = "translate("+ ((window.innerWidth * .5 - e.clientX) * .1) +"px, "+ ((window.innerHeight * .5 - e.clientY) * .1) +"px) scale(1.12)";
+                lock3_animbg = 0;
+                setTimeout(function(){lock3_animbg = 1},50);
+            }
+        });
+        window.addEventListener('deviceorientation',function(e) {//对于带有陀螺仪的设备，旋转时改变背景图位置
+            if (lock2_animbg && lock3_animbg) {
+                as.transition = "1s";
+                as.transform = "translate("+ (-e.gamma/90*window.innerWidth*.1) +"px, "+ (-e.beta/180*window.innerHeight*.1) +"px) scale(1.16)";
+                lock3_animbg = 0;
+                setTimeout(function(){lock3_animbg = 1},500);
             }
         })
     }
@@ -233,4 +245,6 @@ function removebg() {
     if (cp_rewoke) {
         cp_rewoke();
     }
+    //document.removeEventListener("mousemove",mvonmousemv());
+    //window.removeEventListener("deviceorientation",mvondeviceori());
 }

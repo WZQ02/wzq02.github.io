@@ -37,16 +37,16 @@ if (url.indexOf("https://s.wzq02") != -1) {
     }
     redirtext()
 } else {
-    if (url.indexOf("cf/read/") != -1) {
-        window.location.href = "https://wzq02.cf/read/#/" + url.slice(url.indexOf("cf/read/")+8);
+    if (url.indexOf("/read/") != -1) {
+        window.location.href = "https://wzq02.cf/read/#/" + url.slice(url.indexOf("/read/")+6);
         redirtext();
-    } else if (url.indexOf("cf/playgrnd/") != -1) {
-        window.location.href = "https://wzq02.cf/playgrnd/#/" + url.slice(url.indexOf("cf/playgrnd/")+12);
+    } else if (url.indexOf("/playgrnd/") != -1) {
+        window.location.href = "https://wzq02.cf/playgrnd/#/" + url.slice(url.indexOf("/playgrnd/")+10);
         redirtext();
     } else {
         var rp = ["blog", "filsvr", "tv", "demos", "dl", "about"]
         for (i=0;i<rp.length;i++) {
-            if (url.indexOf("cf/"+rp[i]) != -1) {
+            if (url.indexOf("/"+rp[i]) != -1) {
                     window.location.href = "https://wzq02.cf/#/" + rp[i];
                     redirtext();
                 break;

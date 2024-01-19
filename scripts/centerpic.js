@@ -77,7 +77,6 @@ var timeoutcpposchg;
 function cp_resize_control() {
     if (timeoutcpposchg) {
         clearTimeout(timeoutcpposchg);
-        timeoutcpposchg == 0;
     }
     timeoutcpposchg = setTimeout(function(){cp_pos_changeall();pic_size_adj()},250)
 };

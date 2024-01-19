@@ -18,11 +18,8 @@ body {
     border-radius: 3px;
     background-color: rgba(127,127,127,0.6);
 }
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(127,127,127,1);
-}
 ::-webkit-scrollbar-thumb:active {
-    background-color: rgba(63,63,63,1);
+    background-color: rgba(63,63,63,1) !important;
 }
 #main {
     width: 100%;
@@ -69,11 +66,8 @@ a {
     transition: 0.25s;
     font-weight: bold;
 }
-a:hover {
-    color: #77e;
-}
 a:active {
-    color: #115;
+    color: #115 !important;
 }
 c {
     color: #555;
@@ -84,12 +78,9 @@ c {
     transition-property: background-color,color;
     transition-duration: 0.25s;
 }
-c:hover {
-    background-color: rgba(0, 0, 0, 0.15);
-}
 c:active {
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
 #currentcs {
     display: inline-block;
@@ -104,11 +95,8 @@ c:active {
     opacity: 0.8;
     transition: 0.25s;
 }
-#currentcs:hover {
-    opacity: 1.0;
-}
 #currentcs:active {
-    opacity: 1.0;
+    opacity: 1.0 !important;
     filter: brightness(0.6);
 }
 textrt {
@@ -130,14 +118,8 @@ textrt {
     left: 8px;
     animation: appear 1.4s 1;
 }
-#lt:hover {
-    filter: brightness(65%);
-}
 #host_id {
     transition: 0.25s;
-}
-#host_id:hover {
-    filter: brightness(65%);
 }
 #links {
     position: absolute;
@@ -156,15 +138,10 @@ textrt {
     transition: 0.25s;
     animation: lnksappear 0.4s cubic-bezier(0, 0.6, 0, 1) 1;
 }
-#mainlnks a div:hover {
-    position: relative;
-    bottom: 8px;
-    opacity: 1.0;
-}
 #mainlnks a div:active {
-    position: relative;
+    position: relative !important;
     filter: invert(60%);
-    bottom: -4px;
+    bottom: -4px !important;
 }
 #sectionchoice {
     position: relative;
@@ -183,15 +160,10 @@ textrt {
     top: 0px;
     opacity: 0.6;
 }
-#sectionchoice a div img:hover {
-    position: relative;
-    top: 8px;
-    opacity: 1.0;
-}
 #sectionchoice a div img:active {
-    position: relative;
+    position: relative !important;
     filter: invert(60%);
-    top: -4px;
+    top: -4px !important;
 }
 #tip1 {
     width: 100%;
@@ -242,12 +214,8 @@ textrt {
     background-color: rgba(255,255,255,0);
     transition: 0.25s;
 }
-#othlnks div:hover {
-    color: black;
-    background-color: rgba(127,127,127,0.35);
-}
 #othlnks div:active {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.5) !important;
 }
 #cschooser {
     display: none;
@@ -274,11 +242,8 @@ textrt {
     box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
     transition: 0.25s;
 }
-#cschooser span:hover {
-    filter: brightness(1.4);
-}
 #cschooser span:active {
-    filter: brightness(0.6);
+    filter: brightness(0.6) !important;
 }
 #cschooser #cs1 {
     background-color: #d63;
@@ -310,11 +275,8 @@ textrt {
     position: relative;
     transition: 0.25s;
 }
-#centerpic:hover{
-    opacity: 0.8;
-}
 #centerpic:active{
-    opacity: 0.4;
+    opacity: 0.4 !important;
 }
 #toscr2 {
     position: relative;
@@ -324,13 +286,9 @@ textrt {
     opacity: 0.4;
     transition: 0.25s;
 }
-#toscr2:hover{
-    opacity: 0.8;
-    top: 40px;
-}
 #toscr2:active{
-    opacity: 0.2;
-    top: 56px;
+    opacity: 0.2 !important;
+    top: 56px !important;
 }
 #toscr1 {
     position: relative;
@@ -340,13 +298,9 @@ textrt {
     opacity: 0.4;
     transition: 0.25s;
 }
-#toscr1:hover{
-    opacity: 0.8;
-    top: 8px;
-}
 #toscr1:active{
-    opacity: 0.2;
-    top: -8px;
+    opacity: 0.2 !important;
+    top: -8px !important;
 }
 .sections {
     display: none;
@@ -390,14 +344,10 @@ textrt {
     border-radius: 6px;
     opacity: 1.0;
 }
-.slink:hover {
-    color: rgba(0,0,0,0.9);
-    background-color: rgba(0,0,0,0.07);
-}
 .slink:active {
     scale: 0.95;
-    color: rgba(255,255,255,0.8);
-    background-color: rgba(0,0,0,0.6);
+    color: rgba(255,255,255,0.8) !important;
+    background-color: rgba(0,0,0,0.6) !important;
 }
 .sscreenshots {
     position: relative;
@@ -417,9 +367,6 @@ textrt {
     right: 24px;
     opacity: 0.15;
     transition: 0.25s;
-}
-#bgcon:hover {
-    opacity: 0.75 !important;
 }
 #bgcon:active {
     opacity: 1.0 !important;
@@ -454,9 +401,6 @@ s {
 .fullscrnbtn {
     top: 92px;
     right: -134px;
-}
-.pmpt_closebtn:hover {
-    opacity: 0.8;
 }
 .pmpt_closebtn:active {
     filter: brightness(20%);
@@ -525,11 +469,8 @@ s {
     font-size: 15px;
     opacity: 0.5;
 }
-.article_shortcut_text:hover {
-    background-color: rgba(0,0,0,0.07);
-}
 .article_shortcut_text:active {
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.25) !important;
 }
 .article_top_text {
     font-size: 15px;
@@ -632,11 +573,8 @@ input:focus {
     opacity: 0.15;
     transition: 0.25s;
 }
-.dot:hover {
-    opacity: 0.9;
-}
 .dot:active {
-    opacity: 0.1;
+    opacity: 0.1 !important;
 }
 .dot.highlighted_dot {
     opacity: 0.7;
@@ -657,22 +595,15 @@ del,hr {
     a {
         color: #aaf;
     }
-    a:hover {
-        color: #eef;
-    }
     a:active {
-        color: #559;
+        color: #559 !important;
     }
     c {
         color: rgba(255,255,255,0.7);
     }
-    c:hover {
-        color: #fff;
-        background-color: rgba(255, 255, 255, 0.15);
-    }
     c:active {
-        color: #000;
-        background-color: rgba(255, 255, 255, 0.75);
+        color: #000 !important;
+        background-color: rgba(255, 255, 255, 0.75) !important;
     }
     #links a div:not(#othlnks div) {
         filter: invert(100%);
@@ -682,10 +613,6 @@ del,hr {
     }
     #othlnks div {
         color: #CCC;
-    }
-    #othlnks div:hover {
-        color: #fff;
-        background-color: rgba(255,255,255,0.15);
     }
     #cschooser {
         background-color: rgba(16,16,16,0.4);
@@ -725,19 +652,9 @@ del,hr {
         background-color: rgba(0,0,0,0.2);
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
     }
-    .slink:hover {
-        color: #fff;
-        background-color: rgba(255,255,255,0.1);
-    }
     .slink:active {
-        color: #000;
-        background-color: rgba(255,255,255,0.8);
-    }
-    #lt:hover {
-        filter: brightness(140%);
-    }
-    #host_id:hover {
-        filter: brightness(140%);
+        color: #000 !important;
+        background-color: rgba(255,255,255,0.8) !important;
     }
     ::-webkit-scrollbar-thumb:active {
         background-color: rgba(191,191,191,1);
@@ -755,11 +672,8 @@ del,hr {
         background-color: rgba(0,0,0,0.2);
         color: #fff
     }
-    .article_shortcut_text:hover {
-        background-color: rgba(255,255,255,0.04);
-    }
     .article_shortcut_text:active {
-        background-color: rgba(255,255,255,0.25);
+        background-color: rgba(255,255,255,0.25) !important;
     }
     table th {
         background-color: rgba(0,0,0,0.6);
@@ -876,6 +790,96 @@ del,hr {
     .largeprompt {
         top: calc(8.5vh - 20px) !important;
         top: calc(8.5dvh - 20px) !important;
+    }
+}
+@media (any-hover: hover) {
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(127,127,127,1);
+    }
+    a:hover {
+        color: #77e;
+    }
+    c:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+    #currentcs:hover {
+        opacity: 1.0;
+    }
+    #lt:hover {
+        filter: brightness(65%);
+    }
+    #host_id:hover {
+        filter: brightness(65%);
+    }
+    #mainlnks a div:hover {
+        position: relative;
+        bottom: 8px;
+        opacity: 1.0;
+    }
+    #sectionchoice a div img:hover {
+        position: relative;
+        top: 8px;
+        opacity: 1.0;
+    }
+    #othlnks div:hover {
+        color: black;
+        background-color: rgba(127,127,127,0.35);
+    }
+    #cschooser span:hover {
+        filter: brightness(1.4);
+    }
+    #centerpic:hover{
+        opacity: 0.8;
+    }
+    #toscr2:hover{
+        opacity: 0.8;
+        top: 40px;
+    }
+    #toscr1:hover{
+        opacity: 0.8;
+        top: 8px;
+    }
+    .slink:hover {
+        color: rgba(0,0,0,0.9);
+        background-color: rgba(0,0,0,0.07);
+    }
+    #bgcon:hover {
+        opacity: 0.75 !important;
+    }
+    .pmpt_closebtn:hover {
+        opacity: 0.8;
+    }
+    .article_shortcut_text:hover {
+        background-color: rgba(0,0,0,0.07);
+    }
+    .dot:hover {
+        opacity: 0.9;
+    }
+}
+@media (prefers-color-scheme: dark) and (any-hover: hover) {
+    a:hover {
+        color: #eef;
+    }
+    c:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    #othlnks div:hover {
+        color: #fff;
+        background-color: rgba(255,255,255,0.15);
+    }
+    .slink:hover {
+        color: #fff;
+        background-color: rgba(255,255,255,0.1);
+    }
+    #lt:hover {
+        filter: brightness(140%);
+    }
+    #host_id:hover {
+        filter: brightness(140%);
+    }
+    .article_shortcut_text:hover {
+        background-color: rgba(255,255,255,0.04);
     }
 }
 @keyframes appear {

@@ -1,7 +1,7 @@
 {
     "stitle": "WZQ02.TV<span style='font-size: 20px'> @sometroublemaker's playground</span>",
     "content": {
-        "sinfo1": "一个基于 Nginx-RTMP 和 HLS 协议的自建直播间。<br>如果你打算往这个直播间推流，请联系我以获取推流码。",
+        "sinfo1": "自建视频直播间。<br>如果你打算往这个直播间推流，请联系我以获取推流码。",
         "screenshots1": {
             "pic1_png": {
                 "url": "images/screenshots/wzq02tv_2.png"
@@ -16,7 +16,7 @@
             "display_title": "→ 前往 WZQ02.TV",
             "href": "https://wzq02.cf/playgrnd/#/player"
         },
-        "sinfo2": "下面这个是一个基于 WebSocket 协议实现的聊天室。",
+        "sinfo2": "基于 WebSocket 协议实现的在线聊天室。",
         "screenshots2": {
             "pic1_png": {
                 "url": "images/screenshots/chatroom_1.png"

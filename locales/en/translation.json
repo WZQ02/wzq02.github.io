@@ -41,9 +41,9 @@
 	"之前在本站服务器上也搭建过一个网盘，不过因为本站服务器存储空间太小，我就没怎么去用了：": "I did have a file server deployed on this site's server, however I didn't bother using it because it's slow and my server is running out of disk space. Anyway here it is if you need it:",
 	"旧文件服务器": "Alternate File Server",
 	"→ 旧文件服务器": "→ Alternate File Server",
-	"一个基于 Nginx-RTMP 和 HLS 协议的自建直播间。": "A live broadcasting room based on Nginx-RTMP and HLS.",
+	"自建视频直播间。": "A self-hosted live broadcasting room.",
 	"如果你打算往这个直播间推流，请联系我以获取推流码。": "If you want to stream to this server, please contact me.",
-	"下面这个是一个基于 WebSocket 协议实现的聊天室。": "Down there is a chatroom based on WebSocket.",
+	"基于 WebSocket 协议实现的在线聊天室。": "A chatroom based on WebSocket.",
 	"前往 WZQ02.TV": "To WZQ02.TV",
 	"→ 前往 WZQ02.TV": "→ To WZQ02.TV",
 	"前往 WZQ'02 的聊天室": "To WZQ02's chatroom",
@@ -79,5 +79,8 @@
 	"心水湛清": "xszqxszq",
 	"抖音": "Douyin",
 	"抖音（国内版）": "TikTok (Chinese)",
-	"查看统计信息": "Show statistics"
+	"查看统计信息": "Show statistics",
+	"移动设备陀螺仪测试。": "Gyroscope test for mobile devices.",
+	"陀螺仪测试": "Gyroscope Test",
+	"→ 陀螺仪测试": "→ Gyroscope Test"
 }

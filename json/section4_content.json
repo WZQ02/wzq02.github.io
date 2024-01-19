@@ -16,13 +16,20 @@
             "href": "https://wzq02.cf/demos/eatltx"
         },
         "sinfo3": "Flash 功能测试页。可用于检查浏览器是否支持 Flash。",
-        
         "slink3": {
             "id": "",
             "title": "测试 Flash",
             "display_title": "→ 浏览器 Flash 支持测试",
             "href": "javascript:void(0)",
             "onclick": "createobjpmpt(\"https://wzq02.cf/flashtest?do_not_show_btm\",\"seeip\")"
+        },
+        "sinfo4": "移动设备陀螺仪测试。",
+        "slink4": {
+            "id": "",
+            "title": "陀螺仪测试",
+            "display_title": "→ 陀螺仪测试",
+            "href": "javascript:void(0)",
+            "onclick": "createobjpmpt(\"https://wzq02.cf/demos/postest/?do_not_show_btm\",\"seeip\")"
         }
     }    
 }

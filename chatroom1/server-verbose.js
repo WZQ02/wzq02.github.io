@@ -1,7 +1,12 @@
 const serveredition = 1;
+const displaytime = 0;//console上输出时间信息
+const showdate = 1;//显示日期
+
 const ws = require('nodejs-websocket');
 const POST = 8081;//服务所在端口号
 let onlinecount = 0;//在线人数统计
+
+let prev_msgs = {}//过往的消息记录，保存在内存
 
 const server = ws.createServer((connect) => {
 	onlinecount++;
@@ -21,10 +26,18 @@ const server = ws.createServer((connect) => {
 					connect.userName = msg_json_parsed.username;
 					user_msg_type = 2;
 					break
-				case 5:
-					broadcast({
+				case 5://客户端发送心跳包
+					format_broadcast({
 						type: 5
 					});
+					break
+				case 9://客户端请求之前的消息记录
+					send_previous_msgs(connect.userName)
+					break
+				case 90://客户端请求清空消息记录
+					prev_msgs = {}
+					clog(`${connect.userName} 清空了消息记录。`)
+					break
 			}
 		}
 		catch {//使用原先的处理逻辑
@@ -39,18 +52,24 @@ const server = ws.createServer((connect) => {
 		finally {
 			switch (user_msg_type) {
 				case 1://正常消息
-					broadcast({
+					format_broadcast({
 						type: 2,
-						msg: `${connect.userName}: ${msg_content}`
+						msg: `${connect.userName}: ${msg_content}`,
+						username: connect.userName
 					});
-					console.log(`${connect.userName}: ${msg_content}`);
+					store_msg({
+						msg: msg_content,
+						time: datetime(),
+						username: connect.userName
+					})
+					clog(`${connect.userName}: ${msg_content}`);
 					break;
 				case 2://更改用户名
-					broadcast({
+					format_broadcast({
 						type: 1,
 						msg: `${connect.userName} ${dystr(str1c)}`
 					});
-					console.log(`${connect.userName} ${dystr(str1c)}`);
+					clog(`${connect.userName} ${dystr(str1c)}`);
 					break;
 			}
 		}
@@ -58,29 +77,87 @@ const server = ws.createServer((connect) => {
 	//用户退出
 	connect.on('close',() => {
 		onlinecount--;
-		broadcast({
+		format_broadcast({
 			type: 0,
 			msg: `${connect.userName} ${dystr(str2c)}`
 		})
-		console.log(`${connect.userName} ${dystr(str2c)}`);
+		clog(`${connect.userName} ${dystr(str2c)}`);
 	})
 	connect.on('error', (err) => {
-		console.log("有人关掉了聊天窗口。");
+		clog(`有人关掉了聊天窗口。`);
 	})
 });
 
-//广播
-function broadcast(content) {
+//格式化广播信息
+function format_broadcast(content) {
+	let temp_username = "";
+	if (content.username) {
+		temp_username = content.username;
+	}
 	let sendcontent = {
 		type: content.type,
 		msg: content.msg,
-		time: new Date().toLocaleTimeString(),
+		time: datetime(),
 		online: onlinecount,
-		svrver: serveredition
+		svrver: serveredition,
+		username: temp_username
 	};
+	broadcast(JSON.stringify(sendcontent))//send参数必须是字符串
+}
+//存储发送的信息
+function store_msg(content) {
+	let msg_num = Object.keys(prev_msgs).length;
+	prev_msgs[msg_num] = content;
+	if (msg_num >= 10) {
+		delete prev_msgs[0];
+		for (let i=0; i<msg_num; i++) {
+			prev_msgs[i] = prev_msgs[i+1];
+		}
+		delete prev_msgs[msg_num];
+	}
+}
+//向特定用户发送先前消息
+function send_previous_msgs(username) {
+	let sendcontent = {
+		type: 9,
+		prev_msg: prev_msgs,
+		time: datetime(),
+		online: onlinecount,
+		svrver: serveredition,
+		username: ""
+	}
+	touser(JSON.stringify(sendcontent),username)
+}
+
+//广播
+function broadcast(content) {
 	server.connections.forEach((element)=>{
-      element.send(JSON.stringify(sendcontent));//send参数必须是字符串
+      	element.send(content);
     });
+}
+//向特定用户发送
+function touser(content,username) {
+	server.connections.forEach((element)=>{
+		if (element.userName == username) {
+			element.send(content);
+		}
+	});
+}
+//请求当前时间和日期
+function datetime() {
+	if (showdate) {
+		return new Date().toLocaleDateString()+" "+new Date().toLocaleTimeString()
+	} else {
+		return new Date().toLocaleTimeString()
+	}
+}
+//console.log封装
+function clog(msg) {
+	if (displaytime) {
+		console.log(`[${datetime()}] ${msg}`)
+	} else {
+		console.log(msg)
+	}
 }
 
 //动态改变用户加入或离开时的提示字符
@@ -92,5 +169,5 @@ function dystr(strxc) {
 
 //发送POST请求，启动服务器
 server.listen(POST,() => {
-	console.log("服务器已启动。");
+	clog(`服务器已启动。`);
 })
