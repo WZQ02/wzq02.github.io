@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>文章</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阅读</title>
     <link rel="icon" type="image/png" href="/images/icon.png" />
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
     <link rel="stylesheet" href="/css/pages.css" id="skin">
@@ -10,66 +11,93 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <style>
-#mdcontent {
-    user-select: text !important;
-}
-#mdcontent p {
-    line-height: 160%;
-}
-#mdcontent p img {
-    max-width: 100%;
-}
-#mdcontent ol li {
-line-height: 160%;
-}
-pre {
-    background-color: #222;
-    border: 2px solid #777;
-    border-radius: 4px;
-    padding: 12px;
-    overflow-x: scroll;
-    line-height: normal;
-}
-code {
-    font-family: "Consolas", "Courier New", monospace;
-    font-size: 14px;
-}
-pre code {
-    color: #fff;
-}
-table {
-    background-color: rgba(127,127,127,0.6);
-}
-table th {
-    background-color: rgba(255,255,255,0.6);
-    padding: 4px 8px;
-}
-table td {
-    background-color: rgba(255,255,255,0.8);
-    padding: 4px 8px;
-}
-@media (prefers-color-scheme: dark) {
+    #mdcontent {
+        user-select: text !important;
+        margin-bottom: 32px;
+        border-radius: 8px;
+        transition: .4s;
+    }
+    #mdcontent p {
+        line-height: 160%;
+    }
+    #mdcontent p img {
+        max-width: 100%;
+    }
+    #mdcontent ol,li {
+        line-height: 160%;
+    }
+    #mdcontent a {
+        margin: 4px;
+        line-height: 220%;
+    }
+    pre {
+        color: #fff;
+        background-color: #222;
+        border: 2px solid #777;
+        border-radius: 4px;
+        padding: 12px;
+        overflow-x: scroll;
+        line-height: normal;
+    }
+    code {
+        font-family: "Consolas", "Courier New", monospace;
+        font-size: 14px;
+    }
+    table {
+        background-color: rgba(127,127,127,0.6);
+    }
     table th {
-        background-color: rgba(0,0,0,0.6);
+        background-color: rgba(255,255,255,0.6);
         padding: 4px 8px;
     }
     table td {
-        background-color: rgba(0,0,0,0.8);
+        background-color: rgba(255,255,255,0.8);
         padding: 4px 8px;
     }
-}
+    #dad_box {
+        display: none;
+        width: calc(100% - 10px);
+        height: 160px;
+        margin: 0 0 32px;
+        border: 6px dashed rgba(0,0,0,.2);
+        border-radius: 16px;
+        text-align: center;
+        transition: .4s;
+    }
+    #dad_box h3 {
+        position: relative;
+        top: 48px;
+        user-select: none;
+    }
+    @media (prefers-color-scheme: dark) {
+        table th {
+            background-color: rgba(0,0,0,0.6);
+            padding: 4px 8px;
+        }
+        table td {
+            background-color: rgba(0,0,0,0.8);
+            padding: 4px 8px;
+        }
+        #dad_box {
+            border: 6px dashed rgba(255,255,255,.2);
+        }
+    }
 </style>
 <body>
 <div id="largetitle"></div>
 <div id="container">
-    <div id="mdcontent"></div>
-    <a id="btm" href="/">返回主页</a></h4>
+    <div id="mdcontent">
+        <div id="dad_box"><h3>拖拽 Markdown (.md) 文件到此处</h3></div>
+    </div>
+    <a id="btm" href="/"><b>返回主页</b></a></h4>
 </div>
 <script src="/scripts/thirdparty/showdown.min.js"></script>
 <script src="/scripts/thirdparty/marked.min.js"></script>
 <script>
     window.addEventListener('DOMContentLoaded',hashdetect)
     window.addEventListener('hashchange',hashdetect)
+    var dad_box = document.querySelector('#dad_box');
+    var mdc_show = document.getElementById("mdcontent");
     function hashdetect() {
         if (window.location.href.indexOf("#/http") != -1) {
             getmd(location.hash.slice(2),1)
@@ -91,10 +119,13 @@ table td {
                 mdc = request.responseText;
                 rendermd(mdc);
             }
+            if (request.status == 404) {
+                dad_box.style.display = 'block';
+            }
         }
     }
     function rendermd(mdc) {
-        var mdc_show = document.getElementById("mdcontent");
+        dad_box.style.display = '';
         if (window.marked) {
             text = mdc,
             html = marked.parse(text);
@@ -106,20 +137,22 @@ table td {
         mdc_show.innerHTML = html;
         if (document.getElementsByTagName("h1")[0]) {
             document.title = document.getElementsByTagName("h1")[0].innerText;
+        } else if (document.getElementsByTagName("h2")[0]) {
+            document.title = document.getElementsByTagName("h2")[0].innerText;
         }
         for (i=0; i<127; i++) {
-        if (mdc_show.childNodes[i]) {
-            if (typeof(mdc_show.childNodes[i].childNodes[0]) == "object") {
-                if (mdc_show.childNodes[i].childNodes[0].alt) {
-                    var alt_text = document.createElement("p");
-                    alt_text.innerText = mdc_show.childNodes[i].childNodes[0].alt;
-                    alt_text.style = "opacity: 0.75; text-align: center";
-                    mdc_show.childNodes[i].appendChild(alt_text);
+            if (mdc_show.childNodes[i]) {
+                if (typeof(mdc_show.childNodes[i].childNodes[0]) == "object") {
+                    if (mdc_show.childNodes[i].childNodes[0].alt) {
+                        var alt_text = document.createElement("p");
+                        alt_text.innerText = mdc_show.childNodes[i].childNodes[0].alt;
+                        alt_text.style = "opacity: 0.75; text-align: center";
+                        mdc_show.childNodes[i].appendChild(alt_text);
+                    }
                 }
+            } else {
+                break;
             }
-        } else {
-            break;
-        }
         }
     }
     autochgthemecolor();
@@ -127,6 +160,43 @@ table td {
         var color = localStorage.getItem('themecolor');
         if (color != null) {
             document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
+        }
+    }
+    dad_box.addEventListener("dragenter",function(){
+        dad_box.style.backgroundColor = "rgba(0,0,0,.4)";
+    })
+    dad_box.addEventListener("dragleave",function(){
+        dad_box.style.backgroundColor = "";
+    })
+    dad_box.addEventListener("dragover",function(e){
+        e.preventDefault();
+    })
+    dad_box.addEventListener("drop",function(e){
+        e.preventDefault();
+        dad_box.style.backgroundColor = "";
+        handlefile(e.dataTransfer.files[0])
+    })
+    mdc_show.addEventListener("dragenter",function(){
+        mdc_show.style.backgroundColor = "rgba(0,0,0,.4)";
+    })
+    mdc_show.addEventListener("dragleave",function(){
+        mdc_show.style.backgroundColor = "";
+    })
+    mdc_show.addEventListener("dragover",function(e){
+        e.preventDefault();
+    })
+    mdc_show.addEventListener("drop",function(e){
+        e.preventDefault();
+        mdc_show.style.backgroundColor = "";
+        handlefile(e.dataTransfer.files[0])
+    })
+    function handlefile(file) {
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                rendermd(e.target.result)
+            }
+            reader.readAsText(file)
         }
     }
 </script>

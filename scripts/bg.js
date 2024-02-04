@@ -1,23 +1,24 @@
-if (window.location.href.indexOf("wzq02.cf") != -1) {
+/*if (window.location.href.indexOf("wzq02.cf") != -1) {
     var default_bgurl = "api/pic1";//默认api
 } else {
     var default_bgurl = "https://bing.img.run/rand.php"
-}
+}*/
+var default_bgurl = "https://bing.img.run/rand.php"
 var background_url = default_bgurl;
 var lock_animbg,lock2_animbg,lock3_animbg;
-setTimeout(function() {
-    lock_animbg = 1;
-},5000);//更换图片的间隔
+var q_counter = 0;
 if (localStorage.getItem('bgurl') != null) {//如果cookie中存在自定义api信息，则应用
     var background_url = localStorage.getItem('bgurl');
 }
 if (localStorage.getItem("backgroundenabled") != null) {//如果已设置为启用背景，则自动启用
     show_background(background_url);
 }
-function show_background(url) {
+function show_background(input_url) {
     lock_animbg = 0;
     lock2_animbg = 1;
     lock3_animbg = 1;
+    setTimeout(function() {lock_animbg = 1},5000);//更换图片的间隔
+    var url = input_url+"?"+q_counter;
     var animbg = document.createElement("div");
     var abspan = document.createElement("span");
     var textrt = document.getElementsByTagName("textrt")[0];
@@ -49,10 +50,10 @@ function show_background(url) {
         links.style.opacity = "";
         cschooser.style.opacity = "";
     };
-    window.onresize = function() {
+    /*window.onresize = function() {
         as.transition = "";
         setTimeout(function(){as.transition = "1.5s"},5)
-    };
+    };*/
     abspan.style.transition = "0.25s";
     abspan.onmouseover = function() {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -113,7 +114,9 @@ function show_background(url) {
                 setTimeout(function() {
                     document.getElementById("yabg").removeChild(animbg);
                     as.transform = "";
-                    url = url+"?"+1;
+                    //url = url+"?"+1;
+                    q_counter++;
+                    url = input_url+"?"+q_counter;
                     as.backgroundImage = ("url("+url+")");
                 },420);
                 setTimeout(function() {
@@ -135,26 +138,31 @@ function show_background(url) {
                 as.filter = "brightness(125%) opacity(100%)";
             }
         };
-        document.addEventListener("mousemove",function(e) {//监听鼠标位置，并改动背景图位置
+        /*document.addEventListener("mousemove",function(e) {
             if (lock2_animbg && lock3_animbg) {
                 as.transition = "1.5s";
                 as.transform = "translate("+ ((window.innerWidth * .5 - e.clientX) * .1) +"px, "+ ((window.innerHeight * .5 - e.clientY) * .1) +"px) scale(1.12)";
-                lock3_animbg = 0;
-                setTimeout(function(){lock3_animbg = 1},50);
+                //lock3_animbg = 0;
+                //setTimeout(function(){lock3_animbg = 1},50);
             }
-        });
-        window.addEventListener('deviceorientation',function(e) {//对于带有陀螺仪的设备，旋转时改变背景图位置
+        });*/
+        document.addEventListener("mousemove",mvonmousemv);//监听鼠标位置，并改动背景图位置
+        /*window.addEventListener('deviceorientation',function(e) {//对于带有陀螺仪的设备，旋转时改变背景图位置
             if (lock2_animbg && lock3_animbg) {
                 as.transition = "1s";
                 as.transform = "translate("+ (-e.gamma/90*window.innerWidth*.1) +"px, "+ (-e.beta/180*window.innerHeight*.1) +"px) scale(1.16)";
-                lock3_animbg = 0;
-                setTimeout(function(){lock3_animbg = 1},500);
+                //lock3_animbg = 0;
+                //setTimeout(function(){lock3_animbg = 1},500);
             }
-        })
+        })*/
+        window.addEventListener("deviceorientation",mvondeviceori);
     }
     //document.getElementsByTagName("centerpic")[0].style.display = "none";
     document.getElementById("centerpic_container").style.display = "none";
-    abspan.innerHTML = "<p>使用的图片 API: <br>" + url + "</p><p>站长不对从第三方调用图片的内容负责。";
+    abspan.innerHTML = "<p>使用的图片 API: <br>" + input_url;
+    if (background_url != default_bgurl) {
+        abspan.innerHTML += "</p><p>站长不对从第三方调用图片的内容负责。";
+    }
     abspan.style.textAlign = "right";
     abspan.id = "abspan";
     document.getElementById("yabg").appendChild(animbg);
@@ -164,6 +172,7 @@ function show_background(url) {
         document.getElementById("bg_vid").appendChild(bg_vid_sec);
     }
     cschooseraddbgoptions();
+    window.addEventListener("resize",resizezoom);
     document.getElementById("bgcon").style.opacity = "0.6";
     document.getElementById("bgcon").title = "禁用背景图片";
     if (i18nextify.i18next.isInitialized) {
@@ -245,6 +254,31 @@ function removebg() {
     if (cp_rewoke) {
         cp_rewoke();
     }
-    //document.removeEventListener("mousemove",mvonmousemv());
-    //window.removeEventListener("deviceorientation",mvondeviceori());
+    document.removeEventListener("mousemove",mvonmousemv);
+    window.removeEventListener("deviceorientation",mvondeviceori);
+    window.removeEventListener("resize",resizezoom);
+}
+
+function mvonmousemv(e) {
+    if (lock2_animbg && lock3_animbg) {
+        var as = document.querySelector('#animbg').style;
+        as.transition = "1.5s ease-out";
+        as.transform = "translate("+ ((window.innerWidth * .5 - e.clientX) * .1) +"px, "+ ((window.innerHeight * .5 - e.clientY) * .1) +"px) scale(1.12)";
+        lock3_animbg = 0;
+        setTimeout(function(){lock3_animbg = 1},50);
+    }
+}
+function mvondeviceori(e) {
+    if (lock2_animbg && lock3_animbg) {
+        var as = document.querySelector('#animbg').style;
+        as.transition = "1s ease-out";
+        as.transform = "translate("+ (-e.gamma/90*window.innerWidth*.1) +"px, "+ (-e.beta/180*window.innerHeight*.1) +"px) scale(1.16)";
+        lock3_animbg = 0;
+        setTimeout(function(){lock3_animbg = 1},50);
+    }
+}
+function resizezoom() {
+    var as = document.querySelector('#animbg').style;
+    as.transition = "";
+    setTimeout(function(){as.transition = "1.5s"},5)
 }
