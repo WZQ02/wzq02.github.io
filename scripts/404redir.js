@@ -1,4 +1,5 @@
 var url = window.location.href;
+var domain = "https://wzq02.top/"
 if (url.indexOf("https://acg.tv/") != -1) {
     if (url.indexOf("sm") != -1) {
         window.location.href = "https://nicovideo.jp/watch/"+url.slice(15);
@@ -19,11 +20,11 @@ if (url.indexOf("https://s.wzq02") != -1) {
     } else if (url.indexOf("cf/ac") != -1) {
         window.location.href = "https://www.acfun.cn/v/"+url.slice(19);
     } else if (url.indexOf("1drive") != -1) {
-        window.location.href = "https://wzq02.cf/redirect/onedrive_msft"
+        window.location.href = domain+"redirect/onedrive_msft"
     } else if (url.indexOf("tv") != -1) {
-        window.location.href = "https://wzq02.cf/playgrnd/#/player"
+        window.location.href = domain+"playgrnd/#/player"
     } else if (url.indexOf("airasoft") != -1) {
-        window.location.href = "https://wzq02.cf/redirect/airasoft"
+        window.location.href = domain+"redirect/airasoft"
     } else if (url.indexOf("bili") != -1) {
         window.location.href = "https://space.bilibili.com/12367945/"
     } else if (url.indexOf("github") != -1) {
@@ -38,16 +39,16 @@ if (url.indexOf("https://s.wzq02") != -1) {
     redirtext()
 } else {
     if (url.indexOf("/read/") != -1) {
-        window.location.href = "https://wzq02.cf/read/#/" + url.slice(url.indexOf("/read/")+6);
+        window.location.href = domain+"read/#/" + url.slice(url.indexOf("/read/")+6);
         redirtext();
     } else if (url.indexOf("/playgrnd/") != -1) {
-        window.location.href = "https://wzq02.cf/playgrnd/#/" + url.slice(url.indexOf("/playgrnd/")+10);
+        window.location.href = domain+"playgrnd/#/" + url.slice(url.indexOf("/playgrnd/")+10);
         redirtext();
     } else {
         var rp = ["blog", "filsvr", "tv", "demos", "dl", "about"]
         for (i=0;i<rp.length;i++) {
             if (url.indexOf("/"+rp[i]) != -1) {
-                    window.location.href = "https://wzq02.cf/#/" + rp[i];
+                    window.location.href = domain+"#/" + rp[i];
                     redirtext();
                 break;
             }

@@ -163,7 +163,7 @@ function liubing(custom_music_url) {
             lbaudio.src = custom_music_url;
             createliubingspan("♫&nbsp;&nbsp;"+custom_music_url);
         } else {
-            var aud_src_prefix = "https://wzq02.cf/demos/otm_demos_ogg/";
+            var aud_src_prefix = "/demos/otm_demos_ogg/";
             switch (rand2) {
                 case 1:
                     lbaudio.src = aud_src_prefix+"dabig_dance.ogg";

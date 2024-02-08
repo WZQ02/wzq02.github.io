@@ -1,8 +1,3 @@
-/*if (window.location.href.indexOf("wzq02.cf") != -1) {
-    var default_bgurl = "api/pic1";//默认api
-} else {
-    var default_bgurl = "https://bing.img.run/rand.php"
-}*/
 var default_bgurl = "https://bing.img.run/rand.php"
 var background_url = default_bgurl;
 var lock_animbg,lock2_animbg,lock3_animbg;
