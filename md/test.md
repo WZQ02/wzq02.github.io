@@ -111,7 +111,7 @@ pie
 
 什么，这不是fio，这是我们的thwy兄贵[（原图作者：かくさとう / kakusatou_3333 @X）](https://twitter.com/kakusatou_3333)
 
-![这是一行图片注解](https://wzq02.cf/images/others/07966e7217d88236c4f583f7a21644bb2586a138.jpg)
+![这是一行图片注解](https://wzq02.top/images/others/07966e7217d88236c4f583f7a21644bb2586a138.jpg)
 
 这是另一张
 
