@@ -1,4 +1,4 @@
-const serveredition = 1;
+const serveredition = 2;
 const displaytime = 0;//console上输出时间信息
 const showdate = 1;//显示日期
 
@@ -10,7 +10,6 @@ let prev_msgs = {}//过往的消息记录，保存在内存
 
 const server = ws.createServer((connect) => {
 	onlinecount++;
-
 	//用户加入
 	connect.on('text',(msgg) => {
 		//改用json解析方式，同时考虑到客户端不发送json时的错误处理
@@ -32,7 +31,9 @@ const server = ws.createServer((connect) => {
 					});
 					break
 				case 9://客户端请求之前的消息记录
-					send_previous_msgs(connect.userName)
+					//send_previous_msgs(connect.userName)
+					send_previous_msgs(connect.key)
+					send_sid_list();//同时，更新sid_list
 					break
 				case 90://客户端请求清空消息记录
 					prev_msgs = {}
@@ -40,7 +41,7 @@ const server = ws.createServer((connect) => {
 					break
 			}
 		}
-		catch {//使用原先的处理逻辑
+		catch(err) {//使用原先的处理逻辑(客户端不发送json，或者上面的处理方式报错)
 			if (msgg.indexOf('setUsrName=') != -1) {//接收并处理用户发送的用户名
 				connect.userName = msgg.slice(11);
 				user_msg_type = 2;
@@ -48,6 +49,7 @@ const server = ws.createServer((connect) => {
 				msg_content = msgg;
 				user_msg_type = 1;
 			}
+			clog(err)
 		}
 		finally {
 			switch (user_msg_type) {
@@ -55,7 +57,8 @@ const server = ws.createServer((connect) => {
 					format_broadcast({
 						type: 2,
 						msg: `${connect.userName}: ${msg_content}`,
-						username: connect.userName
+						username: connect.userName,
+						sid: connect.key
 					});
 					store_msg({
 						msg: msg_content,
@@ -67,7 +70,8 @@ const server = ws.createServer((connect) => {
 				case 2://更改用户名
 					format_broadcast({
 						type: 1,
-						msg: `${connect.userName} ${dystr(str1c)}`
+						msg: `${connect.userName} ${dystr(str1c)}`,
+						sid: connect.key
 					});
 					clog(`${connect.userName} ${dystr(str1c)}`);
 					break;
@@ -79,7 +83,8 @@ const server = ws.createServer((connect) => {
 		onlinecount--;
 		format_broadcast({
 			type: 0,
-			msg: `${connect.userName} ${dystr(str2c)}`
+			msg: `${connect.userName} ${dystr(str2c)}`,
+			sid: connect.key
 		})
 		clog(`${connect.userName} ${dystr(str2c)}`);
 	})
@@ -91,8 +96,12 @@ const server = ws.createServer((connect) => {
 //格式化广播信息
 function format_broadcast(content) {
 	let temp_username = "";
+	let temp_sid = "";
 	if (content.username) {
 		temp_username = content.username;
+	}
+	if (content.sid) {
+		temp_sid = content.sid.slice(0,8);
 	}
 	let sendcontent = {
 		type: content.type,
@@ -100,7 +109,8 @@ function format_broadcast(content) {
 		time: datetime(),
 		online: onlinecount,
 		svrver: serveredition,
-		username: temp_username
+		username: temp_username,
+		sid: temp_sid
 	};
 	broadcast(JSON.stringify(sendcontent))//send参数必须是字符串
 }
@@ -117,7 +127,7 @@ function store_msg(content) {
 	}
 }
 //向特定用户发送先前消息
-function send_previous_msgs(username) {
+function send_previous_msgs(key) {
 	let sendcontent = {
 		type: 9,
 		prev_msg: prev_msgs,
@@ -126,7 +136,23 @@ function send_previous_msgs(username) {
 		svrver: serveredition,
 		username: ""
 	}
-	touser(JSON.stringify(sendcontent),username)
+	touser(JSON.stringify(sendcontent),key)
+}
+//更新sid_list
+function send_sid_list() {
+	let list = {}//获取当前sid list
+	server.connections.forEach((element)=>{
+		list[element.key.slice(0,8)] = element.userName || "?";
+	});
+	let sendcontent = {
+		type: 11,
+		time: datetime(),
+		online: onlinecount,
+		svrver: serveredition,
+		username: "",
+		sid_list: list
+	}
+	broadcast(JSON.stringify(sendcontent))
 }
 
 //广播
@@ -136,9 +162,9 @@ function broadcast(content) {
     });
 }
 //向特定用户发送
-function touser(content,username) {
+function touser(content,key) {
 	server.connections.forEach((element)=>{
-		if (element.userName == username) {
+		if (element.key == key) {
 			element.send(content);
 		}
 	});
