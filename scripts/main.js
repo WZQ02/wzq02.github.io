@@ -53,24 +53,27 @@ function chglang() {//切换语言按钮
         }
     }*/
     var curlang = window.i18nextify.i18next.language;
-    var url = window.location.href;
+    var tl;//target lang
     if (curlang.indexOf("zh") != -1) {
         //curlang = 'en';
         //url = url.replace(/(\?|#)[^'"]*/, '')+"?lng=en"
         //window.history.pushState({},0,url);
-        localStorage.setItem('i18nextLng','en')
+        tl = 'en'
+        //localStorage.setItem('i18nextLng','en')
     } else {
         //curlang = 'zh';
         //url = url.replace(/(\?|#)[^'"]*/, '')+"?lng=zh"
         //window.history.pushState({},0,url);
-        localStorage.setItem('i18nextLng','zh')
+        tl = 'zh'
+        //localStorage.setItem('i18nextLng','zh')
     }
+    localStorage.setItem('i18nextLng',tl)
     //console.log(window.i18nextify.i18next.language);
     window.i18nextify.init();
     var getlangfil = new XMLHttpRequest();
-    getlangfil.open("get", "locales/"+curlang+"/translation.json")
+    getlangfil.open("get", "locales/"+tl+"/translation.json")
     getlangfil.send(null);
-    getlangfil.onload = function(){setTimeout(function(){window.i18nextify.forceRerender()},250)}
+    getlangfil.onload = function(){setTimeout(function(){window.i18nextify.forceRerender()},50)}
     //window.i18nextify.forceRerender();
     //setTimeout(function(){window.i18nextify.forceRerender()},500);//网络条件较差时，500毫秒后再重新渲染一遍
 }
@@ -306,4 +309,8 @@ var scrollFunc = function(e) {//检测鼠标滚轮
 document.querySelector('#main').addEventListener('DOMMouseScroll',scrollFunc,false);//注册事件(Firefox)
 document.querySelector('#main').onmousewheel = scrollFunc;//IE/Opera/Chrome
 
-if (window.location.href.indexOf('.github.io')!=-1) {window.addEventListener('load',function(){document.title = document.title + " (Mirror)"})}
+if (window.location.href.indexOf('.github.io')!=-1) {
+    window.addEventListener('load',function(){
+        document.title += i18nextify.i18next.t(" (Mirror)")
+    })
+}

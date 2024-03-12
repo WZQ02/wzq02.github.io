@@ -1,6 +1,7 @@
 const serveredition = 2;
 const displaytime = 0;//console上输出时间信息
 const showdate = 1;//显示日期
+const verbose = 0;//是否在console中输出用户进出行为
 
 const ws = require('nodejs-websocket');
 const POST = 8081;//服务所在端口号
@@ -35,6 +36,14 @@ const server = ws.createServer((connect) => {
 					send_previous_msgs(connect.key)
 					send_sid_list();//同时，更新sid_list
 					break
+				case 20://客户端发送信标
+					format_broadcast({
+						type: 20,
+						username: connect.userName,
+						sid: connect.key
+					});
+					if (verbose) {clog(`${connect.userName} 发送了信标。`)}
+					break
 				case 90://客户端请求清空消息记录
 					prev_msgs = {}
 					clog(`${connect.userName} 清空了消息记录。`)
@@ -49,7 +58,7 @@ const server = ws.createServer((connect) => {
 				msg_content = msgg;
 				user_msg_type = 1;
 			}
-			clog(err)
+			if (verbose) {clog(err)}
 		}
 		finally {
 			switch (user_msg_type) {
@@ -71,6 +80,7 @@ const server = ws.createServer((connect) => {
 					format_broadcast({
 						type: 1,
 						msg: `${connect.userName} ${dystr(str1c)}`,
+						username: connect.userName,
 						sid: connect.key
 					});
 					clog(`${connect.userName} ${dystr(str1c)}`);
@@ -86,10 +96,10 @@ const server = ws.createServer((connect) => {
 			msg: `${connect.userName} ${dystr(str2c)}`,
 			sid: connect.key
 		})
-		clog(`${connect.userName} ${dystr(str2c)}`);
+		if (verbose) {clog(`${connect.userName} ${dystr(str2c)}`)};
 	})
 	connect.on('error', (err) => {
-		clog(`有人关掉了聊天窗口。`);
+		if (verbose) {clog(`有人关掉了聊天窗口。`)};
 	})
 });
 
