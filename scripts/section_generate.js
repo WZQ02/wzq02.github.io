@@ -135,7 +135,13 @@ function createarticleshort(i,current_sec,sc_values) {
         var tags_html = ""
         var extra = ',\"'+mddate+'\"'
     }
-    a_sc_text.innerHTML = "<div href='javascript:void(0)' onclick='createmdprompt("+mdname+",0"+extra+")'><mdtitle>"+mdtitle+"</mdtitle><br><mdtitle2><img src='icons/others/time.svg'>&nbsp;"+mddate+tags_html+"</mdtitle2></div>";
+    a_sc_text.setAttribute('onclick',"createmdprompt("+mdname+",0"+extra+")")
+    var a_sc_text_mdt = document.createElement("mdtitle");
+    a_sc_text_mdt.innerHTML = mdtitle+"<br>";
+    var a_sc_text_mdt2 = document.createElement("mdtitle2");
+    a_sc_text_mdt2.innerHTML = "<img src='icons/others/time.svg'>&nbsp;"+mddate+tags_html
     current_sec.appendChild(a_sc);
     a_sc.appendChild(a_sc_text);
+    a_sc_text.appendChild(a_sc_text_mdt);
+    a_sc_text.appendChild(a_sc_text_mdt2)
 }

@@ -6,7 +6,7 @@
     <title>阅读</title>
     <link rel="icon" type="image/png" href="/images/icon.png" />
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
-    <link rel="stylesheet" href="/css/pages.css" id="skin">
+    <link rel="stylesheet" href="/css/pages_v2.css" id="skin">
     <link rel="stylesheet" href="" id="color_scheme">
     <link rel="manifest" href="/manifest.json">
 </head>
@@ -20,9 +20,6 @@
     #mdcontent p {
         line-height: 160%;
     }
-    #mdcontent p img {
-        max-width: 100%;
-    }
     #mdcontent ol,li {
         line-height: 160%;
     }
@@ -30,33 +27,9 @@
         margin: 4px;
         line-height: 220%;
     }
-    pre {
-        color: #fff;
-        background-color: #222;
-        border: 2px solid #777;
-        border-radius: 4px;
-        padding: 12px;
-        overflow-x: scroll;
-        line-height: normal;
-    }
-    code {
-        font-family: "Consolas", "Courier New", monospace;
-        font-size: 14px;
-    }
-    table {
-        background-color: rgba(127,127,127,0.6);
-    }
-    table th {
-        background-color: rgba(255,255,255,0.6);
-        padding: 4px 8px;
-    }
-    table td {
-        background-color: rgba(255,255,255,0.8);
-        padding: 4px 8px;
-    }
     #dad_box {
         display: none;
-        width: calc(100% - 10px);
+        width: calc(100% - 6px);
         height: 160px;
         margin: 0 0 32px;
         border: 6px dashed rgba(0,0,0,.2);
@@ -69,17 +42,18 @@
         top: 48px;
         user-select: none;
     }
+    .article_top_text img {
+        width: 16px;
+        position: relative;
+        top: 2px;
+        left: -2px;
+    }
     @media (prefers-color-scheme: dark) {
-        table th {
-            background-color: rgba(0,0,0,0.6);
-            padding: 4px 8px;
-        }
-        table td {
-            background-color: rgba(0,0,0,0.8);
-            padding: 4px 8px;
-        }
         #dad_box {
             border: 6px dashed rgba(255,255,255,.2);
+        }
+        .article_top_text img {
+            filter: invert(1);
         }
     }
 </style>
@@ -89,12 +63,12 @@
     <div id="mdcontent">
         <div id="dad_box"><h3>拖拽 Markdown (.md) 文件到此处</h3></div>
     </div>
-    <a id="btm" href="/"><b>返回主页</b></a></h4>
+    <a id="btm" href="/" class="button flat no_bg"><b>返回主页</b></a></h4>
 </div>
 <script src="/scripts/thirdparty/showdown.min.js"></script>
 <script src="/scripts/thirdparty/marked.min.js"></script>
 <script>
-    window.addEventListener('DOMContentLoaded',hashdetect)
+    window.addEventListener('DOMContentLoaded',function(){setTimeout("hashdetect()",50)})
     window.addEventListener('hashchange',hashdetect)
     var dad_box = document.querySelector('#dad_box');
     var mdc_show = document.getElementById("mdcontent");
@@ -105,26 +79,42 @@
             getmd(location.hash.slice(2))
         }
     }
+    var md_tags_list;
+    function gettaglist() {
+        var request = new XMLHttpRequest();
+        request.open("get", "/json/md_tags.json");
+        request.send(null);
+        request.onload = function () {
+            if (request.status == 200) {
+                md_tags_list = JSON.parse(request.responseText);
+            }
+        }
+    }
+    gettaglist();
     function getmd(mdn,ext) {
         var request = new XMLHttpRequest();
-        var mdc;
+        var mdc,d,t;
         if (ext) {
             request.open("get", mdn);
         } else {
             request.open("get", "/md/"+mdn+".md");
         }
+        try {
+            d = md_tags_list[mdn]["date"] || null
+            t = md_tags_list[mdn]["tags"] || null
+        } catch {}
         request.send(null);
         request.onload = function () {
             if (request.status == 200) {
                 mdc = request.responseText;
-                rendermd(mdc);
+                rendermd(mdc,d,t);
             }
             if (request.status == 404) {
                 dad_box.style.display = 'block';
             }
         }
     }
-    function rendermd(mdc) {
+    function rendermd(mdc,d,t) {
         dad_box.style.display = '';
         if (window.marked) {
             text = mdc,
@@ -133,6 +123,19 @@
             var converter = new showdown.Converter(),
             text = mdc,
             html = converter.makeHtml(text);
+        }
+        var meta;
+        if (d && t) {
+            meta = "<p class='article_top_text'><img src='/icons/others/time.svg'>&nbsp;"+d+"&nbsp;&nbsp;&nbsp;<img src='/icons/others/tag.svg'>&nbsp;"+t+"</p>";
+        } else if (d) {
+            meta = "<p class='article_top_text'><img src='/icons/others/time.svg'>&nbsp;"+d+"</p>";
+        }
+        if (d) {
+            if (html.indexOf("<h1>") == 0) {
+                html = html.slice(0,html.indexOf("</h1>")+5)+meta+html.slice(html.indexOf("</h1>")+5)
+            } else {
+                html = meta+html
+            }
         }
         mdc_show.innerHTML = html;
         if (document.getElementsByTagName("h1")[0]) {

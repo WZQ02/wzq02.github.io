@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded',onhashchange)
+window.addEventListener('load',onhashchange)
 window.addEventListener('hashchange',onhashchange)
 
 var rp = ['main','blog','filsvr','tv','demos','dl','about']

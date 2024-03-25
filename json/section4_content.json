@@ -6,21 +6,21 @@
             "id": "",
             "title": "在线活字印刷",
             "display_title": "→ *在线生成电棍鬼叫 (Python 版)",
-            "href": "https://wzq02.top/ottohzys"
+            "href": "https://ottohzys.wzq02.top/"
         },
         "sinfo2": "纯前端版：项目仓库地址 <a href=\"https://github.com/HanaYabuki/otto-hzys\"><c><b>HanaYabuki/otto-hzys</b></c></a>。",
         "slink2": {
             "id": "",
             "title": "在线活字印刷",
             "display_title": "→ *在线生成电棍鬼叫 (纯前端版)",
-            "href": "https://wzq02.top/otto-hzys"
+            "href": "https://demo.wzq02.top/otto-hzys"
         },
         "sinfo3": "电棍音乐盒（OTTO Launchpad）。",
         "slink3": {
             "id": "",
             "title": "电棍音乐盒",
             "display_title": "→ 电棍音乐盒网页版",
-            "href": "https://wzq02.top/ottolaunchpad"
+            "href": "https://demo.wzq02.top/ottolaunchpad"
         },
         "sinfo4": "日死李大鸟（魔改“吃掉小鹿乃”）<br>原版项目仓库地址 <a href=\"https://github.com/arcxingye/EatKano\"><c><b>arcxingye/EatKano</b></c></a>。<br>此版不再更新。新版见原作者个人主页 <a href=\"https://xingye.me/game/index.php\"><c><b>xingye.me</b></c></a>。",
         "slink4": {
@@ -35,7 +35,7 @@
             "title": "测试 Flash",
             "display_title": "→ 浏览器 Flash 支持测试",
             "href": "javascript:void(0)",
-            "onclick": "createobjpmpt(\"https://wzq02.top/flashtest?do_not_show_btm\",\"flashtest\")"
+            "onclick": "createobjpmpt(\"https://wzq02.top/flashtest/?do_not_show_btm\",\"flashtest\")"
         },
         "sinfo6": "移动设备陀螺仪测试。",
         "slink6": {

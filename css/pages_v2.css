@@ -1,0 +1,278 @@
+* {
+    font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial",黑体;
+}
+body {
+    animation: appear 0.6s ease 1;
+    background: #eee; 
+    transition: 0.25s;
+    color: #333;
+    margin: 8px;
+    user-select: text;
+}
+#container {
+    background-color: #fff;
+    box-shadow: 0px 0px 32px rgba(0,0,0,0.4);
+    position: relative;
+    border-radius: 20px;
+    width: 820px;
+    transform: translateY(calc(45vh - 45% - 8px));
+    transform: translateY(calc(45dvh - 45% - 8px));
+    max-width: calc(100vw - 80px);
+    max-height: calc(100vh - 48px);
+    max-height: calc(100dvh - 48px);
+    padding: 16px 32px;
+    overflow: scroll;
+    margin: auto auto;
+    text-align: left;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: none;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(127,127,127,0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(127,127,127,1);
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: rgba(63,63,63,1);
+}
+::-webkit-scrollbar-corner {
+    display: none;
+}
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #459;
+    transition: .25s;
+}
+a:active {
+    color: #004 !important;
+}
+.button,button {
+    text-decoration: none;
+    transition: 0.25s;
+    color: #555;
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    margin: 12px 0px;
+    user-select: none;
+}
+.button {
+    padding: 6px 8px;
+}
+button {
+    padding: 2px 8px;
+    line-height: 30px;
+}
+.button:active,button:active {
+    color: #fff !important;
+    background-color: #555 !important;
+    scale: 0.95
+}
+.button.flat,button.flat {
+    box-shadow: none !important;
+    scale: 1 !important
+}
+.button.grey_bg,button.grey_bg {
+    background-color: #efefef;
+}
+.button.no_bg,button.no_bg {
+    background-color: rgba(0,0,0,0);
+}
+.button svg,button svg,.button img,button img {
+    width: 22px;
+    height: 22px;
+    transform: translateY(4.5px);
+    transition: .25s;
+}
+.button:active svg,button:active svg,.button:active img,button:active img {
+    filter: invert(1);
+}
+._15h {
+    line-height: 150%;
+}
+h4 {
+    color: #555;
+}
+#largetitle {
+    font-weight: bold;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    font-size: 192px;
+    animation: appear 0.6s ease 1;
+    color: rgba(0,0,0,0.1);
+    overflow: hidden;
+    z-index: -1;
+}
+s {
+    opacity: 0.4;
+}
+pre {
+    color: #fff;
+    background-color: #222;
+    border: 2px solid #777;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: scroll;
+    line-height: normal;
+}
+code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 14px;
+}
+input[type=text],select {
+    background-color: #ddd;
+    transition: .25s;
+    outline: none;
+    border: 0px;
+}
+input[type=text]:focus,select:focus {
+    background-color: #fafafa;
+}
+input[type="text"] {
+    font-size: 14px;
+    line-height: 24px;
+    padding: 6px 12px;
+    border-radius: 14px;
+}
+input[type="checkbox"],input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin: 4px;
+    transform: translateY(3.5px);
+}
+select {
+    min-width: 160px;
+    height: 32px;
+    border-radius: 16px;
+    padding: 4px 4px;
+}
+img,video {
+    max-width: 100%;
+}
+table {
+    background-color: rgba(127,127,127,0.6);
+}
+table th {
+    background-color: rgba(255,255,255,0.6);
+    padding: 4px 8px;
+}
+table td {
+    background-color: rgba(255,255,255,0.8);
+    padding: 4px 8px;
+}
+.invert {
+    filter: invert(1)
+}
+@media (prefers-color-scheme: dark) {
+    body { 
+        background: #252525; 
+        color: #eeeeee;
+    }
+    a {
+        color: #78b;
+    }
+    a:active {
+        color: #337 !important;
+    }
+    #container {
+        background-color: #202020;
+    }
+    .button,button {
+        color: #ddd;
+        background-color: #111;
+        box-shadow: 0 2px 8px rgba(0,0,0,.5);
+    }
+    .button:active,button:active {
+        color: #222 !important;
+        background-color: #eee !important;
+    }
+    .button.grey_bg,button.grey_bg {
+        background-color: #333;
+    }
+    .button svg,button svg,.button img,button img {
+        filter: invert(1);
+    }
+    .button:active svg,button:active svg,.button:active img,button:active img {
+        filter: invert(0);
+    }
+    h4 {
+        color: #aaa;
+    }
+    #largetitle {
+        color: rgba(255,255,255,0.1);
+    }
+    ::-webkit-scrollbar-thumb:active {
+        background-color: rgba(191,191,191,1);
+    }
+    input[type="text"],select {
+        color: #fff;
+        background-color: #333;
+    }
+    input[type="text"]:focus,select:focus {
+        background-color: #111;
+    }
+    table th {
+        background-color: rgba(0,0,0,0.6);
+        padding: 4px 8px;
+    }
+    table td {
+        background-color: rgba(0,0,0,0.8);
+        padding: 4px 8px;
+    }
+}
+@media screen and (max-width: 900px) {
+    #container {
+        border-radius: 20px;
+        padding: 16px 24px;
+        max-width: calc(100vw - 64px);
+    }
+}
+@media screen and (max-width: 540px) {
+    #container {
+        border-radius: 20px;
+        padding: 16px 20px;
+        max-width: calc(100vw - 56px);
+    }
+}
+@keyframes appear {
+    0% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+@media (any-hover: hover) {
+    a:hover {
+        color: #99e;
+    }
+    .button:hover,button:hover {
+        color: #111;
+        background-color: #dedede;
+    }
+    .button.no_bg:hover,button.no_bg:hover {
+        background-color: rgba(0,0,0,.15);
+    }
+}
+@media (prefers-color-scheme: dark) and (any-hover: hover) {
+    a:hover {
+        color: #abf;
+    }
+    .button:hover,button:hover {
+        color: #fff;
+        background-color: #444;
+    }
+    .button.no_bg:hover,button.no_bg:hover {
+        background-color: rgba(255,255,255,.15);
+    }
+}

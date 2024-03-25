@@ -214,8 +214,12 @@ function displaysec(section) {
     if (lock2) {
         lock2 = 0;
         displayseca(section);
-        setTimeout(function(){lock2 = 1}, "410");
+        setTimeout(function(){lock2 = 1;verifyhash(section)}, "410");
     }
+}
+function verifyhash(section) {
+    var seccurnum = parseInt(section.getAttribute("id").substring(7));
+    window.location.hash = '#/'+rp[seccurnum]
 }
 function displayseca(section) {//显示某个section
     var secgo = document.getElementsByClassName("secdisplay")[0];
@@ -241,6 +245,7 @@ function displayseca(section) {//显示某个section
     secgo.removeEventListener("scroll",checkscrollonscroll);
     sec_scroll_l = 0;//重置sec_scroll
     sec_scroll_r = 0;
+    first_scroll = 1;
     //判断section是否滑动到底/顶部以更改sec_scroll的状态
     setTimeout(function() {
         checkscrollonsecalter(secappear);
@@ -269,6 +274,7 @@ function checkscrollonresize() {//每次更改视图大小时进行检查
 }
 var sec_scroll_l = 1;//是否允许滑轮触发section之间的切换
 var sec_scroll_r = 1;
+var first_scroll = 0;//是否触发过第一次scroll
 var scrollFunc = function(e) {//检测鼠标滚轮
     e=e || window.event;
     var seccurrent = document.getElementsByClassName("secdisplay")[0];
@@ -281,7 +287,10 @@ var scrollFunc = function(e) {//检测鼠标滚轮
         sec_scroll_l = 1;
     }*/
     if (e.wheelDelta < 0) {//IE/Opera/Chrome，鼠标向下滑动
-        if (sec_scroll_l) {//检查是否允许滑轮触发切换
+        if (!first_scroll) {
+            displayseca(seccurrent)//第一次触发scroll时，检查
+        }
+        if (sec_scroll_l && first_scroll) {//检查是否允许滑轮触发切换
             secleft();
         }
         setTimeout(function(){scrolltopage2();},0);

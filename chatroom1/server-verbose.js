@@ -1,13 +1,35 @@
-const serveredition = 2;
 const displaytime = 0;//console上输出时间信息
-const showdate = 1;//显示日期
+const POST = 8081;//服务所在端口号
 const verbose = 0;//是否在console中输出用户进出行为
 
+const serveredition = 2;
+const showdate = 1;//显示日期
+const save_history = 1;//是否保存聊天历史记录
+const max_history = 25;//历史记录最大条数
+const history_file_path = './history.json'//历史记录json文件路径
+
+const fs = require('fs');
 const ws = require('nodejs-websocket');
-const POST = 8081;//服务所在端口号
+
 let onlinecount = 0;//在线人数统计
 
 let prev_msgs = {}//过往的消息记录，保存在内存
+
+if (save_history) {//如果启用保存历史记录，服务器启动时载入上次的历史记录
+	fs.readFile(history_file_path,{encoding:"utf-8"},function(err,fr){
+		if (!err) {
+			prev_msgs = JSON.parse(fr)
+		}
+	})
+}
+function save_history_to_disk() {
+	let parsed = JSON.stringify(prev_msgs)
+	fs.writeFile(history_file_path,parsed,function(err) {
+		if (err) {
+			clog("历史记录保存失败。"+err)
+		}
+	})
+}
 
 const server = ws.createServer((connect) => {
 	onlinecount++;
@@ -128,13 +150,14 @@ function format_broadcast(content) {
 function store_msg(content) {
 	let msg_num = Object.keys(prev_msgs).length;
 	prev_msgs[msg_num] = content;
-	if (msg_num >= 10) {
+	if (msg_num >= max_history) {
 		delete prev_msgs[0];
 		for (let i=0; i<msg_num; i++) {
 			prev_msgs[i] = prev_msgs[i+1];
 		}
 		delete prev_msgs[msg_num];
 	}
+	if (save_history) {save_history_to_disk()};
 }
 //向特定用户发送先前消息
 function send_previous_msgs(key) {

@@ -1,3 +1,16 @@
+var md_tags_list;
+function gettaglist() {
+    var request = new XMLHttpRequest();
+    request.open("get", "json/md_tags.json");
+    request.send(null);
+    request.onload = function () {
+        if (request.status == 200) {
+            md_tags_list = JSON.parse(request.responseText);
+        }
+    }
+}
+gettaglist();
+
 function createmdprompt(mdname,engine,date,tags) {//第二个参数指定使用的md转html引擎，不为0则使用showdown，否则使用marked
     createprompt("md_pmpt",1,"large",1,0,1);
     getmdfile(mdname,engine,date,tags);
@@ -6,12 +19,20 @@ function createmdprompt(mdname,engine,date,tags) {//第二个参数指定使用�
 function getmdfile(mdname,e,d,t) {
     var request = new XMLHttpRequest();
     var mdc;
+    if (!d) {//date值不存在时，查找tag_list中的date和tag
+        try {
+            var d = md_tags_list[mdname]["date"] || null
+            var t = md_tags_list[mdname]["tags"] || null
+        } catch {}
+    }
     request.open("get", "md/"+mdname+".md");
     request.send(null);
     request.onload = function () {
         if (request.status == 200) {
             mdc = request.responseText;
             rendermdprompt(mdc,e,d,t);
+        } else {
+            rendermdprompt("## 没有找到对应的文章额...");
         }
     }
 }

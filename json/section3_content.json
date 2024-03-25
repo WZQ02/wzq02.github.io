@@ -1,5 +1,5 @@
 {
-    "stitle": "WZQ02.TV<span style='font-size: 20px'> @sometroublemaker's playground</span>",
+    "stitle": "sometroublemaker. TV",
     "content": {
         "sinfo1": "自建视频直播间。<br>如果你打算往这个直播间推流，请联系我以获取推流码。",
         "screenshots1": {
@@ -12,9 +12,9 @@
         },
         "slink1": {
             "id": "",
-            "title": "前往 WZQ02.TV",
-            "display_title": "→ 前往 WZQ02.TV",
-            "href": "https://play.wzq02.top/#/player"
+            "title": "前往 sometroublemaker.TV",
+            "display_title": "→ 前往 sometroublemaker. TV",
+            "href": "https://play.wzq02.top/player"
         },
         "sinfo2": "基于 WebSocket 协议实现的在线聊天室。",
         "screenshots2": {
@@ -29,7 +29,7 @@
             "id": "",
             "title": "前往 WZQ'02 的聊天室",
             "display_title": "→ 前往在线聊天室",
-            "href": "https://play.wzq02.top/#/chat"
+            "href": "https://play.wzq02.top/chat"
         }
     }    
 }

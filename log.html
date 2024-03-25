@@ -5,22 +5,22 @@
     <title>建站日志</title>
     <link rel="icon" type="image/png" href="/images/icon.png" />
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
-    <link rel="stylesheet" href="/css/pages.css" id="skin">
+    <link rel="stylesheet" href="/css/pages_v2.css" id="skin">
     <link rel="stylesheet" href="" id="color_scheme">
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
 <div id="largetitle">/site log/</div>
-<div id="container"><h2>以下为本站建站日志：<br><br></h2>
+<div id="container" class="_15h"><h2>以下为本站建站日志：<br><br></h2>
 <h4>2021.5.14 本站点建成，<s>主页直接用宝塔面板默认页面改的。</s>同时上线了文件服务器。<br>
 五月下旬 主页新增暗色模式（可根据浏览器主题或系统主题变换），可以推 rtmp 直播流到本站了。<br>
 6.14 <s>在 freenom 搞到了域名 wzq02.tk（现已过期）</s>，自此不需要再用 IP 地址访问。<br>
 六月中旬 <s>重写了网站主页面（包括样式），下方放外部链接，并增加英文版主页。旧版主页保留。</s>新增了直播间页面，<s>但是直播间在桌面端不可用（Chrome 不支持直接播放 rtmp 视频流）。</s><br>
-六月下旬 <s>微调主页的动画效果。</s>改用 hls 直播推流，用 Chrome 浏览器进入直播间可以正常播放推上去的视频流。增加带聊天板块的直播间页面。（聊天页面不是我写的，我只改了样式）<br>
+六月下旬 <s>微调主页的动画效果。</s>改用 hls 直播推流，用 Chrome 浏览器进入直播间可以正常播放推上去的视频流。增加带聊天板块的直播间页面。<s>（聊天页面不是我写的，我只改了样式）</s><br>
 七月初 不再公开直播推流地址。<br>
 <s>8.5 将主页第三个板块改为 demo 页面合集。<br></s>
 <s>8.6 再次微调主页动画效果。<br></s>
-8.7 修改直播间页面的页面布局。<br>
+<s>8.7 修改直播间页面的页面布局。</s><br>
 8.9 增加直播间未推流时的弹出消息框。<br>
 8.10 增加日志文件。<br>
 <s>8.12 新增“其他外部链接”页面。<br></s>
@@ -30,15 +30,15 @@
 <s>9.17 增加欢迎页面，并根据浏览器语言跳转到中文或英文主页。增加多个页面中亮/暗模式切换的渐变效果。<br></s>
 <s>9.18 调整多个页面动画效果的贝塞尔曲线（抄袭 otomad.wiki）。<br></s>
 <s>9.19 再次修改 js，将主页 prompt 部分的淡出动画改为收起动画。修改从“其他外部链接”页面跳转到主页面的方法。<br></s>
-9.24 调整播放器页面，增加“前往聊天室页面”的链接。根据 liveison.txt 是否存在以判断开播状态。<br>
-10.3 主页新增高对比度主题。<br>
-10.29 修改“其他外部链接”及“demo 页面合集”页面中的列表文字，并完善英文列表。</s>增加 404 页面。<br>
+<s>9.24 调整播放器页面，增加“前往聊天室页面”的链接。根据 liveison.txt 是否存在以判断开播状态。</s><br>
+<s>10.3 主页新增高对比度主题。</s><br>
+10.29 <s>修改“其他外部链接”及“demo 页面合集”页面中的列表文字，并完善英文列表。</s>增加 404 页面。<br>
 11.29 “其他外部链接”中增加 discord 邀请链接。<br>
 11.30 删除备用直播间的链接。（因为用不上）<br>
 <s>12.9 精简了主页和外链页面的 CSS 代码。<br></s>
 <s>12.12 修改主页第四板块文字。<br></s>
 <s>12.19 欢迎页面增加浏览器版本检测，IE8 以下版本浏览器访问本站会跳转到旧版页面。<br></s>
-12.21 主页新增备用文件服务器的入口。<br>
+<s>12.21 主页新增备用文件服务器的入口。</s><br>
 12.22 播放器添加 muted 参数以实现自动播放，<s>同时将中英文主页的 JS 改为外置。</s><br>
 12.25 更换本站标题图标。<br>
 <s>2022.1.1 修改从列表页面返回到主页的动画逻辑。列表页面启用简洁主题。<br></s>
@@ -55,7 +55,7 @@
 6.6 站点建成一周年，打算重写本站大部分页面，数天后开工。<br>
 6.9 开始编写第三版主页（/index.html），添加 PWA 支持。<br>
 6.10 更新 404 页面和 日志页面的样式。<br>
-6.14 原域名过期，现将域名更换为 wzq02.cf。<br>
+<s>6.14 原域名过期，现将域名更换为 wzq02.cf。</s><br>
 6.23 第三版主页正式启用。<s>之前的第一、二版主页暂时保留，之后会被移除。</s><br>
 7.1 进一步完善第三版主页内容。<br>
 7.4 修正部分动画逻辑。<br>
@@ -86,7 +86,7 @@
 10.28 更新网站界面样式，更改了多处图标、界面布局、动画效果。section 部分内容以单独的 json 格式文件存放。增加页面内弹窗功能。网站代码同步部署到 Github Pages。<br>
 10.29 添加显示 Markdown 文章的功能。<br>
 10.31 网站服务器迁移、系统重装。（wzq02.cf）<br>
-11.5 开设基于 Vue 3 的 <a href="https://wzq02.top/playgrnd/" target="_blank">sometroublemaker's playground</a> 项目，直播页和聊天室转移到此项目。<br>
+11.5 开设基于 Vue 3 的 <a href="https://play.wzq02.top/" target="_blank" class="button flat no_bg">sometroublemaker. TV</a> 项目，直播页和聊天室转移到此项目。<br>
 11.22 主页添加 niconico 频道的链接。“关于本站”部分添加“友情链接”板块。<br>
 12.1 增加短链接支持。<s>（跟音之墨学的）</s><br>
 12.3 对本站使用的 Javascript 脚本进行合并和 minify，以减少网络请求次数。<br>
@@ -95,9 +95,10 @@
 12.12 去除旧版博客的链接。<br>
 12.16 更改主页首页部分动画内容。<br>
 12.17 Object.values 兼容替代。<br>
-12.18 修复滚轮和触屏滑动手势穿透的 bug 。<br>
+12.18 修复滚轮和触屏滑动手势穿透的 bug。<br>
 2024.2.8 域名迁移到 wzq02.top。<br>
-<br><a id="btm" href="index.html#/about">返回主页</a></h4></div>
+3.15 弃用 www 子域名。<br>
+<br><a id="btm" href="index.html#/about" class="button flat no_bg">返回主页</a></h4></div>
 <script>
     disable_btm();
     autochgthemecolor();
