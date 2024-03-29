@@ -100,18 +100,14 @@
 3.15 弃用 www 子域名。<br>
 <br><a id="btm" href="index.html#/about" class="button flat no_bg">返回主页</a></h4></div>
 <script>
-    disable_btm();
+    if (self != top) {
+        document.getElementById("btm").style.display = "none"
+    }
     autochgthemecolor();
     function autochgthemecolor() {
         var color = localStorage.getItem('themecolor');
         if (color != null) {
             document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
-        }
-    }
-    function disable_btm() {
-        var url = window.location.href;
-        if (url.indexOf("do_not_show_btm") != -1) {
-            document.getElementById("btm").style.display = "none";
         }
     }
 </script>

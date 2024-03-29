@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>留言板</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/icon.png" />
+    <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
+    <link rel="stylesheet" href="/css/pages_v2.css" id="skin">
+    <style>
+        a {
+            cursor: pointer;
+        }
+        .comment {
+            margin: 32px 0px;
+        }
+        .comment .name,#status {
+            font-weight: bold;
+            opacity: .7;
+        }
+        .comment .text {
+            margin: 16px 0px;
+        }
+        .comment .time {
+            font-size: 80%;
+            opacity: .7;
+        }
+        hr {
+            opacity: .15;
+        }
+        button {
+            border-radius: 14px !important;
+            padding: 3px 12px !important
+        }
+        #status {
+            margin: 16px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="sendarea" style="width:550px;max-width:calc(100% - 24px);height:212px;display:block">
+            <h2>发表评论</h2>
+            <textarea maxlength="20480" id="text" style="width:480px;max-width:100%;height:90px;max-height:90px;display:block;font-size:15px" placeholder="在此输入文字"></textarea>
+            <input type="text" maxlength="50" id="name" style="width:280px;font-size:15px;max-width:calc(100% - 86px);" placeholder="昵称（不填写则为匿名）">
+            <button onclick="submit()" style="position:relative;left:8px">发表</button>
+        </div>
+        <div id="status"></div>
+        <h2>评论区</h2>
+        <div id="comments">
+            <span style="display:flex;justify-content:center;line-height:64px;opacity:.7;">当前没有评论...</span>
+        </div>
+        <a id="btm" href="/" class="button flat no_bg">返回主页</a>
+    </div>
+</body>
+<script>
+    if (self != top) {
+        document.getElementById("btm").style.display = "none"
+        document.getElementById("container").id = ''
+        document.body.style.backgroundColor = "rgba(0,0,0,0)"
+    }
+    const type = new URLSearchParams(new URL(window.location.href).search).get('type') || 'default'
+    const f_url = 'https://api.wzq02.top/msgboard/submit'
+    const j_url = 'https://api.wzq02.top/msgboard/history?type='+type+'&page=0'
+    const comments = document.getElementById("comments")
+    const status = document.getElementById("status")
+    generate_sid()
+
+    function submit() {
+        status.innerText = ''
+        const name = document.getElementById("name").value
+        const text = document.getElementById("text").value
+        const sid = localStorage.getItem("commentSID")
+        if (!text) {
+            status.innerText = "请填写评论内容！"
+            return
+        }
+        const send = {
+            type: type,
+            name: name || '匿名',
+            text: text,
+            mtype: 0,
+            sid: sid
+        }
+
+        const fetchOptions = {
+            method: 'POST',
+            body: JSON.stringify(send),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        fetch(f_url, fetchOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            status.innerText = data.msg
+            get_prev()
+            if (data.code == 2) {
+                document.getElementById("text").value = ""
+                localStorage.setItem("commentUname",name)
+            }
+        })
+        .catch(function(err) {
+            console.log(err)
+            status.innerText = err
+        });
+    }
+    function get_prev() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET',j_url+'&sid='+localStorage.getItem("commentSID"),true)
+        xhr.send()
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                display_prev(xhr.responseText)
+            }
+        }
+    }
+    function display_prev(res) {
+        const list = JSON.parse(res).msg
+        if (!list[0]) {
+            return
+        }
+        console.log(list)
+        comments.innerHTML = ''
+        const linv = invertObject(list)
+        for (let i in linv) {
+            const msgc = document.createElement("div")
+            msgc.className = "comment"
+            const name = document.createElement("div")
+            name.className = 'name'
+            name.innerText = linv[i].name
+            const text = document.createElement("div")
+            text.className = 'text'
+            text.innerText = linv[i].text
+            const time = document.createElement("div")
+            time.className = 'time'
+            time.innerHTML = '#'+(linv[i].count)+'&nbsp;&nbsp;'+linv[i].time
+            if (linv[i].sid == localStorage.getItem("commentSID")) {
+                time.innerHTML += "&nbsp;&nbsp;<a onclick='removecomment("+linv[i].count+")'>删除</a>"
+            }
+            msgc.appendChild(name)
+            msgc.appendChild(text)
+            msgc.appendChild(time)
+            const hr = document.createElement("hr")
+            msgc.appendChild(hr)
+            comments.appendChild(msgc)
+        }
+        autoadjustheight()
+    }
+    function invertObject(obj) {
+        let inverted = {};
+        const length = Object.keys(obj).length
+        for (let i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                inverted[i] = obj[length-1-i];
+            }
+        }
+        return inverted;
+    }
+    get_prev()
+    function autoadjustheight() {
+        if (self != top) {
+            window.frameElement.height = document.body.scrollHeight+92
+        }
+    }
+    function generate_sid() {
+        document.getElementById("name").value = localStorage.getItem("commentUname") || ""
+        if (!localStorage.getItem("commentSID")) {
+            localStorage.setItem("commentSID",btoa(Math.random()).slice(4,12))
+        }
+    }
+    function removecomment(count) {
+        const send = {
+            type: type,
+            name: null,
+            text: count,
+            mtype: 1,
+            sid: localStorage.getItem("commentSID")
+        }
+
+        const fetchOptions = {
+            method: 'POST',
+            body: JSON.stringify(send),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        fetch(f_url, fetchOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            status.innerText = data.msg
+            if (data.code == 6) {
+                get_prev()
+            }
+        })
+        .catch(function(err) {
+            console.log(err)
+            status.innerText = err
+        });
+    }
+</script>

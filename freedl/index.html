@@ -152,6 +152,9 @@
 </div>
 <br><p><b><a id="btm" href="../#/dl" class="button flat no_bg">返回主页</a></b></p></div>
 <script>
+    if (self != top) {
+        document.getElementById("btm").style.display = "none"
+    }
     var sec1 = document.getElementById("sec1");
     var sec2 = document.getElementById("sec2");
     var sec3 = document.getElementById("sec3");
@@ -161,7 +164,6 @@
     highlightseclnk();
     suffixdetect();
     autochgthemecolor();
-    disable_btm();
     function detectIEVer() {
         var ua = navigator.userAgent;
         var v = ua.indexOf("MSIE");
@@ -230,12 +232,6 @@
         var color = localStorage.getItem('themecolor');
         if (color != null) {
             document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
-        }
-    }
-    function disable_btm() {
-        var url = window.location.href;
-        if (url.indexOf("do_not_show_btm") != -1) {
-            document.getElementById("btm").style.display = "none";
         }
     }
 </script>

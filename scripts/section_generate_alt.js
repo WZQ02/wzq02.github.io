@@ -52,9 +52,6 @@ function section_addstuff(sec_num,sc_keys,sc_values) {//section中添加内容
             if (sc_keys[i].indexOf("slink") != -1) {
                 createslink(i,current_sec,sc_values)
             }
-            /*if (sc_keys[i].indexOf("stitle2") != -1) {
-                createcustomstitle(i,current_sec,sc_values)
-            }*/
             if (sc_keys[i].indexOf("screenshots") != -1) {
                 createsscreenshots(i,current_sec,sc_values,j);
                 j++
@@ -74,12 +71,6 @@ function createsinfo(i,current_sec,sc_values) {
     sinfo.innerHTML = sc_values[i];
     current_sec.appendChild(sinfo);
 }
-/*function createcustomstitle(i,current_sec,sc_values) {
-    var stitie2 = document.createElement("span");
-    stitie2.className = "stitie2 title";
-    stitie2.innerHTML = sc_values[i];
-    current_sec.appendChild(stitie2);
-}*/
 function createslink(i,current_sec,sc_values) {
     var slink_container = document.createElement("div");
     var slink = document.createElement("a");
@@ -87,7 +78,7 @@ function createslink(i,current_sec,sc_values) {
     slink.title = ovalues(sc_values[i])[1];
     slink.innerText = ovalues(sc_values[i])[2];
     slink.href = ovalues(sc_values[i])[3];
-    slink.className = "stitle2 slink";
+    slink.className = "button";
     slink_container.id = "slink_container";
     current_sec.appendChild(slink_container);
     slink_container.appendChild(slink);
@@ -133,14 +124,9 @@ function createarticleshort(i,current_sec,sc_values) {
         var extra = ',\"'+mddate+'\",\"'+tags+'\"'
     } else {
         var tags_html = ""
-        var extra = ',\"'+mddate+'\",null'
+        var extra = ',\"'+mddate+'\"'
     }
-    /*var allowcomments
-    if (ovalues(sc_values[i])[4]) {
-        allowcomments = 1
-    }*/
-    var allowcomments = 1
-    a_sc_text.setAttribute('onclick',"createmdprompt("+mdname+",0"+extra+","+allowcomments+")")
+    a_sc_text.setAttribute('onclick',"createmdprompt("+mdname+",0"+extra+")")
     var a_sc_text_mdt = document.createElement("mdtitle");
     a_sc_text_mdt.innerHTML = mdtitle+"<br>";
     var a_sc_text_mdt2 = document.createElement("mdtitle2");

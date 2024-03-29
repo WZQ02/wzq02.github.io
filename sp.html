@@ -2,41 +2,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pages_v2.css" id="skin">
     <title>WZQ'02 的小站</title>
 </head>
 <style>
-    body {
-        font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial","黑体";
-    }
-    #container {
-        position: relative;
-        width: 820px;
-        top: 16px;
-        left: calc(50vw - 410px);
-        line-height: 175%;
-    }
     img {
         max-width: 480px;
-    }
-    a {
-        text-decoration: none;
-    }
-    a:hover {
-        color: #77a;
-        text-decoration: underline;
-    }
-    a:active {
-        color: #000;
     }
     .stitle {
         font-size: 24px;
         font-weight: bold;
-        line-height: 225%;
+        line-height: 225% !important;
     }
     .stitle2 {
         font-size: 18px;
         font-weight: bold;
-        line-height: 200%;
+        line-height: 250% !important;
+    }
+    .article_shortcut_text {
+        padding: 6px 0px;
     }
     .article_shortcut_text mdtitle {
         font-size: 18px;
@@ -51,40 +35,17 @@
         top: 2px;
         left: -2px;
     }
+    .button {
+        line-height: 56px;
+    }
     @media (prefers-color-scheme: dark) {
-        body {
-            background: #222; 
-            color: #fff;
-        }
-        a {
-            color: #aaf;
-        }
-        a:hover {
-            color: #eef;
-        }
-        a:active {
-            color: #55a;
-        }
         .article_shortcut_text img {
             filter: invert(1);
         }
     }
-    @media screen and (max-width: 1024px) {
-        #container {
-            width: 80vw;
-            left: 10vw;
-        }
-    }
-    @media screen and (max-width: 540px) {
-        #container {
-            width: 100vw;
-            top: 0px;
-            left: 0vw;
-        }
-    }
 </style>
 <html>
-    <div id="container">
+    <div id="container" class="_15h">
         <div id="title"><h1>WZQ'02 的小站</h1></div>
         <p hidden>虽然你应该知道，但是这个网站不是要你用那种上古版本的 IE 访问的，这不是怀旧向的网站。</p>
         <p id="links">
@@ -105,7 +66,7 @@
         </div>
     </div>
 </html>
-<script src="scripts/section_generate.js"></script>
+<script src="scripts/section_generate_alt.js"></script>
 <script src="scripts/ver.js"></script>
 <script>
     function createobjpmpt(url,name) {

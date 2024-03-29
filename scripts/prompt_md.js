@@ -11,33 +11,36 @@ function gettaglist() {
 }
 gettaglist();
 
-function createmdprompt(mdname,engine,date,tags) {//第二个参数指定使用的md转html引擎，不为0则使用showdown，否则使用marked
+function createmdprompt(mdname,engine,date,tags,allowcomments) {//第二个参数指定使用的md转html引擎，不为0则使用showdown，否则使用marked
     createprompt("md_pmpt",1,"large",1,0,1);
-    getmdfile(mdname,engine,date,tags);
+    getmdfile(mdname,engine,date,tags,allowcomments);
 }
 
-function getmdfile(mdname,e,d,t) {
+function getmdfile(mdname,e,d,t,a) {
     var request = new XMLHttpRequest();
     var mdc;
     if (!d) {//date值不存在时，查找tag_list中的date和tag
         try {
             var d = md_tags_list[mdname]["date"] || null
             var t = md_tags_list[mdname]["tags"] || null
-        } catch {}
+        } catch(err) {}
+    }
+    if (a) {
+        a = mdname
     }
     request.open("get", "md/"+mdname+".md");
     request.send(null);
     request.onload = function () {
         if (request.status == 200) {
             mdc = request.responseText;
-            rendermdprompt(mdc,e,d,t);
+            rendermdprompt(mdc,e,d,t,a);
         } else {
             rendermdprompt("## 没有找到对应的文章额...");
         }
     }
 }
 
-function rendermdprompt(mdc,e,d,t) {
+function rendermdprompt(mdc,e,d,t,a) {
     var current = document.getElementsByClassName("prompt")[0];
     var innercon = document.createElement("div");
     innercon.className = "prompt_text mdpmpt";
@@ -77,6 +80,14 @@ function rendermdprompt(mdc,e,d,t) {
         } else {
             break;
         }
+    }
+    if (a) {
+        var comments = document.createElement("object");
+        comments.data = '/comment/?type=blog_'+a
+        comments.width = "99%"
+        comments.height = "440"
+        comments.type = "text/html"
+        innercon.appendChild(comments);
     }
     current.appendChild(innercon);
 }

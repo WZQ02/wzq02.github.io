@@ -11,11 +11,15 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <style>
+    #container {
+        overflow-x: hidden;
+    }
     #mdcontent {
         user-select: text !important;
         margin-bottom: 32px;
         border-radius: 8px;
         transition: .4s;
+        overflow-x: scroll;
     }
     #mdcontent p {
         line-height: 160%;
@@ -31,7 +35,7 @@
         display: none;
         width: calc(100% - 6px);
         height: 160px;
-        margin: 0 0 32px;
+        margin: 12px 0px 0px;
         border: 6px dashed rgba(0,0,0,.2);
         border-radius: 16px;
         text-align: center;
@@ -60,9 +64,11 @@
 <body>
 <div id="largetitle"></div>
 <div id="container">
+    <label id="dad_box" for="file"><h3>点击上传，或拖拽 Markdown (.md) 文件到此处</h3></label>
     <div id="mdcontent">
-        <div id="dad_box"><h3>拖拽 Markdown (.md) 文件到此处</h3></div>
+        
     </div>
+    <input type="file" id="file" style="display:none">
     <a id="btm" href="/" class="button flat no_bg"><b>返回主页</b></a></h4>
 </div>
 <script src="/scripts/thirdparty/showdown.min.js"></script>
@@ -102,7 +108,7 @@
         try {
             d = md_tags_list[mdn]["date"] || null
             t = md_tags_list[mdn]["tags"] || null
-        } catch {}
+        } catch(err) {}
         request.send(null);
         request.onload = function () {
             if (request.status == 200) {
@@ -111,6 +117,7 @@
             }
             if (request.status == 404) {
                 dad_box.style.display = 'block';
+                mdc_show.innerHTML = ""
             }
         }
     }
@@ -165,7 +172,16 @@
             document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
         }
     }
+    dad_box.addEventListener("mouseover",function(){
+        dad_box.style.backgroundColor = "rgba(0,0,0,.1)";
+    })
+    dad_box.addEventListener("mouseout",function(){
+        dad_box.style.backgroundColor = "";
+    })
     dad_box.addEventListener("dragenter",function(){
+        dad_box.style.backgroundColor = "rgba(0,0,0,.4)";
+    })
+    dad_box.addEventListener("mousedown",function(){
         dad_box.style.backgroundColor = "rgba(0,0,0,.4)";
     })
     dad_box.addEventListener("dragleave",function(){
@@ -202,6 +218,9 @@
             reader.readAsText(file)
         }
     }
+    document.getElementById("file").addEventListener('change',function(e){
+        handlefile(e.target.files[0])
+    })
 </script>
 </body>
 </html>

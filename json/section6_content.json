@@ -42,7 +42,7 @@
             "title": "查看本站建站日志",
             "display_title": "查看本站建站日志",
             "href": "javascript:void(0)",
-            "onclick": "createobjpmpt(\"/log.html?do_not_show_btm\",\"log\")"
+            "onclick": "createobjpmpt(\"/log.html\",\"log\")"
         }
     }    
 }

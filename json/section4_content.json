@@ -35,7 +35,7 @@
             "title": "测试 Flash",
             "display_title": "→ 浏览器 Flash 支持测试",
             "href": "javascript:void(0)",
-            "onclick": "createobjpmpt(\"https://wzq02.top/flashtest/?do_not_show_btm\",\"flashtest\")"
+            "onclick": "createobjpmpt(\"https://wzq02.top/flashtest\",\"flashtest\")"
         },
         "sinfo6": "移动设备陀螺仪测试。",
         "slink6": {
@@ -43,7 +43,7 @@
             "title": "陀螺仪测试",
             "display_title": "→ 陀螺仪测试",
             "href": "javascript:void(0)",
-            "onclick": "createobjpmpt(\"https://wzq02.top/postest/?do_not_show_btm\",\"postest\")"
+            "onclick": "createobjpmpt(\"https://wzq02.top/postest\",\"postest\")"
         }
     }    
 }

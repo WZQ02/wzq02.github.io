@@ -226,7 +226,7 @@ function dystr(strxc) {
 	return strxc[Math.floor(Math.random()*4)];
 }
 
-//发送POST请求，启动服务器
+//启动服务器时log
 server.listen(POST,() => {
 	clog(`服务器已启动。`);
 })

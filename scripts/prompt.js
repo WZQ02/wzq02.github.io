@@ -115,7 +115,9 @@ function createobjpmpt(url,name) {//创建object嵌入网页弹窗
     createprompt("object_pmpt",1,"large",0,0,1);
     var obj_1 = document.createElement("object");
     obj_1.data = url;
-    obj_1.style = "position: relative; top: -56px; width: 100%; height: 100%; border-radius: 16px";
+    obj_1.style = "position: relative; top: -56px; border-radius: 16px";
+    obj_1.width = '100%';
+    obj_1.height = '100%';
     obj_1.name = name;
     obj_1.type = "text/html";
     document.getElementsByClassName("prompt")[0].appendChild(obj_1);
