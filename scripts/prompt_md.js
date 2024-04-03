@@ -84,7 +84,7 @@ function rendermdprompt(mdc,e,d,t,a) {
     if (a) {
         var comments = document.createElement("object");
         comments.data = '/comment/?type=blog_'+a
-        comments.width = "99%"
+        comments.width = "100%"
         comments.height = "440"
         comments.type = "text/html"
         innercon.appendChild(comments);

@@ -91,7 +91,7 @@ function createiframepmpt(url,name) {//创建iframe弹窗
     createprompt("iframe_pmpt",1,"large",0,0,1);
     var iframe = document.createElement("iframe");
     iframe.src = url;
-    iframe.style = "position: relative; top: -56px; width: 100%; height: 100%; border-radius: 16px";
+    iframe.style = "position: relative; top: -56px; width: 100%; height: 100%; border-radius: 4px";
     iframe.frameborder = 1;
     iframe.name = name;
     document.getElementsByClassName("prompt")[0].appendChild(iframe);
@@ -115,7 +115,7 @@ function createobjpmpt(url,name) {//创建object嵌入网页弹窗
     createprompt("object_pmpt",1,"large",0,0,1);
     var obj_1 = document.createElement("object");
     obj_1.data = url;
-    obj_1.style = "position: relative; top: -56px; border-radius: 16px";
+    obj_1.style = "position: relative; top: -56px; border-radius: 4px";
     obj_1.width = '100%';
     obj_1.height = '100%';
     obj_1.name = name;
@@ -126,7 +126,7 @@ function createvideopmpt(url,id,auto) {
     createprompt("video_pmpt",1,"large",0,0,1);
     var pmpt_video = document.createElement("video");
     pmpt_video.src = url;
-    pmpt_video.style = "position: relative; top: -56px; width: 100%; height: 100%; border-radius: 16px";
+    pmpt_video.style = "position: relative; top: -56px; width: 100%; height: 100%; border-radius: 4px";
     pmpt_video.controls = 1;
     pmpt_video.id = id;
     if (auto) {

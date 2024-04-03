@@ -24,15 +24,35 @@
             font-size: 80%;
             opacity: .7;
         }
+        .comment .reply {
+            margin-top: 8px;
+            padding: 12px;
+            max-height: 44px;
+            overflow: hidden;
+            font-size: 90%;
+            opacity: .8;
+            border-radius: 4px;
+            background-color: #0004;
+            user-select: none;
+            cursor: pointer;
+            transition: .25s;
+        }
+        .comment .reply:active {
+            background-color: #0007 !important;
+        }
         hr {
             opacity: .15;
         }
         button {
-            border-radius: 14px !important;
-            padding: 3px 12px !important
+            padding: 3px 10px !important
         }
         #status {
             margin: 16px 0px;
+        }
+        @media (any-hover: hover) {
+            .comment .reply:hover {
+                background-color: #0001;
+            }
         }
     </style>
 </head>
@@ -70,16 +90,26 @@
         const name = document.getElementById("name").value
         const text = document.getElementById("text").value
         const sid = localStorage.getItem("commentSID")
-        if (!text) {
+        let replynum,text2
+        try {
+            if ((text.indexOf("回复 #") == 0) && (text.indexOf("：") != -1)) {
+                replynum = Number(text.slice(text.indexOf("回复 #")+4,text.indexOf("：")))
+                text2 = text.slice(text.indexOf("：")+1)
+            }
+        } catch(err) {
+        }
+        if (!text || (replynum && !text2)) {
             status.innerText = "请填写评论内容！"
             return
         }
+        
         const send = {
             type: type,
             name: name || '匿名',
-            text: text,
+            text: text2 || text,
             mtype: 0,
-            sid: sid
+            sid: sid,
+            reply: replynum || 0
         }
 
         const fetchOptions = {
@@ -110,7 +140,7 @@
         let xhr = new XMLHttpRequest();
         xhr.open('GET',j_url+'&sid='+localStorage.getItem("commentSID"),true)
         xhr.send()
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = () => {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 display_prev(xhr.responseText)
             }
@@ -127,6 +157,7 @@
         for (let i in linv) {
             const msgc = document.createElement("div")
             msgc.className = "comment"
+            msgc.id = "comment_#"+linv[i].count
             const name = document.createElement("div")
             name.className = 'name'
             name.innerText = linv[i].name
@@ -139,7 +170,22 @@
             if (linv[i].sid == localStorage.getItem("commentSID")) {
                 time.innerHTML += "&nbsp;&nbsp;<a onclick='removecomment("+linv[i].count+")'>删除</a>"
             }
+            time.innerHTML += "&nbsp;&nbsp;<a onclick='selectreply("+linv[i].count+")'>回复</a>"
             msgc.appendChild(name)
+            const reply = document.createElement("div")
+            if (linv[i].reply) {
+                reply.className = "reply"
+                let re_c = "该评论已被删除。"
+                for (let j in linv) {
+                    if (linv[j].count == linv[i].reply) {
+                        re_c = "“"+linv[j].name+"："+linv[j].text+"”"
+                        break
+                    }
+                }
+                reply.innerHTML = re_c
+                reply.onclick = () => {highlight(linv[i].reply)}
+                msgc.appendChild(reply)
+            }
             msgc.appendChild(text)
             msgc.appendChild(time)
             const hr = document.createElement("hr")
@@ -200,5 +246,24 @@
             console.log(err)
             status.innerText = err
         });
+    }
+    function selectreply(count) {
+        document.getElementById("sendarea").parentNode.scrollTop = 0
+        let text = document.getElementById("text").value
+        if ((text.indexOf("回复 #") == 0) && (text.indexOf("：") != -1)) {
+            text = text.slice(text.indexOf("：")+1)
+        }
+        document.getElementById("text").value = `回复 #${count}：`+text
+    }
+    function highlight(count) {
+        const comment = document.getElementById("comment_#"+count)
+        if (!comment) {
+            return
+        }
+        comment.scrollIntoView();
+        comment.style = "background-color: #ffff7777";
+        setTimeout(() => {
+            comment.style = "transition:1s;background-color: #ffff7700";
+        },5);
     }
 </script>

@@ -55,7 +55,7 @@ body {
     0px 8px 8px -4px rgba(0,0,0,.06),
     0px 16px 16px -8px rgba(0,0,0,.06),
     0px 32px 32px -16px rgba(0,0,0,.06);
-    border-radius: 12px;
+    border-radius: 4px;
     padding: 24px;
     overflow-x: hidden;
     transition: 0.25s;
@@ -73,7 +73,7 @@ c {
     color: #555;
     background-color: rgba(0, 0, 0, 0);
     padding: 6px 8px;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     transition-property: background-color,color;
     transition-duration: 0.25s;
@@ -192,7 +192,7 @@ textrt {
     width: 180px;
     bottom: 64px;
     left: calc(50vw - 4px);
-    border-radius: 12px;
+    border-radius: 6px;
     background-color: rgba(255,255,255,0.7);
     backdrop-filter: blur(16px);
     box-shadow: 0px 0px 32px rgba(0,0,0,0.2);
@@ -207,7 +207,7 @@ textrt {
     height: 20px;
     top: -1px;
     margin-top: 2px;
-    border-radius: 6px;
+    border-radius: 4px;
     padding: 8px;
     color: #333;
     background-color: rgba(255,255,255,0);
@@ -223,7 +223,7 @@ textrt {
     height: 38px;
     top: 54px;
     right: 64px;
-    border-radius: 12px;
+    border-radius: 6px;
     background-color: rgba(255,255,255,0.7);
     backdrop-filter: blur(16px);
     box-shadow: 0px 0px 32px rgba(0,0,0,0.2);
@@ -336,18 +336,18 @@ textrt {
     transition: 0.25s;
     color: rgba(0,0,0,0.6);
     background-color: rgba(255,255,255,0.8);
-    box-shadow: 0px 2px 8px rgba(0,0,0,.25);
+    box-shadow: 0px 4px 8px rgba(0,0,0,.2);
     font-size: 17px;
-    padding: 8px 14px;
+    padding: 8px 12px;
     margin: 28px auto;
-    border-radius: 6px;
+    border-radius: 4px;
     opacity: 1.0;
 }
 .slink:active {
     scale: 0.95;
     color: rgba(255,255,255,0.8) !important;
     background-color: rgba(0,0,0,0.6) !important;
-    box-shadow: 0px .5px 2px rgba(0,0,0,1);
+    box-shadow: 0px .5px 1px rgba(0,0,0,1);
 }
 .sscreenshots {
     position: relative;
@@ -355,11 +355,11 @@ textrt {
     margin: auto;
     top: 16px;
     box-shadow: 0px 4px 4px rgba(0,0,0,.2);
-    border-radius: 8px;
+    border-radius: 4px;
 }
 .sscreenshots picture img {
     max-width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 #bgcon {
     position: relative;
@@ -380,7 +380,7 @@ s {
 .prompt {
     position: absolute;
     background-color: rgba(216,216,216,0.8);
-    border-radius: 16px;
+    border-radius: 4px;
     box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.2);
     transition: 0.25s ease;
     z-index: 3;
@@ -413,10 +413,10 @@ s {
     position: relative;
     font-size: 16px;
     line-height: 155%;
-    margin: 24px;
-    top: -36px;
-    width: calc(100% - 40px);
-    height: calc(100% - 38px);
+    margin: 22px;
+    top: -38px;
+    width: calc(100% - 36px);
+    height: calc(100% - 34px);
     overflow-y: auto;
 }
 .prompt_text h1,h2,h3,h4,h5,h6{
@@ -446,7 +446,7 @@ s {
     position: relative;
     top: 20px;
     background-color: rgba(255,255,255,0.4);
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     padding: 8px 16px;
     white-space: nowrap;
@@ -544,7 +544,7 @@ input {
     background-color: rgba(255,255,255,0.2);
     border: 1px #aaa;
     outline: none;
-    border-radius: 6px;
+    border-radius: 4px;
     padding: 0px 12px;
     transition: 0.25s
 }
@@ -553,7 +553,7 @@ input:focus {
 }
 .prompt_text input {
     font-size: 15px;
-    width: 248px;
+    width: calc(100% - 32px);
     line-height: 40px;
 }
 #pagestatus {
@@ -587,7 +587,7 @@ notice {
     width: calc(100% - 32px);
     background-color: #fffacc;
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 @media (prefers-color-scheme: dark) {
     body { 
