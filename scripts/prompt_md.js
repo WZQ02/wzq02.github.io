@@ -17,8 +17,6 @@ function createmdprompt(mdname,engine,date,tags,allowcomments) {//第二个参�
 }
 
 function getmdfile(mdname,e,d,t,a) {
-    var request = new XMLHttpRequest();
-    var mdc;
     if (!d) {//date值不存在时，查找tag_list中的date和tag
         try {
             var d = md_tags_list[mdname]["date"] || null
@@ -28,19 +26,37 @@ function getmdfile(mdname,e,d,t,a) {
     if (a) {
         a = mdname
     }
-    request.open("get", "md/"+mdname+".md");
+    if (window.i18nextify.i18next.language.indexOf("en") != -1) {//英文语言
+        getmdfile2(mdname,e,d,t,a,1)
+    } else {
+        getmdfile2(mdname,e,d,t,a)
+    }
+}
+
+function getmdfile2(mdname,e,d,t,a,en_mark) {
+    var request = new XMLHttpRequest();
+    var mdc;
+    if (en_mark == 1) {
+        request.open("get", "md/en/"+mdname+".md");
+    } else {
+        request.open("get", "md/"+mdname+".md");
+    }
     request.send(null);
     request.onload = function () {
         if (request.status == 200) {
             mdc = request.responseText;
-            rendermdprompt(mdc,e,d,t,a);
+            rendermdprompt(mdc,e,d,t,a,en_mark);
         } else {
-            rendermdprompt("## 没有找到对应的文章额...");
+            if (en_mark == 1) {
+                getmdfile2(mdname,e,d,t,a,2)
+            } else {
+                rendermdprompt("## 没有找到对应的文章额...");
+            }
         }
     }
 }
 
-function rendermdprompt(mdc,e,d,t,a) {
+function rendermdprompt(mdc,e,d,t,a,m) {
     var current = document.getElementsByClassName("prompt")[0];
     var innercon = document.createElement("div");
     innercon.className = "prompt_text mdpmpt";
@@ -58,6 +74,9 @@ function rendermdprompt(mdc,e,d,t,a) {
         meta = "<p class='article_top_text'><img src='icons/others/time.svg'>&nbsp;"+d+"&nbsp;&nbsp;&nbsp;<img src='icons/others/tag.svg'>&nbsp;"+t+"</p>";
     } else if (d) {
         meta = "<p class='article_top_text'><img src='icons/others/time.svg'>&nbsp;"+d+"</p>";
+    }
+    if (m == 2) {
+        meta += '<notice>This article is not available in English. Consider using browser translation.</notice>\n'
     }
     if (d) {
         if (html.indexOf("<h1>") == 0) {
