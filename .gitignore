@@ -1,4 +1,6 @@
-*.cmd
 dev.html
 
 redirect
+
+minifier/package-lock.json
+minifier/node_modules

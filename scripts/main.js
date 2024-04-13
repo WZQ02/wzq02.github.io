@@ -137,6 +137,7 @@ function scrolltopage2a() {//切换到下页
     }
     document.querySelector('#dot_1').classList.remove('highlighted_dot');
     document.querySelector('#dot_2').classList.add('highlighted_dot')
+    document.getElementsByTagName('textrt')[0].classList.add('inpage2')
 }
 function scrolltopage1() {
     if (lock1) {
@@ -170,6 +171,7 @@ function scrolltopage1a() {//返回上页
     lnks.style.animation = "appear 0.5s 1";
     document.querySelector('#dot_1').classList.add('highlighted_dot');
     document.querySelector('#dot_2').classList.remove('highlighted_dot')
+    document.getElementsByTagName('textrt')[0].classList.remove('inpage2')
 }
 function secleft() {
     if (document.getElementById("page2").getAttribute('class') == "pagedisplay") {

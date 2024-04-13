@@ -26,7 +26,7 @@ function getmdfile(mdname,e,d,t,a) {
     if (a) {
         a = mdname
     }
-    if (window.i18nextify.i18next.language.indexOf("en") != -1) {//英文语言
+    if (window.i18nextify&&window.i18nextify.i18next.language.indexOf("en") != -1) {//英文语言
         getmdfile2(mdname,e,d,t,a,1)
     } else {
         getmdfile2(mdname,e,d,t,a)
@@ -108,5 +108,7 @@ function rendermdprompt(mdc,e,d,t,a,m) {
         comments.type = "text/html"
         innercon.appendChild(comments);
     }
+    innercon.style = 'opacity:0'
     current.appendChild(innercon);
+    setTimeout(function(){innercon.style = ''},5)
 }

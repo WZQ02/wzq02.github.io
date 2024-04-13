@@ -1,6 +1,8 @@
 var default_bgurl = "https://bing.img.run/rand.php"
 var background_url = default_bgurl;
 var lock_animbg,lock2_animbg,lock3_animbg;
+var bgstate_lock
+var bg_notfirst
 var q_counter = 0;
 if (localStorage.getItem('bgurl') != null) {//如果cookie中存在自定义api信息，则应用
     var background_url = localStorage.getItem('bgurl');
@@ -50,6 +52,8 @@ function show_background(input_url) {
         setTimeout(function(){as.transition = "1.5s"},5)
     };*/
     abspan.style.transition = "0.25s";
+    abspan.style.opacity = '0'
+    setTimeout(function(){abspan.style.opacity = '1'},5)
     abspan.onmouseover = function() {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             abspan.style.filter = "brightness(140%)";
@@ -153,7 +157,17 @@ function show_background(input_url) {
         window.addEventListener("deviceorientation",mvondeviceori);
     }
     //document.getElementsByTagName("centerpic")[0].style.display = "none";
-    document.getElementById("centerpic_container").style.display = "none";
+    if (bg_notfirst) {
+        document.getElementById("centerpic_container").style = "display:none"
+    } else {
+        bgstate_lock = 1
+        document.getElementById("centerpic_container").style = "transition:.15s;opacity:0"
+        setTimeout(function(){
+            document.getElementById("centerpic_container").style = "display:none"
+            bgstate_lock = 0
+        },150)
+        bg_notfirst = 1
+    }
     abspan.innerHTML = "<p>使用的图片 API: <br>" + input_url;
     if (background_url != default_bgurl) {
         abspan.innerHTML += "</p><p>站长不对从第三方调用图片的内容负责。";
@@ -220,15 +234,25 @@ function custombgurl(a) {//应用自定义api
     destroyprompt();
 }
 function chgbgstate() {//启用或禁用背景图
-    if (localStorage.getItem("backgroundenabled") != null) {
-        localStorage.removeItem('backgroundenabled');
-        //window.location.href = window.location.href.replace(/(\?|#)[^'"]*/, '');
-        //window.history.pushState({},0,url);
-        //location.reload();
-        removebg();
-    } else {
-        localStorage.setItem('backgroundenabled',"yes");
-        show_background(background_url);
+    if (!bgstate_lock) {
+        if (localStorage.getItem("backgroundenabled") != null) {
+            localStorage.removeItem('backgroundenabled');
+            //window.location.href = window.location.href.replace(/(\?|#)[^'"]*/, '');
+            //window.history.pushState({},0,url);
+            //location.reload();
+            bgstate_lock = 1
+            document.getElementById("yabg").style = "transition:.15s;opacity:0"
+            document.getElementById("abspan").style.opacity = '0'
+            setTimeout(function(){
+                removebg()
+                document.getElementById("yabg").style = ''
+                bgstate_lock = 0
+                bg_notfirst = 0
+            },150)
+        } else {
+            localStorage.setItem('backgroundenabled',"yes");
+            show_background(background_url);
+        }
     }
 }
 function removebg() {

@@ -28,6 +28,7 @@ body {
     left: 0px;
     top: 0px;
     overflow: hidden;
+    animation: appear 1s cubic-bezier(0, 0.2, 0, 1) 1;
 }
 #page2 {
     display: none;
@@ -108,7 +109,6 @@ textrt {
     top: 6px;
     right: 16px;
     cursor: default;
-    animation: appear 1s cubic-bezier(0, 0.2, 0, 1) 1;
 }
 #lt {
     font-size: 18px;
@@ -140,8 +140,13 @@ textrt {
 }
 #mainlnks a div:active {
     position: relative !important;
-    filter: invert(60%);
     bottom: -4px !important;
+}
+#mainlnks a div img {
+    transition: 0.25s;
+}
+#mainlnks a div img:active {
+    filter: invert(60%);
 }
 #sectionchoice {
     position: relative;
@@ -163,7 +168,7 @@ textrt {
 #sectionchoice a div img:active {
     position: relative !important;
     filter: invert(60%);
-    top: -4px !important;
+    top: 4px !important;
 }
 #tip1 {
     width: 100%;
@@ -589,6 +594,10 @@ notice {
     padding: 8px 12px;
     border-radius: 4px;
 }
+textrt c span{
+    opacity: 1;
+    transition: .25s;
+}
 @media (prefers-color-scheme: dark) {
     body { 
         background: #252525; 
@@ -742,6 +751,19 @@ notice {
     .article_shortcut {
         padding: 0;
     }
+    #mainlnks a div img,#sectionchoice a div img{
+        width: 30px;
+        height: 30px;
+    }
+    #links {
+        bottom: 16px;
+    }
+    #mainlnks a div {
+        padding: 5px;
+    }
+    #sectionchoice a div img {
+        padding: 3px;
+    }
 }
 @media screen and (max-width: 720px) {
     #tip1 {
@@ -753,7 +775,6 @@ notice {
     }
     #page2 .sections{
         width: 80vw;
-        height: calc(90% - 96px);
     }
 }
 @media screen and (max-width: 1024px) {
@@ -801,6 +822,14 @@ notice {
         top: calc(8.5vh - 20px) !important;
         top: calc(8.5dvh - 20px) !important;
     }
+    #page2 .sections {
+        top: calc(2vh - 18px)
+    }
+}
+@media screen and (max-height: 1000px) {
+    textrt.inpage2 img,textrt.inpage2 #currentcs,textrt.inpage2 span {
+        opacity: 0 !important;
+    }
 }
 @media (any-hover: hover) {
     ::-webkit-scrollbar-thumb:hover {
@@ -823,12 +852,12 @@ notice {
     }
     #mainlnks a div:hover {
         position: relative;
-        bottom: 8px;
+        bottom: 4px;
         opacity: 1.0;
     }
     #sectionchoice a div img:hover {
         position: relative;
-        top: 8px;
+        top: -4px;
         opacity: 1.0;
     }
     #othlnks div:hover {
@@ -854,7 +883,7 @@ notice {
         background-color: rgba(0,0,0,0.07);
     }
     #bgcon:hover {
-        opacity: 0.75 !important;
+        opacity: 0.75;
     }
     .pmpt_closebtn:hover {
         opacity: 0.8;
