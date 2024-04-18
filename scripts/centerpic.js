@@ -143,16 +143,20 @@ function liubing_trigger() {
         liubing()
     }
 }
+var djanim_timeout
 function liubing(custom_music_url) {
     //var dj = document.querySelector("#front_9").childNodes[1];
     if (liubing_status == 0) {
         liubing_status = 1;
+        if (djanim_timeout) {
+            clearTimeout(djanim_timeout)
+        }
         dj.style.animation = "spin 4s linear infinite";
         lbaudio = document.createElement("audio");
         lbaudio.autoplay = 1;
-        lbaudio.loop = 1;
+        //lbaudio.loop = 1;因为启用了自动切歌，不循环
         while (true) {
-            var rand2 = Math.ceil(Math.random()*8);
+            var rand2 = Math.ceil(Math.random()*9);
             if (window.randprev2 != rand2) {
                 break;
             }
@@ -163,7 +167,7 @@ function liubing(custom_music_url) {
             lbaudio.src = custom_music_url;
             createliubingspan("♫&nbsp;&nbsp;"+custom_music_url);
         } else {
-            var aud_src_prefix = "/demos/otm_demos_ogg/";
+            var aud_src_prefix = "https://demo.wzq02.top/otm_demos_ogg/";
             switch (rand2) {
                 case 1:
                     lbaudio.src = aud_src_prefix+"dabig_dance.ogg";
@@ -197,16 +201,27 @@ function liubing(custom_music_url) {
                     lbaudio.src = aud_src_prefix+"glitch_otto.ogg";
                     createliubingspan("♫&nbsp;&nbsp;【ottomania:2023】Glitch♿OTTO♿");
                     break;
+                case 9:
+                    lbaudio.src = aud_src_prefix+"what_is_hitech_unfinished.ogg";
+                    createliubingspan("♫&nbsp;&nbsp;What♿is♿Hitech?（未完成）");
+                    break
             }
+            lbaudio.addEventListener("timeupdate",function(){
+                if (lbaudio.duration - lbaudio.currentTime <=.2) {//当前音频结束时，自动触发两次liubing以切换到另一首
+                    liubing();liubing()
+                }
+            })
         }
         document.body.appendChild(lbaudio);
     } else {
         liubing_status = 0;
         var audio = document.querySelector("audio")
+        audio.removeAttribute('src')//先去除audio src属性，停止对之前的音频文件的请求
+        audio.load()
         audio.parentNode.removeChild(audio);
         removeliubingspan();
         dj.style.animation = "spinstop 0.15s ease-out";
-        setTimeout(function(){dj.style.animation = ""},145)
+        djanim_timeout = setTimeout(function(){dj.style.animation = ""},145)
     }
 }
 function createliubingspan(title) {
@@ -261,21 +276,21 @@ function click_record() {
                         for (i=1;i<5;i++) {
                             last5_sum_diff = last5_sum_diff+Math.abs(cp_click_last5[i]-cp_click_last5[i-1])
                         }
-                        if (last5_sum_diff<10) {
+                        /*if (last5_sum_diff<10) {
                             cheated=3
                             console.log("检测到疑似连点器行为，已暂停统计点击速度。")
                             createalert("<h1 style='font-size: 56px'>连点器？</h1><p>没想到吧，我连连点检测都做出来了，哼哼...</p>",200)
                             last_click_duration = shortest_click_duration = last5_speed = last5_fastest = 0
-                        }
+                        }*/
                     }
                 }
             } else {
-                cheated++
+                /*cheated++
                 if (cheated >=3) {
                     console.log("两次点击间隔太短，已暂停统计点击速度。")
                     createalert("<h1 style='font-size: 56px'>脚本挂！？</h1><p>不是吧，这你都要开挂啊...</p>",174)
                     last_click_duration = shortest_click_duration = last5_speed = last5_fastest = 0
-                }
+                }*/
             }
         }
         if (shortest_click_duration==0 || shortest_click_duration>last_click_duration){

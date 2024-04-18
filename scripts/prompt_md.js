@@ -76,7 +76,7 @@ function rendermdprompt(mdc,e,d,t,a,m) {
         meta = "<p class='article_top_text'><img src='icons/others/time.svg'>&nbsp;"+d+"</p>";
     }
     if (m == 2) {
-        meta += '<notice>This article is not available in English. Consider using browser translation.</notice>\n'
+        meta += '<notice>This article is not available in English yet. Consider using browser translation.</notice>\n'
     }
     if (d) {
         if (html.indexOf("<h1>") == 0) {
