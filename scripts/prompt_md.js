@@ -109,6 +109,9 @@ function rendermdprompt(mdc,e,d,t,a,m) {
         innercon.appendChild(comments);
     }
     innercon.style = 'opacity:0'
+    if (document.getElementsByClassName("mdpmpt")[0]) {//如果append前已存在mdpmpt，将其去除
+        current.removeChild(document.getElementsByClassName("mdpmpt")[0])
+    }
     current.appendChild(innercon);
     setTimeout(function(){innercon.style = ''},5)
 }
