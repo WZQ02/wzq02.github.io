@@ -71,7 +71,6 @@
     <input type="file" id="file" style="display:none">
     <a id="btm" href="/" class="button flat no_bg"><b>返回主页</b></a></h4>
 </div>
-<script src="/scripts/thirdparty/showdown.min.js"></script>
 <script src="/scripts/thirdparty/marked.min.js"></script>
 <script>
     window.addEventListener('DOMContentLoaded',function(){setTimeout("hashdetect()",50)})
@@ -80,12 +79,12 @@
     var mdc_show = document.getElementById("mdcontent");
     function hashdetect() {
         if (window.location.href.indexOf("#/http") != -1) {
-            getmd(location.hash.slice(2),1)
+            handlemd(location.hash.slice(2),1)
         } else {
-            getmd(location.hash.slice(2))
+            handlemd(location.hash.slice(2))
         }
     }
-    var md_tags_list;
+    var md_tags_list,use_showdown;
     function gettaglist() {
         var request = new XMLHttpRequest();
         request.open("get", "/json/md_tags.json");
@@ -97,14 +96,19 @@
         }
     }
     gettaglist();
-    function getmd(mdn,ext) {
+    function handlemd(mdn,ext) {
+        var url
+        if (ext) {
+            url = mdn
+        } else {
+            url = "/md/"+mdn+".md"
+        }
+        getmd(mdn,url)
+    }
+    function getmd(mdn,url) {
         var request = new XMLHttpRequest();
         var mdc,d,t;
-        if (ext) {
-            request.open("get", mdn);
-        } else {
-            request.open("get", "/md/"+mdn+".md");
-        }
+        request.open("get", url);
         try {
             d = md_tags_list[mdn]["date"] || null
             t = md_tags_list[mdn]["tags"] || null
@@ -122,8 +126,26 @@
         }
     }
     function rendermd(mdc,d,t) {
-        dad_box.style.display = '';
         if (window.marked) {
+            rendermd2(mdc,d,t)
+        } else {
+            if (use_showdown) {
+                rendermd2(mdc,d,t,1)
+            } else {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = '/scripts/thirdparty/showdown.min.js';
+                script.onload = function() {
+                    use_showdown = 1
+                    rendermd2(mdc,d,t,1)
+                }
+                document.head.appendChild(script);
+            }
+        }
+    }
+    function rendermd2(mdc,d,t,e) {
+        dad_box.style.display = '';
+        if (!e) {
             text = mdc,
             html = marked.parse(text);
         } else {

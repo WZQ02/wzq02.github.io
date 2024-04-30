@@ -325,3 +325,12 @@ if (window.location.href.indexOf('.github.io')!=-1) {
         document.title += i18nextify.i18next.t(" (Mirror)")
     })
 }
+function loadJS(url,callback) {//按需动态加载第三方js
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.onload = function() {
+        callback();//js加载完后执行回调函数
+    }
+    document.head.appendChild(script);
+}

@@ -1,4 +1,6 @@
-var md_tags_list;
+var md_tags_list,marked_loaded,showdown_loaded,marked_failed;
+var showdown_path = "./scripts/thirdparty/showdown.min.js"
+var marked_path = "./scripts/thirdparty/marked.min.js"
 function gettaglist() {
     var request = new XMLHttpRequest();
     request.open("get", "json/md_tags.json");
@@ -13,7 +15,27 @@ gettaglist();
 
 function createmdprompt(mdname,engine,date,tags,allowcomments) {//第二个参数指定使用的md转html引擎，不为0则使用showdown，否则使用marked
     createprompt("md_pmpt",1,"large",1,0,1);
-    getmdfile(mdname,engine,date,tags,allowcomments);
+    function afterwards() {
+        getmdfile(mdname,engine,date,tags,allowcomments);
+    }
+    if (marked_failed) {//上一次加载marked失败，则直接指定engine为1
+        engine = 1
+    }
+    if (engine && !showdown_loaded) {//首次加载showdown
+        loadJS(showdown_path,function(){afterwards();showdown_loaded = 1})
+    } else if (!marked_loaded) {//首次加载marked
+        loadJS(marked_path,function(){
+            if (window.marked===undefined) {//marked不兼容的处理，fallback到showdown
+                engine = 1
+                loadJS(showdown_path,function(){afterwards();showdown_loaded = 1;marked_failed = 1})
+                return
+            } else {
+                afterwards();marked_loaded = 1
+            }
+        })
+    } else {
+        afterwards()
+    }
 }
 
 function getmdfile(mdname,e,d,t,a) {
@@ -60,7 +82,6 @@ function rendermdprompt(mdc,e,d,t,a,m) {
     var current = document.getElementsByClassName("prompt")[0];
     var innercon = document.createElement("div");
     innercon.className = "prompt_text mdpmpt";
-    if (window.marked===undefined) {e=1};
     if (e) {
         var converter = new showdown.Converter(),
         text = mdc,
