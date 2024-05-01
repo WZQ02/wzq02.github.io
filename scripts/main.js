@@ -120,7 +120,7 @@ function scrolltopage2a() {//切换到下页
     centerpic.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
     //toscr2.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
     lnks.style.animation = "disappear 0.5s 1";
-    hidecschooser();
+    //hidecschooser();
     setTimeout(function(){
         page2.style.animation = "pg2showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
         page2.style.display = "block";

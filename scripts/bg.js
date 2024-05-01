@@ -20,7 +20,7 @@ function show_background(input_url) {
     var abspan = document.createElement("span");
     var textrt = document.getElementsByTagName("textrt")[0];
     var links = document.getElementById("links");
-    var cschooser = document.getElementById("cschooser");
+    //var cschooser = document.getElementById("cschooser");
     var as = animbg.style;
     animbg.id = "animbg";
     as.position = "absolute";
@@ -34,18 +34,18 @@ function show_background(input_url) {
     as.transition = "1.5s";
     as.filter = "brightness(100%) opacity(25%)";
     links.style.transition = "0.4s";
-    cschooser.style.transition = "0.25s";
+    //cschooser.style.transition = "0.25s";
     animbg.onmouseover = function() {
         as.filter = "brightness(100%) opacity(100%)";
         textrt.style.opacity = "0.25";
         links.style.opacity = "0.25";
-        cschooser.style.opacity = "0.25";
+        //cschooser.style.opacity = "0.25";
     };
     animbg.onmouseout = function() {
         as.filter = "brightness(100%) opacity(25%)";
         textrt.style.opacity = "";
         links.style.opacity = "";
-        cschooser.style.opacity = "";
+        //cschooser.style.opacity = "";
     };
     /*window.onresize = function() {
         as.transition = "";
@@ -71,9 +71,9 @@ function show_background(input_url) {
             abspan.style.filter = "brightness(25%)";
         }
     }
-    abspan.onmouseup = function() {
+    /*abspan.onmouseup = function() {
         createalert("<h3>Here are the tips:</h3>鼠标在本页上滑动时，图片会朝相反方向移动。<br>单击本页空白处可更换背景（有 5 秒的冷却时间）。<br>如果要更换背景功能使用的 api，在配色方案菜单中点击“更换背景图 API”，在弹出的窗口中填入你要使用的 API。<br>（点击“还原为默认”则可换回默认的图片 API）")
-    }
+    }*/
     for (var i=0; i<6; i++) {//为所有section背景启用模糊效果
         document.getElementsByClassName("sections")[i].style.backdropFilter = "blur(24px)";
     }
@@ -168,9 +168,9 @@ function show_background(input_url) {
         },150)
         bg_notfirst = 1
     }
-    abspan.innerHTML = "<p>使用的图片 API: <br>" + input_url;
+    abspan.innerHTML = "<p><span onclick='createalert(\"<h3>Here are the tips:</h3>鼠标在本页上滑动时，图片会朝相反方向移动。<br>单击本页空白处可更换背景。<br>（有 5 秒的冷却时间）<br>如果要更换背景功能使用的 API，点击“使用的图片 API”下方的 URL，在弹出的窗口中填入你要使用的 API。<br><br>（目前仅支持直接返回图片数据的 API，不支持返回 JSON 的。点击“还原为默认”则可换回默认的图片 API）\",366)'>使用的图片 API: </span><br><span onclick='promptcustombgurl2()'>" + input_url + "</span></p>";
     if (background_url != default_bgurl) {
-        abspan.innerHTML += "</p><p>站长不对从第三方调用图片的内容负责。";
+        abspan.innerHTML += "</p><p><span onclick='promptcustombgurl2()'>站长不对从第三方调用图片的内容负责。</span>";
     }
     abspan.style.textAlign = "right";
     abspan.id = "abspan";
@@ -180,7 +180,7 @@ function show_background(input_url) {
         document.getElementById("animbg").appendChild(bg_vid);
         document.getElementById("bg_vid").appendChild(bg_vid_sec);
     }
-    cschooseraddbgoptions();
+    //cschooseraddbgoptions();
     window.addEventListener("resize",resizezoom);
     document.getElementById("bgcon").style.opacity = "0.6";
     document.getElementById("bgcon").title = "禁用背景图片";
@@ -188,7 +188,7 @@ function show_background(input_url) {
         document.getElementById("bgcon").title = i18nextify.i18next.t('禁用背景图片');
     }
 }
-function cschooseraddbgoptions() {
+/*function cschooseraddbgoptions() {
     var bgoptions = document.createElement("div");
     bgoptions.innerHTML = "<c onclick='promptcustombgurl2()' style='position: relative; top:46px; left:4.5px;'>更换背景图 API</c>";
     bgoptions.id = "bgoptions";
@@ -199,7 +199,7 @@ function cschooseraddbgoptions() {
     } else {
         bgoptions.style.color = "#444";
     }
-}
+}*/
 function promptcustombgurl2() {
     createalert("<h3 style='opacity: 0.75'>更换背景图 API</h3><input type='text' id='custom_bg_url' placeholder='请填入你要使用的图片 API：'></input><c style='position: relative; float: left; top: 16px;' href='javascript:void(0)' onclick='promptcustombgurl3();'>更换</c><c style='position: relative; top: 16px; right: 8px; float: right' href='javascript:void(0)' onclick=\"custombgurl('')\";>还原为默认</c>",176)
     if (localStorage.getItem('bgurl')) {
@@ -258,8 +258,8 @@ function chgbgstate() {//启用或禁用背景图
 function removebg() {
     document.getElementById("yabg").removeChild(document.querySelector("#animbg"));
     document.getElementsByTagName("textrt")[0].removeChild(document.querySelector("#abspan"));
-    document.getElementById("cschooser").removeChild(document.querySelector("#bgoptions"));
-    document.getElementById("cschooser").style.height = "";
+    //document.getElementById("cschooser").removeChild(document.querySelector("#bgoptions"));
+    //document.getElementById("cschooser").style.height = "";
     //document.getElementsByTagName("centerpic")[0].style = "display: block; animation: appear 0.7s";
     document.getElementById("centerpic_container").style = "display: block; animation: appear 0.7s";
     document.getElementById("bgcon").style.opacity = "";

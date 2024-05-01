@@ -1,4 +1,6 @@
-autochgthemecolor();
+//Deprecated.
+
+/*autochgthemecolor();
 
 function autochgthemecolor() {//自动更改配色方案
     var color = localStorage.getItem('themecolor');
@@ -33,4 +35,4 @@ function hidecschooser() {
     var cschooser = document.getElementById("cschooser");
     cschooser.style.animation = "lnkhide2 0.25s cubic-bezier(0, 0, 0.67, 0) 1";
     setTimeout(function(){cschooser.style.display = "none";cschooser.style.animation = ""},"245");
-}
+}*/
