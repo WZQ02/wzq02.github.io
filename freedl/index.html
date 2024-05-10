@@ -163,7 +163,6 @@
     addhighlgt();
     highlightseclnk();
     suffixdetect();
-    autochgthemecolor();
     function detectIEVer() {
         var ua = navigator.userAgent;
         var v = ua.indexOf("MSIE");
@@ -226,12 +225,6 @@
         }
         if (url.indexOf("forcesysfont") != -1) {
             document.body.style.fontFamily = "'Microsoft YaHei',微软雅黑";
-        }
-    }
-    function autochgthemecolor() {
-        var color = localStorage.getItem('themecolor');
-        if (color != null) {
-            document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
         }
     }
 </script>

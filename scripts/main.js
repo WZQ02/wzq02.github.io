@@ -320,10 +320,15 @@ var scrollFunc = function(e) {//检测鼠标滚轮
 document.querySelector('#main').addEventListener('DOMMouseScroll',scrollFunc,false);//注册事件(Firefox)
 document.querySelector('#main').onmousewheel = scrollFunc;//IE/Opera/Chrome
 
-if (window.location.href.indexOf('.github.io')!=-1) {
+if (window.location.hostname.indexOf('.github.io')!=-1) {
     window.addEventListener('load',function(){
         document.title += i18nextify.i18next.t(" (Mirror)")
     })
+    if (navigator.language == "zh-CN") {
+        console.log("您正在访问 WZQ\'02 的小站的镜像版本。主站地址为 https://wzq02.top/")
+    } else {
+        console.log("You\'re visiting the mirror version of WZQ\'02\'s site. The main site is at https://wzq02.top/")
+    }
 }
 function loadJS(url,callback) {//按需动态加载第三方js
     var script = document.createElement('script');

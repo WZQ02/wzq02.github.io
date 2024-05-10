@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="/images/icon.png" />
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
     <link rel="stylesheet" href="/css/pages_v2.css" id="skin">
-    <link rel="stylesheet" href="" id="color_scheme">
     <link rel="manifest" href="/manifest.json">
 </head>
 <style>
@@ -185,13 +184,6 @@
             } else {
                 break;
             }
-        }
-    }
-    autochgthemecolor();
-    function autochgthemecolor() {
-        var color = localStorage.getItem('themecolor');
-        if (color != null) {
-            document.getElementById("color_scheme").href = "/css/docu_"+color+".css";
         }
     }
     dad_box.addEventListener("mouseover",function(){
