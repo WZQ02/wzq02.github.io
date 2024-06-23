@@ -1,3 +1,4 @@
+//"use strict"; for some reason strict mode doesn't play well with IE11, so not enabled.
 autoredirect();
 function autoredirect() {
     var url = window.location.href;

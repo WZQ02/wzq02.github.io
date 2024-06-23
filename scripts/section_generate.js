@@ -140,7 +140,7 @@ function createarticleshort(i,current_sec,sc_values) {
         allowcomments = 1
     }*/
     var allowcomments = 1
-    a_sc_text.setAttribute('onclick',"createmdprompt("+mdname+",0"+extra+","+allowcomments+")")
+    a_sc_text.setAttribute('onclick',"createmdprompt(\""+mdname+"\",0"+extra+","+allowcomments+")")
     var a_sc_text_mdt = document.createElement("mdtitle");
     a_sc_text_mdt.innerHTML = mdtitle+"<br>";
     var a_sc_text_mdt2 = document.createElement("mdtitle2");

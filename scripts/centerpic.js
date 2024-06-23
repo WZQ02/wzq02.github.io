@@ -1,11 +1,18 @@
 const pic_list = ["front_1","front_2","front_3","front_4","front_5","front_6","front_7","front_8","front_9","front_10","front_11","front_12"];
 var pic_size = 96;
+var last_msd_pos = [];
 function centerpic_initialize() {
     var centerpic_bg = document.createElement("div");
     centerpic_bg.style = "width: 100vw; height: 100vh;";
-    centerpic_bg.onmouseup = function() {
-        cp_pos_changeall();
-        click_record();
+    centerpic_bg.onmousedown = function(e) {
+        last_msd_pos[0] = e.clientX
+        last_msd_pos[1] = e.clientY
+    }
+    centerpic_bg.onmouseup = function(e) {
+        if (last_msd_pos[0] == e.clientX && last_msd_pos[1] == e.clientY) {
+            cp_pos_changeall();
+            click_record();
+        }
     }
     document.getElementById("centerpic_container").appendChild(centerpic_bg);
     for (var i=0; i<pic_list.length; i++) {
@@ -39,6 +46,9 @@ function centerpic_initialize() {
         img.setAttribute('onload',"var a=document.querySelector('#"+pic_list[i]+"').childNodes[1];a.style.opacity=1;a.style.transition='0.25s';");
         pic.appendChild(source);
         pic.appendChild(img);
+        pic.ondragstart = function(e) {//避免拖动图片元素
+            e.preventDefault()
+        }
         document.getElementById("centerpic_container").appendChild(pic);
     }
     pic_size_adj();
@@ -81,13 +91,36 @@ function cp_resize_control() {
     timeoutcpposchg = setTimeout(function(){cp_pos_changeall();pic_size_adj()},250)
 };
 window.onresize = function(){cp_resize_control()};
-function cp_pos_change(name) {
-    var change = document.querySelector("#"+name);
-    change.style.transform = "translate("+window.innerWidth*(Math.random()-0.5)*0.8+"px,"+window.innerHeight*(Math.random()-0.5)*0.8+"px) rotate("+Math.random()*360+"deg)";
+function cp_pos_change(name,direction) {
+    var change = document.getElementById(name);
+    var xtf1=-0.5,xtf2=0.8,ytf1=-0.5,ytf2=0.8;
+    switch (direction) {
+        case 1://to left
+            xtf1 = -1.4
+            xtf2 = 0.4
+            ytf2 = 1
+            break
+        case 2://to right
+            xtf1 = 0.4
+            xtf2 = 0.4
+            ytf2 = 1
+            break
+        case 3://to down
+            xtf2 = 1
+            ytf1 = 0.4
+            ytf2 = 0.4
+            break
+        case 4://to page2
+            xtf2 = 1
+            ytf1 = -1.4
+            ytf2 = 0.4
+            break
+    }
+    change.style.transform = "translate("+window.innerWidth*(Math.random()+xtf1)*xtf2+"px,"+window.innerHeight*(Math.random()+ytf1)*ytf2+"px) rotate("+Math.random()*360+"deg)"
 }
-function cp_pos_changeall() {
+function cp_pos_changeall(direction) {
     for (var i=0; i<pic_list.length; i++) {
-        cp_pos_change(pic_list[i]);
+        cp_pos_change(pic_list[i],direction);
     }
 }
 function cp_rewoke() {
@@ -99,9 +132,34 @@ function cp_rewoke() {
     setTimeout(function(){cp_pos_changeall()},5);
 }
 
+//左右滑动手势
+var pic_swipe = new Hammer(document.getElementById("centerpic_container"))
+pic_swipe.on('swipeleft', function() {
+    cp_pos_changeall(1)
+    click_record()
+})
+pic_swipe.on('swiperight', function() {
+    cp_pos_changeall(2)
+    click_record()
+})
+pic_swipe.on('swiperight', function() {
+    cp_pos_changeall(2)
+    click_record()
+})
+var pic_swipe_2 = new Hammer(document.getElementById("centerpic_container"))
+pic_swipe_2.get('swipe').set({direction: Hammer.DIRECTION_VERTICAL})//允许上下滑动
+pic_swipe_2.on('swipedown', function() {
+    cp_pos_changeall(3)
+    click_record()
+})
+pic_swipe_2.on('swipeup', function() {
+    cp_pos_changeall(4)
+    click_record()
+})
+
 function cp_addprop() {
-    for (var i=0; i<pic_list.length; i++) {
-        let pic = document.querySelector("#"+pic_list[i]);
+    for (let i=0; i<pic_list.length; i++) {
+        let pic = document.getElementById(pic_list[i]);
         pic.onmouseover = function() {
             pic.style.opacity = 1;
         }
@@ -117,6 +175,7 @@ function cp_addprop() {
             pic.onmouseup = function() {
                 pic.style.opacity = 1;
                 cp_pos_change(pic.id);
+                //console.log(pic.id)
                 click_record();
             }
         }
@@ -263,7 +322,7 @@ function click_record() {
                 if (cp_click_last5.length>=6) {
                     cp_click_last5.splice(0,1)
                     var last5_sum_time=0
-                    for (i=0;i<5;i++) {
+                    for (var i=0;i<5;i++) {
                         last5_sum_time = last5_sum_time+cp_click_last5[i]
                     }
                     last5_speed = Number(parseFloat(5000/last5_sum_time).toFixed(1))
@@ -273,7 +332,7 @@ function click_record() {
                     }
                     if (last5_speed>=10) {
                         var last5_sum_diff=0
-                        for (i=1;i<5;i++) {
+                        for (var i=1;i<5;i++) {
                             last5_sum_diff = last5_sum_diff+Math.abs(cp_click_last5[i]-cp_click_last5[i-1])
                         }
                         /*if (last5_sum_diff<10) {

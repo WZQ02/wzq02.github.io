@@ -117,16 +117,16 @@ function scrolltopage2a() {//切换到下页
     var lnks = document.getElementById("links");
     var page2 = document.getElementById("page2");
     page2.classList.add('pagedisplay');
-    centerpic.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
+    centerpic.style.animation = "pg1go 0.15s cubic-bezier(0.4, 0, 1, 0) 1";
     //toscr2.style.animation = "pg1go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
     lnks.style.animation = "disappear 0.5s 1";
     //hidecschooser();
     setTimeout(function(){
-        page2.style.animation = "pg2showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
+        page2.style.animation = "pg2showup 0.35s cubic-bezier(0, 0.4, 0, 1) 1";
         page2.style.display = "block";
         //toscr2.style.display = "none";
         centerpic.style.display = "none";
-    },"250");
+    },"150");
     setTimeout(function(){lnks.style.display = "none";},"500");
     var othlnks = document.getElementById("othlnks");
     var lt = document.getElementById("lt");
@@ -156,16 +156,16 @@ function scrolltopage1a() {//返回上页
     var lnks = document.getElementById("links");
     var page2 = document.getElementById("page2");
     page2.classList.remove('pagedisplay');
-    page2.style.animation = "pg2go 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
+    page2.style.animation = "pg2go 0.15s cubic-bezier(0.4, 0, 1, 0) 1";
     setTimeout(function(){
         page2.style.display = "none";
         //centerpic.style.display = "block";
         //toscr2.style.display = "block";
         lnks.style.display = "block";
-    },250);
+    },150);
     if (document.querySelector("#animbg")==null) {
         setTimeout(function(){centerpic.style.display = "block"},250);
-        centerpic.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
+        centerpic.style.animation = "pg1showup 0.35s cubic-bezier(0, 0.4, 0, 1) 1";
     }
     //toscr2.style.animation = "pg1showup 0.25s cubic-bezier(0, 0.4, 0, 1) 1";
     lnks.style.animation = "appear 0.5s 1";
@@ -227,19 +227,19 @@ function displayseca(section) {//显示某个section
     var secgo = document.getElementsByClassName("secdisplay")[0];
     var secappear = section;
     if (secgo.getAttribute("id") < secappear.getAttribute("id")) {
-        secgo.style.animation = "secgo 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
+        secgo.style.animation = "secgo 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
         setTimeout(function(){
             secgo.classList.remove('secdisplay');
             secappear.classList.add('secdisplay');
-            secappear.style.animation = "secshowup 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
-        },"400");
+            secappear.style.animation = "secshowup 0.45s cubic-bezier(0, 0.4, 0, 1) 1";
+        },"250");
     } else if (secgo.getAttribute("id") > secappear.getAttribute("id")) {
-        secgo.style.animation = "secgo2 0.4s cubic-bezier(0.4, 0, 1, 0) 1";
+        secgo.style.animation = "secgo2 0.25s cubic-bezier(0.4, 0, 1, 0) 1";
         setTimeout(function(){
             secgo.classList.remove('secdisplay');
             secappear.classList.add('secdisplay');
-            secappear.style.animation = "secshowup2 0.4s cubic-bezier(0, 0.4, 0, 1) 1";
-        },"400");
+            secappear.style.animation = "secshowup2 0.45s cubic-bezier(0, 0.4, 0, 1) 1";
+        },"250");
     }
     removehighlgt();
     setTimeout(function(){addhighlgt();highlightseclnk();},"410");

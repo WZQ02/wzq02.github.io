@@ -79,11 +79,23 @@
         document.body.style.backgroundColor = "rgba(0,0,0,0)"
     }
     const type = new URLSearchParams(new URL(window.location.href).search).get('type') || 'default'
+    const md_enabled = new URLSearchParams(new URL(window.location.href).search).get('markdown') || 0
     const f_url = 'https://api.wzq02.top/msgboard/submit'
     const j_url = 'https://api.wzq02.top/msgboard/history?type='+type+'&page=0'
     const comments = document.getElementById("comments")
     const status = document.getElementById("status")
     generate_sid()
+
+    if (md_enabled) {
+        console.log("警告：已启用 Markdown 转译。评论内容将不做清理，这可能会引发 XSS。")
+        var script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = '../scripts/thirdparty/marked.min.js'
+        script.onload = function() {
+            get_prev()
+        }
+        document.head.appendChild(script)
+    }
 
     function submit() {
         status.innerText = ''
@@ -163,7 +175,11 @@
             name.innerText = linv[i].name
             const text = document.createElement("div")
             text.className = 'text'
-            text.innerText = linv[i].text
+            if (window.marked) {
+                text.innerHTML = marked.parse(linv[i].text)
+            } else {
+                text.innerText = linv[i].text
+            }
             const time = document.createElement("div")
             time.className = 'time'
             time.innerHTML = '#'+(linv[i].count)+'&nbsp;&nbsp;'+linv[i].time
@@ -182,7 +198,7 @@
                         break
                     }
                 }
-                reply.innerHTML = re_c
+                reply.innerText = re_c
                 reply.onclick = () => {highlight(linv[i].reply)}
                 msgc.appendChild(reply)
             }
@@ -204,7 +220,9 @@
         }
         return inverted;
     }
-    get_prev()
+    if (!md_enabled) {
+        get_prev()
+    }
     function autoadjustheight() {
         if (self != top) {
             window.frameElement.height = document.body.scrollHeight+92
@@ -267,3 +285,4 @@
         },5);
     }
 </script>
+<script src="../scripts/thirdparty/i18nextify.min.js"></script>

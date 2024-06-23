@@ -107,7 +107,7 @@ function rendermdprompt(mdc,e,d,t,a,m) {
         }
     }
     innercon.innerHTML = html;
-    for (i=0; i<127; i++) {
+    for (var i=0; i<127; i++) {
         if (innercon.childNodes[i]) {
             if (typeof(innercon.childNodes[i].childNodes[0]) == "object") {
                 if (innercon.childNodes[i].childNodes[0].alt) {

@@ -436,7 +436,8 @@ s {
     left: 0px;
     transition: 0.25s;
 }
-.mdpmpt p img {
+.mdpmpt p img:not(.article_top_text img) {
+    display: flex;
     max-width: 100%;
     margin: 0 auto;
 }
@@ -723,6 +724,9 @@ textrt c span{
     }
     notice {
         background-color: #332b00;
+    }
+    .allowinvert {
+        filter: invert(1) hue-rotate(180deg);
     }
 }
 @media screen and (max-width: 524px) {
