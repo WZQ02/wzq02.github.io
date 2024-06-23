@@ -1,28 +1,30 @@
 {
     "stitle": "一些杂七杂八的",
     "content": {
-        "sinfo1": "在线生成电棍鬼叫。<br>Python 版：原项目 GitHub 仓库地址 <a href=\"https://github.com/sakaneko117/HUOZI\"><c><b>sakaneko117/HUOZI</b></c></a>，相比原版新增了一些原声大碟。",
-        "slink1": {
+        "sinfo1": "<span class='stitle2 title'>在线生成电棍鬼叫</span>",
+        "sinfo2": "Python 版：原项目 GitHub 仓库地址 <a href=\"https://github.com/sakaneko117/HUOZI\"><c><b>sakaneko117/HUOZI</b></c></a>，相比原版新增了一些原声大碟。",
+        "slink2": {
             "id": "",
             "title": "在线活字印刷",
             "display_title": "→ *在线生成电棍鬼叫 (Python 版)",
             "href": "https://ottohzys.wzq02.top/"
         },
-        "sinfo3": "电棍音乐盒（OTTO Launchpad）。",
+        "sinfo3": "<span class='stitle2 title'>电棍音乐盒（OTTO Launchpad）</span>",
         "slink3": {
             "id": "",
             "title": "电棍音乐盒",
             "display_title": "→ 电棍音乐盒网页版",
             "href": "https://demo.wzq02.top/ottolaunchpad"
         },
-        "sinfo4": "日死李大鸟（魔改“吃掉小鹿乃”）<br>原版项目仓库地址 <a href=\"https://github.com/arcxingye/EatKano\"><c><b>arcxingye/EatKano</b></c></a>。<br>此版不再更新。新版见原作者个人主页 <a href=\"https://xingye.me/game/index.php\"><c><b>xingye.me</b></c></a>。",
+
+        "sinfo4": "<span class='stitle2 title'>日死李大鸟（魔改“吃掉小鹿乃”）</span><br>原版项目仓库地址 <a href=\"https://github.com/arcxingye/EatKano\"><c><b>arcxingye/EatKano</b></c></a>。<br>此版不再更新。新版见原作者个人主页 <a href=\"https://xingye.me/game/index.php\"><c><b>xingye.me</b></c></a>。",
         "slink4": {
             "id": "",
             "title": "日死李大鸟",
             "display_title": "→ *小游戏: 吃掉李大鸟",
             "href": "https://demo.wzq02.top/eatltx"
         },
-        "sinfo5": "Flash 功能测试页。可用于检查浏览器是否支持 Flash。",
+        "sinfo5": "<span class='stitle2 title'>Flash 功能测试页</span><br>可用于检查浏览器是否支持 Flash。",
         "slink5": {
             "id": "",
             "title": "测试 Flash",
@@ -30,7 +32,7 @@
             "href": "javascript:void(0)",
             "onclick": "createobjpmpt(\"https://wzq02.top/flashtest\",\"flashtest\")"
         },
-        "sinfo6": "移动设备陀螺仪测试。",
+        "sinfo6": "<span class='stitle2 title'>陀螺仪测试</span><br>移动设备陀螺仪测试。",
         "slink6": {
             "id": "",
             "title": "陀螺仪测试",

@@ -1,13 +1,14 @@
 {
-    "stitle": "<span style='font-kerning:none'>sometroublemaker.TV</span>",
+    "stitle": "小项目",
     "content": {
-        "sinfo1": "自建视频直播间。<br>如果你打算往这个直播间推流，请联系我以获取推流码。",
+        "sinfo1": "<span class='stitle2 title' style='font-kerning:none;margin-top:0px'>sometroublemaker.TV</span>",
+        "sinfo2": "一个带有弹幕和评论功能的自建视频直播间。",
         "screenshots1": {
             "pic1_png": {
-                "url": "images/screenshots/wzq02tv_2.png"
+                "url": "images/screenshots/wzq02tv_3.png"
             },
             "pic1_webp": {
-                "url": "images/screenshots/wzq02tv_2.webp"
+                "url": "images/screenshots/wzq02tv_3.webp"
             }
         },
         "slink1": {
@@ -16,20 +17,21 @@
             "display_title": "→ 前往 sometroublemaker. TV",
             "href": "https://play.wzq02.top/player"
         },
-        "sinfo2": "基于 WebSocket 协议实现的在线聊天室。",
+        "sinfo3": "<span class='stitle2 title' style='font-kerning:none'>bilibili 直播弹幕互动网页</span>",
+        "sinfo4": "试着写了个可以与 B 站直播间弹幕互动的网页。",
         "screenshots2": {
             "pic1_png": {
-                "url": "images/screenshots/chatroom_1.png"
+                "url": "https://bili-vod.wzq02.top/images/screenshots/show.png"
             },
             "pic1_webp": {
-                "url": "images/screenshots/chatroom_1.webp"
+                "url": ""
             }
         },
         "slink2": {
             "id": "",
-            "title": "前往 WZQ'02 的聊天室",
-            "display_title": "→ 前往在线聊天室",
-            "href": "https://play.wzq02.top/chat"
+            "title": "前往",
+            "display_title": "→ 前往",
+            "href": "https://bili-vod.wzq02.top/"
         }
     }    
 }

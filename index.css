@@ -317,27 +317,26 @@ textrt {
     font-size: 36px;
     font-weight: bold;
     opacity: 0.8;
+    margin-bottom: 12px;
 }
 .sinfo {
     font-size: 18px;
     position: relative;
-    top: 16px;
     line-height: 32px;
 }
 .stitle2 {
-    top: 16px;
+    top: 0px;
     opacity: 0.6;
-    position: relative;
 }
 .stitle2.title {
     font-size: 20px;
     font-weight: bold;
-    line-height: 96px;
+    line-height: 40px;
+    margin-top: 24px;
 }
 .slink {
     position: relative;
     display: table;
-    top: 16px;
     transition: 0.25s;
     color: rgba(0,0,0,0.6);
     background-color: rgba(255,255,255,0.8);

@@ -2,9 +2,8 @@
     "stitle": "关于本站",
     "content": {
         "sinfo1": "个人主页，同时也是我乱写的练手网站。主要用来展示我在各个社交平台的账号啥的。",
-        
-        "sinfo3": "<span class='stitle2 title'>友情链接</span>",
-        "sinfo4": "<span>以下是我之前在音 MAD 社群认识的一些内容创作者：</span>",
+        "sinfo3": "<br><span class='stitle2 title'>友情链接</span>",
+        "sinfo4": "<span style='line-height:40px'>以下是我之前在音 MAD 社群认识的一些内容创作者：</span>",
         "slink1": {
             "id": "xszq",
             "title": "心水湛清",
