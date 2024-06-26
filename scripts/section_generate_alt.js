@@ -126,7 +126,7 @@ function createarticleshort(i,current_sec,sc_values) {
         var tags_html = ""
         var extra = ',\"'+mddate+'\"'
     }
-    a_sc_text.setAttribute('onclick',"createmdprompt("+mdname+",0"+extra+")")
+    a_sc_text.setAttribute('onclick',"createmdprompt(\""+mdname+"\",0"+extra+")")
     var a_sc_text_mdt = document.createElement("mdtitle");
     a_sc_text_mdt.innerHTML = mdtitle+"<br>";
     var a_sc_text_mdt2 = document.createElement("mdtitle2");
