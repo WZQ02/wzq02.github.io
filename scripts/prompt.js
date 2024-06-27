@@ -39,7 +39,7 @@ function createprompt(id,isclosebutton,size,isblur,isdragable,allowfullscreen) {
                 prompt.style.top = (f.clientY - y) +"px";
                 prompt.style.left = (f.clientX - x) +"px";
             }
-            document.addEventListener("mouseup",function () {
+            prompt.addEventListener("mouseup",function () {
                 document.removeEventListener("mousemove",movepmpt)
                 prompt.style.transition = "";
             })
@@ -55,7 +55,7 @@ function createprompt(id,isclosebutton,size,isblur,isdragable,allowfullscreen) {
                 prompt.style.top = (touch.clientY - y) +"px";
                 prompt.style.left = (touch.clientX - x) +"px";
             }
-            document.addEventListener("touchend",function () {
+            prompt.addEventListener("touchend",function () {
                 document.removeEventListener("touchmove",movepmpt)
                 prompt.style.transition = "";
             })

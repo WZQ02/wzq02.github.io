@@ -1,6 +1,7 @@
 const pic_list = ["front_1","front_2","front_3","front_4","front_5","front_6","front_7","front_8","front_9","front_10","front_11","front_12"];
 var pic_size = 96;
 var last_msd_pos = [];
+var d2sa_flag = 0
 function centerpic_initialize() {
     var centerpic_bg = document.createElement("div");
     centerpic_bg.style = "width: 100vw; height: 100vh;";
@@ -119,8 +120,11 @@ function cp_pos_change(name,direction) {
     change.style.transform = "translate("+window.innerWidth*(Math.random()+xtf1)*xtf2+"px,"+window.innerHeight*(Math.random()+ytf1)*ytf2+"px) rotate("+Math.random()*360+"deg)"
 }
 function cp_pos_changeall(direction) {
-    for (var i=0; i<pic_list.length; i++) {
-        cp_pos_change(pic_list[i],direction);
+    if (swup_allow_flag) {
+        for (var i=0; i<pic_list.length; i++) {
+            cp_pos_change(pic_list[i],direction);
+        }
+        d2sa_flag = 0
     }
 }
 function cp_rewoke() {
@@ -170,6 +174,18 @@ function cp_addprop() {
             pic.onmouseup = function() {
                 pic.style.opacity = 1;
                 liubing_trigger();
+            }
+        } else if (pic.id == "front_11") {
+            pic.onmouseup = function() {
+                if (d2sa_flag == 2) {
+                    d2sa_action()
+                    return
+                }
+                if (d2sa_flag) {
+                    d2sa_flag = 2
+                } else {
+                    cp_pos_change("front_11")
+                }
             }
         } else {
             pic.onmouseup = function() {
@@ -390,3 +406,55 @@ function create_statistic_entry() {
     a.appendChild(a2);
     document.querySelector("#othlnks").appendChild(a)
 }
+
+var d2sa_pic = document.getElementById("front_11")
+d2sa_pic.addEventListener("mousedown",function() {
+    swup_allow_flag = 0
+    var d2sp_cs = window.getComputedStyle(d2sa_pic,null)
+    var ori_t_l = [Number(d2sp_cs.top.slice(0,-2)),Number(d2sp_cs.left.slice(0,-2))]
+    document.addEventListener("mousemove",movep)
+    function movep(f) {
+        var tr_x = f.clientX - ori_t_l[1] - pic_size/2
+        var tr_y = f.clientY - ori_t_l[0] - pic_size/2
+        if ((Math.pow(tr_x,2)+Math.pow(tr_y,2)) < Math.pow(128,2)) {
+            d2sa_pic.style.transform = "scale(1.6)"
+            d2sa_pic.style.left = "calc(-"+pic_size/2+"px + 50vw)"
+            d2sa_flag = 1
+            //console.log(d2sa_flag)
+        } else {
+            d2sa_pic.style.transform = "translate("+tr_x+"px, "+tr_y+"px)"
+            d2sa_flag = 0
+        }
+    }
+    d2sa_pic.addEventListener("mouseup",function () {
+        swup_allow_flag = 1
+        document.removeEventListener("mousemove",movep)
+    })
+})
+d2sa_pic.addEventListener("touchstart",function() {
+    swup_allow_flag = 0
+    var d2sp_cs = window.getComputedStyle(d2sa_pic,null)
+    var ori_t_l = [Number(d2sp_cs.top.slice(0,-2)),Number(d2sp_cs.left.slice(0,-2))]
+    document.addEventListener("touchmove",movep)
+    function movep(f) {
+        var touch = f.targetTouches[0];
+        var tr_x = touch.clientX - ori_t_l[1] - pic_size/2
+        var tr_y = touch.clientY - ori_t_l[0] - pic_size/2
+        if ((Math.pow(tr_x,2)+Math.pow(tr_y,2)) < Math.pow(128,2)) {
+            d2sa_pic.style.transform = "scale(1.6)"
+            d2sa_pic.style.left = "calc(-"+pic_size/2+"px + 50vw)"
+            d2sa_flag = 2
+        } else {
+            d2sa_pic.style.transform = "translate("+tr_x+"px, "+tr_y+"px)"
+            d2sa_flag = 0
+        }
+    }
+    d2sa_pic.addEventListener("touchend",function () {
+        swup_allow_flag = 1
+        document.removeEventListener("touchmove",movep)
+    })
+})
+function d2sa_action() {
+    createmdprompt("aboutme")
+}
+
