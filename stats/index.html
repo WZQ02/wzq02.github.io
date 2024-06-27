@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>统计</title>
+    <link rel="icon" type="image/png" href="/images/icon.png" />
+    <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
+    <link rel="stylesheet" href="/css/pages_v2.css" id="skin">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+<div id="container" class="_15h">
+    <h1>站点统计</h1>
+    <div id="site_stats_text"></div>
+<br>
+<a id="btm" href="/" class="button flat no_bg">返回主页</a>
+</div>
+<script>
+    if (self != top) {
+        document.getElementById("btm").style.display = "none"
+    }
+    var s_s_t = document.getElementById("site_stats_text")
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', "https://api.wzq02.top/beacon/stats")
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+            var json = JSON.parse(xhr.responseText)
+            var keys = Object.keys(json["statistics"])
+            s_s_t.innerHTML = "从 "+json["since"]+" 开始：<br>"
+            for (var i=0;i<keys.length;i++) {
+                //console.log(json["statistics"][keys[i]])
+                s_s_t.innerHTML += "<h4>"+keys[i]+"</h4>"
+                s_s_t.innerHTML += "总访问量："+json["statistics"][keys[i]]["visit_count"]+"<br>"
+                s_s_t.innerHTML += "有用户交互的访问量："+json["statistics"][keys[i]]["interact_once_count"]+"<br>"
+                s_s_t.innerHTML += "用户停留超过 30s 的访问量："+json["statistics"][keys[i]]["stayed_over_30s"]+"<br>"
+                s_s_t.innerHTML += "来自移动端："+json["statistics"][keys[i]]["client_type_mobile"]+"<br>"
+                s_s_t.innerHTML += "非移动端："+json["statistics"][keys[i]]["client_type_desktop"]+"<br>"
+            }
+            s_s_t.innerHTML += "<h4>主页额外统计</h4>"
+            s_s_t.innerHTML += "用户使用支持 ES2015 的浏览器访问："+json["home_only"]["es6_support"]+"<br>"
+            s_s_t.innerHTML += "用户使用不支持 ES2015 的浏览器访问："+json["home_only"]["es6_unsupport"]+"<br>"
+        } else {
+            s_s_t.innerText = "无法获取站点统计数据，可能是因为相关 API 不在线..."
+        }
+    }
+    xhr.send()
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+var site=-1!=window.location.hostname.indexOf(".github.io")?"home_github":"home";
