@@ -6,8 +6,6 @@ if (beacon_data == null) {
 } else {
     beacon_data = JSON.parse(beacon_data)
     if (get_ut() - Number(beacon_data["time"]) < 3600*24) {
-        //******Delete or comment this following line in production!!!*******
-        //loaded()
     } else {
         set_bea_data()
     }
@@ -19,7 +17,10 @@ function set_bea_data() {
     localStorage.setItem("beacon_data",JSON.stringify({
         "time": get_ut()
     }))
-    loaded()
+    //If '?nobeacon' not in URL, run beacon script
+    if (new URLSearchParams(new URL(window.location.href).search).get('nobeacon') == null) {
+        loaded()
+    }
 }
 //Beacon script loaded
 function send(json) {
@@ -45,7 +46,7 @@ function loaded() {
     if (/ipad|iphone|midp|rv:1.2.3.4|ucweb|android|windows ce|windows mobile/.test(userAgent)) {
         visit_data["is_mobile"] = 1
     }
-    var arrowfunc = "let t = () => {}"
+    var arrowfunc = "let t=()=>{}"
     try {
         f = new Function(arrowfunc)
         visit_data["es6_support"] = 1

@@ -11,7 +11,7 @@
 <body>
 <div id="container" class="_15h">
     <h1>站点统计</h1>
-    <div id="site_stats_text"></div>
+    <div id="site_stats_text">如果无法查看站点统计信息，请检查相关内容是否被广告屏蔽器拦截。</div>
 <br>
 <a id="btm" href="/" class="button flat no_bg">返回主页</a>
 </div>
@@ -28,7 +28,6 @@
             var keys = Object.keys(json["statistics"])
             s_s_t.innerHTML = "从 "+json["since"]+" 开始：<br>"
             for (var i=0;i<keys.length;i++) {
-                //console.log(json["statistics"][keys[i]])
                 s_s_t.innerHTML += "<h4>"+keys[i]+"</h4>"
                 s_s_t.innerHTML += "总访问量："+json["statistics"][keys[i]]["visit_count"]+"<br>"
                 s_s_t.innerHTML += "有用户交互的访问量："+json["statistics"][keys[i]]["interact_once_count"]+"<br>"

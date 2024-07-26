@@ -16,7 +16,13 @@
             "display_title": "→ 电棍音乐盒网页版",
             "href": "https://demo.wzq02.top/ottolaunchpad"
         },
-
+        "sinfo7": "<span class='stitle2 title'>踩踩背模拟器</span>",
+        "slink7": {
+            "id": "",
+            "title": "给老爷爷踩踩背！",
+            "display_title": "→ 踩踩背模拟器",
+            "href": "https://ccbsimulator.wzq02.top/"
+        },
         "sinfo4": "<span class='stitle2 title'>日死李大鸟（魔改“吃掉小鹿乃”）</span><br>原版项目仓库地址 <a href=\"https://github.com/arcxingye/EatKano\"><c><b>arcxingye/EatKano</b></c></a>。<br>此版不再更新。新版见原作者个人主页 <a href=\"https://xingye.me/game/index.php\"><c><b>xingye.me</b></c></a>。",
         "slink4": {
             "id": "",

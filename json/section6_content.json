@@ -22,6 +22,12 @@
             "display_title": "Megakite",
             "href": "https://megakite.icu/"
         },
+        "slink8": {
+            "id": "pt",
+            "title": "Passthem",
+            "display_title": "Passthem",
+            "href": "https://passthem-desu.github.io/"
+        },
         "slink4": {
             "id": "akutazehy",
             "title": "立花遥的点心铺",
@@ -39,9 +45,16 @@
         "slink6": {
             "id": "show_site_log",
             "title": "查看本站建站日志",
-            "display_title": "查看本站建站日志",
+            "display_title": "本站建站日志",
             "href": "javascript:void(0)",
             "onclick": "createobjpmpt(\"/log.html\",\"log\")"
+        },
+        "slink7": {
+            "id": "stats",
+            "title": "查看站点统计",
+            "display_title": "站点统计",
+            "href": "javascript:void(0)",
+            "onclick": "createobjpmpt(\"/stats\",\"stats\")"
         }
     }    
 }
