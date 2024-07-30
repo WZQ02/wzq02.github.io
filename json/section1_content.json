@@ -2,6 +2,12 @@
     "stitle": "杂谈 / 博客 / 瞎扯淡",
     "content": {
         "sinfo1": "过往的散文、随想、杂谈等。",
+        "article_shortcut10": {
+            "title": "一些零碎的思索记录 '24.07",
+            "date": "2024/7/29",
+            "mdname": "240729",
+            "tags": "随想"
+        },
         "article_shortcut9": {
             "title": "【wzqtechtips#03】手机压片，可行否？",
             "date": "2024/6/21",
@@ -9,7 +15,7 @@
             "tags": "视频技术, wzqtechtips"
         },
         "article_shortcut8": {
-            "title": "random thoughts 240401",
+            "title": "随机想法 240401",
             "date": "2024/4/1",
             "mdname": "240401",
             "tags": "随想"
