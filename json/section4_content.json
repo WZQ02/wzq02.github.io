@@ -1,6 +1,14 @@
 {
     "stitle": "一些杂七杂八的",
     "content": {
+        "sinfo8": "<span class='stitle2 title'>音 MAD 作者网站收集</span><br>各个音 MAD 作者和社团的网站。（持续更新中）",
+        "slink8": {
+            "id": "",
+            "title": "音 MADer 网站收集",
+            "display_title": "→ 音 MADer 网站收集",
+            "href": "javascript:void(0)",
+            "onclick": "createobjpmpt(\"https://wzq02.top/otomader-sites\",\"otomader-sites\")"
+        },
         "sinfo1": "<span class='stitle2 title'>在线生成电棍鬼叫</span>",
         "sinfo2": "Python 版：原项目 GitHub 仓库地址 <a href=\"https://github.com/sakaneko117/HUOZI\"><c><b>sakaneko117/HUOZI</b></c></a>，相比原版新增了一些原声大碟。",
         "slink2": {

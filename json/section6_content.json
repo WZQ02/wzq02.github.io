@@ -5,28 +5,22 @@
         "sinfo3": "<br><span class='stitle2 title'>友情链接</span>",
         "sinfo4": "<span style='line-height:40px'>以下是我之前在音 MAD 社群认识的一些内容创作者：</span>",
         "slink1": {
-            "id": "xszq",
-            "title": "心水湛清",
-            "display_title": "心水湛清",
-            "href": "https://space.bilibili.com/4675183"
-        },
-        "slink2": {
             "id": "aira",
             "title": "AIRA CAFE",
             "display_title": "艾了个拉",
             "href": "https://aira.cafe/"
+        },
+        "slink2": {
+            "id": "xszq",
+            "title": "心水湛清",
+            "display_title": "心水湛清",
+            "href": "https://space.bilibili.com/4675183"
         },
         "slink3": {
             "id": "kite",
             "title": "Megakite",
             "display_title": "Megakite",
             "href": "https://megakite.icu/"
-        },
-        "sl_unused2": {
-            "id": "pt",
-            "title": "Passthem",
-            "display_title": "Passthem",
-            "href": "https://passthem-desu.github.io/"
         },
         "slink4": {
             "id": "akutazehy",
