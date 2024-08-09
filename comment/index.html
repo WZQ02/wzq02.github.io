@@ -44,14 +44,28 @@
             opacity: .15;
         }
         button {
-            padding: 3px 10px !important
+            padding: 3px 10px;
         }
         #status {
             margin: 16px 0px;
         }
+        #page_nav button {
+            margin: 0px 2px;
+        }
+        #page_nav button.short {
+            padding: 3px 4px;
+        }
+        #page_nav button.cpn {
+            background-color: #9bf;
+        }
         @media (any-hover: hover) {
             .comment .reply:hover {
                 background-color: #0001;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            #page_nav button.cpn {
+                background-color: #359;
             }
         }
     </style>
@@ -69,6 +83,9 @@
         <div id="comments">
             <span style="display:flex;justify-content:center;line-height:64px;opacity:.7;">当前没有评论...</span>
         </div>
+        <div id="page_nav">
+        </div>
+        <br>
         <a id="btm" href="/" class="button flat no_bg">返回主页</a>
     </div>
 </body>
@@ -78,12 +95,18 @@
         document.getElementById("container").id = ''
         document.body.style.backgroundColor = "rgba(0,0,0,0)"
     }
-    const type = new URLSearchParams(new URL(window.location.href).search).get('type') || 'default'
-    const md_enabled = new URLSearchParams(new URL(window.location.href).search).get('markdown') || 0
-    const f_url = 'https://api.wzq02.top/msgboard/submit'
-    const j_url = 'https://api.wzq02.top/msgboard/history?type='+type+'&page=0'
+    function getparams(p) {
+        return new URLSearchParams(new URL(window.location.href).search).get(p)
+    }
+    const type = getparams('type') || 'default'
+    const md_enabled = getparams('markdown') || 0
+    let page = getparams('page') || 1
+    const host = 'https://api.wzq02.top/msgboard'
+    const f_url = host+'/submit'
+    const j_url = host+'/history?type='+type
     const comments = document.getElementById("comments")
     const status = document.getElementById("status")
+    const page_nav = document.getElementById("page_nav")
     generate_sid()
 
     if (md_enabled) {
@@ -150,7 +173,7 @@
     }
     function get_prev() {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET',j_url+'&sid='+localStorage.getItem("commentSID"),true)
+        xhr.open('GET',j_url+'&page='+page+'&sid='+localStorage.getItem("commentSID"),true)
         xhr.send()
         xhr.onreadystatechange = () => {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -160,6 +183,7 @@
     }
     function display_prev(res) {
         const list = JSON.parse(res).msg
+        const nav = [JSON.parse(res).page_current,JSON.parse(res).page_total]
         if (!list[0]) {
             return
         }
@@ -191,7 +215,7 @@
             const reply = document.createElement("div")
             if (linv[i].reply) {
                 reply.className = "reply"
-                let re_c = "该评论已被删除。"
+                let re_c = "（楼层 #"+linv[i].reply+"）"
                 for (let j in linv) {
                     if (linv[j].count == linv[i].reply) {
                         re_c = "“"+linv[j].name+"："+linv[j].text+"”"
@@ -208,6 +232,7 @@
             msgc.appendChild(hr)
             comments.appendChild(msgc)
         }
+        rendernav(nav)
         autoadjustheight()
     }
     function invertObject(obj) {
@@ -283,6 +308,62 @@
         setTimeout(() => {
             comment.style = "transition:1s;background-color: #ffff7700";
         },5);
+    }
+    function rendernav(navdata) {
+        const current = navdata[0]
+        const total = navdata[1]
+        page_nav.innerHTML = ""
+        if (current==undefined || total==1) {
+            return
+        }
+        if (current > 1) {
+            nav_createbtn("<")
+        }
+        for (i=0;i<total;i++) {
+            nav_createbtn(i+1)
+        }
+        if (current!=total) {
+            nav_createbtn(">")
+        }
+    }
+    function nav_createbtn(num) {
+        const btn = document.createElement('button')
+        btn.innerText = num
+        let issamepage
+        if (page == Number(num)) {
+            issamepage = 1
+            btn.className = "cpn"
+        }
+        if (num == "<") {
+            btn.className = "short"
+            btn.onmouseup = ()=>{
+                page--
+                get_prev()
+                rwURL()
+            }
+        } else if (num == ">") {
+            btn.className = "short"
+            btn.onmouseup = ()=>{
+                page++
+                get_prev()
+                rwURL()
+            }
+        } else if (!issamepage) {
+            btn.onmouseup = ()=>{
+                page = Number(num)
+                get_prev()
+                rwURL()
+            }
+        }
+        page_nav.appendChild(btn)
+    }
+    function rwURL() {
+        const _1 = "?type="+type+"&page="+page
+        window.history.pushState({page: 1},"",_1)
+    }
+    window.onpopstate = ()=>{
+        page = getparams('page') || 1
+        get_prev()
     }
 </script>
 <script src="../scripts/thirdparty/i18nextify.min.js"></script>
