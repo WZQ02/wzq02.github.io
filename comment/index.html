@@ -58,6 +58,11 @@
         #page_nav button.cpn {
             background-color: #9bf;
         }
+        .page_indi {
+            padding: 10px;
+            opacity: .7;
+            font-weight: bold;
+        }
         @media (any-hover: hover) {
             .comment .reply:hover {
                 background-color: #0001;
@@ -233,6 +238,7 @@
             comments.appendChild(msgc)
         }
         rendernav(nav)
+        scr_top()
         autoadjustheight()
     }
     function invertObject(obj) {
@@ -291,7 +297,7 @@
         });
     }
     function selectreply(count) {
-        document.getElementById("sendarea").parentNode.scrollTop = 0
+        scr_top()
         let text = document.getElementById("text").value
         if ((text.indexOf("回复 #") == 0) && (text.indexOf("：") != -1)) {
             text = text.slice(text.indexOf("：")+1)
@@ -316,17 +322,21 @@
         if (current==undefined || total==1) {
             return
         }
+        if (current > 2) {
+            nav_createbtn("<<")
+        }
         if (current > 1) {
             nav_createbtn("<")
         }
-        for (i=0;i<total;i++) {
-            nav_createbtn(i+1)
-        }
-        if (current!=total) {
+        nav_creatext(current,total)
+        if (total-current > 0) {
             nav_createbtn(">")
         }
+        if (total-current > 1) {
+            nav_createbtn(">>",total)
+        }
     }
-    function nav_createbtn(num) {
+    function nav_createbtn(num,tot) {
         const btn = document.createElement('button')
         btn.innerText = num
         let issamepage
@@ -336,26 +346,45 @@
         }
         if (num == "<") {
             btn.className = "short"
+            btn.title = "上一页"
             btn.onmouseup = ()=>{
                 page--
-                get_prev()
-                rwURL()
+                gr()
             }
         } else if (num == ">") {
             btn.className = "short"
+            btn.title = "下一页"
             btn.onmouseup = ()=>{
                 page++
-                get_prev()
-                rwURL()
+                gr()
+            }
+        } else if (num == "<<") {
+            btn.title = "首页"
+            btn.className = "short"
+            btn.onmouseup = ()=>{
+                page = 1
+                gr()
+            }
+        } else if (num == ">>") {
+            btn.title = "尾页"
+            btn.className = "short"
+            btn.onmouseup = ()=>{
+                page = Number(tot)
+                gr()
             }
         } else if (!issamepage) {
             btn.onmouseup = ()=>{
                 page = Number(num)
-                get_prev()
-                rwURL()
+                gr()
             }
         }
         page_nav.appendChild(btn)
+    }
+    function nav_creatext(cur,tot) {
+        const t = document.createElement('span')
+        t.innerText = cur+" / "+tot
+        t.className = "page_indi"
+        page_nav.appendChild(t)
     }
     function rwURL() {
         const _1 = "?type="+type+"&page="+page
@@ -364,6 +393,13 @@
     window.onpopstate = ()=>{
         page = getparams('page') || 1
         get_prev()
+    }
+    function scr_top() {
+        document.getElementById("sendarea").parentNode.scrollTop = 0
+    }
+    function gr() {
+        get_prev()
+        rwURL()
     }
 </script>
 <script src="../scripts/thirdparty/i18nextify.min.js"></script>
