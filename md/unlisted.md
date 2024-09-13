@@ -24,6 +24,4 @@
 
 ## 2024
 
-<p><a href="javascript:void(0)" onclick="createmdprompt('240627',0,null,null,1)">独白和杂言 '23-'24.06</a></p>
-
 <p><a href="javascript:void(0)" onclick="createmdprompt('240828',0,null,null,1)">再谈“蘑菇大战”</a></p>
