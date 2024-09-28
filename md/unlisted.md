@@ -24,4 +24,12 @@
 
 ## 2024
 
+<p><a href="javascript:void(0)" onclick="createmdprompt('240627',0,null,null,1)">独白和杂言 '23-'24.06</a></p>
+
+<p><a href="javascript:void(0)" onclick="createmdprompt('240729',0,null,null,1)">一些零碎的瞎扯记录 '24.07</a></p>
+
+<p><a href="javascript:void(0)" onclick="createmdprompt('240825',0,null,null,1)">一些零碎的瞎扯记录 '24.08</a></p>
+
 <p><a href="javascript:void(0)" onclick="createmdprompt('240828',0,null,null,1)">再谈“蘑菇大战”</a></p>
+
+<p><a href="javascript:void(0)" onclick="createmdprompt('240911',0,null,null,1)">一些零碎的瞎扯记录 '24.09</a></p>
