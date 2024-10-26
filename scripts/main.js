@@ -86,13 +86,29 @@ function tip1() {//页面顶部提示语
         tip1.style.display = "none";
     }*/
     tip1.style.display = "none";
-    if (DetectIEVer() <= 12) {
+    /*if (DetectIEVer() <= 12) {
         document.body.style.backgroundColor = "#EEE";
         tip1.style.display = "block";
         if (navigator.language == "zh-CN") {
             tip1.innerHTML = "<span>*检测到你正在使用 Internet Explorer，页面内容将不会按照预期显示，请更换浏览器。</span>";
         } else {
             tip1.innerHTML = "<span>*You are using Internet Explorer. Content on this page would not display as intended.</span>";
+        }
+    }*/
+    var es6_sp;
+    var arrowfunc = "let t=()=>{}"
+    try {
+        f = new Function(arrowfunc)
+        es6_sp = 1
+    } catch(err) {
+    }
+    if (!es6_sp) {
+        document.body.style.backgroundColor = "#EEE";
+        tip1.style.display = "block";
+        if (navigator.language == "zh-CN") {
+            tip1.innerHTML = "<span>你使用的浏览器版本太老，页面内容将不会按照预期显示。请<a href='https://browsehappy.com/'>参阅此处</a>获取新版的浏览器。</span>";
+        } else {
+            tip1.innerHTML = "<span>Your browser is too old. Content on this page would not display as intended. See <a href='https://browsehappy.com/'>this page</a> to get a new browser.</span>";
         }
     }
 }
