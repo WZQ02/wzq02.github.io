@@ -2,6 +2,17 @@
     "stitle": "杂谈 / 博客 / 瞎扯淡",
     "content": {
         "sinfo1": "过往的散文、随想、杂谈等。",
+        "article_shortcut10": {
+            "title": "宣言",
+            "date": "2024/11/4",
+            "mdname": "241104"
+        },
+        "article_shortcut9": {
+            "title": "独白和杂言 '23.06-'24.06",
+            "date": "2024/6/27",
+            "mdname": "240627",
+            "tags": "随想"
+        },
         "article_shortcut8": {
             "title": "瞎扯淡：内容创作与职业",
             "date": "2024/4/1",
