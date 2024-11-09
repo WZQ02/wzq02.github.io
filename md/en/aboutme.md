@@ -18,12 +18,6 @@ You may already knew I hate to put tags on me. So if I have to tag me with one w
 
 Content creation? for who, for what?
 
-~~Where the heck are we placing ourselves? Are we drowning in some kind of illusion, without us even knowing?~~
+Where the heck are we placing ourselves? Are we drowning in some kind of illusion, without us even knowing?
 
-I don't know......but, wait......
-
-No, maybe we ain't, and who am I again? It doesn't matter anymore.
-
-WE ARE ONE! WE ARE ONE! WE ARE ALL LOVEABLE, ALL OF US!!!!!!
-
-**SO, COME ON!!!!!!**
+I don't know.
