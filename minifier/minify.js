@@ -29,9 +29,29 @@ minify({
     },
     callback: function(err, min) {
       if (!err) {
-        console.log('uglifyJS done')
+        console.log('uglifyJS done (index.js)')
       }
     }
+})
+
+minify({
+  compressor: uglifyJS,
+  input: '../scripts/urlscriptloader.js',
+  output: '../scripts/min/usl.js',
+  options: {
+    warnings: true,
+    mangle: {
+      toplevel: true
+    },
+    compress: {
+      toplevel: true
+    }
+  },
+  callback: function(err, min) {
+    if (!err) {
+      console.log('uglifyJS done (usl.js)')
+    }
+  }
 })
 
 minify({
@@ -44,7 +64,7 @@ minify({
   },
   callback: function(err, min) {
     if (!err) {
-      console.log('cleanCSS done')
+      console.log('cleanCSS done (index.css)')
     }
   }
 })

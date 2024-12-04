@@ -42,13 +42,6 @@
             "display_title": "本站建站日志",
             "href": "javascript:void(0)",
             "onclick": "createobjpmpt(\"/log.html\",\"log\")"
-        },
-        "slink7": {
-            "id": "stats",
-            "title": "查看站点统计",
-            "display_title": "站点统计",
-            "href": "javascript:void(0)",
-            "onclick": "createobjpmpt(\"/stats\",\"stats\")"
         }
     }    
 }
