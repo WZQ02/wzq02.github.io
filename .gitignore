@@ -1,6 +1,4 @@
-dev.html
+node_modules
+package-lock.json
 
 redirect
-
-minifier/package-lock.json
-minifier/node_modules

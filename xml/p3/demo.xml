@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="css/xml/shortcuts.css">
+<div id="container2">
+    <div id="shortcuts_container">
+        <p>
+            <div class="sc_item small"
+            onclick="createobjwindow('https://wzq02.top/otomader-sites','otomader-sites')"
+            style="background-image: url('./assets/images/thumb/otm_stc.webp')"
+            >
+                <div class="sc_i_title" style="font-kerning:none">音 MAD 作者网站收集</div>
+            </div><br>
+            各个音 MAD 作者和社团的网站。（持续更新中）
+        </p>
+        <p>
+            <div class="sc_item small"
+            onclick="window.location.href='https://ottohzys.wzq02.top/'"
+            style="background-image: url('./assets/images/thumb/ottohz.webp')"
+            >
+                <div class="sc_i_title">在线生成电棍鬼叫</div>
+            </div><br>
+            电棍鬼叫活字印刷生成网站。修改自 <a href='https://github.com/sakaneko117/HUOZI'>sakaneko117/HUOZI</a> 项目，相比原版新增了一些原声大碟。
+        </p>
+        <p>
+            <div class="sc_item small"
+            onclick="window.location.href='https://demo.wzq02.top/ottolaunchpad'"
+            style="background-image: url('./assets/images/thumb/ottolhp.webp')"
+            >
+                <div class="sc_i_title">电棍音乐盒</div>
+            </div><br>
+            电棍鬼叫音乐盒（OTTO Launchpad）。
+        </p>
+        <p>
+            <div class="sc_item small"
+            onclick="window.location.href='https://ccbsimulator.wzq02.top/'"
+            style="background-image: url('./assets/images/thumb/ccbsm.webp')"
+            >
+                <div class="sc_i_title">踩踩背模拟器</div>
+            </div><br>
+            给老爷爷踩踩背！
+        </p>
+        <p>
+            <div class="sc_item small"
+            onclick="window.location.href='https://demo.wzq02.top/eatltx'"
+            style="background-image: url('./assets/images/thumb/eatltx.webp')"
+            >
+                <div class="sc_i_title">吃掉李大鸟</div>
+            </div><br>
+            日死李大鸟（魔改“吃掉小鹿乃”）。修改自 <a href="https://github.com/arcxingye/EatKano">arcxingye/EatKano</a>。
+        </p>
+        <p>
+            <div class="sc_item small"
+            onclick="createobjwindow('https://wzq02.top/flashtest','flashtest')"
+            style="background-image: url('./assets/images/thumb/flasht.webp')"
+            >
+                <div class="sc_i_title">Flash 支持测试</div>
+            </div><br>
+            检查你的浏览器是否仍然支持 Flash 播放。
+        </p>
+        <p>
+            <div class="sc_item small"
+            onclick="createobjwindow('https://wzq02.top/postest','postest')"
+            style="background-image: url('./assets/images/thumb/bocchi.webp')"
+            >
+                <div class="sc_i_title">陀螺仪测试</div>
+            </div><br>
+            移动设备陀螺仪测试。
+        </p>
+        <p>
+            <div class="sc_item small"
+            onclick="createobjwindow('https://demo.wzq02.top/hdr-vid-test','hdr-vid-test')"
+            >
+                <div class="sc_i_title">HDR 视频播放测试</div>
+            </div>
+        </p>
+    </div>
+</div>

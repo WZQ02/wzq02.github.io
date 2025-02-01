@@ -1,0 +1,355 @@
+* {
+    font-family: "HarmonyOS Sans SC","Century Gothic","Noto Sans","Source Han Sans CN","Microsoft YaHei",微软雅黑,"Microsoft JhengHei","Segoe UI","Arial","黑体";
+}
+body { 
+    background: #ffffff; 
+    overflow-x: hidden;
+    overflow-y: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: 0.25s;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: none;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(127,127,127,0.6);
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: rgba(63,63,63,1) !important;
+}
+#main {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+    animation: appear 1s cubic-bezier(0, 0.2, 0, 1) 1;
+}
+#page2 {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    transition: 0.25s;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+a {
+    color: #339;
+    text-decoration: none;
+    transition: 0.25s;
+    font-weight: bold;
+}
+a:active {
+    color: #115 !important;
+}
+c {
+    color: #555;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition-property: background-color,color;
+    transition-duration: 0.25s;
+}
+c:active {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.rt_title {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
+    color: #999;
+    position: absolute;
+    margin-top: 16px;
+    right: 16px;
+    cursor: default;
+    z-index: 2;
+}
+.rt_title c span{
+    opacity: 1;
+    transition: .25s;
+}
+#links {
+    position: absolute;
+    text-align: center;
+    width: 96vw;
+    left: 2vw;
+    bottom: 20px;
+    animation: appear 1.5s cubic-bezier(0, 0.4, 0, 1) 1;
+}
+#mainlnks a div {
+    display: inline;
+    position: relative;
+    bottom: 0px;
+    padding: 6px;
+    opacity: 0.6;
+    transition: 0.25s;
+    animation: lnksappear 0.4s cubic-bezier(0, 0.6, 0, 1) 1;
+}
+#mainlnks a div:active {
+    position: relative !important;
+    bottom: -4px !important;
+}
+#mainlnks a div img {
+    transition: 0.25s;
+}
+#mainlnks a div img:active {
+    filter: invert(60%);
+}
+#othlnks {
+    display: none;
+    text-align: left;
+    position: absolute;
+    width: 180px;
+    bottom: 64px;
+    left: calc(50vw - 4px);
+    border-radius: 6px;
+    background-color: rgba(255,255,255,0.7);
+    backdrop-filter: blur(16px);
+    box-shadow: 0px 0px 32px rgba(0,0,0,0.2);
+    padding: 3px 4px;
+    animation: lnkshowup 0.25s cubic-bezier(0, 0.67, 0, 1) 1;
+}
+#othlnks div {
+    display: block;
+    position: relative;
+    font-weight: normal;
+    width: 164px;
+    height: 20px;
+    top: -1px;
+    margin-top: 2px;
+    border-radius: 4px;
+    padding: 8px;
+    color: #333;
+    background-color: rgba(255,255,255,0);
+    transition: 0.25s;
+}
+#othlnks div:active {
+    background-color: rgba(0,0,0,0.5) !important;
+}
+.dot {
+    display: grid;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    margin: 12px 0;
+    background-color: #000;
+    opacity: 0.15;
+    transition: 0.25s;
+}
+.dot:active {
+    opacity: 0.1 !important;
+}
+.dot.highlighted_dot {
+    opacity: 0.7;
+}
+#pagestatus {
+    position: absolute;
+    right: -4px;
+    top: calc(50vh - 28px);
+    top: calc(50dvh - 28px);
+    z-index: 1;
+}
+#centerpic_container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    animation: appear 1.2s cubic-bezier(0, 0.3, 0, 1) 1;
+}
+@media (prefers-color-scheme: dark) {
+    body { 
+        background: #252525; 
+    }
+    a {
+        color: #aaf;
+    }
+    a:active {
+        color: #559 !important;
+    }
+    c {
+        color: rgba(255,255,255,0.7);
+    }
+    c:active {
+        color: #000 !important;
+        background-color: rgba(255, 255, 255, 0.75) !important;
+    }
+    #links a div:not(#othlnks div) {
+        filter: invert(100%);
+    }
+    #othlnks {
+        background-color: rgba(16,16,16,0.4);
+    }
+    #othlnks div {
+        color: #CCC;
+    }
+    .rt_title {
+        color: #767676;
+    }
+    ::-webkit-scrollbar-thumb:active {
+        background-color: rgba(191,191,191,1);
+    }
+    .allowinvert {
+        filter: invert(1) hue-rotate(180deg);
+    }
+    .dot {
+        background-color: #fff;
+    }
+    .centerpic_picelement {
+        filter: invert(1);
+    }
+}
+@media (any-hover: hover) {
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(127,127,127,1);
+    }
+    a:hover {
+        color: #77e;
+    }
+    c:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+    #mainlnks a div:hover {
+        position: relative;
+        bottom: 4px;
+        opacity: 1.0;
+    }
+    #othlnks div:hover {
+        color: black;
+        background-color: rgba(127,127,127,0.35);
+    }
+    .dot:hover {
+        opacity: 0.9;
+    }
+}
+@media (prefers-color-scheme: dark) and (any-hover: hover) {
+    a:hover {
+        color: #eef;
+    }
+    c:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    #othlnks div:hover {
+        color: #fff;
+        background-color: rgba(255,255,255,0.15);
+    }
+}
+@keyframes appear {
+    from {
+        opacity: 0.0;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+@keyframes disappear {
+    from {
+        opacity: 1.0;
+    }
+    to {
+        opacity: 0.0;
+    }
+}
+@keyframes lnkshowup {
+    from {
+        opacity: 0.0;
+        transform: translateY(32px);
+    }
+    to {
+        opacity: 1.0;
+        transform: translateY(0px);
+    }
+}
+@keyframes lnkhide {
+    from {
+        opacity: 1.0;
+        transform: translateY(0px);
+    }
+    to {
+        opacity: 0.0;
+        transform: translateY(32px);
+    }
+}
+@keyframes lnksappear {
+    from {
+        bottom: -96px;
+    }
+    to {
+        bottom: 0px;
+    }
+}
+@keyframes textrtappear {
+    from {
+        top: -16px;
+    }
+    to {
+        top: 16px;
+    }
+}
+@keyframes pg1go {
+    from {
+        opacity: 1.0;
+        transform: translateY(0px);
+    }
+    to {
+        opacity: 0.0;
+        transform: translateY(-90px);
+    }
+}
+@keyframes pg2showup {
+    from {
+        opacity: 0.0;
+        transform: translateY(90px);
+    }
+    to {
+        opacity: 1.0;
+        transform: translateY(0px);
+    }
+}
+@keyframes pg2go {
+    from {
+        opacity: 1.0;
+        transform: translateY(0px);
+    }
+    to {
+        opacity: 0.0;
+        transform: translateY(90px);
+    }
+}
+@keyframes pg1showup {
+    from {
+        opacity: 0.0;
+        transform: translateY(-90px);
+    }
+    to {
+        opacity: 1.0;
+        transform: translateY(0px);
+    }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinstop {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}

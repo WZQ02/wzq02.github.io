@@ -11,43 +11,43 @@
  "description": "WZQ'02 的个人站点",
  "icons": [
   {
-   "src": "\/icons\/app\/android-icon-36x36.png",
+   "src": "\/assets\/icons\/app\/android-icon-36x36.png",
    "sizes": "36x36",
    "type": "image\/png",
    "density": "0.75"
   },
   {
-   "src": "\/icons\/app\/android-icon-48x48.png",
+   "src": "\/assets\/icons\/app\/android-icon-48x48.png",
    "sizes": "48x48",
    "type": "image\/png",
    "density": "1.0"
   },
   {
-   "src": "\/icons\/app\/android-icon-72x72.png",
+   "src": "\/assets\/icons\/app\/android-icon-72x72.png",
    "sizes": "72x72",
    "type": "image\/png",
    "density": "1.5"
   },
   {
-   "src": "\/icons\/app\/android-icon-96x96.png",
+   "src": "\/assets\/icons\/app\/android-icon-96x96.png",
    "sizes": "96x96",
    "type": "image\/png",
    "density": "2.0"
   },
   {
-   "src": "\/icons\/app\/android-icon-144x144.png",
+   "src": "\/assets\/icons\/app\/android-icon-144x144.png",
    "sizes": "144x144",
    "type": "image\/png",
    "density": "3.0"
   },
   {
-   "src": "\/icons\/app\/android-icon-192x192.png",
+   "src": "\/assets\/icons\/app\/android-icon-192x192.png",
    "sizes": "192x192",
    "type": "image\/png",
    "density": "4.0"
   },
   {
-   "src": "\/icons\/app\/maskable_icon.png",
+   "src": "\/assets\/icons\/app\/maskable_icon.png",
    "sizes": "720x720",
    "type": "image\/png",
    "purpose": "any maskable"

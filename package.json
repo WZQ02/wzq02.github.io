@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@node-minify/babel-minify": "^8.0.6",
+    "@node-minify/core": "^8.0.6"
+  },
+  "dependencies": {
+    "@node-minify/clean-css": "^8.0.6",
+    "@node-minify/uglify-es": "^9.0.1",
+    "core-js": "^3.36.1"
+  }
+}

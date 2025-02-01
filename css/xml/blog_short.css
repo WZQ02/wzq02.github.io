@@ -1,0 +1,64 @@
+.article_shortcut {
+    position: relative;
+    width: 480px;
+    height: 88px;
+    animation: appear 0.4s ease 1;
+    padding: 4px 0;
+}
+.article_shortcut_text {
+    position: relative;
+    top: 20px;
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 8px 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: 0.25s;
+}
+.article_shortcut_text img {
+    width: 16px;
+    position: relative;
+    top: 2px;
+    left: -2px;
+}
+.article_shortcut_text mdtitle{
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0.8;
+    line-height: 36px;
+}
+.article_shortcut_text mdtitle2{
+    font-size: 15px;
+    opacity: 0.5;
+}
+.article_shortcut_text:active {
+    background-color: rgba(0,0,0,0.25) !important;
+}
+@media (prefers-color-scheme: dark) {
+    .article_shortcut_text {
+        background-color: rgba(0,0,0,0.2);
+        color: #fff
+    }
+    .article_shortcut_text:active {
+        background-color: rgba(255,255,255,0.25) !important;
+    }
+    .article_shortcut_text img {
+        filter: invert(100%);
+    }
+}
+@media (any-hover: hover) {
+    .article_shortcut_text:hover {
+        background-color: rgba(0,0,0,0.07);
+    }
+}
+@media (prefers-color-scheme: dark) and (any-hover: hover) {
+    .article_shortcut_text:hover {
+        background-color: rgba(255,255,255,0.04);
+    }
+}
+@media screen and (max-width: 540px) {
+    .article_shortcut {
+        width: 320px;
+    }
+}

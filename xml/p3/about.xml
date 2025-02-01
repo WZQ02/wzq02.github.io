@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="css/xml/shortcuts.css">
+<link rel="stylesheet" href="css/xml/friendsites.css">
+<div id="container2">
+    <div id="shortcuts_container">
+        <h1>关于本站</h1>
+        <p>个人主页，同时也是我乱写的练手网站。主要用来展示我在各个社交平台的账号啥的。</p>
+        <br><hr><br>
+        <h2>友情链接</h2>
+        以下是我认识的一些内容创作者：
+        <div id="friend_sites">
+            <a href="https://aira.cafe/"><div class="frs_item" title="AIRA CAFE">
+                <img src="https://avatars.githubusercontent.com/u/45261195" /><span>艾了个拉</span>
+            </div></a>
+            <a href="https://space.bilibili.com/4675183"><div class="frs_item">
+                <img src="https://img.wzq02.top/upl/65898cf59f22ac2d10a9d8b5d687b878.webp" /><span>心水湛清</span>
+            </div></a>
+            <a href="https://megakite.icu/"><div class="frs_item">
+                <img src="https://avatars.githubusercontent.com/u/20639794" /><span>Megakite</span>
+            </div></a>
+            <a href="https://akutazehy.github.io/"><div class="frs_item">
+                <img src="https://avatars.githubusercontent.com/u/42381419" /><span>Akuta Zehy</span>
+            </div></a>
+            <a href="https://lachrymal.net/"><div class="frs_item">
+                <img src="https://avatars.githubusercontent.com/u/13716477" /><span>lachrymaL</span>
+            </div></a>
+        </div>
+        <br><hr><br>
+        网站最后更新于 <span id="site_upd_date">2025/2/1</span>。
+    </div>
+</div>
