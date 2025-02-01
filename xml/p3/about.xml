@@ -25,6 +25,6 @@
             </div></a>
         </div>
         <br><hr><br>
-        网站最后更新于 <span id="site_upd_date">2025/2/1</span>。
+        网站最后更新于 <span id="site_upd_date"></span>。
     </div>
 </div>

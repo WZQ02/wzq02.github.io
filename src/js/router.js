@@ -23,6 +23,7 @@ window.onpopstate = () => {
     if (window.location.pathname == "/") {
         destroyxmlpage()
     }
+    ps_check()
 }
 function ps_check() {
     switch (window.location.pathname) {
@@ -39,7 +40,7 @@ function ps_check() {
             p2l_sc("demo")
             break
         case "/about":
-            p2l_sc("about")
+            p2l_sc("about","about_printver()")
             break
     }
 }

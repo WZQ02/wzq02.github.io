@@ -32,6 +32,6 @@
         "title": "关于",
         "desc": "这是个什么网站？",
         "icon": "assets/icons/mdi/information-variant.svg",
-        "func": "p2l_sc('about')"
+        "func": "p2l_sc('about','about_printver()')"
     }
 ]
