@@ -66,5 +66,7 @@ function build(data) {
 
     data = data.replace("<!--css part-->", css_xml)
     data = data.replace("<!--script part-->", js_xml)
+    data = data.replace(new RegExp("    ", "g"), "")
+    //data = data.replace(/[\r\n]/g, "")
     fs.writeFileSync(html_path,data)
 }

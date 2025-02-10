@@ -1,81 +1,86 @@
 <!DOCTYPE HTML>
 <html lang="zh">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96x96.png">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ffffff">
-    <script>"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").then(function(e){console.log("ServiceWorker registration successful with scope: ",e.scope)},function(e){console.log("ServiceWorker registration failed: ",e)})});</script>
-    <link rel="stylesheet" href="dist/index.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96x96.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+<script>"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").then(function(e){console.log("ServiceWorker registration successful with scope: ",e.scope)},function(e){console.log("ServiceWorker registration failed: ",e)})});</script>
+<link rel="stylesheet" href="dist/index.css">
 </head>
 <body>
-    <div id="main">
-        <div id="yabg"></div>
-        <div id="centerpic_container"></div>
-        <div class="rt_title">
-            <c title="更改语言" href="javascript:void(0)" onclick="chglang()"><span>目标语言</span></c>
-            <div id="pagestatus">
-                <div class="dot highlighted_dot" id="dot_1" onclick="scrolltopage1()"></div>
-                <div class="dot" id="dot_2" onclick="scrolltopage2()"></div>
-            </div>
-        </div>
-        <div id="links">
-            <div id="mainlnks">
-                <a title="哔哩哔哩" href="https://space.bilibili.com/12367945/"><div id="link2">
-                    <picture>
-                        <source srcset="assets/icons/links/bili_main.webp" type="image/webp"/>
-                        <img src="assets/icons/links/bili_main.png" height="32" width="32"/>
-                    </picture>
-                </div></a>
-                <a title="YouTube 频道" href="https://www.youtube.com/@wzq02/" class="outcn"><div id="link3">
-                    <picture>
-                        <source srcset="assets/icons/links/ytb_main.webp" type="image/webp"/>
-                        <img src="assets/icons/links/ytb_main.png" height="32" width="32"/>
-                    </picture>
-                </div></a>
-                <a title="GitHub" href="https://github.com/WZQ02"><div id="link6">
-                    <picture>
-                        <source srcset="assets/icons/links/github.webp" type="image/webp"/>
-                        <img src="assets/icons/links/github.png" height="32" width="32"/>
-                    </picture>
-                </div></a>
-                <a title="提问箱" href="https://www.popibox.cn/u/2om3lm14"><div id="link4">
-                    <picture>
-                        <source srcset="assets/icons/links/question_box.webp" type="image/webp"/>
-                        <img src="assets/icons/links/question_box.png" height="32" width="32"/>
-                    </picture>
-                </div></a>
-                <a title="推特（X）" href="https://twitter.com/02Wzq/" class="outcn"><div id="link5">
-                    <picture>
-                        <source srcset="assets/icons/links/link_twi.webp" type="image/webp"/>
-                        <img src="assets/icons/links/link_twi.png" height="32" width="32"/>
-                    </picture>
-                </div></a>
-                <a title="其他站点" href="javascript:void(0)" onclick="lnklist()"><div id="link7">
-                    <picture>
-                        <source srcset="assets/icons/links/link_others.webp" type="image/webp"/>
-                        <img src="assets/icons/links/link_others.png" height="32" width="32"/>
-                    </picture>
-                </div></a>
-            </div>
-            <div id="othlnks">
-                <a title="Acfun 频道" href="https://www.acfun.cn/u/4352250"><div class="othlnk"><span>Acfun 频道</span></div></a>
-                <a title="ニコニコ" href="https://www.nicovideo.jp/user/87291072" class="outcn"><div class="othlnk"><span>ニコニコ</span></div></a>
-                <a title="哔哩哔哩（sometroublemaker）" href="https://space.bilibili.com/568299236/"><div class="othlnk"><span>哔哩哔哩（杂项频道）</span></div></a>
-                <a title="抖音（国内版）" href="https://www.douyin.com/user/MS4wLjABAAAAR3Bj6EbQcfHXdg_HAiQg0sooe3QxGnlCZKANzBZ0OAo"><div class="othlnk"><span>抖音</span></div></a>
-                <a title="Discord 服务器" href="https://discord.gg/Bpv4qaw" class="outcn"><div class="othlnk"><span>个人群（Discord）</span></div></a>
-                <a title="QQ 群" href="https://wzq02.top/redirect/qqgroup"><div class="othlnk"><span>个人群（QQ）</span></div></a>
-                <a title="Bluesky" href="https://bsky.app/profile/wzq02.bsky.social" class="outcn"><div class="othlnk"><span>Bluesky</span></div></a>
-            </div>
-        </div>
-        <div id="page2">
-            <div id="arrow" onclick="scrolltopage1()">
-                <img src="assets/icons/mdi/arrow-up.svg" />
-            </div>
-        </div>
-    </div>
+<div id="main">
+<div id="yabg"></div>
+<div id="centerpic_container">
+<noscript>
+<a href="https://www.enable-javascript.com/" title="你把 JS 脚本禁用了，本站页面交互将不起作用。点击可查看如何启用 JS。"><img src="assets/icons/mdi/javascript.svg" style="width:200px;height:200px;padding:calc(50vh - 100px) calc(50vw - 100px);opacity:.7"></a>
+</noscript>
+</div>
+<div class="rt_title">
+<c title="更改语言" href="javascript:void(0)" onclick="chglang()"><span>目标语言</span></c>
+<div id="pagestatus">
+<div class="dot highlighted_dot" id="dot_1" onclick="scrolltopage1()"></div>
+<div class="dot" id="dot_2" onclick="scrolltopage2()"></div>
+</div>
+</div>
+<div id="links">
+<div id="mainlnks">
+<a title="哔哩哔哩" href="https://space.bilibili.com/12367945/"><div id="link2">
+<picture>
+<source srcset="assets/icons/links/bili_main.webp" type="image/webp"/>
+<img src="assets/icons/links/bili_main.png" height="32" width="32"/>
+</picture>
+</div></a>
+<a title="YouTube 频道" href="https://www.youtube.com/@wzq02/" class="outcn"><div id="link3">
+<picture>
+<source srcset="assets/icons/links/ytb_main.webp" type="image/webp"/>
+<img src="assets/icons/links/ytb_main.png" height="32" width="32"/>
+</picture>
+</div></a>
+<a title="GitHub" href="https://github.com/WZQ02"><div id="link6">
+<picture>
+<source srcset="assets/icons/links/github.webp" type="image/webp"/>
+<img src="assets/icons/links/github.png" height="32" width="32"/>
+</picture>
+</div></a>
+<a title="提问箱" href="https://www.popibox.cn/u/2om3lm14"><div id="link4">
+<picture>
+<source srcset="assets/icons/links/question_box.webp" type="image/webp"/>
+<img src="assets/icons/links/question_box.png" height="32" width="32"/>
+</picture>
+</div></a>
+<a title="推特（X）" href="https://twitter.com/02Wzq/" class="outcn"><div id="link5">
+<picture>
+<source srcset="assets/icons/links/link_twi.webp" type="image/webp"/>
+<img src="assets/icons/links/link_twi.png" height="32" width="32"/>
+</picture>
+</div></a>
+<a title="其他站点" href="javascript:void(0)" onclick="lnklist()"><div id="link7">
+<picture>
+<source srcset="assets/icons/links/link_others.webp" type="image/webp"/>
+<img src="assets/icons/links/link_others.png" height="32" width="32"/>
+</picture>
+</div></a>
+</div>
+<div id="othlnks">
+<a title="Acfun 频道" href="https://www.acfun.cn/u/4352250"><div class="othlnk"><span>Acfun 频道</span></div></a>
+<a title="ニコニコ" href="https://www.nicovideo.jp/user/87291072" class="outcn"><div class="othlnk"><span>ニコニコ</span></div></a>
+<a title="哔哩哔哩（sometroublemaker）" href="https://space.bilibili.com/568299236/"><div class="othlnk"><span>哔哩哔哩（杂项频道）</span></div></a>
+<a title="抖音（国内版）" href="https://www.douyin.com/user/MS4wLjABAAAAR3Bj6EbQcfHXdg_HAiQg0sooe3QxGnlCZKANzBZ0OAo"><div class="othlnk"><span>抖音</span></div></a>
+<a title="Discord 服务器" href="https://discord.gg/Bpv4qaw" class="outcn"><div class="othlnk"><span>个人群（Discord）</span></div></a>
+<a title="QQ 群" href="https://wzq02.top/redirect/qqgroup"><div class="othlnk"><span>个人群（QQ）</span></div></a>
+<a title="Bluesky" href="https://bsky.app/profile/wzq02.bsky.social" class="outcn"><div class="othlnk"><span>Bluesky</span></div></a>
+</div>
+</div>
+<div id="page2">
+<div id="arrow" onclick="scrolltopage1()">
+<img src="assets/icons/mdi/arrow-up.svg" />
+</div>
+</div>
+</div>
 </body>
+<script>try{f=new Function("let t=()=>{}")}catch(e){document.getElementById("centerpic_container").innerHTML="<a href='https://browsehappy.com/' title='你的浏览器太老了。'><img src='assets/icons/mdi/microsoft-internet-explorer.svg' style='width:200px;height:200px;padding:calc(50vh - 100px) calc(50vw - 100px);opacity:.7'></a>"}</script>
 <script src="scripts/3rdparty/i18nextify.min.js"></script><script src="scripts/3rdparty/hammer.min.js"></script><script src="dist/index.js"></script><script src="scripts/beacon/home.js"></script><script src="scripts/beacon/core.min.js"></script>
 <title>WZQ'02's site</title>
 </html>

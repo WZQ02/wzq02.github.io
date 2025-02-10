@@ -1,4 +1,5 @@
 [
+    "autoredir",
     "main",
     "window",
     "window_xml",
@@ -8,6 +9,7 @@
     "router",
     "p3",
     "touchgesture",
+    "hidegfsite",
     "centerpic",
     "bloglinks",
     "urlscriptloader"

@@ -13,7 +13,7 @@ function createbloglinks() {
                 a_sc_text.className = "article_shortcut_text"
                 const data = Object.values(list)[i]
                 a_sc.id = data["mdname"]
-                a_sc_text.addEventListener("mousedown",()=>{
+                a_sc_text.addEventListener("mouseup",()=>{
                     createmdwindow(data["mdname"],0,data["date"],data["tags"],1)
                 })
                 a_sc_text.innerHTML = `<mdtitle>${data["title"]}<br></mdtitle>`

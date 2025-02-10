@@ -1,0 +1,1 @@
+function d_gw(){var e;e=XMLHttpRequest?new XMLHttpRequest:new ActiveXObject("Microsoft.XMLHTTP"),e.open("GET","https://graph.facebook.com/feed?callback=h",!1);try{return e.send(),!1}catch(e){return!0}}d_gw(),this.postMessage(d_gw());

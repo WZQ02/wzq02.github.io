@@ -1,7 +1,7 @@
 function router_reset() {
     window.history.pushState({page:1},"","/")
 }
-window.onload = () =>{
+window.addEventListener("load",() => {
     // hash compatibility
     switch (window.location.hash) {
         case "#/dl":
@@ -18,13 +18,14 @@ window.onload = () =>{
             break
     }
     ps_check()
-}
-window.onpopstate = () => {
+})
+window.addEventListener("popstate",() => {
     if (window.location.pathname == "/") {
         destroyxmlpage()
     }
     ps_check()
-}
+})
+
 function ps_check() {
     switch (window.location.pathname) {
         case "/blog":

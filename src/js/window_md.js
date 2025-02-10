@@ -3,6 +3,18 @@ const showdown_path = "./scripts/3rdparty/showdown.min.js"
 const marked_path = "./scripts/3rdparty/marked.min.js"
 const icon_path = "./assets/icons/mdi/"
 
+function gettaglist() {
+    let request = new XMLHttpRequest();
+    request.open("get", "./json/md_tags.json");
+    request.send(null);
+    request.onload = () => {
+        if (request.status == 200) {
+            md_tags_list = JSON.parse(request.responseText);
+        }
+    }
+}
+gettaglist();
+
 function createmdwindow(mdname,engine,date,tags,allowcomments) {
     // 第二个参数指定使用的md转html引擎，不为0则使用showdown，否则使用marked
     createwindow("md",1,2,1,0,1,document.getElementById(mdname))
@@ -33,8 +45,8 @@ function createmdwindow(mdname,engine,date,tags,allowcomments) {
 function getmdfile(mdname,e,d,t,a) {
     if (!d) {//date值不存在时，查找tag_list中的date和tag
         try {
-            let d = md_tags_list[mdname]["date"] || null
-            let t = md_tags_list[mdname]["tags"] || null
+            d = md_tags_list[mdname]["date"] || null
+            t = md_tags_list[mdname]["tags"] || null
         } catch(err) {}
     }
     if (a) {
@@ -128,4 +140,9 @@ function rendermdwindow(mdc,e,d,t,a,m) {
     }
     current.appendChild(innercon);
     setTimeout(function(){innercon.style = ''},5)
+}
+
+// compatibility stub.
+function createmdprompt(m,e,d,t,a) {
+    createmdwindow(m,e,d,t,a)
 }

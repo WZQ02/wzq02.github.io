@@ -447,5 +447,5 @@ d2sa_pic.addEventListener("touchstart",function() {
     })
 })
 function d2sa_action() {
-    createxmlwindow("aboutme",2,0,1,null,null,"")
+    createmdwindow("aboutme",0,null,null,0)
 }
