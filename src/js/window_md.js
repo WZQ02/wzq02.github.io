@@ -1,11 +1,11 @@
 let md_tags_list,marked_loaded,showdown_loaded,marked_failed;
-const showdown_path = "./scripts/3rdparty/showdown.min.js"
-const marked_path = "./scripts/3rdparty/marked.min.js"
-const icon_path = "./assets/icons/mdi/"
+const showdown_path = "/scripts/3rdparty/showdown.min.js"
+const marked_path = "/scripts/3rdparty/marked.min.js"
+const icon_path = "/assets/icons/mdi/"
 
 function gettaglist() {
     let request = new XMLHttpRequest();
-    request.open("get", "./json/md_tags.json");
+    request.open("get", "/json/md_tags.json");
     request.send(null);
     request.onload = () => {
         if (request.status == 200) {
@@ -63,9 +63,9 @@ function getmdfile2(mdname,e,d,t,a,en_mark) {
     let request = new XMLHttpRequest();
     let mdc;
     if (en_mark == 1) {
-        request.open("get", "./md/en/"+mdname+".md");
+        request.open("get", "/md/en/"+mdname+".md");
     } else {
-        request.open("get", "./md/"+mdname+".md");
+        request.open("get", "/md/"+mdname+".md");
     }
     request.send(null);
     request.onload = () => {

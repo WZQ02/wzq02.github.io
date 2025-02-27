@@ -1,5 +1,5 @@
 (()=>{
-    const json_path = "./json/p2_list/list.json"
+    const json_path = "/json/p2_list/list.json"
     const p2 = document.getElementById("page2")
     const ls = document.createElement("div")
     ls.id = "p2_list"

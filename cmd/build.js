@@ -21,7 +21,7 @@ fs.readFile(template_path,'utf-8',(err,data)=>{
 })
 
 function build(data) {
-    let css_xml = "",js_xml = "<script src=\"scripts/3rdparty/i18nextify.min.js\"></script><script src=\"scripts/3rdparty/hammer.min.js\"></script>"
+    let css_xml = "",js_xml = "<script src=\"/scripts/3rdparty/i18nextify.min.js\"></script><script src=\"/scripts/3rdparty/hammer.min.js\"></script>"
     let css_content = "", js_content = ""
     let data1 = fs.readFileSync(json_path+"css_list.json",'utf-8')
     data1 = JSON.parse(data1)
@@ -61,8 +61,8 @@ function build(data) {
         fs.writeFileSync(dist_path+"index.js",min)
     })
 
-    css_xml += `<link rel="stylesheet" href="dist/index.css">`
-    js_xml += `<script src="dist/index.js"></script><script src="scripts/beacon/home.js"></script><script src="scripts/beacon/core.min.js"></script>`
+    css_xml += `<link rel="stylesheet" href="/dist/index.css">`
+    js_xml += `<script src="/dist/index.js"></script><script src="/scripts/beacon/home.js"></script><script src="/scripts/beacon/core.min.js"></script>`
 
     data = data.replace("<!--css part-->", css_xml)
     data = data.replace("<!--script part-->", js_xml)

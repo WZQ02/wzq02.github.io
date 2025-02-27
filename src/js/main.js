@@ -2,6 +2,12 @@ var visited = localStorage.getItem('visited');//是否第一次访问本站
 if (visited == null) {
     localStorage.setItem('visited',"1");
 }
+var lbiv = setInterval(function(){
+    if (window.i18nextify.i18next.isInitialized) {
+        document.getElementsByClassName('rt_title')[0].childNodes[1].style = "animation:appear .25s"
+        clearInterval(lbiv)
+    }
+},200)
 
 var lock_lnk = 1;//引入锁，避免动画结束前重复otherlinks淡入或淡出动作
 var showlt = "";

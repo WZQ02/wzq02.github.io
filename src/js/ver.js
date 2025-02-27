@@ -5,7 +5,7 @@ let verinfo
 
 function getver() {
     var req = new XMLHttpRequest();
-    req.open("get", "./json/ver.json");
+    req.open("get", "/json/ver.json");
     req.send(null);
     req.onload = () => {
         if (req.status == 200) {

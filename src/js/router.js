@@ -29,18 +29,23 @@ window.addEventListener("popstate",() => {
 function ps_check() {
     switch (window.location.pathname) {
         case "/blog":
+        case "/blog/":
             p2l_sc("blog","createbloglinks()")
             break
         case "/fs":
+        case "/fs/":
             p2l_sc("fs")
             break
         case "/proj":
+        case "/proj/":
             p2l_sc("proj")
             break
         case "/demo":
+        case "/demo/":
             p2l_sc("demo")
             break
         case "/about":
+        case "/about/":
             p2l_sc("about","about_printver()")
             break
     }

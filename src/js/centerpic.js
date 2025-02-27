@@ -28,10 +28,10 @@ function centerpic_initialize() {
         pic.style.opacity = 0.6;
         pic.style.transition = "transform 1s cubic-bezier(0.05, 0.2, 0, 1), opacity 0.25s";
         let source = document.createElement("source");
-        source.srcset = "./assets/images/centerpic/"+pic_list[i]+".webp";
+        source.srcset = "/assets/images/centerpic/"+pic_list[i]+".webp";
         source.type = "image/webp";
         let img = document.createElement("img");
-        img.src = "./assets/images/centerpic/"+pic_list[i]+".png";
+        img.src = "/assets/images/centerpic/"+pic_list[i]+".png";
         img.height = pic_size;
         img.width = pic_size;
         img.style.opacity = 0;

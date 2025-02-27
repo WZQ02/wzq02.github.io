@@ -1,7 +1,7 @@
 function createxmlwindow(name,size,isdrag,allowfscr,src_dom,title,exec) {
     createwindow("xml",1,size,1,isdrag,allowfscr,src_dom)
     let req = new XMLHttpRequest()
-    req.open("get", "xml/"+name+".xml")
+    req.open("get", "/xml/"+name+".xml")
     req.send(null)
     req.onload = () => {
         if (req.status == 200) {
@@ -25,6 +25,7 @@ function renderxmlwindow(content,t,e,forpage) {
         content = "<h1>"+t+"</h1>"+content
     }
     inn.innerHTML = content
+    inn.style.animation = "appear .25s"
     cur.appendChild(inn)
     eval(e)
 }

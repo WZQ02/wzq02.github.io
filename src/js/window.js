@@ -71,7 +71,7 @@ function createwindow(id,isclosbtn,size,outlook,isdrag,allowfscr,src_dom) {
         let fsb_pic = document.createElement("img")
         fsb.className = "wn_closebtn fsb"
         fsb.onclick = ()=>{window_fullscreen()}
-        fsb_pic.src = "./assets/icons/mdi/fullscreen.svg";
+        fsb_pic.src = "/assets/icons/mdi/fullscreen.svg";
         fsb_pic.id = "wn_fsb"
         wn.appendChild(fsb)
         fsb.appendChild(fsb_pic)
@@ -99,7 +99,7 @@ function createwindow(id,isclosbtn,size,outlook,isdrag,allowfscr,src_dom) {
         const pic = document.createElement("img")
         btn.className = "wn_closebtn"
         btn.onclick = ()=>{destroywindow()}
-        pic.src = "./assets/icons/mdi/close.svg"
+        pic.src = "/assets/icons/mdi/close.svg"
         wn.appendChild(btn)
         btn.appendChild(pic)
     }
@@ -126,10 +126,10 @@ function window_fullscreen() {
     let current = document.getElementsByClassName("window")[0];
     let btn = document.getElementById("wn_fsb");
     if (current.classList.toString().indexOf("fullscreenwindow") != -1) {
-        btn.src = "./assets/icons/mdi/fullscreen.svg";
+        btn.src = "/assets/icons/mdi/fullscreen.svg";
         current.classList.remove("fullscreenwindow")
     } else {
-        btn.src = "./assets/icons/mdi/fullscreen-exit.svg";
+        btn.src = "/assets/icons/mdi/fullscreen-exit.svg";
         current.classList.add("fullscreenwindow")
     }
 }

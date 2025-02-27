@@ -19,9 +19,9 @@ function createbloglinks() {
                 a_sc_text.innerHTML = `<mdtitle>${data["title"]}<br></mdtitle>`
                 if (data["date"]) {
                     if (data["tags"]) {
-                        a_sc_text.innerHTML += `<mdtitle2><img src="assets/icons/mdi/time.svg">&nbsp;${data["date"]}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/icons/mdi/tag.svg">&nbsp;${data["tags"]}</mdtitle2>`
+                        a_sc_text.innerHTML += `<mdtitle2><img src="/assets/icons/mdi/time.svg">&nbsp;${data["date"]}&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/icons/mdi/tag.svg">&nbsp;${data["tags"]}</mdtitle2>`
                     } else {
-                        a_sc_text.innerHTML += `<mdtitle2><img src="assets/icons/mdi/time.svg">&nbsp;${data["date"]}</mdtitle2>`
+                        a_sc_text.innerHTML += `<mdtitle2><img src="/assets/icons/mdi/time.svg">&nbsp;${data["date"]}</mdtitle2>`
                     }
                 }
                 document.getElementById("container2").appendChild(a_sc)

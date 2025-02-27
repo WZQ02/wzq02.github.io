@@ -14,7 +14,7 @@ function hidegfsites() {
     }
 }
 
-var dg_wkr = new Worker("./scripts/g_detect.js");
+var dg_wkr = new Worker("/scripts/g_detect.js");
 dg_wkr.onmessage = function(e) {
     if (e.data == false) {
         localStorage.setItem('gfs',Date.parse(new Date())/1000)
