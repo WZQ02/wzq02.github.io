@@ -133,7 +133,8 @@ c:active {
     padding: 8px;
     color: #333;
     background-color: rgba(255,255,255,0);
-    transition: 0.25s;
+    transition: .25s;
+    animation: appear .25s;
 }
 #othlnks div:active {
     background-color: rgba(0,0,0,0.5) !important;

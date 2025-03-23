@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        opacity: 0;
+      }
+    </style>
+  </defs>
+  <g id="b">
+    <g class="cls-3">
+      <rect class="cls-2" x=".5" y=".5" width="499" height="499"/>
+      <path class="cls-2" d="m499,1v498H1V1h498m1-1H0v500h500V0h0Z"/>
+    </g>
+  </g>
+  <g id="a">
+    <circle class="cls-1" cx="249.5" cy="251.5" r="26"/>
+  </g>
+</svg>

@@ -3,6 +3,7 @@ let pic_size = 96;
 let last_msd_pos = [];
 let d2sa_flag = 0
 function centerpic_initialize() {
+    let ctpc_con = document.getElementById("centerpic_container")
     let centerpic_bg = document.createElement("div");
     centerpic_bg.style = "width: 100vw; height: 100vh;";
     centerpic_bg.onmousedown = function(e) {
@@ -15,7 +16,7 @@ function centerpic_initialize() {
             click_record();
         }
     }
-    document.getElementById("centerpic_container").appendChild(centerpic_bg);
+    ctpc_con.appendChild(centerpic_bg);
     for (let i=0; i<pic_list.length; i++) {
         let pic = document.createElement("picture");
         pic.className = "centerpic_picelement";
@@ -41,10 +42,26 @@ function centerpic_initialize() {
         pic.ondragstart = function(e) {//避免拖动图片元素
             e.preventDefault()
         }
-        document.getElementById("centerpic_container").appendChild(pic);
+        ctpc_con.appendChild(pic);
     }
     pic_size_adj();
     setTimeout(function(){cp_pos_changeall()},5)
+    /*const ctpc_sfx_cha = document.createElement("audio")
+    ctpc_sfx_cha.id = "ctpc_sfx_cha"
+    ctpc_sfx_cha.src = "/assets/audio/centerpic/cha.ogg"
+    ctpc_con.appendChild(ctpc_sfx_cha)*/
+    ctpc_asfx("front_3","c_s_cha","cha")
+    ctpc_asfx("front_6","c_s_sb","sb")
+}
+function ctpc_asfx(src_id,sfx_id,sfx_name) {
+    const ctpc_sfx = document.createElement("audio")
+    ctpc_sfx.id = sfx_id
+    ctpc_sfx.src = "/assets/audio/centerpic/"+sfx_name+".ogg"
+    document.getElementById("centerpic_container").appendChild(ctpc_sfx)
+    document.getElementById(src_id).addEventListener("mouseup",function(){
+        ctpc_sfx.currentTime = 0
+        ctpc_sfx.play()
+    })
 }
 function cp_pos_initialize() {
     let edge_type = Math.ceil(Math.random()*4);
@@ -186,6 +203,11 @@ function cp_addprop() {
                 click_record();
             }
         }
+        /*if (pic.id == "front_3") {
+            pic.addEventListener("mouseup",function(){
+                document.getElementById("ctpc_sfx_cha").play()
+            })
+        }*/
         pic.onmouseout = function() {
             pic.style.opacity = 0.6;
         }
@@ -220,6 +242,7 @@ function liubing(custom_music_url) {
         dj.style.animation = "spin 4s linear infinite";
         lbaudio = document.createElement("audio");
         lbaudio.autoplay = 1;
+        lbaudio.id = "ct_aud"
         //lbaudio.loop = 1;因为启用了自动切歌，不循环
         let rand2;
         while (true) {
@@ -282,7 +305,7 @@ function liubing(custom_music_url) {
         document.body.appendChild(lbaudio);
     } else {
         liubing_status = 0;
-        let audio = document.querySelector("audio")
+        let audio = document.getElementById("ct_aud")
         audio.removeAttribute('src')//先去除audio src属性，停止对之前的音频文件的请求
         audio.load()
         audio.parentNode.removeChild(audio);

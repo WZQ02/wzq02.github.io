@@ -135,3 +135,8 @@
         height: 720px !important;
     }
 }
+@media screen and (max-width: 540px) {
+    .smallwindow .wn_closebtn {
+        right: 16px;
+    }
+}

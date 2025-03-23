@@ -1,0 +1,104 @@
+#touchhold_cont {
+    position: absolute;
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+    width: 80px;
+    transition: .75s ease;
+    opacity: 0;
+}
+#t_circle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: calc(50% - 60px);
+    left: calc(50% - 60px);
+    border-radius: 60px;
+    background-color: #000;
+    animation:th_anim2 .25s cubic-bezier(0,.6,0,1);
+    pointer-events: none;
+}
+#t_fire {
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    top: calc(50% - 1000px);
+    left: calc(50% - 1000px);
+    animation:th_anim3 .75s linear;
+    pointer-events: none;
+}
+.touchhold_sv {
+    position: absolute;
+    transition: .1s ease-in;
+}
+.touchhold_sv#t1 {
+    transform: translate(-10px,-10px);
+}
+.touchhold_sv#t2 {
+    transform: translate(10px,-10px);
+}
+.touchhold_sv#t3 {
+    transform: translate(-10px,10px);
+}
+.touchhold_sv#t4 {
+    transform: translate(10px,10px);
+}
+.touchhold_sv#t6 {
+    display: none;
+}
+@media (prefers-color-scheme: dark) {
+    .touchhold_sv,#t_circle,#t_fire {
+        filter: invert(1);
+    }
+}
+@keyframes th_anim1 {
+    0% {
+        clip-path: polygon(0 0,50% 0,50% 50%,50% 0,100% 0,100% 100%,0 100%);
+    }
+    25% {
+        clip-path: polygon(0 0,50% 0,50% 50%,100% 50%,100% 50%,100% 100%,0 100%);
+    }
+    50% {
+        clip-path: polygon(0 0,50% 0,50% 50%,50% 100%,50% 100%,50% 100%,0 100%);
+    }
+    75% {
+        clip-path: polygon(0 0,50% 0,50% 50%,0% 50%,0% 50%,0% 50%,0% 50%);
+    }
+    100% {
+        clip-path: polygon(0 0,50% 0,50% 50%,50% 0,0 0,0 0,0 0);
+    }
+}
+@keyframes th_anim2 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+@keyframes th_anim3 {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+    25% {
+        transform: rotate(6deg);
+        opacity: .2;
+    }
+    100% {
+        transform: rotate(24deg);
+        opacity: 0;
+    }
+}
+@keyframes flick {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .7;
+    }
+    100% {
+        opacity: 1;
+    }
+}

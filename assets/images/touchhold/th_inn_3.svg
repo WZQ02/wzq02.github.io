@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        opacity: 0;
+      }
+
+      .cls-4 {
+        opacity: .67;
+      }
+    </style>
+  </defs>
+  <g id="b">
+    <g class="cls-3">
+      <rect class="cls-2" x=".5" y=".5" width="499" height="499"/>
+      <path class="cls-2" d="m499,1v498H1V1h498m1-1H0v500h500V0h0Z"/>
+    </g>
+  </g>
+  <g id="a">
+    <g class="cls-4">
+      <path class="cls-2" d="m250.5,407.49c-9.38-.22-18.18-3.46-25.45-9.38l-122.19-122.2c-5.49-6.75-8.69-14.95-9.25-23.71h156.9v155.28Z"/>
+      <path class="cls-2" d="m250,252.71v154.26c-9.06-.32-17.55-3.5-24.6-9.22l-122.16-122.16c-5.32-6.56-8.46-14.45-9.1-22.89h155.86m1-1H93.07c.48,9.29,3.92,17.79,9.43,24.56l122.23,122.23c7.18,5.84,16.31,9.38,26.27,9.5v-156.29h0Z"/>
+    </g>
+  </g>
+</svg>
