@@ -16,7 +16,7 @@
     {
         "id": "proj",
         "title": "小项目",
-        "desc": "之前写的一些 Web 小程序。",
+        "desc": "之前写的一些个人小项目。",
         "icon": "/assets/icons/mdi/application-brackets.svg",
         "func": "p2l_sc('proj')"
     },
