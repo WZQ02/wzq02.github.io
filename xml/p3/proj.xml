@@ -1,20 +1,23 @@
+<img class="p3_iconbg" src="/assets/icons/mdi/application-brackets.svg" />
 <div id="container2">
     <div id="shortcuts_container">
         <p>
             <a href="https://play.wzq02.top/player"><div class="sc_item"
-            style="background-image: url('https://wzq02.top/images/screenshots/wzq02tv_3.webp')">
+            style="background-image: url('./assets/images/thumb/stmtv.webp')">
                 <div class="sc_i_title" style="font-kerning:none">sometroublemaker.TV</div>
             </div></a><br>
             一个带有弹幕和评论功能的自建视频直播间。
         </p>
         <p>
-            <a href="https://bili-vod.wzq02.top/"><div class="sc_item">
+            <a href="https://bili-vod.wzq02.top/"><div class="sc_item"
+            style="background-image: url('./assets/images/thumb/bvod.webp')">
                 <div class="sc_i_title">bilibili 直播弹幕互动网页</div>
             </div></a><br>
             试着写了个可以与 B 站直播间弹幕互动的网页。
         </p>
         <p>
-            <a href="https://github.com/WZQ02/testpilot-qqbot/"><div class="sc_item" style="background-image: url('https://img.wzq02.top/upl/1d2dae207238f5d8cbe62e3e90172bcf.jpg')">
+            <a href="https://testpilot.wzq02.top/"><div class="sc_item"
+            style="background-image: url('./assets/images/thumb/testpilot.webp')">
                 <div class="sc_i_title">testpilot</div>
             </div></a><br>
             一个 QQ 群聊机器人。
