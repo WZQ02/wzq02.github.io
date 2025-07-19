@@ -11,6 +11,10 @@ function createwindow(id,isclosbtn,size,outlook,isdrag,allowfscr,src_dom) {
     const wn = document.createElement("div")
     wn.className = "window"
     wn.id = id
+    const wn_dp = document.createElement("div")
+    wn_dp.className = "wn_dragpart"
+    wn_dp.style = "position:absolute;width:100%;height:48px"
+    wn.appendChild(wn_dp)
     // if window size isn't a list [wxh].
     let wns
     if (!size||typeof(size[1])=="undefined") {
@@ -34,7 +38,7 @@ function createwindow(id,isclosbtn,size,outlook,isdrag,allowfscr,src_dom) {
     }
     // if dragable.
     if (isdrag) {
-        wn.addEventListener("mousedown",function(e) {
+        wn_dp.addEventListener("mousedown",function(e) {
             wn.style.transitionDuration = "0s";
             let x = e.clientX - wn.offsetLeft;
             let y = e.clientY - wn.offsetTop;
@@ -43,12 +47,12 @@ function createwindow(id,isclosbtn,size,outlook,isdrag,allowfscr,src_dom) {
                 wn.style.top = (f.clientY - y) +"px";
                 wn.style.left = (f.clientX - x) +"px";
             }
-            wn.addEventListener("mouseup",() => {
+            wn_dp.addEventListener("mouseup",() => {
                 document.removeEventListener("mousemove",movepmpt)
                 wn.style.transition = "";
             })
         });
-        wn.addEventListener("touchstart",function(e) {
+        wn_dp.addEventListener("touchstart",function(e) {
             wn.style.transitionDuration = "0s";
             let touch = e.targetTouches[0];
             let x = touch.clientX - wn.offsetLeft;
@@ -59,7 +63,7 @@ function createwindow(id,isclosbtn,size,outlook,isdrag,allowfscr,src_dom) {
                 wn.style.top = (touch.clientY - y) +"px";
                 wn.style.left = (touch.clientX - x) +"px";
             }
-            wn.addEventListener("touchend",() => {
+            wn_dp.addEventListener("touchend",() => {
                 document.removeEventListener("touchmove",movepmpt)
                 wn.style.transition = "";
             })
