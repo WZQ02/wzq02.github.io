@@ -176,7 +176,7 @@ c:active {
 }
 @media (prefers-color-scheme: dark) {
     body { 
-        background: #252525; 
+        background: #070707; 
     }
     a {
         color: #aaf;
