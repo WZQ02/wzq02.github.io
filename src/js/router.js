@@ -1,5 +1,6 @@
 function router_reset() {
     window.history.pushState({page:1},"","/")
+    title_update()
 }
 window.addEventListener("load",() => {
     // hash compatibility
@@ -27,26 +28,30 @@ window.addEventListener("popstate",() => {
 })
 
 function ps_check() {
-    switch (window.location.pathname) {
-        case "/blog":
-        case "/blog/":
+    switch (window.location.pathname.slice(0,3)) {
+        case "/bl":
+            blog_cut_check()
             p2l_sc("blog","createbloglinks()")
             break
         case "/fs":
-        case "/fs/":
-            p2l_sc("fs")
+            p2l_sc("fs","sche_init()")
             break
-        case "/proj":
-        case "/proj/":
-            p2l_sc("proj")
+        case "/pr":
+            p2l_sc("proj","sche_init()")
             break
-        case "/demo":
-        case "/demo/":
-            p2l_sc("demo")
+        case "/de":
+            p2l_sc("demo","sche_init()")
             break
-        case "/about":
-        case "/about/":
+        case "/ab":
             p2l_sc("about","about_printver()")
             break
+    }
+    title_update()
+}
+
+function blog_cut_check() {
+    let blog_path = window.location.pathname.slice(6)
+    if (blog_path) {
+        createmdwindow(blog_path,0,null,null,1)
     }
 }

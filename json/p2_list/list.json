@@ -11,21 +11,21 @@
         "title": "网盘",
         "desc": "个人作品、视频和资源存档。",
         "icon": "/assets/icons/mdi/server-minus.svg",
-        "func": "p2l_sc('fs')"
+        "func": "p2l_sc('fs','sche_init()')"
     },
     {
         "id": "proj",
         "title": "小项目",
         "desc": "之前写的一些个人小项目。",
         "icon": "/assets/icons/mdi/application-brackets.svg",
-        "func": "p2l_sc('proj')"
+        "func": "p2l_sc('proj','sche_init()')"
     },
     {
         "id": "demo",
         "title": "小游戏 & 工具",
         "desc": "网页小游戏和在线工具。",
         "icon": "/assets/icons/mdi/gamepad-down.svg",
-        "func": "p2l_sc('demo')"
+        "func": "p2l_sc('demo','sche_init()')"
     },
     {
         "id": "about",

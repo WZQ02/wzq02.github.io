@@ -31,11 +31,14 @@
     bottom: 0px;
     z-index: -1;
     width: 288px;
-    opacity: .05;
+    opacity: .15;
 }
 @media (prefers-color-scheme: dark) {
     #xp_close,.p3_iconbg {
         filter: invert(1);
+    }
+    .p3_iconbg {
+        opacity: .05;
     }
 }
 @media (any-hover: hover) {

@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
 }
-#shortcuts_container {
+#shortcuts_container,.sc_i_filter {
     width: 480px;
     user-select: none;
 }
@@ -43,9 +43,19 @@
     line-height: 36px;
     margin-top: 30px;
 }
+.sc_i_filter {
+    position: absolute;
+    height: inherit;
+    border-radius: 8px;
+    backdrop-filter: blur(0px) brightness(1.35);
+    transition: .4s;
+}
 @media (prefers-color-scheme: dark) {
     .sc_item {
         background-color: #1a1a1a;
+    }
+    .sc_i_filter {
+        backdrop-filter: blur(0px);
     }
 }
 @media (any-hover: hover) {
@@ -56,7 +66,7 @@
     }
 }
 @media screen and (max-width: 540px) {
-    #shortcuts_container {
+    #shortcuts_container,.sc_i_filter {
         width: 320px;
     }
     .sc_i_title {

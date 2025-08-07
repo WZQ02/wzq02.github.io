@@ -42,4 +42,20 @@
 function p2l_sc(name,func) {
     xmlpage('p3/'+name,func)
     window.history.pushState({page:1},"","/"+name)
+    title_update()
 }
+
+const default_title = "WZQ'02's site"
+const title_list = {"bl":"Blog","fs":"Files","pr":"Projects","de":"Games and Tools","ab":"About"}
+
+function title_update() {
+    let ptn = window.location.pathname
+    let or_t = default_title
+    setTimeout(()=>{
+        if (ptn != "/") {
+            or_t = title_list[ptn.slice(1,3)]+" | " + default_title
+        }
+        document.title = i18nextify.i18next.t(or_t)
+    },50)
+}
+
