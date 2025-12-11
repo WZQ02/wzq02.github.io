@@ -128,6 +128,7 @@ if (window.location.hostname.indexOf('.github.io')!=-1) {
         console.log("You\'re visiting the mirror version of WZQ\'02\'s site. The main site is at https://wzq02.top/")
     }
 }
+
 function loadJS(url,callback) {//按需动态加载第三方js
     var script = document.createElement('script');
     script.type = 'text/javascript';
@@ -136,4 +137,32 @@ function loadJS(url,callback) {//按需动态加载第三方js
         callback();//js加载完后执行回调函数
     }
     document.head.appendChild(script);
+}
+
+//加载滚动条（据说有些浏览器自带了，但我还是做一个出来好了，虽然有点蹩脚）
+let loadbar_lock = 0,loadbar_status = 0;
+
+function addloadbar() {
+    let bar = document.createElement("div")
+    bar.id = "loadingbar"
+    document.body.appendChild(bar)
+}
+addloadbar();
+const ld_bar = document.getElementById("loadingbar");
+
+function loadbarstart() {
+    if (!loadbar_lock && loadbar_status == 0) {
+        loadbar_lock = loadbar_status = 1
+        setTimeout(()=>{loadbar_lock = 0},1500)
+        ld_bar.style.opacity = 1
+        ld_bar.style.animation = "lb_anim1 15s cubic-bezier(.2, .6, .2, 1) 1"
+    }
+}
+function loadbarend() {
+    if (loadbar_status == 1) {
+        loadbar_lock = 1
+        loadbar_status = 0
+        ld_bar.style.opacity = 0
+        setTimeout(()=>{ld_bar.style.animation = "";loadbar_lock = 0},1000)
+    }
 }

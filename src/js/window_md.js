@@ -68,7 +68,11 @@ function getmdfile2(mdname,e,d,t,a,en_mark) {
         request.open("get", "/md/"+mdname+".md");
     }
     request.send(null);
+    // 激活loadingbar
+    loadbarstart()
     request.onload = () => {
+        //去除loadingbar
+        loadbarend()
         if (request.status == 200) {
             mdc = request.responseText;
             rendermdwindow(mdc,e,d,t,a,en_mark);

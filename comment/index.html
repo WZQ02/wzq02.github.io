@@ -7,6 +7,9 @@
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
     <link rel="stylesheet" href="../css/pages_v2.css" id="skin">
     <style>
+        #container {
+            scroll-behavior: smooth;
+        }
         a {
             cursor: pointer;
         }
@@ -63,6 +66,37 @@
             opacity: .7;
             font-weight: bold;
         }
+        #comments {
+            animation: appear2 .7s cubic-bezier(0, 0.6, 0.2, 1) 1;
+        }
+        #enterpage {
+            width: 28px;
+            height: 18px;
+            display: inline;
+            font-size: 16px;
+            resize: none;
+            overflow: hidden;
+        }
+        #sendarea {
+            width: 550px;
+            max-width: calc(100% - 24px);
+            height: 212px;
+            display: block;
+        }
+        #text {
+            width: 480px;
+            max-width: 100%;
+            height: 90px;
+            max-height: 90px;
+            display: block;
+            font-size: 15px;
+            resize: none;
+        }
+        #name {
+            width: 280px;
+            font-size: 15px;
+            max-width: calc(100% - 86px);
+        }
         @media (any-hover: hover) {
             .comment .reply:hover {
                 background-color: #0001;
@@ -73,14 +107,24 @@
                 background-color: #359;
             }
         }
+        @keyframes appear2 {
+            0% {
+                opacity: 0.0;
+                transform: translateY(16px);
+            }
+            100% {
+                opacity: 1.0;
+                transform: translateY(0px);
+            }
+        }
     </style>
 </head>
 <body>
     <div id="container">
-        <div id="sendarea" style="width:550px;max-width:calc(100% - 24px);height:212px;display:block">
+        <div id="sendarea">
             <h2>发表评论</h2>
-            <textarea maxlength="20480" id="text" style="width:480px;max-width:100%;height:90px;max-height:90px;display:block;font-size:15px" placeholder="在此输入文字"></textarea>
-            <input type="text" maxlength="50" id="name" style="width:280px;font-size:15px;max-width:calc(100% - 86px);" placeholder="昵称（不填写则为匿名）">
+            <textarea maxlength="20480" id="text" placeholder="在此输入文字"></textarea>
+            <input type="text" maxlength="50" id="name" placeholder="昵称（不填写则为匿名）">
             <button onclick="submit()" style="position:relative;left:8px">发表</button>
         </div>
         <div id="status"></div>
@@ -113,6 +157,8 @@
     const status = document.getElementById("status")
     const page_nav = document.getElementById("page_nav")
     generate_sid()
+
+    let nav_textbox_state
 
     if (md_enabled) {
         console.log("警告：已启用 Markdown 转译。评论内容将不做清理，这可能会引发 XSS。")
@@ -237,6 +283,8 @@
             msgc.appendChild(hr)
             comments.appendChild(msgc)
         }
+        comments.style.animation = "none"
+        setTimeout(() => {comments.style.animation = ""},5)
         rendernav(nav)
         scr_top()
         autoadjustheight()
@@ -385,6 +433,9 @@
         t.innerText = cur+" / "+tot
         t.className = "page_indi"
         page_nav.appendChild(t)
+        t.addEventListener("mouseup",() => {
+            nav_showtextbox()
+        })
     }
     function rwURL() {
         const _1 = "?type="+type+"&page="+page
@@ -398,8 +449,24 @@
         document.getElementById("sendarea").parentNode.scrollTop = 0
     }
     function gr() {
+        nav_textbox_state = 0
         get_prev()
         rwURL()
+    }
+
+    function nav_showtextbox() {
+        if (nav_textbox_state) {
+            return
+        }
+        document.getElementsByClassName("page_indi")[0].innerHTML = "<input type=\"text\" maxlength=\"3\" id=\"enterpage\"></input>"
+        tb = document.getElementById("enterpage")
+        tb.addEventListener('keydown',(e) => {
+            if (e.keyCode == 13) {
+                page = Number(tb.value)
+                gr()
+            }
+        })
+        nav_textbox_state = 1
     }
 </script>
 <script src="../scripts/3rdparty/i18nextify.min.js"></script>

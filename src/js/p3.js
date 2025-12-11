@@ -33,12 +33,16 @@ function xmlpage(name,func) {
     xp_cb.addEventListener('mouseup',() => {
         destroyxmlpage()
     })
+    // 激活loadingbar
+    loadbarstart()
     // render xml.
     let req = new XMLHttpRequest()
     req.open("get", "/xml/"+name+".xml")
     req.send(null)
     req.onload = () => {
         if (req.status == 200) {
+            //去除loadingbar
+            loadbarend()
             renderxmlpage(req.responseText,func)
             // reload i18n.
             window.i18nextify.forceRerender()

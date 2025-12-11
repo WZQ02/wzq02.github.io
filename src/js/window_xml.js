@@ -1,9 +1,13 @@
 function createxmlwindow(name,size,isdrag,allowfscr,src_dom,title,exec) {
     createwindow("xml",1,size,1,isdrag,allowfscr,src_dom)
+    // 激活loadingbar
+    loadbarstart()
     let req = new XMLHttpRequest()
     req.open("get", "/xml/"+name+".xml")
     req.send(null)
     req.onload = () => {
+        //去除loadingbar
+        loadbarend()
         if (req.status == 200) {
             renderxmlwindow(req.responseText,title,exec)
         } else {

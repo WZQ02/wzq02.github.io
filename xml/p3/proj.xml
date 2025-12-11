@@ -2,6 +2,13 @@
 <div id="container2">
     <div id="shortcuts_container">
         <p>
+            <a href="https://testpilot.wzq02.top/"><div class="sc_item"
+            style="background-image: url('./assets/images/thumb/testpilot.webp')">
+                <div class="sc_i_title">testpilot</div>
+            </div></a><br>
+            一个 QQ 群聊机器人。
+        </p>
+        <p>
             <a href="https://play.wzq02.top/player"><div class="sc_item"
             style="background-image: url('./assets/images/thumb/stmtv.webp')">
                 <div class="sc_i_title" style="font-kerning:none">sometroublemaker.TV</div>
@@ -14,13 +21,6 @@
                 <div class="sc_i_title">bilibili 直播弹幕互动网页</div>
             </div></a><br>
             试着写了个可以与 B 站直播间弹幕互动的网页。
-        </p>
-        <p>
-            <a href="https://testpilot.wzq02.top/"><div class="sc_item"
-            style="background-image: url('./assets/images/thumb/testpilot.webp')">
-                <div class="sc_i_title">testpilot</div>
-            </div></a><br>
-            一个 QQ 群聊机器人。
         </p>
     </div>
 </div>
