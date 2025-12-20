@@ -107,6 +107,8 @@ function createwindow(id,isclosbtn,size,outlook,isdrag,allowfscr,src_dom) {
         wn.appendChild(btn)
         btn.appendChild(pic)
     }
+    wn.focus()
+    wn.click()
 }
 // destroy window.
 function destroywindow(instant) {

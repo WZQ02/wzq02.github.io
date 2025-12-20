@@ -33,6 +33,7 @@ function xmlpage(name,func) {
     xp_cb.addEventListener('mouseup',() => {
         destroyxmlpage()
     })
+    document.body.addEventListener('keydown', kbd_desxml_ifexist)
     // 激活loadingbar
     loadbarstart()
     // render xml.
@@ -79,5 +80,19 @@ function destroyxmlpage(instant) {
 function renderxmlpage(content,exec) {
     if (p3_show) {
         renderxmlwindow(content,null,exec,1)
+    }
+}
+
+//键盘Esc键返回上一级
+function kbd_desxml_ifexist(event) {
+    if (event.key === 'Escape') {
+        event.preventDefault()
+        //如果存在，优先销毁window
+        if (document.getElementsByClassName("window")[0]) {
+            destroywindow()
+            return
+        }
+        document.body.removeEventListener('keydown', kbd_desxml_ifexist)
+        destroyxmlpage()
     }
 }

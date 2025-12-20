@@ -10,11 +10,18 @@ function createbloglinks() {
                 const a_sc = document.createElement("div")
                 const a_sc_text = document.createElement("div")
                 a_sc.className = "article_shortcut"
+                a_sc.tabIndex = "0"
                 a_sc_text.className = "article_shortcut_text"
                 const data = Object.values(list)[i]
                 a_sc.id = data["mdname"]
                 a_sc_text.addEventListener("mouseup",()=>{
                     createmdwindow(data["mdname"],0,data["date"],data["tags"],1)
+                })
+                a_sc.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        createmdwindow(data["mdname"],0,data["date"],data["tags"],1)
+                    }
                 })
                 a_sc_text.innerHTML = `<mdtitle>${data["title"]}<br></mdtitle>`
                 if (data["date"]) {

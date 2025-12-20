@@ -17,6 +17,7 @@
                 const item = document.createElement("div")
                 item.className = "p2l_item"
                 item.id = "pi_"+list[i]["id"]
+                item.tabIndex = "0"
                 const cont = document.createElement("div")
                 cont.className = "pi_cont"
                 const icon = document.createElement("div")
@@ -31,6 +32,12 @@
                 cn.appendChild(item)
                 item.addEventListener("mouseup",()=>{
                     eval(list[i]["func"])
+                })
+                item.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        eval(list[i]["func"])
+                    }
                 })
             }
             // append the list.

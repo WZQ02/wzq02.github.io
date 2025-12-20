@@ -29,28 +29,43 @@ function sche_init() {
 
     //shortcut的背景图加载完成后再渐变出现（会导致所有的backgroundimage被下载两次，不过有缓存，也无所谓吧额）
     //获取所有shortcuts引用的背景图url
-    let all_sc = document.getElementsByClassName("sc_item")
-    let all_sc_bg = []
-    for (let i=0; i<all_sc.length; i++) {
-        let url = all_sc[i].style.backgroundImage
-        all_sc_bg.push(url)
+    //let scs = document.getElementsByClassName("sc_item") //重复了
+    let scs_bg = []
+    for (let i=0; i<scs.length; i++) {
+        let url = scs[i].style.backgroundImage
+        scs_bg.push(url)
     }
     //将所有shortcut赋予imgloading类（其中的filter将赋予不透明底色）
-    for (let i=0; i<all_sc.length; i++) {
-        all_sc[i].classList.add("imgload")
-        //all_sc[i].style.backgroundImage = "rgba(#0000)"
+    for (let i=0; i<scs.length; i++) {
+        scs[i].classList.add("imgload")
+        //scs[i].style.backgroundImage = "rgba(#0000)"
     }
     //记录当前的route
     let route = window.location.pathname
     //新建img元素，重复加载所有的背景图片，并在加载后去除filter的不透明底色
-    for (let i=0; i<all_sc.length; i++) {
+    for (let i=0; i<scs.length; i++) {
         const tmpbg = new Image()
-        tmpbg.src = all_sc_bg[i].slice(5,-2)
+        tmpbg.src = scs_bg[i].slice(5,-2)
         tmpbg.onload = () => {
             //确保onload时path没有变动
             if (route == window.location.pathname) {
-                all_sc[i].classList.remove("imgload")
+                scs[i].classList.remove("imgload")
             }
         }
+    }
+
+    //键盘导航优化
+    for (let i=0; i<scs.length; i++) {
+        //为每个item添加tabindex
+        scs[i].tabIndex = "0"
+
+        //读取每个item的onclick值，并添加键盘事件
+        let onc_value = scs[i].onclick || function() {window.location.href=(scs[i].childNodes[1].href)}
+        scs[i].addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                onc_value()
+            }
+        })
     }
 }

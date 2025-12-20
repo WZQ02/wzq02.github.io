@@ -166,3 +166,34 @@ function loadbarend() {
         setTimeout(()=>{ld_bar.style.animation = "";loadbar_lock = 0},1000)
     }
 }
+
+//处于主页面时，键盘上下键切换page
+document.body.addEventListener('keydown', (event) => {
+    if (document.location.pathname == "/") {
+        if (event.key === "ArrowUp" || event.key === "PageUp") {
+            scrolltopage1()
+        } else if (event.key === "ArrowDown" || event.key === "PageDown") {
+            scrolltopage2()
+        }
+    }
+})
+
+//切换语言按钮的键盘操作
+const chl_btn = document.getElementsByClassName("rt_title")[0].childNodes[1]
+chl_btn.tabIndex = "0"
+chl_btn.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        chglang()
+    }
+})
+
+//向上箭头
+const arrowup = document.getElementById("arrow")
+arrowup.tabIndex = "0"
+arrowup.addEventListener('keydown', (event) => {
+    if (document.location.pathname == "/" && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault()
+        scrolltopage1()
+    }
+})
